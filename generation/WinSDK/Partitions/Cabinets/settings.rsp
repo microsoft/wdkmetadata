@@ -1,0 +1,6 @@
+--traverse
+<IncludeRoot>/um/fci.h
+<IncludeRoot>/um/fdi_fci_types.h
+<IncludeRoot>/um/fdi.h
+--namespace
+Windows.Win32.Storage.Cabinets

@@ -1,0 +1,5 @@
+--traverse
+<IncludeRoot>/um/swdevicedef.h
+<IncludeRoot>/um/swdevice.h
+--namespace
+Windows.Win32.Devices.Enumeration.Pnp

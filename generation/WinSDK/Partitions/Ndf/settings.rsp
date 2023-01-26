@@ -1,0 +1,9 @@
+--exclude
+_SOCKET_ADDRESS_LIST
+SOCKET_ADDRESS_LIST
+--traverse
+<IncludeRoot>/um/ndattrib.h
+<IncludeRoot>/um/ndhelper.h
+<IncludeRoot>/um/ndfapi.h
+--namespace
+Windows.Win32.NetworkManagement.NetworkDiagnosticsFramework

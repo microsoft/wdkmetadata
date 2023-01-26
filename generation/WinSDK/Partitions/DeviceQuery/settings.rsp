@@ -1,0 +1,6 @@
+--traverse
+<IncludeRoot>/um/devfiltertypes.h
+<IncludeRoot>/um/devquery.h
+<IncludeRoot>/um/devquerydef.h
+--namespace
+Windows.Win32.Devices.DeviceQuery

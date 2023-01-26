@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/shared/pwm.h
+--namespace
+Windows.Win32.Devices.Pwm

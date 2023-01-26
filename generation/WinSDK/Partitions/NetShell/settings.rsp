@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/NetSh.h
+--namespace
+Windows.Win32.NetworkManagement.NetShell

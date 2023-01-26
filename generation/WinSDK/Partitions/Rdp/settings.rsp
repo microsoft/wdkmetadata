@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/rdpencomapi.h
+--namespace
+Windows.Win32.System.DesktopSharing

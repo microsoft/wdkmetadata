@@ -1,0 +1,15 @@
+--exclude
+_NgcTicketContext
+--traverse
+<IncludeRoot>/um/eapauthenticatortypes.h
+<IncludeRoot>/um/eapauthenticatoractiondefine.h
+<IncludeRoot>/um/eaphosterror.h
+<IncludeRoot>/um/EapMethodTypes.h
+<IncludeRoot>/um/eaphostpeertypes.h
+<IncludeRoot>/um/EapTypes.h
+<IncludeRoot>/um/eaphostpeerconfigapis.h
+<IncludeRoot>/um/eappapis.h
+<IncludeRoot>/um/eapmethodpeerapis.h
+<IncludeRoot>/um/eapmethodauthenticatorapis.h
+--namespace
+Windows.Win32.Security.ExtensibleAuthenticationProtocol

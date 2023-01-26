@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/pla.h
+--namespace
+Windows.Win32.System.Performance

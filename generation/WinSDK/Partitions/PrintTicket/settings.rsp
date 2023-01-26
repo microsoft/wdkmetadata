@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/prntvpt.h
+--namespace
+Windows.Win32.Graphics.Printing.PrintTicket

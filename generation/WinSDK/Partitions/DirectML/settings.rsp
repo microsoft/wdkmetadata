@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/DirectML.h
+--namespace
+Windows.Win32.AI.MachineLearning.DirectML

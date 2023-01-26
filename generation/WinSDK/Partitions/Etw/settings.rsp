@@ -1,0 +1,9 @@
+--traverse
+<IncludeRoot>/shared/wmistr.h
+<IncludeRoot>/um/tdh.h
+<IncludeRoot>/shared/evntrace.h
+<IncludeRoot>/shared/evntprov.h
+<IncludeRoot>/um/evntcons.h
+<IncludeRoot>/um/relogger.h
+--namespace
+Windows.Win32.System.Diagnostics.Etw

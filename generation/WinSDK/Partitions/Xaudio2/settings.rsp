@@ -1,0 +1,12 @@
+--exclude
+CXAPOBase
+--traverse
+<IncludeRoot>/shared/basetyps.h
+<IncludeRoot>/um/xapofx.h
+<IncludeRoot>/um/xaudio2.h
+<IncludeRoot>/um/xaudio2fx.h
+<IncludeRoot>/um/hrtfapoapi.h
+<IncludeRoot>/um/xapo.h
+<IncludeRoot>/um/x3daudio.h
+--namespace
+Windows.Win32.Media.Audio.XAudio2

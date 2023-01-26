@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/Psapi.h
+--namespace
+Windows.Win32.System.ProcessStatus

@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/msrdc.h
+--namespace
+Windows.Win32.Networking.RemoteDifferentialCompression

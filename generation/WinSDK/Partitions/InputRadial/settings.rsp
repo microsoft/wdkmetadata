@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/RadialControllerInterop.h
+--namespace
+Windows.Win32.UI.Input.Radial

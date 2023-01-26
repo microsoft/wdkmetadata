@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/winsatcominterfacei.h
+--namespace
+Windows.Win32.System.AssessmentTool

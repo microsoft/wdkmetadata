@@ -1,0 +1,12 @@
+--traverse
+<IncludeRoot>/um/TextStor.h
+<IncludeRoot>/um/msctf.h
+<IncludeRoot>/um/ctffunc.h
+<IncludeRoot>/um/ctfutb.h
+<IncludeRoot>/um/InputScope.h
+<IncludeRoot>/um/ctfspui.h
+<IncludeRoot>/um/MsCtfMonitorApi.h
+<IncludeRoot>/um/MSAAText.h
+<IncludeRoot>/um/tsattrs.h
+--namespace
+Windows.Win32.UI.TextServices

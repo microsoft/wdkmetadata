@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/virtdisk.h
+--namespace
+Windows.Win32.Storage.Vhd

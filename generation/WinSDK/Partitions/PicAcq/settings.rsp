@@ -1,0 +1,5 @@
+--traverse
+<IncludeRoot>/um/PhotoAcquireProperties.h
+<IncludeRoot>/um/PhotoAcquire.h
+--namespace
+Windows.Win32.Media.PictureAcquisition

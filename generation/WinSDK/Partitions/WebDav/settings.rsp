@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/davclnt.h
+--namespace
+Windows.Win32.NetworkManagement.WebDav

@@ -1,0 +1,5 @@
+--traverse
+<IncludeRoot>/um/wincodec.h
+<IncludeRoot>/um/wincodecsdk.h
+--namespace
+Windows.Win32.Graphics.Imaging

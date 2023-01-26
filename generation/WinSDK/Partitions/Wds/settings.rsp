@@ -1,0 +1,11 @@
+--traverse
+<IncludeRoot>/um/WdsClientApi.h
+<IncludeRoot>/um/wdspxe.h
+<IncludeRoot>/um/wdstpdi.h
+<IncludeRoot>/um/wdstci.h
+<IncludeRoot>/um/WdsTptMgmt.h
+<IncludeRoot>/um/WdsBp.h
+<IncludeRoot>/um/wdsmcerr.h
+<IncludeRoot>/um/wdstptmgmtmsg.h
+--namespace
+Windows.Win32.System.DeploymentServices

@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/SrRestorePtApi.h
+--namespace
+Windows.Win32.System.Restore

@@ -1,0 +1,5 @@
+--traverse
+<IncludeRoot>/um/wcsplugin.h
+<IncludeRoot>/um/icm.h
+--namespace
+Windows.Win32.UI.ColorSystem

@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.modified.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -77,7 +78,7 @@ StyleCopReport.xml
 *.ipdb
 *.pgc
 *.pgd
-*.rsp
+#*.rsp
 *.sbr
 *.tlb
 *.tli
@@ -348,3 +349,21 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Generation files
+!generation/*.rsp
+!generation/WinSDK/Partitions/backup
+!generation/WinSDK/Partitions/debug
+/.vscode/settings.json
+/tests/SourceToWinmd/source/generated/fake/autotypes.cs
+/winsdk
+/sources/GeneratorSdk/sdk/sdk.stamped.props
+/tests/SourceToWinmd/source/generated/autotypes.cs
+
+# This gets written when testing the packages, but we don't want to check it in
+/sources/GeneratorSdk/samples/global.json
+
+!/tests/MetadataUtils.Tests/assets/x64
+!/tests/MetadataUtils.Tests/assets/x86
+!/tests/MetadataUtils.Tests/assets/arm64
+/.vscode

@@ -1,0 +1,60 @@
+{
+  "profiles": {
+    "showMissingImports": {
+      "commandName": "Project",
+      "commandLineArgs": "showMissingImports --first $(ProjectDir)..\\..\\scripts\\BaselineWinmd\\10.0.19041.5\\Windows.Win32.winmd --second $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd"
+    },
+    "compare": {
+      "commandName": "Project",
+      "commandLineArgs": "compare --first $(USERPROFILE)\\.nuget\\packages\\microsoft.windows.sdk.win32metadata\\39.0.18-preview\\Windows.Win32.winmd --second $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd --knownDiffsFile $(ProjectDir)..\\..\\scripts\\ChangesSinceLastRelease.txt"
+    },
+    "compareWithUpdate": {
+      "commandName": "Project",
+      "commandLineArgs": "compare --first $(USERPROFILE)\\.nuget\\packages\\microsoft.windows.sdk.win32metadata\\29.0.6-preview\\Windows.Win32.winmd --second $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd --knownDiffsFile $(ProjectDir)..\\..\\scripts\\ChangesSinceLastRelease.txt --updateKnownDiffsComment \"Fix me!\""
+    },
+    "showDuplicateImports": {
+      "commandName": "Project",
+      "commandLineArgs": "showDuplicateImports --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd"
+    },
+    "showDuplicateTypes": {
+      "commandName": "Project",
+      "commandLineArgs": "showDuplicateTypes --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd"
+    },
+    "showDuplicateConstants": {
+      "commandName": "Project",
+      "commandLineArgs": "showDuplicateConstants --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd"
+    },
+    "showEmptyDelegates": {
+      "commandName": "Project",
+      "commandLineArgs": "showEmptyDelegates --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd @$(ProjectDir)..\\..\\tests\\emptyDelegatesAllowList.rsp"
+    },
+    "showPointersToDelegates": {
+      "commandName": "Project",
+      "commandLineArgs": "showPointersToDelegates --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd @$(ProjectDir)..\\..\\tests\\pointersToDelegatesAllowList.rsp"
+    },
+    "dumpImports": {
+      "commandName": "Project",
+      "commandLineArgs": "dumpImports --lib \"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\advapi32.Lib\""
+    },
+    "createLibRsp": {
+      "commandName": "Project",
+      "commandLineArgs": "createLibRsp --lib \"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\onecoreuap.lib\" \"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\kernel32.lib\" \"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\d3d10.lib\" --libDir \"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\" --inputRsp d:\\repos\\win32metadata\\generation\\WinSDK\\libMappings.old.rsp --outputRsp d:\\repos\\win32metadata\\generation\\WinSDK\\libMappings.rsp --exclude DllMain ServiceMain GetDeviceID"
+    },
+    "showNamespaceDependencies": {
+      "commandName": "Project",
+      "commandLineArgs": "showNamespaceDependencies --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd --maxBroughtInBy 1 --maxDependTypes 1 --namespaceFilter Windows.Win32.System.Com"
+    },
+    "Show depends for a few ns": {
+      "commandName": "Project",
+      "commandLineArgs": "showNamespaceDependencies --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd --ignoreDependNamespace Windows.Win32.Foundation --namespaceFilter Windows.Win32.System.Com"
+    },
+    "showNamespaceCycles": {
+      "commandName": "Project",
+      "commandLineArgs": "showNamespaceCycles --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd"
+    },
+    "showBrokenArchTypes": {
+      "commandName": "Project",
+      "commandLineArgs": "showBrokenArchTypes --winmd $(ProjectDir)..\\..\\bin\\Windows.Win32.winmd"
+    }
+  }
+}

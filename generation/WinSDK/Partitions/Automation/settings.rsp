@@ -1,0 +1,6 @@
+--traverse
+<IncludeRoot>/um/OAIdl.h
+<IncludeRoot>/um/OleAuto.h
+<IncludeRoot>/um/DispEx.h
+--namespace
+Windows.Win32.System.Ole

@@ -1,0 +1,10 @@
+--traverse
+<IncludeRoot>/um/Ras.h
+<IncludeRoot>/um/RasDlg.h
+<IncludeRoot>/um/Mprapi.h
+<IncludeRoot>/um/RassHost.h
+<IncludeRoot>/um/Mgm.h
+<IncludeRoot>/um/RtmV2.h
+<IncludeRoot>/um/raserror.h
+--namespace
+Windows.Win32.NetworkManagement.Rras

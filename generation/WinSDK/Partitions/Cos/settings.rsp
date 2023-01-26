@@ -1,0 +1,8 @@
+--exclude
+IResourceManagerXXX
+--traverse
+<IncludeRoot>/um/ComSvcs.h
+<IncludeRoot>/um/ComAdmin.h
+<IncludeRoot>/um/Mtxdm.h
+--namespace
+Windows.Win32.System.ComponentServices

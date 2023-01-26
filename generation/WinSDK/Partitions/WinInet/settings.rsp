@@ -1,0 +1,10 @@
+--exclude
+HTTP_VERSION_INFO
+tagTEXT_SOURCE
+--traverse
+<IncludeRoot>/um/iedial.h
+<IncludeRoot>/um/WinInet.h
+<IncludeRoot>/um/Winineti.h
+<IncludeRoot>/um/ProofOfPossessionCookieInfo.h
+--namespace
+Windows.Win32.Networking.WinInet

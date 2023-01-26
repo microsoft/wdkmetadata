@@ -1,0 +1,5 @@
+--traverse
+<IncludeRoot>/um/vdmctxt.h
+<IncludeRoot>/um/VdmDbg.h
+--namespace
+Windows.Win32.System.VirtualDosMachines

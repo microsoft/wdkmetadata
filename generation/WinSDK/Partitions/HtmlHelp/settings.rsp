@@ -1,0 +1,10 @@
+--exclude
+PFNFILLTEXTBUFFER
+tagTEXT_SOURCE
+IStemmer
+IWordBreaker
+--traverse
+<IncludeRoot>/um/HtmlHelp.h
+<IncludeRoot>/um/infotech.h
+--namespace
+Windows.Win32.Data.HtmlHelp

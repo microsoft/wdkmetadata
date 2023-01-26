@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/um/ondemandconnroutehelper.h
+--namespace
+Windows.Win32.NetworkManagement.WindowsConnectionManager
