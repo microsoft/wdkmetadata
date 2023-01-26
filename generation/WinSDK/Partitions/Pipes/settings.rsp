@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/namedpipeapi.h
---namespace
-Windows.Win32.System.Pipes

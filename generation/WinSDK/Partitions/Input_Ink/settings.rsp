@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/InkPresenterDesktop.h
-<IncludeRoot>/um/inkrenderer.h
---namespace
-Windows.Win32.UI.Input.Ink

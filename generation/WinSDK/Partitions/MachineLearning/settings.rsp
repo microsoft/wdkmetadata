@@ -1,7 +1,0 @@
---exclude
-MLOperatorEdgeTypeConstrant
---traverse
-<IncludeRoot>/um/winml.h
-<IncludeRoot>/um/MLOperatorAuthor.h
---namespace
-Windows.Win32.AI.MachineLearning.WinML

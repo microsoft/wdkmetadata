@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/websocket.h
---namespace
-Windows.Win32.Networking.WebSocket

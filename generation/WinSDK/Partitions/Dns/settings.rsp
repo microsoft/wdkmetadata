@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/WinDNS.h
---namespace
-Windows.Win32.NetworkManagement.Dns

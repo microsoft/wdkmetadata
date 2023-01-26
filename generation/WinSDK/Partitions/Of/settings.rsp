@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/cscobj.h
-<IncludeRoot>/um/cscapi.h
---namespace
-Windows.Win32.Storage.OfflineFiles

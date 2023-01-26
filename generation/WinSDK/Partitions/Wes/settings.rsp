@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/winevt.h
---namespace
-Windows.Win32.System.EventLog

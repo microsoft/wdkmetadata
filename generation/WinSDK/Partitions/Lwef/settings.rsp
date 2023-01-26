@@ -1,6 +1,0 @@
---traverse
-<IncludeRoot>/um/EmptyVC.h
-<IncludeRoot>/um/Reconcil.h
-<IncludeRoot>/um/WindowsDefender.h
---namespace
-Windows.Win32.UI.LegacyWindowsEnvironmentFeatures

@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/heapapi.h
-<IncludeRoot>/um/memoryapi.h
---namespace
-Windows.Win32.System.Memory

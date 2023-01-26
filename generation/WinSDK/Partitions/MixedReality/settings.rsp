@@ -1,6 +1,0 @@
---traverse
-<IncludeRoot>/um/perceptiondevice.h
-<IncludeRoot>/um/perceptiondevicecore.h
---namespace
-Windows.Win32.System.MixedReality
-

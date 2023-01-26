@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/avrfsdk.h
---namespace
-Windows.Win32.System.ApplicationVerifier

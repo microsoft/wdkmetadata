@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/mi.h
---namespace
-Windows.Win32.System.Wmi

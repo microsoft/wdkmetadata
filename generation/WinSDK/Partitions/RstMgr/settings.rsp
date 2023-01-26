@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/RestartManager.h
---namespace
-Windows.Win32.System.RestartManager

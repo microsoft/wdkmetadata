@@ -1,6 +1,0 @@
---traverse
-<IncludeRoot>/um/mq.h
-<IncludeRoot>/um/mqoai.h
---namespace
-Windows.Win32.System.MessageQueuing
-

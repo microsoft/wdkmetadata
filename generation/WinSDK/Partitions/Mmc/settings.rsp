@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/MMCObj.h
-<IncludeRoot>/um/MMC.h
---namespace
-Windows.Win32.System.Mmc

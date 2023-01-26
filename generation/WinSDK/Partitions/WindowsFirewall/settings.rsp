@@ -1,8 +1,0 @@
---traverse
-<IncludeRoot>/um/icftypes.h
-<IncludeRoot>/um/natupnp.h
-<IncludeRoot>/um/NetCon.h
-<IncludeRoot>/um/netfw.h
-<IncludeRoot>/um/networkisolation.h
---namespace
-Windows.Win32.NetworkManagement.WindowsFirewall

@@ -1,6 +1,0 @@
---traverse
-<IncludeRoot>/um/efswrtinterop.h
-<IncludeRoot>/um/srpapi.h
-<IncludeRoot>/um/edpwin32.h
---namespace
-Windows.Win32.Security.EnterpriseData

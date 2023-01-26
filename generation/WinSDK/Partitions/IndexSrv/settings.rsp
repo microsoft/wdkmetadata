@@ -1,7 +1,0 @@
---traverse
-<IncludeRoot>/um/NTQuery.h
-<IncludeRoot>/um/Filter.h
-<IncludeRoot>/um/cmdtree.h
-<IncludeRoot>/um/filterr.h
---namespace
-Windows.Win32.Storage.IndexServer

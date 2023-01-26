@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/madcapcl.h
---namespace
-Windows.Win32.NetworkManagement.Multicast

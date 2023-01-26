@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/NotificationActivationCallback.h
---namespace
-Windows.Win32.UI.Notifications

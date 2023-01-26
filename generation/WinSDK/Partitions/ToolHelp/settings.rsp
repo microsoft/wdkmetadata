@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/TlHelp32.h
---namespace
-Windows.Win32.System.Diagnostics.ToolHelp

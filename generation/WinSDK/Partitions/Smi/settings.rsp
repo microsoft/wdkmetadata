@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/wcmconfig.h
-<IncludeRoot>/um/wcmerrors.h
---namespace
-Windows.Win32.System.SettingsManagementInfrastructure

@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/xmllite.h
---namespace
-Windows.Win32.Data.Xml.XmlLite

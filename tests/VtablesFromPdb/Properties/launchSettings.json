@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "VtablesFromPdb": {
-      "commandName": "Project",
-      "commandLineArgs": "$(ProjectDir)..\\PdbsApp\\Debug\\PdbsApp.pdb $(ProjectDir)..\\PdbsApp\\Interfaces.json"
-    }
-  }
-}

@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/ioapiset.h
---namespace
-Windows.Win32.System.IO
-

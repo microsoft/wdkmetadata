@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/EvColl.h
---namespace
-Windows.Win32.System.EventCollector

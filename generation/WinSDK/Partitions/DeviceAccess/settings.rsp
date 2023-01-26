@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/deviceaccess.h
-<IncludeRoot>/um/edevdefs.h
---namespace
-Windows.Win32.Devices.DeviceAccess

@@ -1,8 +1,0 @@
---exclude
-POSITIVE_INFINITY
-NEGATIVE_INFINITY
-NaN
---traverse
-<IncludeRoot>/um/manipulations.h
---namespace
-Windows.Win32.UI.Input.Touch

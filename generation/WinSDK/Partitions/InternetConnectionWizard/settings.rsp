@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/icwcfg.h
---namespace
-Windows.Win32.NetworkManagement.InternetConnectionWizard

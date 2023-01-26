@@ -1,6 +1,0 @@
---exclude
-IKsPropertySet
---traverse
-<IncludeRoot>/um/amxmlgraphbuilder.h
---namespace
-Windows.Win32.Media.DirectShow.Xml

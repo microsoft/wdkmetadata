@@ -1,7 +1,0 @@
---traverse
-<IncludeRoot>/um/oleacc.h
-<IncludeRoot>/um/UIAutomationCore.h
-<IncludeRoot>/um/UIAutomationCoreApi.h
-<IncludeRoot>/um/UIAutomationClient.h
---namespace
-Windows.Win32.UI.Accessibility

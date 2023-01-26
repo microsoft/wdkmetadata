@@ -1,5 +1,0 @@
-<Project>
-  <ItemGroup>
-    <ProjectionDocs Include="$(MSBuildThisFileDirectory)..\apidocs.msgpack" />
-  </ItemGroup>
-</Project>

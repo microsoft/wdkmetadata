@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/winrt/Wsdevlicensing.h
---namespace
-Windows.Win32.System.DeveloperLicensing

@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/gl/gl.h
-<IncludeRoot>/um/gl/glu.h
---namespace
-Windows.Win32.Graphics.OpenGL

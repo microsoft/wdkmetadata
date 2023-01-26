@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/waasapi.h
-<IncludeRoot>/um/waasapitypes.h
---namespace
-Windows.Win32.System.UpdateAssessment

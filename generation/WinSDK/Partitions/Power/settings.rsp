@@ -1,9 +1,0 @@
---traverse
-<IncludeRoot>/shared/poclass.h
-<IncludeRoot>/shared/batclass.h
-<IncludeRoot>/shared/emi.h
-<IncludeRoot>/um/powerbase.h
-<IncludeRoot>/um/powersetting.h
-<IncludeRoot>/um/powrprof.h
---namespace
-Windows.Win32.System.Power

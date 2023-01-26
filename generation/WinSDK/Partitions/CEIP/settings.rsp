@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/windowsceip.h
---namespace
-Windows.Win32.System.Diagnostics.Ceip

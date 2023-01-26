@@ -1,7 +1,0 @@
---traverse
-<IncludeRoot>/um/mtpext.h
-<IncludeRoot>/um/sac.h
-<IncludeRoot>/um/mswmdm.h
-<IncludeRoot>/um/wmdmlog.h
---namespace
-Windows.Win32.Media.DeviceManager

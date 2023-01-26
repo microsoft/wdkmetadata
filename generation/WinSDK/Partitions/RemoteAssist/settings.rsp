@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/rendezvoussession.h
---namespace
-Windows.Win32.System.RemoteAssistance

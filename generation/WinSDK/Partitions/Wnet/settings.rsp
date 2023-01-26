@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/Npapi.h
-<IncludeRoot>/um/winnetwk.h
---namespace
-Windows.Win32.NetworkManagement.WNet

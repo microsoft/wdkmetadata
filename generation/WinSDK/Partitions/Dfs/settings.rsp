@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/LMDFS.h
---namespace
-Windows.Win32.Storage.DistributedFileSystem

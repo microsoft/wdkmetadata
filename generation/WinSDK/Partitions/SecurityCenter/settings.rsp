@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/iwscapi.h
-<IncludeRoot>/um/Wscapi.h
---namespace
-Windows.Win32.System.SecurityCenter

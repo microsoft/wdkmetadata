@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/libloaderapi.h
-<IncludeRoot>/um/libloaderapi2.h
---namespace
-Windows.Win32.System.LibraryLoader

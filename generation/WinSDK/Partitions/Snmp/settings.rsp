@@ -1,6 +1,0 @@
---traverse
-<IncludeRoot>/um/Snmp.h
-<IncludeRoot>/um/MgmtAPI.h
-<IncludeRoot>/um/WinSnmp.h
---namespace
-Windows.Win32.NetworkManagement.Snmp

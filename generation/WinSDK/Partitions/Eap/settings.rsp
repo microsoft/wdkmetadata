@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/Raseapif.h
-<IncludeRoot>/um/RrasCfg.h
---namespace
-Windows.Win32.Security.ExtensibleAuthenticationProtocol

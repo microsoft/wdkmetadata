@@ -1,5 +1,0 @@
---traverse
-<IncludeRoot>/um/MAPI.h
-<IncludeRoot>/um/MapiUnicodeHelp.h
---namespace
-Windows.Win32.System.Mapi

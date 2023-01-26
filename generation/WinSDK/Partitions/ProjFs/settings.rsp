@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/projectedfslib.h
---namespace
-Windows.Win32.Storage.ProjectedFileSystem

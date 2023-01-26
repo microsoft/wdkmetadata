@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/reason.h
---namespace
-Windows.Win32.System.Shutdown

@@ -1,4 +1,0 @@
---traverse
-<IncludeRoot>/um/wcmapi.h
---namespace
-Windows.Win32.NetworkManagement.WindowsConnectionManager
