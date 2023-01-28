@@ -155,8 +155,7 @@ EXTERN_C const IID IID_IPdfRendererNative;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IPdfRendererNative * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

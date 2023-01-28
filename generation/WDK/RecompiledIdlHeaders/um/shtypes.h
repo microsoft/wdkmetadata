@@ -286,7 +286,7 @@ typedef struct _STRRET
         {
         /* [case()][string] */ LPWSTR pOleStr;
         /* [case()] */ UINT uOffset;
-        /* [case()] */ unsigned char cStr[ 260 ];
+        /* [case()] */ char cStr[ 260 ];
         } 	DUMMYUNIONNAME;
     } 	STRRET;
 

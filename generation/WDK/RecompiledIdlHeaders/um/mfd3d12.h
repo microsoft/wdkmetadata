@@ -123,8 +123,7 @@ EXTERN_C const IID IID_IMFD3D12SynchronizationObjectCommands;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IMFD3D12SynchronizationObjectCommands * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -237,8 +236,7 @@ EXTERN_C const IID IID_IMFD3D12SynchronizationObject;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IMFD3D12SynchronizationObject * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

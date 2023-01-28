@@ -119,12 +119,9 @@ EXTERN_C const IID IID_IInkD2DRenderer;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE Draw( 
-            /* [annotation][in] */ 
-            _In_  IUnknown *pD2D1DeviceContext,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pInkStrokeIterable,
-            /* [annotation][in] */ 
-            _In_  BOOL fHighContrast) = 0;
+            /* [in] */ __RPC__in_opt IUnknown *pD2D1DeviceContext,
+            /* [in] */ __RPC__in_opt IUnknown *pInkStrokeIterable,
+            /* [in] */ BOOL fHighContrast) = 0;
         
     };
     
@@ -138,8 +135,7 @@ EXTERN_C const IID IID_IInkD2DRenderer;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IInkD2DRenderer * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -154,12 +150,9 @@ EXTERN_C const IID IID_IInkD2DRenderer;
         DECLSPEC_XFGVIRT(IInkD2DRenderer, Draw)
         HRESULT ( STDMETHODCALLTYPE *Draw )( 
             __RPC__in IInkD2DRenderer * This,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pD2D1DeviceContext,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pInkStrokeIterable,
-            /* [annotation][in] */ 
-            _In_  BOOL fHighContrast);
+            /* [in] */ __RPC__in_opt IUnknown *pD2D1DeviceContext,
+            /* [in] */ __RPC__in_opt IUnknown *pInkStrokeIterable,
+            /* [in] */ BOOL fHighContrast);
         
         END_INTERFACE
     } IInkD2DRendererVtbl;
@@ -214,12 +207,9 @@ EXTERN_C const IID IID_IInkD2DRenderer2;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE Draw( 
-            /* [annotation][in] */ 
-            _In_  IUnknown *pD2D1DeviceContext,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pInkStrokeIterable,
-            /* [annotation][in] */ 
-            _In_  INK_HIGH_CONTRAST_ADJUSTMENT highContrastAdjustment) = 0;
+            /* [in] */ __RPC__in_opt IUnknown *pD2D1DeviceContext,
+            /* [in] */ __RPC__in_opt IUnknown *pInkStrokeIterable,
+            /* [in] */ INK_HIGH_CONTRAST_ADJUSTMENT highContrastAdjustment) = 0;
         
     };
     
@@ -233,8 +223,7 @@ EXTERN_C const IID IID_IInkD2DRenderer2;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IInkD2DRenderer2 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -249,12 +238,9 @@ EXTERN_C const IID IID_IInkD2DRenderer2;
         DECLSPEC_XFGVIRT(IInkD2DRenderer2, Draw)
         HRESULT ( STDMETHODCALLTYPE *Draw )( 
             __RPC__in IInkD2DRenderer2 * This,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pD2D1DeviceContext,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pInkStrokeIterable,
-            /* [annotation][in] */ 
-            _In_  INK_HIGH_CONTRAST_ADJUSTMENT highContrastAdjustment);
+            /* [in] */ __RPC__in_opt IUnknown *pD2D1DeviceContext,
+            /* [in] */ __RPC__in_opt IUnknown *pInkStrokeIterable,
+            /* [in] */ INK_HIGH_CONTRAST_ADJUSTMENT highContrastAdjustment);
         
         END_INTERFACE
     } IInkD2DRenderer2Vtbl;

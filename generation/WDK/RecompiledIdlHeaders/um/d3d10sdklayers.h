@@ -1,3 +1,8 @@
+/*-------------------------------------------------------------------------------------
+ *
+ * Copyright (c) Microsoft Corporation
+ *
+ *-------------------------------------------------------------------------------------*/
 
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
@@ -144,8 +149,7 @@ EXTERN_C const IID IID_ID3D10Debug;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D10Debug * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -278,8 +282,7 @@ EXTERN_C const IID IID_ID3D10SwitchToRef;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D10SwitchToRef * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -903,7 +906,7 @@ typedef struct D3D10_MESSAGE
     D3D10_MESSAGE_SEVERITY Severity;
     D3D10_MESSAGE_ID ID;
     /* [annotation] */ 
-    _Field_size_(DescriptionByteLength)  const unsigned char *pDescription;
+    _Field_size_(DescriptionByteLength)  const char *pDescription;
     SIZE_T DescriptionByteLength;
     } 	D3D10_MESSAGE;
 
@@ -1085,8 +1088,7 @@ EXTERN_C const IID IID_ID3D10InfoQueue;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D10InfoQueue * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

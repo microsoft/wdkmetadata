@@ -1,3 +1,8 @@
+/*-------------------------------------------------------------------------------------
+ *
+ * Copyright (c) Microsoft Corporation
+ *
+ *-------------------------------------------------------------------------------------*/
 
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
@@ -280,8 +285,7 @@ EXTERN_C const IID IID_ID3D11Texture2D1;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11Texture2D1 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -522,8 +526,7 @@ EXTERN_C const IID IID_ID3D11Texture3D1;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11Texture3D1 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -777,8 +780,7 @@ EXTERN_C const IID IID_ID3D11RasterizerState2;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11RasterizerState2 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1185,8 +1187,7 @@ EXTERN_C const IID IID_ID3D11ShaderResourceView1;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11ShaderResourceView1 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1542,8 +1543,7 @@ EXTERN_C const IID IID_ID3D11RenderTargetView1;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11RenderTargetView1 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1887,8 +1887,7 @@ EXTERN_C const IID IID_ID3D11UnorderedAccessView1;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11UnorderedAccessView1 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2077,8 +2076,7 @@ EXTERN_C const IID IID_ID3D11Query1;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11Query1 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2256,8 +2254,7 @@ EXTERN_C const IID IID_ID3D11DeviceContext3;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11DeviceContext3 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -4210,8 +4207,7 @@ EXTERN_C const IID IID_ID3D11Fence;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11Fence * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -4376,8 +4372,7 @@ EXTERN_C const IID IID_ID3D11DeviceContext4;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11DeviceContext4 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -6424,8 +6419,7 @@ EXTERN_C const IID IID_ID3D11Device3;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11Device3 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

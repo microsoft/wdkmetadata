@@ -222,28 +222,21 @@ EXTERN_C const IID IID_ITfInputScope;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetInputScopes( 
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcCount)  InputScope **pprgInputScopes,
-            /* [annotation][out] */ 
-            _Out_  UINT *pcCount) = 0;
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*pcCount) InputScope **pprgInputScopes,
+            /* [out] */ __RPC__out UINT *pcCount) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetPhrase( 
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcCount)  BSTR **ppbstrPhrases,
-            /* [annotation][out] */ 
-            _Out_  UINT *pcCount) = 0;
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*pcCount) BSTR **ppbstrPhrases,
+            /* [out] */ __RPC__out UINT *pcCount) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetRegularExpression( 
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrRegExp) = 0;
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrRegExp) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetSRGS( 
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrSRGS) = 0;
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrSRGS) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetXML( 
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrXML) = 0;
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrXML) = 0;
         
     };
     
@@ -257,8 +250,7 @@ EXTERN_C const IID IID_ITfInputScope;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ITfInputScope * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -273,36 +265,29 @@ EXTERN_C const IID IID_ITfInputScope;
         DECLSPEC_XFGVIRT(ITfInputScope, GetInputScopes)
         HRESULT ( STDMETHODCALLTYPE *GetInputScopes )( 
             __RPC__in ITfInputScope * This,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcCount)  InputScope **pprgInputScopes,
-            /* [annotation][out] */ 
-            _Out_  UINT *pcCount);
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*pcCount) InputScope **pprgInputScopes,
+            /* [out] */ __RPC__out UINT *pcCount);
         
         DECLSPEC_XFGVIRT(ITfInputScope, GetPhrase)
         HRESULT ( STDMETHODCALLTYPE *GetPhrase )( 
             __RPC__in ITfInputScope * This,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcCount)  BSTR **ppbstrPhrases,
-            /* [annotation][out] */ 
-            _Out_  UINT *pcCount);
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*pcCount) BSTR **ppbstrPhrases,
+            /* [out] */ __RPC__out UINT *pcCount);
         
         DECLSPEC_XFGVIRT(ITfInputScope, GetRegularExpression)
         HRESULT ( STDMETHODCALLTYPE *GetRegularExpression )( 
             __RPC__in ITfInputScope * This,
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrRegExp);
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrRegExp);
         
         DECLSPEC_XFGVIRT(ITfInputScope, GetSRGS)
         HRESULT ( STDMETHODCALLTYPE *GetSRGS )( 
             __RPC__in ITfInputScope * This,
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrSRGS);
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrSRGS);
         
         DECLSPEC_XFGVIRT(ITfInputScope, GetXML)
         HRESULT ( STDMETHODCALLTYPE *GetXML )( 
             __RPC__in ITfInputScope * This,
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrXML);
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrXML);
         
         END_INTERFACE
     } ITfInputScopeVtbl;
@@ -369,8 +354,7 @@ EXTERN_C const IID IID_ITfInputScope2;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE EnumWordList( 
-            /* [annotation][out] */ 
-            _Out_  IEnumString **ppEnumString) = 0;
+            /* [out] */ __RPC__deref_out_opt IEnumString **ppEnumString) = 0;
         
     };
     
@@ -384,8 +368,7 @@ EXTERN_C const IID IID_ITfInputScope2;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ITfInputScope2 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -400,42 +383,34 @@ EXTERN_C const IID IID_ITfInputScope2;
         DECLSPEC_XFGVIRT(ITfInputScope, GetInputScopes)
         HRESULT ( STDMETHODCALLTYPE *GetInputScopes )( 
             __RPC__in ITfInputScope2 * This,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcCount)  InputScope **pprgInputScopes,
-            /* [annotation][out] */ 
-            _Out_  UINT *pcCount);
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*pcCount) InputScope **pprgInputScopes,
+            /* [out] */ __RPC__out UINT *pcCount);
         
         DECLSPEC_XFGVIRT(ITfInputScope, GetPhrase)
         HRESULT ( STDMETHODCALLTYPE *GetPhrase )( 
             __RPC__in ITfInputScope2 * This,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcCount)  BSTR **ppbstrPhrases,
-            /* [annotation][out] */ 
-            _Out_  UINT *pcCount);
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*pcCount) BSTR **ppbstrPhrases,
+            /* [out] */ __RPC__out UINT *pcCount);
         
         DECLSPEC_XFGVIRT(ITfInputScope, GetRegularExpression)
         HRESULT ( STDMETHODCALLTYPE *GetRegularExpression )( 
             __RPC__in ITfInputScope2 * This,
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrRegExp);
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrRegExp);
         
         DECLSPEC_XFGVIRT(ITfInputScope, GetSRGS)
         HRESULT ( STDMETHODCALLTYPE *GetSRGS )( 
             __RPC__in ITfInputScope2 * This,
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrSRGS);
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrSRGS);
         
         DECLSPEC_XFGVIRT(ITfInputScope, GetXML)
         HRESULT ( STDMETHODCALLTYPE *GetXML )( 
             __RPC__in ITfInputScope2 * This,
-            /* [annotation][out] */ 
-            _Out_  BSTR *pbstrXML);
+            /* [out] */ __RPC__deref_out_opt BSTR *pbstrXML);
         
         DECLSPEC_XFGVIRT(ITfInputScope2, EnumWordList)
         HRESULT ( STDMETHODCALLTYPE *EnumWordList )( 
             __RPC__in ITfInputScope2 * This,
-            /* [annotation][out] */ 
-            _Out_  IEnumString **ppEnumString);
+            /* [out] */ __RPC__deref_out_opt IEnumString **ppEnumString);
         
         END_INTERFACE
     } ITfInputScope2Vtbl;

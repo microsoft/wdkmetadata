@@ -632,7 +632,7 @@ typedef struct tagDBCOMMANDTREE
         /* [case()] */ VARIANT *pvarValue;
         /* [case()] */ GUID *pGuid;
         /* [case()] */ BYTE *pbValue;
-        /* [case()] */ unsigned char *pzValue;
+        /* [case()] */ char *pzValue;
         /* [case()] */ DB_NUMERIC *pdbnValue;
         /* [case()] */ DBTIMESTAMP *pdbtsValue;
         /* [case()] */ void *pvValue;
@@ -679,8 +679,7 @@ EXTERN_C const IID IID_ICommandTree;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ICommandTree * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -809,8 +808,7 @@ EXTERN_C const IID IID_IQuery;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IQuery * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

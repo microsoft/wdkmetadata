@@ -26,6 +26,15 @@ typedef enum IORING_VERSION {
 
     IORING_VERSION_INVALID = 0,
     IORING_VERSION_1,
+
+    /// <summary>Minor update</summary>
+    /// <remarks>
+    /// Fixes a bug where user provided completion event may not be signaled
+    /// even if the completion queue transitions from empty to non-empty because
+    /// of a race condition. In earlier version please do a timed wait to work
+    /// around this issue.
+    /// </remarks>
+    IORING_VERSION_2,
 } IORING_VERSION;
 
 /// <summary>
@@ -49,7 +58,7 @@ typedef enum IORING_FEATURE_FLAGS {
     IORING_FEATURE_UM_EMULATION = 0x00000001,
 
     /// <summary>
-    /// If this flag is present the IoRingSetCompletionEvent API is available
+    /// If this flag is present the SetIoRingCompletionEvent API is available
     /// and supported
     /// </summary>
     IORING_FEATURE_SET_COMPLETION_EVENT = 0x00000002,

@@ -91,12 +91,9 @@ EXTERN_C const IID IID_IRemoteSystemAdditionalInfoProvider;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetAdditionalInfo( 
-            /* [annotation][out] */ 
-            _Out_  HSTRING *deduplicationId,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **mapView) = 0;
+            /* [out] */ __RPC__deref_out_opt HSTRING *deduplicationId,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][out] */ __RPC__deref_out_opt void **mapView) = 0;
         
     };
     
@@ -110,8 +107,7 @@ EXTERN_C const IID IID_IRemoteSystemAdditionalInfoProvider;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IRemoteSystemAdditionalInfoProvider * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -126,12 +122,9 @@ EXTERN_C const IID IID_IRemoteSystemAdditionalInfoProvider;
         DECLSPEC_XFGVIRT(IRemoteSystemAdditionalInfoProvider, GetAdditionalInfo)
         HRESULT ( STDMETHODCALLTYPE *GetAdditionalInfo )( 
             __RPC__in IRemoteSystemAdditionalInfoProvider * This,
-            /* [annotation][out] */ 
-            _Out_  HSTRING *deduplicationId,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **mapView);
+            /* [out] */ __RPC__deref_out_opt HSTRING *deduplicationId,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][out] */ __RPC__deref_out_opt void **mapView);
         
         END_INTERFACE
     } IRemoteSystemAdditionalInfoProviderVtbl;

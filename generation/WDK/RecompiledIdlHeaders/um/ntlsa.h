@@ -2524,6 +2524,14 @@ typedef PVOID LSA_HANDLE, *PLSA_HANDLE;
 //
 
 //
+// Various buffer sizes for LSAD wire encryption of Auth Infos
+//
+#define LSAD_AES_CRYPT_SHA512_HASH_SIZE     64
+#define LSAD_AES_KEY_SIZE                   16
+#define LSAD_AES_SALT_SIZE                  16
+#define LSAD_AES_BLOCK_SIZE                 16
+
+//
 // This data type defines the following information classes that may be
 // queried or set.
 //
@@ -2543,6 +2551,8 @@ typedef enum _TRUSTED_INFORMATION_CLASS {
     TrustedDomainInformationEx2Internal,
     TrustedDomainFullInformation2Internal,
     TrustedDomainSupportedEncryptionTypes,
+    TrustedDomainAuthInformationInternalAes,
+    TrustedDomainFullInformationInternalAes,
 } TRUSTED_INFORMATION_CLASS, *PTRUSTED_INFORMATION_CLASS;
 
 //
@@ -2676,6 +2686,10 @@ typedef PLSA_TRUST_INFORMATION PTRUSTED_DOMAIN_INFORMATION_BASIC;
 #define TRUST_ATTRIBUTE_CROSS_ORGANIZATION_NO_TGT_DELEGATION 0x00000200  // do not forward TGT to the other side of the trust which is not part of this enterprise
 #define TRUST_ATTRIBUTE_PIM_TRUST                     0x00000400  // Outgoing trust to a PIM forest.
 #endif
+// Disables authentication target validation for all NTLM pass-through authentication
+// requests using this trust.
+#define TRUST_ATTRIBUTE_DISABLE_AUTH_TARGET_VALIDATION 0x00001000
+
 #if (_WIN32_WINNT >= 0x0603)
 // Forward the TGT to the other side of the trust which is not part of this enterprise
 // This flag has the opposite meaning of TRUST_ATTRIBUTE_CROSS_ORGANIZATION_NO_TGT_DELEGATION which is now deprecated.
@@ -2773,7 +2787,9 @@ typedef enum {
     ForestTrustTopLevelName,
     ForestTrustTopLevelNameEx,
     ForestTrustDomainInfo,
-    ForestTrustRecordTypeLast = ForestTrustDomainInfo
+    ForestTrustBinaryInfo,
+    ForestTrustScannerInfo,
+    ForestTrustRecordTypeLast = ForestTrustScannerInfo
 
 } LSA_FOREST_TRUST_RECORD_TYPE;
 
@@ -2804,6 +2820,13 @@ typedef enum {
 #define LSA_NB_DISABLED_ADMIN                    ( 0x00000004L )
 #define LSA_NB_DISABLED_CONFLICT                 ( 0x00000008L )
 
+//
+// FLag definitions for the LSA_FOREST_TRUST_SCANNER_INFO record
+//
+
+#define LSA_SCANNER_INFO_DISABLE_AUTH_TARGET_VALIDATION  ( 0x00000001L )
+#define LSA_SCANNER_INFO_ADMIN_ALL_FLAGS         (LSA_SCANNER_INFO_DISABLE_AUTH_TARGET_VALIDATION)
+
 typedef struct _LSA_FOREST_TRUST_DOMAIN_INFO {
 
 #ifdef MIDL_PASS
@@ -2816,6 +2839,20 @@ typedef struct _LSA_FOREST_TRUST_DOMAIN_INFO {
 
 } LSA_FOREST_TRUST_DOMAIN_INFO, *PLSA_FOREST_TRUST_DOMAIN_INFO;
 
+// LSA_FOREST_TRUST_SCANNER_INFO is usually written from
+// the trust scanner logic that runs internally on the PDC FSMO
+// in the root domain of the forest.
+typedef struct _LSA_FOREST_TRUST_SCANNER_INFO {
+
+#ifdef MIDL_PASS
+    [unique] PISID DomainSid;
+#else
+    PSID DomainSid;
+#endif
+    LSA_UNICODE_STRING DnsName;
+    LSA_UNICODE_STRING NetbiosName;
+
+} LSA_FOREST_TRUST_SCANNER_INFO, *PLSA_FOREST_TRUST_SCANNER_INFO;
 
 #if (_WIN32_WINNT >= 0x0502)
 //
@@ -2864,6 +2901,35 @@ typedef struct _LSA_FOREST_TRUST_RECORD {
 
 } LSA_FOREST_TRUST_RECORD, *PLSA_FOREST_TRUST_RECORD;
 
+typedef struct _LSA_FOREST_TRUST_RECORD2 {
+
+    ULONG Flags;
+    LSA_FOREST_TRUST_RECORD_TYPE ForestTrustType; // type of record
+    LARGE_INTEGER Time;
+
+#ifdef MIDL_PASS
+    [switch_type( LSA_FOREST_TRUST_RECORD_TYPE ), switch_is( ForestTrustType )]
+#endif
+
+    union {                                       // actual data
+
+#ifdef MIDL_PASS
+        [case( ForestTrustTopLevelName,
+               ForestTrustTopLevelNameEx )] LSA_UNICODE_STRING TopLevelName;
+        [case( ForestTrustDomainInfo )] LSA_FOREST_TRUST_DOMAIN_INFO DomainInfo;
+        [case( ForestTrustBinaryInfo )] LSA_FOREST_TRUST_BINARY_DATA BinaryData;
+        [case( ForestTrustScannerInfo )] LSA_FOREST_TRUST_SCANNER_INFO ScannerInfo;
+
+#else
+        LSA_UNICODE_STRING TopLevelName;
+        LSA_FOREST_TRUST_DOMAIN_INFO DomainInfo;
+        LSA_FOREST_TRUST_BINARY_DATA BinaryData;
+        LSA_FOREST_TRUST_SCANNER_INFO ScannerInfo;
+#endif
+    } ForestTrustData;
+
+} LSA_FOREST_TRUST_RECORD2, *PLSA_FOREST_TRUST_RECORD2;
+
 #if (_WIN32_WINNT >= 0x0502)
 //
 // To prevent forest trust blobs of large size, number of records must be
@@ -2884,6 +2950,18 @@ typedef struct _LSA_FOREST_TRUST_INFORMATION {
 #endif
 
 } LSA_FOREST_TRUST_INFORMATION, *PLSA_FOREST_TRUST_INFORMATION;
+
+typedef struct _LSA_FOREST_TRUST_INFORMATION2 {
+
+#ifdef MIDL_PASS
+    [range(0, MAX_RECORDS_IN_FOREST_TRUST_INFO)] ULONG RecordCount;
+    [size_is( RecordCount )] PLSA_FOREST_TRUST_RECORD2 * Entries;
+#else
+    ULONG RecordCount;
+    PLSA_FOREST_TRUST_RECORD2 * Entries;
+#endif
+
+} LSA_FOREST_TRUST_INFORMATION2, *PLSA_FOREST_TRUST_INFORMATION2;
 
 typedef enum {
 
@@ -3821,7 +3899,7 @@ NTAPI
 LsaRetrievePrivateData(
     _In_ LSA_HANDLE PolicyHandle,
     _In_ PLSA_UNICODE_STRING KeyName,
-    _Out_ PLSA_UNICODE_STRING * PrivateData
+    _Out_ PLSA_UNICODE_STRING * PrivateDatant
     );
 
 
@@ -3831,6 +3909,37 @@ LsaNtStatusToWinError(
     _In_ NTSTATUS Status
     );
 
+NTSTATUS
+NTAPI
+LsaQueryForestTrustInformation2(
+    _In_ LSA_HANDLE PolicyHandle,
+    _In_ PLSA_UNICODE_STRING TrustedDomainName,
+    _In_ LSA_FOREST_TRUST_RECORD_TYPE HighestRecordType,
+    _Out_ PLSA_FOREST_TRUST_INFORMATION2 * ForestTrustInfo
+    );
+
+NTSTATUS
+NTAPI
+LsaSetForestTrustInformation2(
+    _In_ LSA_HANDLE PolicyHandle,
+    _In_ PLSA_UNICODE_STRING TrustedDomainName,
+    _In_ LSA_FOREST_TRUST_RECORD_TYPE HighestRecordType,
+    _In_ PLSA_FOREST_TRUST_INFORMATION2 ForestTrustInfo,
+    _In_ BOOLEAN CheckOnly,
+    _Out_ PLSA_FOREST_TRUST_COLLISION_INFORMATION * CollisionInfo
+    );
+
+// end_ntsecapi
+
+NTSTATUS
+LsaInvokeTrustScanner(
+    _In_ LSA_HANDLE PolicyHandle,
+    _In_opt_ LPWSTR DomainName,
+    _In_ ULONG Flags,
+    _In_opt_ LPWSTR CompletionEvent
+    );
+
+// begin_ntsecapi
 
 //
 // Define a symbol so we can tell if ntifs.h has been included.

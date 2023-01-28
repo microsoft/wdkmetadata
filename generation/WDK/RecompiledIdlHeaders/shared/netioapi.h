@@ -425,7 +425,7 @@ typedef struct _MIB_IPINTERFACE_ROW {
     BOOLEAN AdvertiseDefaultRoute;
 
     NL_ROUTER_DISCOVERY_BEHAVIOR RouterDiscoveryBehavior;
-    ULONG DadTransmits;         // DupAddrDetectTransmits in RFC 2462.
+    ULONG DadTransmits;         // DupAddrDetectTransmits in RFC 4862.
     ULONG BaseReachableTime;
     ULONG RetransmitTime;
     ULONG PathMtuDiscoveryTimeout; // Path MTU discovery timeout (in ms).

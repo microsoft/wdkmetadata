@@ -105,12 +105,9 @@ EXTERN_C const IID IID_IUserActivityInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE CreateSessionForWindow( 
-            /* [annotation][in] */ 
-            _In_  HWND window,
-            /* [annotation][in] */ 
-            _In_  REFIID iid,
-            /* [annotation][retval][iid_is][out] */ 
-            _COM_Outptr_retval_  void **value) = 0;
+            /* [in] */ HWND window,
+            /* [in] */ REFIID iid,
+            /* [retval][iid_is][out] */ void **value) = 0;
         
     };
     
@@ -124,8 +121,7 @@ EXTERN_C const IID IID_IUserActivityInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IUserActivityInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -156,12 +152,9 @@ EXTERN_C const IID IID_IUserActivityInterop;
         DECLSPEC_XFGVIRT(IUserActivityInterop, CreateSessionForWindow)
         HRESULT ( STDMETHODCALLTYPE *CreateSessionForWindow )( 
             IUserActivityInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND window,
-            /* [annotation][in] */ 
-            _In_  REFIID iid,
-            /* [annotation][retval][iid_is][out] */ 
-            _COM_Outptr_retval_  void **value);
+            /* [in] */ HWND window,
+            /* [in] */ REFIID iid,
+            /* [retval][iid_is][out] */ void **value);
         
         END_INTERFACE
     } IUserActivityInteropVtbl;
@@ -226,8 +219,7 @@ EXTERN_C const IID IID_IUserActivitySourceHostInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE SetActivitySourceHost( 
-            /* [annotation][in] */ 
-            _In_  HSTRING activitySourceHost) = 0;
+            /* [in] */ HSTRING activitySourceHost) = 0;
         
     };
     
@@ -241,8 +233,7 @@ EXTERN_C const IID IID_IUserActivitySourceHostInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IUserActivitySourceHostInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -273,8 +264,7 @@ EXTERN_C const IID IID_IUserActivitySourceHostInterop;
         DECLSPEC_XFGVIRT(IUserActivitySourceHostInterop, SetActivitySourceHost)
         HRESULT ( STDMETHODCALLTYPE *SetActivitySourceHost )( 
             IUserActivitySourceHostInterop * This,
-            /* [annotation][in] */ 
-            _In_  HSTRING activitySourceHost);
+            /* [in] */ HSTRING activitySourceHost);
         
         END_INTERFACE
     } IUserActivitySourceHostInteropVtbl;
@@ -339,12 +329,9 @@ EXTERN_C const IID IID_IUserActivityRequestManagerInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetForWindow( 
-            /* [annotation][in] */ 
-            _In_  HWND window,
-            /* [annotation][in] */ 
-            _In_  REFIID iid,
-            /* [annotation][retval][iid_is][out] */ 
-            _COM_Outptr_retval_  void **value) = 0;
+            /* [in] */ HWND window,
+            /* [in] */ REFIID iid,
+            /* [retval][iid_is][out] */ void **value) = 0;
         
     };
     
@@ -358,8 +345,7 @@ EXTERN_C const IID IID_IUserActivityRequestManagerInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IUserActivityRequestManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -390,12 +376,9 @@ EXTERN_C const IID IID_IUserActivityRequestManagerInterop;
         DECLSPEC_XFGVIRT(IUserActivityRequestManagerInterop, GetForWindow)
         HRESULT ( STDMETHODCALLTYPE *GetForWindow )( 
             IUserActivityRequestManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND window,
-            /* [annotation][in] */ 
-            _In_  REFIID iid,
-            /* [annotation][retval][iid_is][out] */ 
-            _COM_Outptr_retval_  void **value);
+            /* [in] */ HWND window,
+            /* [in] */ REFIID iid,
+            /* [retval][iid_is][out] */ void **value);
         
         END_INTERFACE
     } IUserActivityRequestManagerInteropVtbl;

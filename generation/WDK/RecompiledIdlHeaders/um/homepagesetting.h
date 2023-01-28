@@ -113,18 +113,13 @@ EXTERN_C const IID IID_IHomePageSetting;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE SetHomePage( 
-            /* [annotation][in] */ 
-            _In_  HWND hwnd,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR homePageUri,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR brandingMessage) = 0;
+            /* [in] */ HWND hwnd,
+            /* [in] */ LPCWSTR homePageUri,
+            /* [in] */ LPCWSTR brandingMessage) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE IsHomePage( 
-            /* [annotation][in] */ 
-            _In_  LPCWSTR uri,
-            /* [annotation][out] */ 
-            _Out_  BOOL *isDefault) = 0;
+            /* [in] */ LPCWSTR uri,
+            /* [out] */ BOOL *isDefault) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetHomePageToBrowserDefault( void) = 0;
         
@@ -140,8 +135,7 @@ EXTERN_C const IID IID_IHomePageSetting;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IHomePageSetting * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -156,20 +150,15 @@ EXTERN_C const IID IID_IHomePageSetting;
         DECLSPEC_XFGVIRT(IHomePageSetting, SetHomePage)
         HRESULT ( STDMETHODCALLTYPE *SetHomePage )( 
             IHomePageSetting * This,
-            /* [annotation][in] */ 
-            _In_  HWND hwnd,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR homePageUri,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR brandingMessage);
+            /* [in] */ HWND hwnd,
+            /* [in] */ LPCWSTR homePageUri,
+            /* [in] */ LPCWSTR brandingMessage);
         
         DECLSPEC_XFGVIRT(IHomePageSetting, IsHomePage)
         HRESULT ( STDMETHODCALLTYPE *IsHomePage )( 
             IHomePageSetting * This,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR uri,
-            /* [annotation][out] */ 
-            _Out_  BOOL *isDefault);
+            /* [in] */ LPCWSTR uri,
+            /* [out] */ BOOL *isDefault);
         
         DECLSPEC_XFGVIRT(IHomePageSetting, SetHomePageToBrowserDefault)
         HRESULT ( STDMETHODCALLTYPE *SetHomePageToBrowserDefault )( 

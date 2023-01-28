@@ -121,16 +121,12 @@ EXTERN_C const IID IID_ITfSpeechUIServer;
         virtual HRESULT STDMETHODCALLTYPE Initialize( void) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ShowUI( 
-            /* [annotation][in] */ 
-            _In_  BOOL fShow) = 0;
+            /* [in] */ BOOL fShow) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE UpdateBalloon( 
-            /* [annotation][in] */ 
-            _In_  TfLBBalloonStyle style,
-            /* [annotation][size_is][in] */ 
-            _In_reads_(cch)  const WCHAR *pch,
-            /* [annotation][in] */ 
-            _In_  ULONG cch) = 0;
+            /* [in] */ TfLBBalloonStyle style,
+            /* [size_is][in] */ __RPC__in_ecount_full(cch) const WCHAR *pch,
+            /* [in] */ ULONG cch) = 0;
         
     };
     
@@ -144,8 +140,7 @@ EXTERN_C const IID IID_ITfSpeechUIServer;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ITfSpeechUIServer * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -164,18 +159,14 @@ EXTERN_C const IID IID_ITfSpeechUIServer;
         DECLSPEC_XFGVIRT(ITfSpeechUIServer, ShowUI)
         HRESULT ( STDMETHODCALLTYPE *ShowUI )( 
             __RPC__in ITfSpeechUIServer * This,
-            /* [annotation][in] */ 
-            _In_  BOOL fShow);
+            /* [in] */ BOOL fShow);
         
         DECLSPEC_XFGVIRT(ITfSpeechUIServer, UpdateBalloon)
         HRESULT ( STDMETHODCALLTYPE *UpdateBalloon )( 
             __RPC__in ITfSpeechUIServer * This,
-            /* [annotation][in] */ 
-            _In_  TfLBBalloonStyle style,
-            /* [annotation][size_is][in] */ 
-            _In_reads_(cch)  const WCHAR *pch,
-            /* [annotation][in] */ 
-            _In_  ULONG cch);
+            /* [in] */ TfLBBalloonStyle style,
+            /* [size_is][in] */ __RPC__in_ecount_full(cch) const WCHAR *pch,
+            /* [in] */ ULONG cch);
         
         END_INTERFACE
     } ITfSpeechUIServerVtbl;

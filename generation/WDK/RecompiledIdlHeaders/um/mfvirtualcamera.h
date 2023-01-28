@@ -161,8 +161,7 @@ EXTERN_C const IID IID_IMFCameraSyncObject;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IMFCameraSyncObject * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -335,8 +334,7 @@ EXTERN_C const IID IID_IMFVirtualCamera;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IMFVirtualCamera * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -358,66 +356,57 @@ EXTERN_C const IID IID_IMFVirtualCamera;
         HRESULT ( STDMETHODCALLTYPE *GetItemType )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][out] */ 
-            _Out_  MF_ATTRIBUTE_TYPE *pType);
+            /* [out] */ MF_ATTRIBUTE_TYPE *pType);
         
         DECLSPEC_XFGVIRT(IMFAttributes, CompareItem)
         HRESULT ( STDMETHODCALLTYPE *CompareItem )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
             REFPROPVARIANT Value,
-            /* [annotation][out] */ 
-            _Out_  BOOL *pbResult);
+            /* [out] */ BOOL *pbResult);
         
         DECLSPEC_XFGVIRT(IMFAttributes, Compare)
         HRESULT ( STDMETHODCALLTYPE *Compare )( 
             IMFVirtualCamera * This,
             IMFAttributes *pTheirs,
             MF_ATTRIBUTES_MATCH_TYPE MatchType,
-            /* [annotation][out] */ 
-            _Out_  BOOL *pbResult);
+            /* [out] */ BOOL *pbResult);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetUINT32)
         HRESULT ( STDMETHODCALLTYPE *GetUINT32 )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][out] */ 
-            _Out_  UINT32 *punValue);
+            /* [out] */ UINT32 *punValue);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetUINT64)
         HRESULT ( STDMETHODCALLTYPE *GetUINT64 )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][out] */ 
-            _Out_  UINT64 *punValue);
+            /* [out] */ UINT64 *punValue);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetDouble)
         HRESULT ( STDMETHODCALLTYPE *GetDouble )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][out] */ 
-            _Out_  double *pfValue);
+            /* [out] */ double *pfValue);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetGUID)
         HRESULT ( STDMETHODCALLTYPE *GetGUID )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][out] */ 
-            _Out_  GUID *pguidValue);
+            /* [out] */ GUID *pguidValue);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetStringLength)
         HRESULT ( STDMETHODCALLTYPE *GetStringLength )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][out] */ 
-            _Out_  UINT32 *pcchLength);
+            /* [out] */ UINT32 *pcchLength);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetString)
         HRESULT ( STDMETHODCALLTYPE *GetString )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][size_is][out] */ 
-            _Out_writes_(cchBufSize)  LPWSTR pwszValue,
+            /* [size_is][out] */ LPWSTR pwszValue,
             UINT32 cchBufSize,
             /* [full][out][in] */ UINT32 *pcchLength);
         
@@ -425,24 +414,20 @@ EXTERN_C const IID IID_IMFVirtualCamera;
         HRESULT ( STDMETHODCALLTYPE *GetAllocatedString )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcchLength + 1)  LPWSTR *ppwszValue,
-            /* [annotation][out] */ 
-            _Out_  UINT32 *pcchLength);
+            /* [size_is][size_is][out] */ LPWSTR *ppwszValue,
+            /* [out] */ UINT32 *pcchLength);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetBlobSize)
         HRESULT ( STDMETHODCALLTYPE *GetBlobSize )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][out] */ 
-            _Out_  UINT32 *pcbBlobSize);
+            /* [out] */ UINT32 *pcbBlobSize);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetBlob)
         HRESULT ( STDMETHODCALLTYPE *GetBlob )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][size_is][out] */ 
-            _Out_writes_(cbBufSize)  UINT8 *pBuf,
+            /* [size_is][out] */ UINT8 *pBuf,
             UINT32 cbBufSize,
             /* [full][out][in] */ UINT32 *pcbBlobSize);
         
@@ -450,18 +435,15 @@ EXTERN_C const IID IID_IMFVirtualCamera;
         HRESULT ( STDMETHODCALLTYPE *GetAllocatedBlob )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcbSize)  UINT8 **ppBuf,
-            /* [annotation][out] */ 
-            _Out_  UINT32 *pcbSize);
+            /* [size_is][size_is][out] */ UINT8 **ppBuf,
+            /* [out] */ UINT32 *pcbSize);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetUnknown)
         HRESULT ( STDMETHODCALLTYPE *GetUnknown )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
             REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  LPVOID *ppv);
+            /* [iid_is][out] */ LPVOID *ppv);
         
         DECLSPEC_XFGVIRT(IMFAttributes, SetItem)
         HRESULT ( STDMETHODCALLTYPE *SetItem )( 
@@ -506,23 +488,20 @@ EXTERN_C const IID IID_IMFVirtualCamera;
         HRESULT ( STDMETHODCALLTYPE *SetString )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][string][in] */ 
-            _In_  LPCWSTR wszValue);
+            /* [string][in] */ LPCWSTR wszValue);
         
         DECLSPEC_XFGVIRT(IMFAttributes, SetBlob)
         HRESULT ( STDMETHODCALLTYPE *SetBlob )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][size_is][in] */ 
-            _In_reads_(cbBufSize)  const UINT8 *pBuf,
+            /* [size_is][in] */ const UINT8 *pBuf,
             UINT32 cbBufSize);
         
         DECLSPEC_XFGVIRT(IMFAttributes, SetUnknown)
         HRESULT ( STDMETHODCALLTYPE *SetUnknown )( 
             IMFVirtualCamera * This,
             REFGUID guidKey,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pUnknown);
+            /* [in] */ IUnknown *pUnknown);
         
         DECLSPEC_XFGVIRT(IMFAttributes, LockStore)
         HRESULT ( STDMETHODCALLTYPE *LockStore )( 
@@ -535,22 +514,19 @@ EXTERN_C const IID IID_IMFVirtualCamera;
         DECLSPEC_XFGVIRT(IMFAttributes, GetCount)
         HRESULT ( STDMETHODCALLTYPE *GetCount )( 
             IMFVirtualCamera * This,
-            /* [annotation][out] */ 
-            _Out_  UINT32 *pcItems);
+            /* [out] */ UINT32 *pcItems);
         
         DECLSPEC_XFGVIRT(IMFAttributes, GetItemByIndex)
         HRESULT ( STDMETHODCALLTYPE *GetItemByIndex )( 
             IMFVirtualCamera * This,
             UINT32 unIndex,
-            /* [annotation][out] */ 
-            _Out_  GUID *pguidKey,
+            /* [out] */ GUID *pguidKey,
             /* [full][out][in] */ PROPVARIANT *pValue);
         
         DECLSPEC_XFGVIRT(IMFAttributes, CopyAllItems)
         HRESULT ( STDMETHODCALLTYPE *CopyAllItems )( 
             IMFVirtualCamera * This,
-            /* [annotation][in] */ 
-            _In_  IMFAttributes *pDest);
+            /* [in] */ IMFAttributes *pDest);
         
         DECLSPEC_XFGVIRT(IMFVirtualCamera, AddDeviceSourceInfo)
         HRESULT ( STDMETHODCALLTYPE *AddDeviceSourceInfo )( 

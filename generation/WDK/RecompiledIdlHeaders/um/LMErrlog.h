@@ -1977,6 +1977,89 @@ NetErrorLogWrite (
      * %n Client IP Address: %4
      */
 
+#define NETLOG_PassThruFilterError_Summary_AdminOverride (ERRLOG2_BASE + 132)
+    /*
+     * The Netlogon service allowed one or more unsecure pass-through NTLM authentication requests from trusted domains and/or forests
+     * during the most recent event throttling window. These unsecure requests would normally be blocked but were allowed to proceed
+     * due to the current trust configuration.%n
+     *
+     * %n
+     *
+     * Warning: Allowing unsecure pass-through authentication requests will expose your Active Directory forest to attack.
+     * For more information about this issue please visit https://go.microsoft.com/fwlink/?linkid=276811&.%n
+     *
+     * %n
+     *
+     * Count of unsecure requests allowed due to administrative override: %1%n
+     */
+
+#define NETLOG_PassThruFilterError_Summary_Blocked (ERRLOG2_BASE + 133)
+    /*
+     * The Netlogon service blocked one or more unsecure pass-through NTLM authentication requests from trusted clients, domains,
+     * and/or forests during the most recent event throttling window. For more information about this issue, including how to enable
+     * more verbose logging, please visit https://go.microsoft.com/fwlink/?linkid=276811&.%n
+     *
+     * %n
+     *
+     * Count of unsecure requests blocked: %1%n
+     */
+
+#define NETLOG_PassThruFilterError_Request_AdminOverride (ERRLOG2_BASE + 134)
+    /*
+     * The Netlogon service allowed an unsecure pass-through NTLM authentication request from a trusted client, domain,
+     * or forest. This unsecure request would normally be blocked but was allowed to proceed due to the current trust
+     * configuration.%n
+     *
+     * %n
+     *
+     * Warning: Allowing unsecure pass-through authentication requests will expose your Active Directory forest to attack.
+     * For more information about this issue please visit https://go.microsoft.com/fwlink/?linkid=276811&.%n
+     *
+     * %n
+     *
+     * Account name: %1%n
+     * Trust name: %2%n
+     * Trust type: %3%n
+     * Client IP Address: %4%n
+     * Block reason: %5%n
+     * Resource server Netbios name: %6%n
+     * Resource server DNS name: %7%n
+     * Resource domain Netbios name: %8%n
+     * Resource domain DNS name: %9%n
+     */
+
+#define NETLOG_PassThruFilterError_Request_Blocked (ERRLOG2_BASE + 135)
+    /*
+     * The Netlogon service blocked an unsecure pass-through NTLM authentication requests from a trusted client, domain,
+     * or forest. For more information, please visit https://go.microsoft.com/fwlink/?linkid=276811&.
+     *
+     * %n%n
+     *
+     * Account name: %1%n
+     * Trust name: %2%n
+     * Trust type: %3%n
+     * Client IP Address: %4%n
+     * Block reason: %5%n
+     * Resource server Netbios name: %6%n
+     * Resource server DNS name: %7%n
+     * Resource domain Netbios name: %8%n
+     * Resource domain DNS name: %9%n
+     */
+#define NETLOG_NetlogonRpcBacklogLimitSet (ERRLOG2_BASE + 136)
+    /*
+     * The Netlogon service was able to bind to a TCP/IP port with the configured backlog size of %1.
+     */
+
+#define NETLOG_NetlogonRpcBacklogLimitFailure (ERRLOG2_BASE + 137)
+    /*
+     * The Netlogon service tried to bind to a TCP/IP port with the configured backlog size of %1 but failed. %n%n
+     *
+     * More information can be found in the following log file '%SystemRoot%\debug\netlogon.log' and, potentially, in the log file
+     * '%SystemRoot%\debug\netlogon.bak' created if the former log becomes full. For steps in enabling the log, please visit
+     *  https://go.microsoft.com/fwlink/?linkid=2163327
+     */
+
+
 #ifdef __cplusplus
 }
 #endif

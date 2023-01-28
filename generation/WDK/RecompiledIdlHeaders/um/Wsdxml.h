@@ -257,18 +257,14 @@ EXTERN_C const IID IID_IWSDXMLContext;
         virtual HRESULT STDMETHODCALLTYPE SetNamespaces( 
             /* [annotation][size_is][in] */ 
             _In_reads_(wNamespacesCount)  const PCWSDXML_NAMESPACE *pNamespaces,
-            /* [annotation][in] */ 
-            _In_  WORD wNamespacesCount,
-            /* [annotation][in] */ 
-            _In_  BYTE bLayerNumber) = 0;
+            /* [in] */ WORD wNamespacesCount,
+            /* [in] */ BYTE bLayerNumber) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetTypes( 
             /* [annotation][size_is][in] */ 
             _In_reads_(dwTypesCount)  const PCWSDXML_TYPE *pTypes,
-            /* [annotation][in] */ 
-            _In_  DWORD dwTypesCount,
-            /* [annotation][in] */ 
-            _In_  BYTE bLayerNumber) = 0;
+            /* [in] */ DWORD dwTypesCount,
+            /* [in] */ BYTE bLayerNumber) = 0;
         
     };
     
@@ -282,8 +278,7 @@ EXTERN_C const IID IID_IWSDXMLContext;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IWSDXMLContext * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -320,20 +315,16 @@ EXTERN_C const IID IID_IWSDXMLContext;
             IWSDXMLContext * This,
             /* [annotation][size_is][in] */ 
             _In_reads_(wNamespacesCount)  const PCWSDXML_NAMESPACE *pNamespaces,
-            /* [annotation][in] */ 
-            _In_  WORD wNamespacesCount,
-            /* [annotation][in] */ 
-            _In_  BYTE bLayerNumber);
+            /* [in] */ WORD wNamespacesCount,
+            /* [in] */ BYTE bLayerNumber);
         
         DECLSPEC_XFGVIRT(IWSDXMLContext, SetTypes)
         HRESULT ( STDMETHODCALLTYPE *SetTypes )( 
             IWSDXMLContext * This,
             /* [annotation][size_is][in] */ 
             _In_reads_(dwTypesCount)  const PCWSDXML_TYPE *pTypes,
-            /* [annotation][in] */ 
-            _In_  DWORD dwTypesCount,
-            /* [annotation][in] */ 
-            _In_  BYTE bLayerNumber);
+            /* [in] */ DWORD dwTypesCount,
+            /* [in] */ BYTE bLayerNumber);
         
         END_INTERFACE
     } IWSDXMLContextVtbl;

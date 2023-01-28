@@ -224,8 +224,7 @@ EXTERN_C const IID IID_IAudioFormatEnumerator;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioFormatEnumerator * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -336,8 +335,7 @@ EXTERN_C const IID IID_ISpatialAudioObjectBase;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ISpatialAudioObjectBase * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -460,8 +458,7 @@ EXTERN_C const IID IID_ISpatialAudioObject;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ISpatialAudioObject * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -619,8 +616,7 @@ EXTERN_C const IID IID_ISpatialAudioObjectRenderStreamBase;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ISpatialAudioObjectRenderStreamBase * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -758,8 +754,7 @@ EXTERN_C const IID IID_ISpatialAudioObjectRenderStream;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ISpatialAudioObjectRenderStream * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -911,8 +906,7 @@ EXTERN_C const IID IID_ISpatialAudioObjectRenderStreamNotify;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ISpatialAudioObjectRenderStreamNotify * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1044,8 +1038,7 @@ EXTERN_C const IID IID_ISpatialAudioClient;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ISpatialAudioClient * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1193,16 +1186,13 @@ EXTERN_C const IID IID_ISpatialAudioClient2;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE IsOffloadCapable( 
-            /* [annotation][in] */ 
-            _In_  AUDIO_STREAM_CATEGORY category,
+            /* [in] */ AUDIO_STREAM_CATEGORY category,
             /* [annotation][out] */ 
             _Out_  BOOL *isOffloadCapable) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetMaxFrameCountForCategory( 
-            /* [annotation][in] */ 
-            _In_  AUDIO_STREAM_CATEGORY category,
-            /* [annotation][in] */ 
-            _In_  BOOL offloadEnabled,
+            /* [in] */ AUDIO_STREAM_CATEGORY category,
+            /* [in] */ BOOL offloadEnabled,
             /* [annotation][in] */ 
             _In_  const WAVEFORMATEX *objectFormat,
             /* [annotation][out] */ 
@@ -1220,8 +1210,7 @@ EXTERN_C const IID IID_ISpatialAudioClient2;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ISpatialAudioClient2 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1298,18 +1287,15 @@ EXTERN_C const IID IID_ISpatialAudioClient2;
         DECLSPEC_XFGVIRT(ISpatialAudioClient2, IsOffloadCapable)
         HRESULT ( STDMETHODCALLTYPE *IsOffloadCapable )( 
             ISpatialAudioClient2 * This,
-            /* [annotation][in] */ 
-            _In_  AUDIO_STREAM_CATEGORY category,
+            /* [in] */ AUDIO_STREAM_CATEGORY category,
             /* [annotation][out] */ 
             _Out_  BOOL *isOffloadCapable);
         
         DECLSPEC_XFGVIRT(ISpatialAudioClient2, GetMaxFrameCountForCategory)
         HRESULT ( STDMETHODCALLTYPE *GetMaxFrameCountForCategory )( 
             ISpatialAudioClient2 * This,
-            /* [annotation][in] */ 
-            _In_  AUDIO_STREAM_CATEGORY category,
-            /* [annotation][in] */ 
-            _In_  BOOL offloadEnabled,
+            /* [in] */ AUDIO_STREAM_CATEGORY category,
+            /* [in] */ BOOL offloadEnabled,
             /* [annotation][in] */ 
             _In_  const WAVEFORMATEX *objectFormat,
             /* [annotation][out] */ 

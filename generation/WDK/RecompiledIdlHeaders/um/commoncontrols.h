@@ -334,8 +334,7 @@ EXTERN_C const IID IID_IImageList;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IImageList * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -742,12 +741,9 @@ EXTERN_C const IID IID_IImageList2;
             _Out_  int *pcy) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetOriginalSize( 
-            /* [annotation][in] */ 
-            _In_  int iImage,
-            /* [annotation][in] */ 
-            _In_  int cx,
-            /* [annotation][in] */ 
-            _In_  int cy) = 0;
+            /* [in] */ int iImage,
+            /* [in] */ int cx,
+            /* [in] */ int cy) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetCallback( 
             /* [annotation][unique][in] */ 
@@ -759,17 +755,13 @@ EXTERN_C const IID IID_IImageList2;
             _Outptr_  void **ppv) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ForceImagePresent( 
-            /* [annotation][in] */ 
-            _In_  int iImage,
+            /* [in] */ int iImage,
             DWORD dwFlags) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE DiscardImages( 
-            /* [annotation][in] */ 
-            _In_  int iFirstImage,
-            /* [annotation][in] */ 
-            _In_  int iLastImage,
-            /* [annotation][in] */ 
-            _In_  DWORD dwFlags) = 0;
+            /* [in] */ int iFirstImage,
+            /* [in] */ int iLastImage,
+            /* [in] */ DWORD dwFlags) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE PreloadImages( 
             /* [annotation][in] */ 
@@ -780,16 +772,11 @@ EXTERN_C const IID IID_IImageList2;
             _Inout_  IMAGELISTSTATS *pils) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE Initialize( 
-            /* [annotation][in] */ 
-            _In_  int cx,
-            /* [annotation][in] */ 
-            _In_  int cy,
-            /* [annotation][in] */ 
-            _In_  UINT flags,
-            /* [annotation][in] */ 
-            _In_  int cInitial,
-            /* [annotation][in] */ 
-            _In_  int cGrow) = 0;
+            /* [in] */ int cx,
+            /* [in] */ int cy,
+            /* [in] */ UINT flags,
+            /* [in] */ int cInitial,
+            /* [in] */ int cGrow) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE Replace2( 
             /* [in] */ int i,
@@ -822,8 +809,7 @@ EXTERN_C const IID IID_IImageList2;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IImageList2 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1067,12 +1053,9 @@ EXTERN_C const IID IID_IImageList2;
         DECLSPEC_XFGVIRT(IImageList2, SetOriginalSize)
         HRESULT ( STDMETHODCALLTYPE *SetOriginalSize )( 
             IImageList2 * This,
-            /* [annotation][in] */ 
-            _In_  int iImage,
-            /* [annotation][in] */ 
-            _In_  int cx,
-            /* [annotation][in] */ 
-            _In_  int cy);
+            /* [in] */ int iImage,
+            /* [in] */ int cx,
+            /* [in] */ int cy);
         
         DECLSPEC_XFGVIRT(IImageList2, SetCallback)
         HRESULT ( STDMETHODCALLTYPE *SetCallback )( 
@@ -1090,19 +1073,15 @@ EXTERN_C const IID IID_IImageList2;
         DECLSPEC_XFGVIRT(IImageList2, ForceImagePresent)
         HRESULT ( STDMETHODCALLTYPE *ForceImagePresent )( 
             IImageList2 * This,
-            /* [annotation][in] */ 
-            _In_  int iImage,
+            /* [in] */ int iImage,
             DWORD dwFlags);
         
         DECLSPEC_XFGVIRT(IImageList2, DiscardImages)
         HRESULT ( STDMETHODCALLTYPE *DiscardImages )( 
             IImageList2 * This,
-            /* [annotation][in] */ 
-            _In_  int iFirstImage,
-            /* [annotation][in] */ 
-            _In_  int iLastImage,
-            /* [annotation][in] */ 
-            _In_  DWORD dwFlags);
+            /* [in] */ int iFirstImage,
+            /* [in] */ int iLastImage,
+            /* [in] */ DWORD dwFlags);
         
         DECLSPEC_XFGVIRT(IImageList2, PreloadImages)
         HRESULT ( STDMETHODCALLTYPE *PreloadImages )( 
@@ -1119,16 +1098,11 @@ EXTERN_C const IID IID_IImageList2;
         DECLSPEC_XFGVIRT(IImageList2, Initialize)
         HRESULT ( STDMETHODCALLTYPE *Initialize )( 
             IImageList2 * This,
-            /* [annotation][in] */ 
-            _In_  int cx,
-            /* [annotation][in] */ 
-            _In_  int cy,
-            /* [annotation][in] */ 
-            _In_  UINT flags,
-            /* [annotation][in] */ 
-            _In_  int cInitial,
-            /* [annotation][in] */ 
-            _In_  int cGrow);
+            /* [in] */ int cx,
+            /* [in] */ int cy,
+            /* [in] */ UINT flags,
+            /* [in] */ int cInitial,
+            /* [in] */ int cGrow);
         
         DECLSPEC_XFGVIRT(IImageList2, Replace2)
         HRESULT ( STDMETHODCALLTYPE *Replace2 )( 

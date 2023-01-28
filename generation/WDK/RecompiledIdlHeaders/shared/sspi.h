@@ -549,6 +549,8 @@ typedef struct _SEC_TRAFFIC_SECRETS {
 // Request that schannel perform server cert chain validation without failing the handshake on errors (deferred),
 // same as SCH_CRED_DEFERRED_CRED_VALIDATION except applies to context not credential handle.
 #define ISC_REQ_DEFERRED_CRED_VALIDATION 0x0000000200000000
+// Prevents the client sending the post_handshake_auth extension in the TLS 1.3 Client Hello.
+#define ISC_REQ_NO_POST_HANDSHAKE_AUTH   0x0000000400000000
 
 #define ISC_RET_DELEGATE                0x00000001
 #define ISC_RET_MUTUAL_AUTH             0x00000002
@@ -581,6 +583,7 @@ typedef struct _SEC_TRAFFIC_SECRETS {
 #define ISC_RET_CONFIDENTIALITY_ONLY    0x40000000 // honored by SPNEGO/Kerberos
 #define ISC_RET_MESSAGES                 0x0000000100000000 // Indicates that the TLS 1.3+ record layer is disabled, and the security context consumes and produces cleartext TLS messages, rather than records.
 #define ISC_RET_DEFERRED_CRED_VALIDATION 0x0000000200000000 // Indicates that SCH_CRED_DEFERRED_CRED_VALIDATION/ISC_REQ_DEFERRED_CRED_VALIDATION request will be honored.
+#define ISC_RET_NO_POST_HANDSHAKE_AUTH   0x0000000400000000 // Indicates that the TLS 1.3 Client Hello will not contain the post_handshake_auth extension.
 
 #define ASC_REQ_DELEGATE                0x00000001
 #define ASC_REQ_MUTUAL_AUTH             0x00000002

@@ -6,15 +6,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- <ScraperRsp Include="scraper.settings.rsp"/>
+    <ScraperRsp Include="scraper.settings.rsp"/>
     <ScraperRsp Include="libMappings.rsp"/>
     <ScraperRsp Include="supportedOS.rsp"/>
-    <ScraperRsp Include="WithSetLastError.rsp"/> -->
+    <ScraperRsp Include="WithSetLastError.rsp"/>
   </ItemGroup>
 
   <ItemGroup>
-    <!-- <ConstantsScraperRsp Include="ConstantsScraper.settings.rsp"/>
-    <ConstantsScraperRsp Include="requiredNamespacesForNames.rsp"/> -->
+    <ConstantsScraperRsp Include="ConstantsScraper.settings.rsp"/>
+    <ConstantsScraperRsp Include="requiredNamespacesForNames.rsp"/>
   </ItemGroup>
 
   <ItemGroup>

@@ -91,14 +91,10 @@ EXTERN_C const IID IID_IUserConsentVerifierInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE RequestVerificationForWindowAsync( 
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  HSTRING message,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncOperation) = 0;
+            /* [in] */ HWND appWindow,
+            /* [in] */ HSTRING message,
+            /* [in] */ REFIID riid,
+            /* [iid_is][retval][out] */ void **asyncOperation) = 0;
         
     };
     
@@ -112,8 +108,7 @@ EXTERN_C const IID IID_IUserConsentVerifierInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IUserConsentVerifierInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -144,14 +139,10 @@ EXTERN_C const IID IID_IUserConsentVerifierInterop;
         DECLSPEC_XFGVIRT(IUserConsentVerifierInterop, RequestVerificationForWindowAsync)
         HRESULT ( STDMETHODCALLTYPE *RequestVerificationForWindowAsync )( 
             IUserConsentVerifierInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  HSTRING message,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncOperation);
+            /* [in] */ HWND appWindow,
+            /* [in] */ HSTRING message,
+            /* [in] */ REFIID riid,
+            /* [iid_is][retval][out] */ void **asyncOperation);
         
         END_INTERFACE
     } IUserConsentVerifierInteropVtbl;

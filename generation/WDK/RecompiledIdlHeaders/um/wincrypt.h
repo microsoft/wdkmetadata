@@ -3286,6 +3286,8 @@ CryptDecodeObject(
 //  Object Identifiers for use with the MS Directory Service
 //--------------------------------------------------------------------------
 #define szOID_NTDS_REPLICATION      "1.3.6.1.4.1.311.25.1"
+#define szOID_NTDS_CA_SECURITY_EXT  "1.3.6.1.4.1.311.25.2"    // OID arc for Microsoft CA custom security extension
+#define szOID_NTDS_OBJECTSID        "1.3.6.1.4.1.311.25.2.1"  // OID for objectSid info
 
 
 //+-------------------------------------------------------------------------

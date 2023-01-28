@@ -91,26 +91,17 @@ EXTERN_C const IID IID_IWebAuthenticationCoreManagerInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE RequestTokenForWindowAsync( 
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  IInspectable *request,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncInfo) = 0;
+            /* [in] */ HWND appWindow,
+            /* [in] */ IInspectable *request,
+            /* [in] */ REFIID riid,
+            /* [iid_is][retval][out] */ void **asyncInfo) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE RequestTokenWithWebAccountForWindowAsync( 
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  IInspectable *request,
-            /* [annotation][in] */ 
-            _In_  IInspectable *webAccount,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncInfo) = 0;
+            /* [in] */ HWND appWindow,
+            /* [in] */ IInspectable *request,
+            /* [in] */ IInspectable *webAccount,
+            /* [in] */ REFIID riid,
+            /* [iid_is][retval][out] */ void **asyncInfo) = 0;
         
     };
     
@@ -124,8 +115,7 @@ EXTERN_C const IID IID_IWebAuthenticationCoreManagerInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IWebAuthenticationCoreManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -156,28 +146,19 @@ EXTERN_C const IID IID_IWebAuthenticationCoreManagerInterop;
         DECLSPEC_XFGVIRT(IWebAuthenticationCoreManagerInterop, RequestTokenForWindowAsync)
         HRESULT ( STDMETHODCALLTYPE *RequestTokenForWindowAsync )( 
             IWebAuthenticationCoreManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  IInspectable *request,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncInfo);
+            /* [in] */ HWND appWindow,
+            /* [in] */ IInspectable *request,
+            /* [in] */ REFIID riid,
+            /* [iid_is][retval][out] */ void **asyncInfo);
         
         DECLSPEC_XFGVIRT(IWebAuthenticationCoreManagerInterop, RequestTokenWithWebAccountForWindowAsync)
         HRESULT ( STDMETHODCALLTYPE *RequestTokenWithWebAccountForWindowAsync )( 
             IWebAuthenticationCoreManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  IInspectable *request,
-            /* [annotation][in] */ 
-            _In_  IInspectable *webAccount,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncInfo);
+            /* [in] */ HWND appWindow,
+            /* [in] */ IInspectable *request,
+            /* [in] */ IInspectable *webAccount,
+            /* [in] */ REFIID riid,
+            /* [iid_is][retval][out] */ void **asyncInfo);
         
         END_INTERFACE
     } IWebAuthenticationCoreManagerInteropVtbl;

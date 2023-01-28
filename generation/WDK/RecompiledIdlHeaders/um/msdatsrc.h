@@ -121,16 +121,13 @@ EXTERN_C const IID IID_DataSourceListener;
     {
     public:
         virtual /* [hidden] */ HRESULT STDMETHODCALLTYPE dataMemberChanged( 
-            /* [annotation][in] */ 
-            _In_  DataMember bstrDM) = 0;
+            /* [in] */ __RPC__in DataMember bstrDM) = 0;
         
         virtual /* [hidden] */ HRESULT STDMETHODCALLTYPE dataMemberAdded( 
-            /* [annotation][in] */ 
-            _In_  DataMember bstrDM) = 0;
+            /* [in] */ __RPC__in DataMember bstrDM) = 0;
         
         virtual /* [hidden] */ HRESULT STDMETHODCALLTYPE dataMemberRemoved( 
-            /* [annotation][in] */ 
-            _In_  DataMember bstrDM) = 0;
+            /* [in] */ __RPC__in DataMember bstrDM) = 0;
         
     };
     
@@ -144,8 +141,7 @@ EXTERN_C const IID IID_DataSourceListener;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in DataSourceListener * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -160,20 +156,17 @@ EXTERN_C const IID IID_DataSourceListener;
         DECLSPEC_XFGVIRT(DataSourceListener, dataMemberChanged)
         /* [hidden] */ HRESULT ( STDMETHODCALLTYPE *dataMemberChanged )( 
             __RPC__in DataSourceListener * This,
-            /* [annotation][in] */ 
-            _In_  DataMember bstrDM);
+            /* [in] */ __RPC__in DataMember bstrDM);
         
         DECLSPEC_XFGVIRT(DataSourceListener, dataMemberAdded)
         /* [hidden] */ HRESULT ( STDMETHODCALLTYPE *dataMemberAdded )( 
             __RPC__in DataSourceListener * This,
-            /* [annotation][in] */ 
-            _In_  DataMember bstrDM);
+            /* [in] */ __RPC__in DataMember bstrDM);
         
         DECLSPEC_XFGVIRT(DataSourceListener, dataMemberRemoved)
         /* [hidden] */ HRESULT ( STDMETHODCALLTYPE *dataMemberRemoved )( 
             __RPC__in DataSourceListener * This,
-            /* [annotation][in] */ 
-            _In_  DataMember bstrDM);
+            /* [in] */ __RPC__in DataMember bstrDM);
         
         END_INTERFACE
     } DataSourceListenerVtbl;
@@ -234,30 +227,22 @@ EXTERN_C const IID IID_DataSource;
     {
     public:
         virtual /* [restricted][hidden] */ HRESULT STDMETHODCALLTYPE getDataMember( 
-            /* [annotation][in] */ 
-            _In_  DataMember bstrDM,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  IUnknown **ppunk) = 0;
+            /* [in] */ __RPC__in DataMember bstrDM,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [retval][out] */ __RPC__deref_out_opt IUnknown **ppunk) = 0;
         
         virtual /* [hidden] */ HRESULT STDMETHODCALLTYPE getDataMemberName( 
-            /* [annotation][in] */ 
-            _In_  long lIndex,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  DataMember *pbstrDM) = 0;
+            /* [in] */ long lIndex,
+            /* [retval][out] */ __RPC__deref_out_opt DataMember *pbstrDM) = 0;
         
         virtual /* [hidden] */ HRESULT STDMETHODCALLTYPE getDataMemberCount( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  long *plCount) = 0;
+            /* [retval][out] */ __RPC__out long *plCount) = 0;
         
         virtual /* [hidden] */ HRESULT STDMETHODCALLTYPE addDataSourceListener( 
-            /* [annotation][in] */ 
-            _In_  DataSourceListener *pDSL) = 0;
+            /* [in] */ __RPC__in_opt DataSourceListener *pDSL) = 0;
         
         virtual /* [hidden] */ HRESULT STDMETHODCALLTYPE removeDataSourceListener( 
-            /* [annotation][in] */ 
-            _In_  DataSourceListener *pDSL) = 0;
+            /* [in] */ __RPC__in_opt DataSourceListener *pDSL) = 0;
         
     };
     
@@ -271,8 +256,7 @@ EXTERN_C const IID IID_DataSource;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in DataSource * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -287,38 +271,30 @@ EXTERN_C const IID IID_DataSource;
         DECLSPEC_XFGVIRT(DataSource, getDataMember)
         /* [restricted][hidden] */ HRESULT ( STDMETHODCALLTYPE *getDataMember )( 
             __RPC__in DataSource * This,
-            /* [annotation][in] */ 
-            _In_  DataMember bstrDM,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  IUnknown **ppunk);
+            /* [in] */ __RPC__in DataMember bstrDM,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [retval][out] */ __RPC__deref_out_opt IUnknown **ppunk);
         
         DECLSPEC_XFGVIRT(DataSource, getDataMemberName)
         /* [hidden] */ HRESULT ( STDMETHODCALLTYPE *getDataMemberName )( 
             __RPC__in DataSource * This,
-            /* [annotation][in] */ 
-            _In_  long lIndex,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  DataMember *pbstrDM);
+            /* [in] */ long lIndex,
+            /* [retval][out] */ __RPC__deref_out_opt DataMember *pbstrDM);
         
         DECLSPEC_XFGVIRT(DataSource, getDataMemberCount)
         /* [hidden] */ HRESULT ( STDMETHODCALLTYPE *getDataMemberCount )( 
             __RPC__in DataSource * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  long *plCount);
+            /* [retval][out] */ __RPC__out long *plCount);
         
         DECLSPEC_XFGVIRT(DataSource, addDataSourceListener)
         /* [hidden] */ HRESULT ( STDMETHODCALLTYPE *addDataSourceListener )( 
             __RPC__in DataSource * This,
-            /* [annotation][in] */ 
-            _In_  DataSourceListener *pDSL);
+            /* [in] */ __RPC__in_opt DataSourceListener *pDSL);
         
         DECLSPEC_XFGVIRT(DataSource, removeDataSourceListener)
         /* [hidden] */ HRESULT ( STDMETHODCALLTYPE *removeDataSourceListener )( 
             __RPC__in DataSource * This,
-            /* [annotation][in] */ 
-            _In_  DataSourceListener *pDSL);
+            /* [in] */ __RPC__in_opt DataSourceListener *pDSL);
         
         END_INTERFACE
     } DataSourceVtbl;

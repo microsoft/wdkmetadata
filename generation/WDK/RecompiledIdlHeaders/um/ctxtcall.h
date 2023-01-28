@@ -103,16 +103,11 @@ EXTERN_C const IID IID_IContextCallback;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE ContextCallback( 
-            /* [annotation][in] */ 
-            _In_  PFNCONTEXTCALL pfnCallback,
-            /* [annotation][in] */ 
-            _In_  ComCallData *pParam,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][in] */ 
-            _In_  int iMethod,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pUnk) = 0;
+            /* [in] */ PFNCONTEXTCALL pfnCallback,
+            /* [in] */ ComCallData *pParam,
+            /* [in] */ REFIID riid,
+            /* [in] */ int iMethod,
+            /* [in] */ IUnknown *pUnk) = 0;
         
     };
     
@@ -126,8 +121,7 @@ EXTERN_C const IID IID_IContextCallback;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IContextCallback * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -142,16 +136,11 @@ EXTERN_C const IID IID_IContextCallback;
         DECLSPEC_XFGVIRT(IContextCallback, ContextCallback)
         HRESULT ( STDMETHODCALLTYPE *ContextCallback )( 
             IContextCallback * This,
-            /* [annotation][in] */ 
-            _In_  PFNCONTEXTCALL pfnCallback,
-            /* [annotation][in] */ 
-            _In_  ComCallData *pParam,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][in] */ 
-            _In_  int iMethod,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pUnk);
+            /* [in] */ PFNCONTEXTCALL pfnCallback,
+            /* [in] */ ComCallData *pParam,
+            /* [in] */ REFIID riid,
+            /* [in] */ int iMethod,
+            /* [in] */ IUnknown *pUnk);
         
         END_INTERFACE
     } IContextCallbackVtbl;

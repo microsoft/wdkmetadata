@@ -11096,6 +11096,10 @@ typedef enum _CHANGER_DEVICE_PROBLEM_TYPE {
 #if (NTDDI_VERSION >= NTDDI_WIN10_CO)
 #define FSCTL_MANAGE_BYPASS_IO                  CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 274, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_RS5)
+#define FSCTL_LMR_QUERY_INFO                    CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 286, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#endif
 //
 // AVIO IOCTLS.
 //
@@ -14795,6 +14799,25 @@ typedef struct _CSV_SET_VOLUME_ID {
 typedef struct _CSV_QUERY_VOLUME_ID {
     GUID VolumeId;
 } CSV_QUERY_VOLUME_ID, *PCSV_QUERY_VOLUME_ID;
+
+//
+//========================= FSCTL_LMR_QUERY_INFO =============================
+//
+
+typedef enum _LMR_QUERY_INFO_CLASS {
+    LMRQuerySessionInfo = 1,
+} LMR_QUERY_INFO_CLASS, *PLMR_QUERY_INFO_CLASS;
+
+typedef struct _LMR_QUERY_INFO_PARAM {
+    LMR_QUERY_INFO_CLASS Operation;
+} LMR_QUERY_INFO_PARAM, *PLMR_QUERY_INFO_PARAM;
+
+//
+// Output for the LMRQuerySessionInfo
+//
+typedef struct _LMR_QUERY_SESSION_INFO {
+    UINT64 SessionId;
+} LMR_QUERY_SESSION_INFO, *PLMR_QUERY_SESSION_INFO;
 
 //
 //====================== FSCTL_CSV_QUERY_VETO_FILE_DIRECT_IO =========================

@@ -570,40 +570,25 @@ EXTERN_C const IID IID_IKsControl;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE KsProperty( 
-            /* [annotation][in] */ 
-            _In_  PKSPROPERTY Property,
-            /* [annotation][in] */ 
-            _In_  ULONG PropertyLength,
-            /* [annotation][out][in] */ 
-            _Inout_  void *PropertyData,
-            /* [annotation][in] */ 
-            _In_  ULONG DataLength,
-            /* [annotation][out] */ 
-            _Out_  ULONG *BytesReturned) = 0;
+            /* [in] */ PKSPROPERTY Property,
+            /* [in] */ ULONG PropertyLength,
+            /* [out][in] */ void *PropertyData,
+            /* [in] */ ULONG DataLength,
+            /* [out] */ ULONG *BytesReturned) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE KsMethod( 
-            /* [annotation][in] */ 
-            _In_  PKSMETHOD Method,
-            /* [annotation][in] */ 
-            _In_  ULONG MethodLength,
-            /* [annotation][out][in] */ 
-            _Inout_  void *MethodData,
-            /* [annotation][in] */ 
-            _In_  ULONG DataLength,
-            /* [annotation][out] */ 
-            _Out_  ULONG *BytesReturned) = 0;
+            /* [in] */ PKSMETHOD Method,
+            /* [in] */ ULONG MethodLength,
+            /* [out][in] */ void *MethodData,
+            /* [in] */ ULONG DataLength,
+            /* [out] */ ULONG *BytesReturned) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE KsEvent( 
-            /* [annotation][in] */ 
-            _In_  PKSEVENT Event,
-            /* [annotation][in] */ 
-            _In_  ULONG EventLength,
-            /* [annotation][out][in] */ 
-            _Inout_  void *EventData,
-            /* [annotation][in] */ 
-            _In_  ULONG DataLength,
-            /* [annotation][out] */ 
-            _Out_  ULONG *BytesReturned) = 0;
+            /* [in] */ PKSEVENT Event,
+            /* [in] */ ULONG EventLength,
+            /* [out][in] */ void *EventData,
+            /* [in] */ ULONG DataLength,
+            /* [out] */ ULONG *BytesReturned) = 0;
         
     };
     
@@ -617,8 +602,7 @@ EXTERN_C const IID IID_IKsControl;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IKsControl * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -633,44 +617,29 @@ EXTERN_C const IID IID_IKsControl;
         DECLSPEC_XFGVIRT(IKsControl, KsProperty)
         HRESULT ( STDMETHODCALLTYPE *KsProperty )( 
             IKsControl * This,
-            /* [annotation][in] */ 
-            _In_  PKSPROPERTY Property,
-            /* [annotation][in] */ 
-            _In_  ULONG PropertyLength,
-            /* [annotation][out][in] */ 
-            _Inout_  void *PropertyData,
-            /* [annotation][in] */ 
-            _In_  ULONG DataLength,
-            /* [annotation][out] */ 
-            _Out_  ULONG *BytesReturned);
+            /* [in] */ PKSPROPERTY Property,
+            /* [in] */ ULONG PropertyLength,
+            /* [out][in] */ void *PropertyData,
+            /* [in] */ ULONG DataLength,
+            /* [out] */ ULONG *BytesReturned);
         
         DECLSPEC_XFGVIRT(IKsControl, KsMethod)
         HRESULT ( STDMETHODCALLTYPE *KsMethod )( 
             IKsControl * This,
-            /* [annotation][in] */ 
-            _In_  PKSMETHOD Method,
-            /* [annotation][in] */ 
-            _In_  ULONG MethodLength,
-            /* [annotation][out][in] */ 
-            _Inout_  void *MethodData,
-            /* [annotation][in] */ 
-            _In_  ULONG DataLength,
-            /* [annotation][out] */ 
-            _Out_  ULONG *BytesReturned);
+            /* [in] */ PKSMETHOD Method,
+            /* [in] */ ULONG MethodLength,
+            /* [out][in] */ void *MethodData,
+            /* [in] */ ULONG DataLength,
+            /* [out] */ ULONG *BytesReturned);
         
         DECLSPEC_XFGVIRT(IKsControl, KsEvent)
         HRESULT ( STDMETHODCALLTYPE *KsEvent )( 
             IKsControl * This,
-            /* [annotation][in] */ 
-            _In_  PKSEVENT Event,
-            /* [annotation][in] */ 
-            _In_  ULONG EventLength,
-            /* [annotation][out][in] */ 
-            _Inout_  void *EventData,
-            /* [annotation][in] */ 
-            _In_  ULONG DataLength,
-            /* [annotation][out] */ 
-            _Out_  ULONG *BytesReturned);
+            /* [in] */ PKSEVENT Event,
+            /* [in] */ ULONG EventLength,
+            /* [out][in] */ void *EventData,
+            /* [in] */ ULONG DataLength,
+            /* [out] */ ULONG *BytesReturned);
         
         END_INTERFACE
     } IKsControlVtbl;
@@ -784,8 +753,7 @@ EXTERN_C const IID IID_IPerChannelDbLevel;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IPerChannelDbLevel * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -930,8 +898,7 @@ EXTERN_C const IID IID_IAudioVolumeLevel;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioVolumeLevel * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1071,8 +1038,7 @@ EXTERN_C const IID IID_IAudioChannelConfig;
             _In_opt_  LPCGUID pguidEventContext) = 0;
         
         virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE GetChannelConfig( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  DWORD *pdwConfig) = 0;
+            /* [retval][out] */ DWORD *pdwConfig) = 0;
         
     };
     
@@ -1086,8 +1052,7 @@ EXTERN_C const IID IID_IAudioChannelConfig;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioChannelConfig * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1109,8 +1074,7 @@ EXTERN_C const IID IID_IAudioChannelConfig;
         DECLSPEC_XFGVIRT(IAudioChannelConfig, GetChannelConfig)
         /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *GetChannelConfig )( 
             IAudioChannelConfig * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  DWORD *pdwConfig);
+            /* [retval][out] */ DWORD *pdwConfig);
         
         END_INTERFACE
     } IAudioChannelConfigVtbl;
@@ -1189,8 +1153,7 @@ EXTERN_C const IID IID_IAudioLoudness;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioLoudness * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1293,8 +1256,7 @@ EXTERN_C const IID IID_IAudioInputSelector;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioInputSelector * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1397,8 +1359,7 @@ EXTERN_C const IID IID_IAudioOutputSelector;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioOutputSelector * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1501,8 +1462,7 @@ EXTERN_C const IID IID_IAudioMute;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioMute * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1595,8 +1555,7 @@ EXTERN_C const IID IID_IAudioBass;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioBass * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1742,8 +1701,7 @@ EXTERN_C const IID IID_IAudioMidrange;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioMidrange * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1889,8 +1847,7 @@ EXTERN_C const IID IID_IAudioTreble;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioTreble * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2046,8 +2003,7 @@ EXTERN_C const IID IID_IAudioAutoGainControl;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioAutoGainControl * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2150,8 +2106,7 @@ EXTERN_C const IID IID_IAudioPeakMeter;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IAudioPeakMeter * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2269,8 +2224,7 @@ EXTERN_C const IID IID_IDeviceSpecificProperty;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDeviceSpecificProperty * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2384,8 +2338,7 @@ EXTERN_C const IID IID_IKsFormatSupport;
             _Out_  BOOL *pbSupported) = 0;
         
         virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE GetDevicePreferredFormat( 
-            /* [annotation][out] */ 
-            _Out_  PKSDATAFORMAT *ppKsFormat) = 0;
+            /* [out] */ PKSDATAFORMAT *ppKsFormat) = 0;
         
     };
     
@@ -2399,8 +2352,7 @@ EXTERN_C const IID IID_IKsFormatSupport;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IKsFormatSupport * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2424,8 +2376,7 @@ EXTERN_C const IID IID_IKsFormatSupport;
         DECLSPEC_XFGVIRT(IKsFormatSupport, GetDevicePreferredFormat)
         /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *GetDevicePreferredFormat )( 
             IKsFormatSupport * This,
-            /* [annotation][out] */ 
-            _Out_  PKSDATAFORMAT *ppKsFormat);
+            /* [out] */ PKSDATAFORMAT *ppKsFormat);
         
         END_INTERFACE
     } IKsFormatSupportVtbl;
@@ -2503,8 +2454,7 @@ EXTERN_C const IID IID_IKsJackDescription;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IKsJackDescription * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2605,8 +2555,7 @@ EXTERN_C const IID IID_IKsJackDescription2;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IKsJackDescription2 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2702,8 +2651,7 @@ EXTERN_C const IID IID_IKsJackSinkInformation;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IKsJackSinkInformation * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2789,8 +2737,7 @@ EXTERN_C const IID IID_IKsJackContainerId;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IKsJackContainerId * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2882,8 +2829,7 @@ EXTERN_C const IID IID_IPartsList;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IPartsList * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2981,8 +2927,7 @@ EXTERN_C const IID IID_IPart;
             _Out_  PartType *pPartType) = 0;
         
         virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE GetSubType( 
-            /* [annotation][out] */ 
-            _Out_  GUID *pSubType) = 0;
+            /* [out] */ GUID *pSubType) = 0;
         
         virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE GetControlInterfaceCount( 
             /* [annotation][out] */ 
@@ -3036,8 +2981,7 @@ EXTERN_C const IID IID_IPart;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IPart * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -3076,8 +3020,7 @@ EXTERN_C const IID IID_IPart;
         DECLSPEC_XFGVIRT(IPart, GetSubType)
         /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *GetSubType )( 
             IPart * This,
-            /* [annotation][out] */ 
-            _Out_  GUID *pSubType);
+            /* [out] */ GUID *pSubType);
         
         DECLSPEC_XFGVIRT(IPart, GetControlInterfaceCount)
         /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *GetControlInterfaceCount )( 
@@ -3265,8 +3208,7 @@ EXTERN_C const IID IID_IConnector;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IConnector * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -3409,8 +3351,7 @@ EXTERN_C const IID IID_ISubunit;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ISubunit * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -3491,8 +3432,7 @@ EXTERN_C const IID IID_IControlInterface;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IControlInterface * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -3589,8 +3529,7 @@ EXTERN_C const IID IID_IControlChangeNotify;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IControlChangeNotify * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -3714,8 +3653,7 @@ EXTERN_C const IID IID_IDeviceTopology;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDeviceTopology * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

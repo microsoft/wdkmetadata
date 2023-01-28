@@ -284,7 +284,7 @@ Abstract:
 #define SYSTEM_CACHE_ALIGNMENT_SIZE X86_CACHE_ALIGNMENT_SIZE
 #elif defined(_ARM64_) || defined(_ARM_)
 #define SYSTEM_CACHE_ALIGNMENT_SIZE ARM_CACHE_ALIGNMENT_SIZE
-#else
+#elif !defined(RC_INVOKED)
 #error Must define a target architecture.
 #endif
 #endif // SYSTEM_CACHE_ALIGNMENT_SIZE

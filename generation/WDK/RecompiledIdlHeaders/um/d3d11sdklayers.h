@@ -1,3 +1,8 @@
+/*-------------------------------------------------------------------------------------
+ *
+ * Copyright (c) Microsoft Corporation
+ *
+ *-------------------------------------------------------------------------------------*/
 
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
@@ -192,8 +197,7 @@ EXTERN_C const IID IID_ID3D11Debug;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11Debug * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -358,8 +362,7 @@ EXTERN_C const IID IID_ID3D11SwitchToRef;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11SwitchToRef * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -505,8 +508,7 @@ EXTERN_C const IID IID_ID3D11TracingDevice;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11TracingDevice * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -604,8 +606,7 @@ EXTERN_C const IID IID_ID3D11RefTrackingOptions;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11RefTrackingOptions * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -690,8 +691,7 @@ EXTERN_C const IID IID_ID3D11RefDefaultTrackingOptions;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11RefDefaultTrackingOptions * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -2146,7 +2146,7 @@ typedef struct D3D11_MESSAGE
     D3D11_MESSAGE_SEVERITY Severity;
     D3D11_MESSAGE_ID ID;
     /* [annotation] */ 
-    _Field_size_(DescriptionByteLength)  const unsigned char *pDescription;
+    _Field_size_(DescriptionByteLength)  const char *pDescription;
     SIZE_T DescriptionByteLength;
     } 	D3D11_MESSAGE;
 
@@ -2328,8 +2328,7 @@ EXTERN_C const IID IID_ID3D11InfoQueue;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ID3D11InfoQueue * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

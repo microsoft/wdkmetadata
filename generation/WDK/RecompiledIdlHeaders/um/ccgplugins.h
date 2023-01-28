@@ -78,14 +78,10 @@ EXTERN_C const IID IID_ICcgDomainAuthCredentials;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetPasswordCredentials( 
-            /* [annotation][in] */ 
-            _In_  LPCWSTR pluginInput,
-            /* [annotation][out] */ 
-            _Out_  LPWSTR *domainName,
-            /* [annotation][out] */ 
-            _Out_  LPWSTR *username,
-            /* [annotation][out] */ 
-            _Out_  LPWSTR *password) = 0;
+            /* [in] */ __RPC__in LPCWSTR pluginInput,
+            /* [out] */ __RPC__deref_out_opt LPWSTR *domainName,
+            /* [out] */ __RPC__deref_out_opt LPWSTR *username,
+            /* [out] */ __RPC__deref_out_opt LPWSTR *password) = 0;
         
     };
     
@@ -99,8 +95,7 @@ EXTERN_C const IID IID_ICcgDomainAuthCredentials;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ICcgDomainAuthCredentials * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -115,14 +110,10 @@ EXTERN_C const IID IID_ICcgDomainAuthCredentials;
         DECLSPEC_XFGVIRT(ICcgDomainAuthCredentials, GetPasswordCredentials)
         HRESULT ( STDMETHODCALLTYPE *GetPasswordCredentials )( 
             __RPC__in ICcgDomainAuthCredentials * This,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR pluginInput,
-            /* [annotation][out] */ 
-            _Out_  LPWSTR *domainName,
-            /* [annotation][out] */ 
-            _Out_  LPWSTR *username,
-            /* [annotation][out] */ 
-            _Out_  LPWSTR *password);
+            /* [in] */ __RPC__in LPCWSTR pluginInput,
+            /* [out] */ __RPC__deref_out_opt LPWSTR *domainName,
+            /* [out] */ __RPC__deref_out_opt LPWSTR *username,
+            /* [out] */ __RPC__deref_out_opt LPWSTR *password);
         
         END_INTERFACE
     } ICcgDomainAuthCredentialsVtbl;

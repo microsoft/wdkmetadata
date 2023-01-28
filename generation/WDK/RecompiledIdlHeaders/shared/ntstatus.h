@@ -10485,6 +10485,15 @@ Notes:
 //
 #define STATUS_VOLUME_WRITE_ACCESS_DENIED ((NTSTATUS)0xC00004D3L)
 
+//
+// MessageId: STATUS_NOT_SUPPORTED_WITH_CACHED_HANDLE
+//
+// MessageText:
+//
+// The specified operation is not supported on a file opened for cached IO.
+//
+#define STATUS_NOT_SUPPORTED_WITH_CACHED_HANDLE ((NTSTATUS)0xC00004D5L)
+
 
 //     **** New SYSTEM error codes can be inserted here ****
 
@@ -10704,6 +10713,15 @@ Notes:
 // The negotiated session key does not meet the minimum length requirement.
 //
 #define STATUS_SESSION_KEY_TOO_SHORT     ((NTSTATUS)0xC0000517L)
+
+//
+// MessageId: STATUS_FS_METADATA_INCONSISTENT
+//
+// MessageText:
+//
+// The file system encountered a metadata file with inconsistent data.
+//
+#define STATUS_FS_METADATA_INCONSISTENT  ((NTSTATUS)0xC0000518L)
 
 
 //     **** New SYSTEM error codes can be inserted here ****
@@ -11833,6 +11851,15 @@ Notes:
 //
 #define STATUS_INCORRECT_ACCOUNT_TYPE    ((NTSTATUS)0xC000A089L)
 
+//
+// MessageId: STATUS_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The local account policy modification request was rejected because the policy is controlled by a regional authority.
+//
+#define STATUS_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED ((NTSTATUS)0xC000A08AL)
+
 /*++
 
  MessageId's 0xa100 - 0xa120 (inclusive) are for the SMB Hash Generation Service.
@@ -12524,6 +12551,15 @@ Notes:
 // Dehydration of the cloud file is disallowed by the cloud sync provider.
 //
 #define STATUS_CLOUD_FILE_DEHYDRATION_DISALLOWED ((NTSTATUS)0xC000CF20L)
+
+//
+// MessageId: STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT
+//
+// MessageText:
+//
+// The cloud provider failed to acknowledge a message before the time-out expired.
+//
+#define STATUS_CLOUD_FILE_US_MESSAGE_TIMEOUT ((NTSTATUS)0xC000CF21L)
 
 /*++
 

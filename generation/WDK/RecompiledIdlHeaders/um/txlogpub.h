@@ -139,58 +139,38 @@ EXTERN_C const IID IID_ILog;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE Force( 
-            /* [annotation][in] */ 
-            _In_  LSN lsnMinToForce) = 0;
+            /* [in] */ LSN lsnMinToForce) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE AppendRecord( 
-            /* [annotation][size_is][in] */ 
-            _In_reads_(cBlob)  BLOB *rgBlob,
-            /* [annotation][in] */ 
-            _In_  ULONG cBlob,
-            /* [annotation][in] */ 
-            _In_  BOOL fForceNow,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsn) = 0;
+            /* [size_is][in] */ __RPC__in_ecount_full(cBlob) BLOB *rgBlob,
+            /* [in] */ ULONG cBlob,
+            /* [in] */ BOOL fForceNow,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsn) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ReadRecord( 
-            /* [annotation][in] */ 
-            _In_  LSN lsnToRead,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnPrev,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnNext,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcbData)  BYTE **ppbData,
-            /* [annotation][out] */ 
-            _Out_  ULONG *pcbData) = 0;
+            /* [in] */ LSN lsnToRead,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnPrev,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnNext,
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*pcbData) BYTE **ppbData,
+            /* [out] */ __RPC__out ULONG *pcbData) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ReadRecordPrefix( 
-            /* [annotation][in] */ 
-            _In_  LSN lsnToRead,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnPrev,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnNext,
-            /* [annotation][size_is][out] */ 
-            _Out_writes_(*pcbData)  BYTE *pbData,
-            /* [annotation][out][in] */ 
-            _Inout_  ULONG *pcbData,
-            /* [annotation][out] */ 
-            _Out_  ULONG *pcbRecord) = 0;
+            /* [in] */ LSN lsnToRead,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnPrev,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnNext,
+            /* [size_is][out] */ __RPC__out_ecount_full(*pcbData) BYTE *pbData,
+            /* [out][in] */ __RPC__inout ULONG *pcbData,
+            /* [out] */ __RPC__out ULONG *pcbRecord) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetLogLimits( 
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnFirst,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnLast) = 0;
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnFirst,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnLast) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE TruncatePrefix( 
-            /* [annotation][in] */ 
-            _In_  LSN lsnFirstToKeep) = 0;
+            /* [in] */ LSN lsnFirstToKeep) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetAccessPolicyHint( 
-            /* [annotation][in] */ 
-            _In_  RECORD_READING_POLICY policy) = 0;
+            /* [in] */ RECORD_READING_POLICY policy) = 0;
         
     };
     
@@ -204,8 +184,7 @@ EXTERN_C const IID IID_ILog;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ILog * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -220,70 +199,50 @@ EXTERN_C const IID IID_ILog;
         DECLSPEC_XFGVIRT(ILog, Force)
         HRESULT ( STDMETHODCALLTYPE *Force )( 
             __RPC__in ILog * This,
-            /* [annotation][in] */ 
-            _In_  LSN lsnMinToForce);
+            /* [in] */ LSN lsnMinToForce);
         
         DECLSPEC_XFGVIRT(ILog, AppendRecord)
         HRESULT ( STDMETHODCALLTYPE *AppendRecord )( 
             __RPC__in ILog * This,
-            /* [annotation][size_is][in] */ 
-            _In_reads_(cBlob)  BLOB *rgBlob,
-            /* [annotation][in] */ 
-            _In_  ULONG cBlob,
-            /* [annotation][in] */ 
-            _In_  BOOL fForceNow,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsn);
+            /* [size_is][in] */ __RPC__in_ecount_full(cBlob) BLOB *rgBlob,
+            /* [in] */ ULONG cBlob,
+            /* [in] */ BOOL fForceNow,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsn);
         
         DECLSPEC_XFGVIRT(ILog, ReadRecord)
         HRESULT ( STDMETHODCALLTYPE *ReadRecord )( 
             __RPC__in ILog * This,
-            /* [annotation][in] */ 
-            _In_  LSN lsnToRead,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnPrev,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnNext,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*pcbData)  BYTE **ppbData,
-            /* [annotation][out] */ 
-            _Out_  ULONG *pcbData);
+            /* [in] */ LSN lsnToRead,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnPrev,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnNext,
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*pcbData) BYTE **ppbData,
+            /* [out] */ __RPC__out ULONG *pcbData);
         
         DECLSPEC_XFGVIRT(ILog, ReadRecordPrefix)
         HRESULT ( STDMETHODCALLTYPE *ReadRecordPrefix )( 
             __RPC__in ILog * This,
-            /* [annotation][in] */ 
-            _In_  LSN lsnToRead,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnPrev,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnNext,
-            /* [annotation][size_is][out] */ 
-            _Out_writes_(*pcbData)  BYTE *pbData,
-            /* [annotation][out][in] */ 
-            _Inout_  ULONG *pcbData,
-            /* [annotation][out] */ 
-            _Out_  ULONG *pcbRecord);
+            /* [in] */ LSN lsnToRead,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnPrev,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnNext,
+            /* [size_is][out] */ __RPC__out_ecount_full(*pcbData) BYTE *pbData,
+            /* [out][in] */ __RPC__inout ULONG *pcbData,
+            /* [out] */ __RPC__out ULONG *pcbRecord);
         
         DECLSPEC_XFGVIRT(ILog, GetLogLimits)
         HRESULT ( STDMETHODCALLTYPE *GetLogLimits )( 
             __RPC__in ILog * This,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnFirst,
-            /* [annotation][unique][in][out] */ 
-            _Inout_  LSN *plsnLast);
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnFirst,
+            /* [unique][in][out] */ __RPC__inout_opt LSN *plsnLast);
         
         DECLSPEC_XFGVIRT(ILog, TruncatePrefix)
         HRESULT ( STDMETHODCALLTYPE *TruncatePrefix )( 
             __RPC__in ILog * This,
-            /* [annotation][in] */ 
-            _In_  LSN lsnFirstToKeep);
+            /* [in] */ LSN lsnFirstToKeep);
         
         DECLSPEC_XFGVIRT(ILog, SetAccessPolicyHint)
         HRESULT ( STDMETHODCALLTYPE *SetAccessPolicyHint )( 
             __RPC__in ILog * This,
-            /* [annotation][in] */ 
-            _In_  RECORD_READING_POLICY policy);
+            /* [in] */ RECORD_READING_POLICY policy);
         
         END_INTERFACE
     } ILogVtbl;
@@ -371,10 +330,8 @@ EXTERN_C const IID IID_IFileBasedLogInit;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE InitNew( 
-            /* [annotation][in] */ 
-            _In_  LPCWSTR filename,
-            /* [annotation][in] */ 
-            _In_  ULONG cbCapacityHint) = 0;
+            /* [in] */ __RPC__in LPCWSTR filename,
+            /* [in] */ ULONG cbCapacityHint) = 0;
         
     };
     
@@ -388,8 +345,7 @@ EXTERN_C const IID IID_IFileBasedLogInit;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IFileBasedLogInit * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -404,10 +360,8 @@ EXTERN_C const IID IID_IFileBasedLogInit;
         DECLSPEC_XFGVIRT(IFileBasedLogInit, InitNew)
         HRESULT ( STDMETHODCALLTYPE *InitNew )( 
             __RPC__in IFileBasedLogInit * This,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR filename,
-            /* [annotation][in] */ 
-            _In_  ULONG cbCapacityHint);
+            /* [in] */ __RPC__in LPCWSTR filename,
+            /* [in] */ ULONG cbCapacityHint);
         
         END_INTERFACE
     } IFileBasedLogInitVtbl;

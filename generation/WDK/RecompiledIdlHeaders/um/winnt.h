@@ -249,7 +249,7 @@ extern "C" {
 #define SYSTEM_CACHE_ALIGNMENT_SIZE X86_CACHE_ALIGNMENT_SIZE
 #elif defined(_ARM64_) || defined(_ARM_)
 #define SYSTEM_CACHE_ALIGNMENT_SIZE ARM_CACHE_ALIGNMENT_SIZE
-#else
+#elif !defined(RC_INVOKED)
 #error Must define a target architecture.
 #endif
 #endif // SYSTEM_CACHE_ALIGNMENT_SIZE
@@ -2872,7 +2872,7 @@ _interlockedbittestandreset64 (
 #pragma intrinsic(_bittestandset)
 #pragma intrinsic(_bittestandreset)
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic(_interlockedbittestandset)
 #pragma intrinsic(_interlockedbittestandreset)
 #endif
@@ -2882,7 +2882,7 @@ _interlockedbittestandreset64 (
 #pragma intrinsic(_bittestandset64)
 #pragma intrinsic(_bittestandreset64)
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic(_interlockedbittestandset64)
 #pragma intrinsic(_interlockedbittestandreset64)
 #endif
@@ -3230,7 +3230,7 @@ InterlockedExchangePointer(
     _In_opt_ PVOID Value
     );
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic(_InterlockedIncrement16)
 #pragma intrinsic(_InterlockedDecrement16)
 #pragma intrinsic(_InterlockedCompareExchange16)
@@ -3281,7 +3281,7 @@ InterlockedExchange16 (
     _In_ SHORT ExChange
     );
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic(_InterlockedExchange8)
 #pragma intrinsic(_InterlockedExchange16)
 #endif
@@ -3349,7 +3349,7 @@ InterlockedXor16(
     _In_ SHORT Value
     );
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic (_InterlockedExchangeAdd8)
 #pragma intrinsic (_InterlockedAnd8)
 #pragma intrinsic (_InterlockedOr8)
@@ -4574,17 +4574,6 @@ YieldProcessor (
 #pragma intrinsic(_bittestandset)
 #pragma intrinsic(_bittestandreset)
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_interlockedbittestandset)
-#pragma intrinsic(_interlockedbittestandset_acq)
-#pragma intrinsic(_interlockedbittestandset_rel)
-#pragma intrinsic(_interlockedbittestandset_nf)
-#pragma intrinsic(_interlockedbittestandreset)
-#pragma intrinsic(_interlockedbittestandreset_acq)
-#pragma intrinsic(_interlockedbittestandreset_rel)
-#pragma intrinsic(_interlockedbittestandreset_nf)
-#endif
-
 //
 // Define bit scan functions
 //
@@ -4616,46 +4605,6 @@ _InlineBitScanReverse64 (
 }
 
 #define BitScanReverse64 _InlineBitScanReverse64
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-
-//
-// Interlocked intrinsic functions.
-//
-
-#pragma intrinsic(_InterlockedAnd8)
-#pragma intrinsic(_InterlockedOr8)
-#pragma intrinsic(_InterlockedXor8)
-#pragma intrinsic(_InterlockedExchange8)
-#pragma intrinsic(_InterlockedExchangeAdd8)
-
-#pragma intrinsic(_InterlockedAnd16)
-#pragma intrinsic(_InterlockedOr16)
-#pragma intrinsic(_InterlockedXor16)
-#pragma intrinsic(_InterlockedIncrement16)
-#pragma intrinsic(_InterlockedDecrement16)
-#pragma intrinsic(_InterlockedCompareExchange16)
-
-#pragma intrinsic(_InterlockedAnd)
-#pragma intrinsic(_InterlockedOr)
-#pragma intrinsic(_InterlockedXor)
-#pragma intrinsic(_InterlockedIncrement)
-#pragma intrinsic(_InterlockedDecrement)
-#pragma intrinsic(_InterlockedExchange)
-#pragma intrinsic(_InterlockedExchangeAdd)
-#pragma intrinsic(_InterlockedCompareExchange)
-
-#pragma intrinsic(_InterlockedAnd64)
-#pragma intrinsic(_InterlockedOr64)
-#pragma intrinsic(_InterlockedXor64)
-#pragma intrinsic(_InterlockedIncrement64)
-#pragma intrinsic(_InterlockedDecrement64)
-#pragma intrinsic(_InterlockedExchange64)
-#pragma intrinsic(_InterlockedCompareExchange64)
-
-#pragma intrinsic(_InterlockedExchangePointer)
-#pragma intrinsic(_InterlockedCompareExchangePointer)
-#endif
 
 #define InterlockedAnd8 _InterlockedAnd8
 #define InterlockedOr8 _InterlockedOr8
@@ -4695,96 +4644,7 @@ _InlineBitScanReverse64 (
 #define InterlockedExchangePointer _InterlockedExchangePointer
 #define InterlockedCompareExchangePointer _InterlockedCompareExchangePointer
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_InterlockedExchange16)
-#endif
 #define InterlockedExchange16 _InterlockedExchange16
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_InterlockedAnd8_acq)
-#pragma intrinsic(_InterlockedAnd8_rel)
-#pragma intrinsic(_InterlockedAnd8_nf)
-#pragma intrinsic(_InterlockedOr8_acq)
-#pragma intrinsic(_InterlockedOr8_rel)
-#pragma intrinsic(_InterlockedOr8_nf)
-#pragma intrinsic(_InterlockedXor8_acq)
-#pragma intrinsic(_InterlockedXor8_rel)
-#pragma intrinsic(_InterlockedXor8_nf)
-#pragma intrinsic(_InterlockedExchange8_acq)
-#pragma intrinsic(_InterlockedExchange8_nf)
-
-#pragma intrinsic(_InterlockedAnd16_acq)
-#pragma intrinsic(_InterlockedAnd16_rel)
-#pragma intrinsic(_InterlockedAnd16_nf)
-#pragma intrinsic(_InterlockedOr16_acq)
-#pragma intrinsic(_InterlockedOr16_rel)
-#pragma intrinsic(_InterlockedOr16_nf)
-#pragma intrinsic(_InterlockedXor16_acq)
-#pragma intrinsic(_InterlockedXor16_rel)
-#pragma intrinsic(_InterlockedXor16_nf)
-#pragma intrinsic(_InterlockedIncrement16_acq)
-#pragma intrinsic(_InterlockedIncrement16_rel)
-#pragma intrinsic(_InterlockedIncrement16_nf)
-#pragma intrinsic(_InterlockedDecrement16_acq)
-#pragma intrinsic(_InterlockedDecrement16_rel)
-#pragma intrinsic(_InterlockedDecrement16_nf)
-#pragma intrinsic(_InterlockedExchange16_acq)
-#pragma intrinsic(_InterlockedExchange16_nf)
-#pragma intrinsic(_InterlockedCompareExchange16_acq)
-#pragma intrinsic(_InterlockedCompareExchange16_rel)
-#pragma intrinsic(_InterlockedCompareExchange16_nf)
-
-#pragma intrinsic(_InterlockedAnd_acq)
-#pragma intrinsic(_InterlockedAnd_rel)
-#pragma intrinsic(_InterlockedAnd_nf)
-#pragma intrinsic(_InterlockedOr_acq)
-#pragma intrinsic(_InterlockedOr_rel)
-#pragma intrinsic(_InterlockedOr_nf)
-#pragma intrinsic(_InterlockedXor_acq)
-#pragma intrinsic(_InterlockedXor_rel)
-#pragma intrinsic(_InterlockedXor_nf)
-#pragma intrinsic(_InterlockedIncrement_acq)
-#pragma intrinsic(_InterlockedIncrement_rel)
-#pragma intrinsic(_InterlockedIncrement_nf)
-#pragma intrinsic(_InterlockedDecrement_acq)
-#pragma intrinsic(_InterlockedDecrement_rel)
-#pragma intrinsic(_InterlockedDecrement_nf)
-#pragma intrinsic(_InterlockedExchange_acq)
-#pragma intrinsic(_InterlockedExchange_nf)
-#pragma intrinsic(_InterlockedExchangeAdd_acq)
-#pragma intrinsic(_InterlockedExchangeAdd_rel)
-#pragma intrinsic(_InterlockedExchangeAdd_nf)
-#pragma intrinsic(_InterlockedCompareExchange_acq)
-#pragma intrinsic(_InterlockedCompareExchange_rel)
-#pragma intrinsic(_InterlockedCompareExchange_nf)
-
-#pragma intrinsic(_InterlockedAnd64_acq)
-#pragma intrinsic(_InterlockedAnd64_rel)
-#pragma intrinsic(_InterlockedAnd64_nf)
-#pragma intrinsic(_InterlockedOr64_acq)
-#pragma intrinsic(_InterlockedOr64_rel)
-#pragma intrinsic(_InterlockedOr64_nf)
-#pragma intrinsic(_InterlockedXor64_acq)
-#pragma intrinsic(_InterlockedXor64_rel)
-#pragma intrinsic(_InterlockedXor64_nf)
-#pragma intrinsic(_InterlockedIncrement64_acq)
-#pragma intrinsic(_InterlockedIncrement64_rel)
-#pragma intrinsic(_InterlockedIncrement64_nf)
-#pragma intrinsic(_InterlockedDecrement64_acq)
-#pragma intrinsic(_InterlockedDecrement64_rel)
-#pragma intrinsic(_InterlockedDecrement64_nf)
-#pragma intrinsic(_InterlockedExchange64_acq)
-#pragma intrinsic(_InterlockedExchange64_nf)
-#pragma intrinsic(_InterlockedCompareExchange64_acq)
-#pragma intrinsic(_InterlockedCompareExchange64_rel)
-#pragma intrinsic(_InterlockedCompareExchange64_nf)
-
-#pragma intrinsic(_InterlockedExchangePointer_acq)
-#pragma intrinsic(_InterlockedExchangePointer_nf)
-#pragma intrinsic(_InterlockedCompareExchangePointer_acq)
-#pragma intrinsic(_InterlockedCompareExchangePointer_rel)
-#pragma intrinsic(_InterlockedCompareExchangePointer_nf)
-#endif
 
 #define InterlockedAndAcquire8 _InterlockedAnd8_acq
 #define InterlockedAndRelease8 _InterlockedAnd8_rel
@@ -5612,33 +5472,11 @@ _BitTestAndSet64(__int64 *Base, __int64 Index)
 #pragma intrinsic(_bittestandset)
 #pragma intrinsic(_bittestandreset)
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_interlockedbittestandset)
-#pragma intrinsic(_interlockedbittestandset_acq)
-#pragma intrinsic(_interlockedbittestandset_rel)
-#pragma intrinsic(_interlockedbittestandset_nf)
-#pragma intrinsic(_interlockedbittestandreset)
-#pragma intrinsic(_interlockedbittestandreset_acq)
-#pragma intrinsic(_interlockedbittestandreset_rel)
-#pragma intrinsic(_interlockedbittestandreset_nf)
-#endif
-
 #if !defined(__ARM64_COMPILER_BITTEST64_WORKAROUND)
 #pragma intrinsic(_bittest64)
 #pragma intrinsic(_bittestandcomplement64)
 #pragma intrinsic(_bittestandset64)
 #pragma intrinsic(_bittestandreset64)
-#endif
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_interlockedbittestandset64)
-#pragma intrinsic(_interlockedbittestandset64_acq)
-#pragma intrinsic(_interlockedbittestandset64_rel)
-#pragma intrinsic(_interlockedbittestandset64_nf)
-#pragma intrinsic(_interlockedbittestandreset64)
-#pragma intrinsic(_interlockedbittestandreset64_acq)
-#pragma intrinsic(_interlockedbittestandreset64_rel)
-#pragma intrinsic(_interlockedbittestandreset64_nf)
 #endif
 
 //
@@ -5654,45 +5492,6 @@ _BitTestAndSet64(__int64 *Base, __int64 Index)
 #pragma intrinsic(_BitScanReverse)
 #pragma intrinsic(_BitScanForward64)
 #pragma intrinsic(_BitScanReverse64)
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-//
-// Interlocked intrinsic functions.
-//
-
-#pragma intrinsic(_InterlockedAnd8)
-#pragma intrinsic(_InterlockedOr8)
-#pragma intrinsic(_InterlockedXor8)
-#pragma intrinsic(_InterlockedExchangeAdd8)
-
-#pragma intrinsic(_InterlockedAnd16)
-#pragma intrinsic(_InterlockedOr16)
-#pragma intrinsic(_InterlockedXor16)
-#pragma intrinsic(_InterlockedIncrement16)
-#pragma intrinsic(_InterlockedDecrement16)
-#pragma intrinsic(_InterlockedCompareExchange16)
-
-#pragma intrinsic(_InterlockedAnd)
-#pragma intrinsic(_InterlockedOr)
-#pragma intrinsic(_InterlockedXor)
-#pragma intrinsic(_InterlockedIncrement)
-#pragma intrinsic(_InterlockedDecrement)
-#pragma intrinsic(_InterlockedExchange)
-#pragma intrinsic(_InterlockedExchangeAdd)
-#pragma intrinsic(_InterlockedCompareExchange)
-
-#pragma intrinsic(_InterlockedAnd64)
-#pragma intrinsic(_InterlockedOr64)
-#pragma intrinsic(_InterlockedXor64)
-#pragma intrinsic(_InterlockedIncrement64)
-#pragma intrinsic(_InterlockedDecrement64)
-#pragma intrinsic(_InterlockedExchange64)
-#pragma intrinsic(_InterlockedCompareExchange64)
-
-#pragma intrinsic(_InterlockedCompareExchange128)
-#pragma intrinsic(_InterlockedExchangePointer)
-#pragma intrinsic(_InterlockedCompareExchangePointer)
-#endif
 
 #define InterlockedAnd8 _InterlockedAnd8
 #define InterlockedOr8 _InterlockedOr8
@@ -5731,97 +5530,8 @@ _BitTestAndSet64(__int64 *Base, __int64 Index)
 #define InterlockedExchangePointer _InterlockedExchangePointer
 #define InterlockedCompareExchangePointer _InterlockedCompareExchangePointer
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_InterlockedExchange8)
-#pragma intrinsic(_InterlockedExchange16)
-#endif
 #define InterlockedExchange16 _InterlockedExchange16
 #define InterlockedExchange8 _InterlockedExchange8
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_InterlockedAnd8_acq)
-#pragma intrinsic(_InterlockedAnd8_rel)
-#pragma intrinsic(_InterlockedAnd8_nf)
-#pragma intrinsic(_InterlockedOr8_acq)
-#pragma intrinsic(_InterlockedOr8_rel)
-#pragma intrinsic(_InterlockedOr8_nf)
-#pragma intrinsic(_InterlockedXor8_acq)
-#pragma intrinsic(_InterlockedXor8_rel)
-#pragma intrinsic(_InterlockedXor8_nf)
-#pragma intrinsic(_InterlockedExchange8_acq)
-#pragma intrinsic(_InterlockedExchange8_nf)
-
-#pragma intrinsic(_InterlockedAnd16_acq)
-#pragma intrinsic(_InterlockedAnd16_rel)
-#pragma intrinsic(_InterlockedAnd16_nf)
-#pragma intrinsic(_InterlockedOr16_acq)
-#pragma intrinsic(_InterlockedOr16_rel)
-#pragma intrinsic(_InterlockedOr16_nf)
-#pragma intrinsic(_InterlockedXor16_acq)
-#pragma intrinsic(_InterlockedXor16_rel)
-#pragma intrinsic(_InterlockedXor16_nf)
-#pragma intrinsic(_InterlockedIncrement16_acq)
-#pragma intrinsic(_InterlockedIncrement16_rel)
-#pragma intrinsic(_InterlockedIncrement16_nf)
-#pragma intrinsic(_InterlockedDecrement16_acq)
-#pragma intrinsic(_InterlockedDecrement16_rel)
-#pragma intrinsic(_InterlockedDecrement16_nf)
-#pragma intrinsic(_InterlockedExchange16_acq)
-#pragma intrinsic(_InterlockedExchange16_nf)
-#pragma intrinsic(_InterlockedCompareExchange16_acq)
-#pragma intrinsic(_InterlockedCompareExchange16_rel)
-#pragma intrinsic(_InterlockedCompareExchange16_nf)
-
-#pragma intrinsic(_InterlockedAnd_acq)
-#pragma intrinsic(_InterlockedAnd_rel)
-#pragma intrinsic(_InterlockedAnd_nf)
-#pragma intrinsic(_InterlockedOr_acq)
-#pragma intrinsic(_InterlockedOr_rel)
-#pragma intrinsic(_InterlockedOr_nf)
-#pragma intrinsic(_InterlockedXor_acq)
-#pragma intrinsic(_InterlockedXor_rel)
-#pragma intrinsic(_InterlockedXor_nf)
-#pragma intrinsic(_InterlockedIncrement_acq)
-#pragma intrinsic(_InterlockedIncrement_rel)
-#pragma intrinsic(_InterlockedIncrement_nf)
-#pragma intrinsic(_InterlockedDecrement_acq)
-#pragma intrinsic(_InterlockedDecrement_rel)
-#pragma intrinsic(_InterlockedDecrement_nf)
-#pragma intrinsic(_InterlockedExchange_acq)
-#pragma intrinsic(_InterlockedExchange_nf)
-#pragma intrinsic(_InterlockedExchangeAdd_acq)
-#pragma intrinsic(_InterlockedExchangeAdd_rel)
-#pragma intrinsic(_InterlockedExchangeAdd_nf)
-#pragma intrinsic(_InterlockedCompareExchange_rel)
-#pragma intrinsic(_InterlockedCompareExchange_nf)
-
-#pragma intrinsic(_InterlockedAnd64_acq)
-#pragma intrinsic(_InterlockedAnd64_rel)
-#pragma intrinsic(_InterlockedAnd64_nf)
-#pragma intrinsic(_InterlockedOr64_acq)
-#pragma intrinsic(_InterlockedOr64_rel)
-#pragma intrinsic(_InterlockedOr64_nf)
-#pragma intrinsic(_InterlockedXor64_acq)
-#pragma intrinsic(_InterlockedXor64_rel)
-#pragma intrinsic(_InterlockedXor64_nf)
-#pragma intrinsic(_InterlockedIncrement64_acq)
-#pragma intrinsic(_InterlockedIncrement64_rel)
-#pragma intrinsic(_InterlockedIncrement64_nf)
-#pragma intrinsic(_InterlockedDecrement64_acq)
-#pragma intrinsic(_InterlockedDecrement64_rel)
-#pragma intrinsic(_InterlockedDecrement64_nf)
-#pragma intrinsic(_InterlockedExchange64_acq)
-#pragma intrinsic(_InterlockedExchange64_nf)
-#pragma intrinsic(_InterlockedCompareExchange64_acq)
-#pragma intrinsic(_InterlockedCompareExchange64_rel)
-#pragma intrinsic(_InterlockedCompareExchange64_nf)
-
-#pragma intrinsic(_InterlockedExchangePointer_acq)
-#pragma intrinsic(_InterlockedExchangePointer_nf)
-#pragma intrinsic(_InterlockedCompareExchangePointer_acq)
-#pragma intrinsic(_InterlockedCompareExchangePointer_rel)
-#pragma intrinsic(_InterlockedCompareExchangePointer_nf)
-#endif
 
 #define InterlockedAndAcquire8 _InterlockedAnd8_acq
 #define InterlockedAndRelease8 _InterlockedAnd8_rel

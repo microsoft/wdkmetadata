@@ -118,12 +118,10 @@ EXTERN_C const IID IID_ITransportSettingsInternal;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE ApplySetting( 
-            /* [annotation][out][in] */ 
-            _Inout_  TRANSPORT_SETTING *Setting) = 0;
+            /* [out][in] */ TRANSPORT_SETTING *Setting) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE QuerySetting( 
-            /* [annotation][out][in] */ 
-            _Inout_  TRANSPORT_SETTING *Setting) = 0;
+            /* [out][in] */ TRANSPORT_SETTING *Setting) = 0;
         
     };
     
@@ -137,8 +135,7 @@ EXTERN_C const IID IID_ITransportSettingsInternal;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ITransportSettingsInternal * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -153,14 +150,12 @@ EXTERN_C const IID IID_ITransportSettingsInternal;
         DECLSPEC_XFGVIRT(ITransportSettingsInternal, ApplySetting)
         HRESULT ( STDMETHODCALLTYPE *ApplySetting )( 
             ITransportSettingsInternal * This,
-            /* [annotation][out][in] */ 
-            _Inout_  TRANSPORT_SETTING *Setting);
+            /* [out][in] */ TRANSPORT_SETTING *Setting);
         
         DECLSPEC_XFGVIRT(ITransportSettingsInternal, QuerySetting)
         HRESULT ( STDMETHODCALLTYPE *QuerySetting )( 
             ITransportSettingsInternal * This,
-            /* [annotation][out][in] */ 
-            _Inout_  TRANSPORT_SETTING *Setting);
+            /* [out][in] */ TRANSPORT_SETTING *Setting);
         
         END_INTERFACE
     } ITransportSettingsInternalVtbl;
@@ -218,28 +213,18 @@ EXTERN_C const IID IID_INetworkTransportSettings;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE ApplySetting( 
-            /* [annotation][in] */ 
-            _In_  const TRANSPORT_SETTING_ID *SettingId,
-            /* [annotation][in] */ 
-            _In_  ULONG LengthIn,
-            /* [annotation][size_is][unique][in] */ 
-            _In_reads_(LengthIn)  const BYTE *ValueIn,
-            /* [annotation][out] */ 
-            _Out_  ULONG *LengthOut,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*LengthOut)  BYTE **ValueOut) = 0;
+            /* [in] */ __RPC__in const TRANSPORT_SETTING_ID *SettingId,
+            /* [in] */ ULONG LengthIn,
+            /* [size_is][unique][in] */ __RPC__in_ecount_full_opt(LengthIn) const BYTE *ValueIn,
+            /* [out] */ __RPC__out ULONG *LengthOut,
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*LengthOut) BYTE **ValueOut) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE QuerySetting( 
-            /* [annotation][in] */ 
-            _In_  const TRANSPORT_SETTING_ID *SettingId,
-            /* [annotation][in] */ 
-            _In_  ULONG LengthIn,
-            /* [annotation][size_is][unique][in] */ 
-            _In_reads_(LengthIn)  const BYTE *ValueIn,
-            /* [annotation][out] */ 
-            _Out_  ULONG *LengthOut,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*LengthOut)  BYTE **ValueOut) = 0;
+            /* [in] */ __RPC__in const TRANSPORT_SETTING_ID *SettingId,
+            /* [in] */ ULONG LengthIn,
+            /* [size_is][unique][in] */ __RPC__in_ecount_full_opt(LengthIn) const BYTE *ValueIn,
+            /* [out] */ __RPC__out ULONG *LengthOut,
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*LengthOut) BYTE **ValueOut) = 0;
         
     };
     
@@ -253,8 +238,7 @@ EXTERN_C const IID IID_INetworkTransportSettings;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in INetworkTransportSettings * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -269,30 +253,20 @@ EXTERN_C const IID IID_INetworkTransportSettings;
         DECLSPEC_XFGVIRT(INetworkTransportSettings, ApplySetting)
         HRESULT ( STDMETHODCALLTYPE *ApplySetting )( 
             __RPC__in INetworkTransportSettings * This,
-            /* [annotation][in] */ 
-            _In_  const TRANSPORT_SETTING_ID *SettingId,
-            /* [annotation][in] */ 
-            _In_  ULONG LengthIn,
-            /* [annotation][size_is][unique][in] */ 
-            _In_reads_(LengthIn)  const BYTE *ValueIn,
-            /* [annotation][out] */ 
-            _Out_  ULONG *LengthOut,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*LengthOut)  BYTE **ValueOut);
+            /* [in] */ __RPC__in const TRANSPORT_SETTING_ID *SettingId,
+            /* [in] */ ULONG LengthIn,
+            /* [size_is][unique][in] */ __RPC__in_ecount_full_opt(LengthIn) const BYTE *ValueIn,
+            /* [out] */ __RPC__out ULONG *LengthOut,
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*LengthOut) BYTE **ValueOut);
         
         DECLSPEC_XFGVIRT(INetworkTransportSettings, QuerySetting)
         HRESULT ( STDMETHODCALLTYPE *QuerySetting )( 
             __RPC__in INetworkTransportSettings * This,
-            /* [annotation][in] */ 
-            _In_  const TRANSPORT_SETTING_ID *SettingId,
-            /* [annotation][in] */ 
-            _In_  ULONG LengthIn,
-            /* [annotation][size_is][unique][in] */ 
-            _In_reads_(LengthIn)  const BYTE *ValueIn,
-            /* [annotation][out] */ 
-            _Out_  ULONG *LengthOut,
-            /* [annotation][size_is][size_is][out] */ 
-            _Out_writes_(*LengthOut)  BYTE **ValueOut);
+            /* [in] */ __RPC__in const TRANSPORT_SETTING_ID *SettingId,
+            /* [in] */ ULONG LengthIn,
+            /* [size_is][unique][in] */ __RPC__in_ecount_full_opt(LengthIn) const BYTE *ValueIn,
+            /* [out] */ __RPC__out ULONG *LengthOut,
+            /* [size_is][size_is][out] */ __RPC__deref_out_ecount_full_opt(*LengthOut) BYTE **ValueOut);
         
         END_INTERFACE
     } INetworkTransportSettingsVtbl;
@@ -365,8 +339,7 @@ EXTERN_C const IID IID_INotificationTransportSync;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in INotificationTransportSync * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

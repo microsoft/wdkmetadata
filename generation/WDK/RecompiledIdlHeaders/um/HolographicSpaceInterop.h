@@ -90,12 +90,9 @@ EXTERN_C const IID IID_IHolographicSpaceInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE CreateForWindow( 
-            /* [annotation][in] */ 
-            _In_  HWND window,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **holographicSpace) = 0;
+            /* [in] */ __RPC__in HWND window,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **holographicSpace) = 0;
         
     };
     
@@ -109,8 +106,7 @@ EXTERN_C const IID IID_IHolographicSpaceInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IHolographicSpaceInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -141,12 +137,9 @@ EXTERN_C const IID IID_IHolographicSpaceInterop;
         DECLSPEC_XFGVIRT(IHolographicSpaceInterop, CreateForWindow)
         HRESULT ( STDMETHODCALLTYPE *CreateForWindow )( 
             __RPC__in IHolographicSpaceInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND window,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **holographicSpace);
+            /* [in] */ __RPC__in HWND window,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **holographicSpace);
         
         END_INTERFACE
     } IHolographicSpaceInteropVtbl;

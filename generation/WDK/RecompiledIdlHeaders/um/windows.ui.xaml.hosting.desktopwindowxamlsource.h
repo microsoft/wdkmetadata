@@ -98,8 +98,7 @@ EXTERN_C const IID IID_IDesktopWindowXamlSourceNative;
             _In_  HWND parentWnd) = 0;
         
         virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_WindowHandle( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HWND *hWnd) = 0;
+            /* [retval][out] */ HWND *hWnd) = 0;
         
     };
     
@@ -113,8 +112,7 @@ EXTERN_C const IID IID_IDesktopWindowXamlSourceNative;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDesktopWindowXamlSourceNative * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -135,8 +133,7 @@ EXTERN_C const IID IID_IDesktopWindowXamlSourceNative;
         DECLSPEC_XFGVIRT(IDesktopWindowXamlSourceNative, get_WindowHandle)
         /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_WindowHandle )( 
             IDesktopWindowXamlSourceNative * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HWND *hWnd);
+            /* [retval][out] */ HWND *hWnd);
         
         END_INTERFACE
     } IDesktopWindowXamlSourceNativeVtbl;
@@ -220,8 +217,7 @@ EXTERN_C const IID IID_IDesktopWindowXamlSourceNative2;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDesktopWindowXamlSourceNative2 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -242,8 +238,7 @@ EXTERN_C const IID IID_IDesktopWindowXamlSourceNative2;
         DECLSPEC_XFGVIRT(IDesktopWindowXamlSourceNative, get_WindowHandle)
         /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_WindowHandle )( 
             IDesktopWindowXamlSourceNative2 * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HWND *hWnd);
+            /* [retval][out] */ HWND *hWnd);
         
         DECLSPEC_XFGVIRT(IDesktopWindowXamlSourceNative2, PreTranslateMessage)
         HRESULT ( STDMETHODCALLTYPE *PreTranslateMessage )( 

@@ -90,16 +90,13 @@ EXTERN_C const IID IID_IContentPrefetcherTaskTrigger;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE TriggerContentPrefetcherTask( 
-            /* [annotation][in] */ 
-            _In_  LPCWSTR packageFullName) = 0;
+            /* [in] */ __RPC__in LPCWSTR packageFullName) = 0;
         
         virtual /* [annotation][local] */ 
         _On_failure_(_Post_satisfies_(*isRegistered == false))
         HRESULT STDMETHODCALLTYPE IsRegisteredForContentPrefetch( 
-            /* [annotation][in] */ 
-            _In_  LPCWSTR packageFullName,
-            /* [annotation][out] */ 
-            _Out_  boolean *isRegistered) = 0;
+            /* [in] */ LPCWSTR packageFullName,
+            /* [out] */ boolean *isRegistered) = 0;
         
     };
     
@@ -113,8 +110,7 @@ EXTERN_C const IID IID_IContentPrefetcherTaskTrigger;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IContentPrefetcherTaskTrigger * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -145,18 +141,15 @@ EXTERN_C const IID IID_IContentPrefetcherTaskTrigger;
         DECLSPEC_XFGVIRT(IContentPrefetcherTaskTrigger, TriggerContentPrefetcherTask)
         HRESULT ( STDMETHODCALLTYPE *TriggerContentPrefetcherTask )( 
             __RPC__in IContentPrefetcherTaskTrigger * This,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR packageFullName);
+            /* [in] */ __RPC__in LPCWSTR packageFullName);
         
         DECLSPEC_XFGVIRT(IContentPrefetcherTaskTrigger, IsRegisteredForContentPrefetch)
         /* [annotation][local] */ 
         _On_failure_(_Post_satisfies_(*isRegistered == false))
         HRESULT ( STDMETHODCALLTYPE *IsRegisteredForContentPrefetch )( 
             IContentPrefetcherTaskTrigger * This,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR packageFullName,
-            /* [annotation][out] */ 
-            _Out_  boolean *isRegistered);
+            /* [in] */ LPCWSTR packageFullName,
+            /* [out] */ boolean *isRegistered);
         
         END_INTERFACE
     } IContentPrefetcherTaskTriggerVtbl;

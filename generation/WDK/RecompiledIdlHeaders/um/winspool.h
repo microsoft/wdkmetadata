@@ -3779,6 +3779,7 @@ typedef PCORE_PRINTER_DRIVERA PCORE_PRINTER_DRIVER;
 #define GetPrinterDriver2  GetPrinterDriver2A
 #endif // !UNICODE
 
+
 #endif // (NTDDI_VERSION >= NTDDI_VISTA)
 
 #if (NTDDI_VERSION >= NTDDI_WIN7)

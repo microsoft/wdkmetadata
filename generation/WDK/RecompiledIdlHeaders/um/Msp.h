@@ -206,8 +206,7 @@ EXTERN_C const IID IID_ITPluggableTerminalEventSink;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE FireEvent( 
-            /* [annotation][in] */ 
-            _In_  const MSP_EVENT_INFO *pMspEventInfo) = 0;
+            /* [in] */ __RPC__in const MSP_EVENT_INFO *pMspEventInfo) = 0;
         
     };
     
@@ -221,8 +220,7 @@ EXTERN_C const IID IID_ITPluggableTerminalEventSink;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ITPluggableTerminalEventSink * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -237,8 +235,7 @@ EXTERN_C const IID IID_ITPluggableTerminalEventSink;
         DECLSPEC_XFGVIRT(ITPluggableTerminalEventSink, FireEvent)
         HRESULT ( STDMETHODCALLTYPE *FireEvent )( 
             __RPC__in ITPluggableTerminalEventSink * This,
-            /* [annotation][in] */ 
-            _In_  const MSP_EVENT_INFO *pMspEventInfo);
+            /* [in] */ __RPC__in const MSP_EVENT_INFO *pMspEventInfo);
         
         END_INTERFACE
     } ITPluggableTerminalEventSinkVtbl;
@@ -293,8 +290,7 @@ EXTERN_C const IID IID_ITPluggableTerminalEventSinkRegistration;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE RegisterSink( 
-            /* [annotation][in] */ 
-            _In_  ITPluggableTerminalEventSink *pEventSink) = 0;
+            /* [in] */ __RPC__in_opt ITPluggableTerminalEventSink *pEventSink) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE UnregisterSink( void) = 0;
         
@@ -310,8 +306,7 @@ EXTERN_C const IID IID_ITPluggableTerminalEventSinkRegistration;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ITPluggableTerminalEventSinkRegistration * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -326,8 +321,7 @@ EXTERN_C const IID IID_ITPluggableTerminalEventSinkRegistration;
         DECLSPEC_XFGVIRT(ITPluggableTerminalEventSinkRegistration, RegisterSink)
         HRESULT ( STDMETHODCALLTYPE *RegisterSink )( 
             __RPC__in ITPluggableTerminalEventSinkRegistration * This,
-            /* [annotation][in] */ 
-            _In_  ITPluggableTerminalEventSink *pEventSink);
+            /* [in] */ __RPC__in_opt ITPluggableTerminalEventSink *pEventSink);
         
         DECLSPEC_XFGVIRT(ITPluggableTerminalEventSinkRegistration, UnregisterSink)
         HRESULT ( STDMETHODCALLTYPE *UnregisterSink )( 
@@ -389,40 +383,28 @@ EXTERN_C const IID IID_ITMSPAddress;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE Initialize( 
-            /* [annotation][in] */ 
-            _In_  MSP_HANDLE hEvent) = 0;
+            /* [in] */ __RPC__in MSP_HANDLE hEvent) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE Shutdown( void) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE CreateMSPCall( 
-            /* [annotation][in] */ 
-            _In_  MSP_HANDLE hCall,
-            /* [annotation][in] */ 
-            _In_  DWORD dwReserved,
-            /* [annotation][in] */ 
-            _In_  DWORD dwMediaType,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pOuterUnknown,
-            /* [annotation][out] */ 
-            _Out_  IUnknown **ppStreamControl) = 0;
+            /* [in] */ __RPC__in MSP_HANDLE hCall,
+            /* [in] */ DWORD dwReserved,
+            /* [in] */ DWORD dwMediaType,
+            /* [in] */ __RPC__in_opt IUnknown *pOuterUnknown,
+            /* [out] */ __RPC__deref_out_opt IUnknown **ppStreamControl) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ShutdownMSPCall( 
-            /* [annotation][in] */ 
-            _In_  IUnknown *pStreamControl) = 0;
+            /* [in] */ __RPC__in_opt IUnknown *pStreamControl) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ReceiveTSPData( 
-            /* [annotation][in] */ 
-            _In_  IUnknown *pMSPCall,
-            /* [annotation][size_is][in] */ 
-            _In_reads_(dwSize)  BYTE *pBuffer,
-            /* [annotation][in] */ 
-            _In_  DWORD dwSize) = 0;
+            /* [in] */ __RPC__in_opt IUnknown *pMSPCall,
+            /* [size_is][in] */ __RPC__in_ecount_full(dwSize) BYTE *pBuffer,
+            /* [in] */ DWORD dwSize) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetEvent( 
-            /* [annotation][out][in] */ 
-            _Inout_  DWORD *pdwSize,
-            /* [annotation][size_is][out][in] */ 
-            _Inout_updates_(*pdwSize)  byte *pEventBuffer) = 0;
+            /* [out][in] */ __RPC__inout DWORD *pdwSize,
+            /* [size_is][out][in] */ __RPC__inout_ecount_full(*pdwSize) byte *pEventBuffer) = 0;
         
     };
     
@@ -436,8 +418,7 @@ EXTERN_C const IID IID_ITMSPAddress;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ITMSPAddress * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -452,8 +433,7 @@ EXTERN_C const IID IID_ITMSPAddress;
         DECLSPEC_XFGVIRT(ITMSPAddress, Initialize)
         HRESULT ( STDMETHODCALLTYPE *Initialize )( 
             __RPC__in ITMSPAddress * This,
-            /* [annotation][in] */ 
-            _In_  MSP_HANDLE hEvent);
+            /* [in] */ __RPC__in MSP_HANDLE hEvent);
         
         DECLSPEC_XFGVIRT(ITMSPAddress, Shutdown)
         HRESULT ( STDMETHODCALLTYPE *Shutdown )( 
@@ -462,40 +442,29 @@ EXTERN_C const IID IID_ITMSPAddress;
         DECLSPEC_XFGVIRT(ITMSPAddress, CreateMSPCall)
         HRESULT ( STDMETHODCALLTYPE *CreateMSPCall )( 
             __RPC__in ITMSPAddress * This,
-            /* [annotation][in] */ 
-            _In_  MSP_HANDLE hCall,
-            /* [annotation][in] */ 
-            _In_  DWORD dwReserved,
-            /* [annotation][in] */ 
-            _In_  DWORD dwMediaType,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pOuterUnknown,
-            /* [annotation][out] */ 
-            _Out_  IUnknown **ppStreamControl);
+            /* [in] */ __RPC__in MSP_HANDLE hCall,
+            /* [in] */ DWORD dwReserved,
+            /* [in] */ DWORD dwMediaType,
+            /* [in] */ __RPC__in_opt IUnknown *pOuterUnknown,
+            /* [out] */ __RPC__deref_out_opt IUnknown **ppStreamControl);
         
         DECLSPEC_XFGVIRT(ITMSPAddress, ShutdownMSPCall)
         HRESULT ( STDMETHODCALLTYPE *ShutdownMSPCall )( 
             __RPC__in ITMSPAddress * This,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pStreamControl);
+            /* [in] */ __RPC__in_opt IUnknown *pStreamControl);
         
         DECLSPEC_XFGVIRT(ITMSPAddress, ReceiveTSPData)
         HRESULT ( STDMETHODCALLTYPE *ReceiveTSPData )( 
             __RPC__in ITMSPAddress * This,
-            /* [annotation][in] */ 
-            _In_  IUnknown *pMSPCall,
-            /* [annotation][size_is][in] */ 
-            _In_reads_(dwSize)  BYTE *pBuffer,
-            /* [annotation][in] */ 
-            _In_  DWORD dwSize);
+            /* [in] */ __RPC__in_opt IUnknown *pMSPCall,
+            /* [size_is][in] */ __RPC__in_ecount_full(dwSize) BYTE *pBuffer,
+            /* [in] */ DWORD dwSize);
         
         DECLSPEC_XFGVIRT(ITMSPAddress, GetEvent)
         HRESULT ( STDMETHODCALLTYPE *GetEvent )( 
             __RPC__in ITMSPAddress * This,
-            /* [annotation][out][in] */ 
-            _Inout_  DWORD *pdwSize,
-            /* [annotation][size_is][out][in] */ 
-            _Inout_updates_(*pdwSize)  byte *pEventBuffer);
+            /* [out][in] */ __RPC__inout DWORD *pdwSize,
+            /* [size_is][out][in] */ __RPC__inout_ecount_full(*pdwSize) byte *pEventBuffer);
         
         END_INTERFACE
     } ITMSPAddressVtbl;

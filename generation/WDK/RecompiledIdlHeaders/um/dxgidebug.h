@@ -136,7 +136,7 @@ typedef struct DXGI_INFO_QUEUE_MESSAGE
     DXGI_INFO_QUEUE_MESSAGE_SEVERITY Severity;
     DXGI_INFO_QUEUE_MESSAGE_ID ID;
     /* [annotation] */ 
-    _Field_size_(DescriptionByteLength)  const unsigned char *pDescription;
+    _Field_size_(DescriptionByteLength)  const char *pDescription;
     SIZE_T DescriptionByteLength;
     } 	DXGI_INFO_QUEUE_MESSAGE;
 
@@ -395,8 +395,7 @@ EXTERN_C const IID IID_IDXGIInfoQueue;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDXGIInfoQueue * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -860,8 +859,7 @@ EXTERN_C const IID IID_IDXGIDebug;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDXGIDebug * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -949,8 +947,7 @@ EXTERN_C const IID IID_IDXGIDebug1;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDXGIDebug1 * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

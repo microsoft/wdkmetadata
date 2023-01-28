@@ -90,12 +90,9 @@ EXTERN_C const IID IID_IDragDropManagerInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetForWindow( 
-            /* [annotation][in] */ 
-            _In_  HWND hwnd,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppv) = 0;
+            /* [in] */ HWND hwnd,
+            /* [in] */ REFIID riid,
+            /* [iid_is][out] */ void **ppv) = 0;
         
     };
     
@@ -109,8 +106,7 @@ EXTERN_C const IID IID_IDragDropManagerInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDragDropManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -141,12 +137,9 @@ EXTERN_C const IID IID_IDragDropManagerInterop;
         DECLSPEC_XFGVIRT(IDragDropManagerInterop, GetForWindow)
         HRESULT ( STDMETHODCALLTYPE *GetForWindow )( 
             IDragDropManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND hwnd,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppv);
+            /* [in] */ HWND hwnd,
+            /* [in] */ REFIID riid,
+            /* [iid_is][out] */ void **ppv);
         
         END_INTERFACE
     } IDragDropManagerInteropVtbl;

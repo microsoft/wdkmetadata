@@ -102,20 +102,14 @@ EXTERN_C const IID IID_IPrintPreviewDxgiPackageTarget;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE SetJobPageCount( 
-            /* [annotation][in] */ 
-            _In_  PageCountType countType,
-            /* [annotation][in] */ 
-            _In_  UINT32 count) = 0;
+            /* [in] */ PageCountType countType,
+            /* [in] */ UINT32 count) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE DrawPage( 
-            /* [annotation][in] */ 
-            _In_  UINT32 jobPageNumber,
-            /* [annotation][in] */ 
-            _In_  IDXGISurface *pageImage,
-            /* [annotation][in] */ 
-            _In_  FLOAT dpiX,
-            /* [annotation][in] */ 
-            _In_  FLOAT dpiY) = 0;
+            /* [in] */ UINT32 jobPageNumber,
+            /* [in] */ __RPC__in_opt IDXGISurface *pageImage,
+            /* [in] */ FLOAT dpiX,
+            /* [in] */ FLOAT dpiY) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE InvalidatePreview( void) = 0;
         
@@ -131,8 +125,7 @@ EXTERN_C const IID IID_IPrintPreviewDxgiPackageTarget;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IPrintPreviewDxgiPackageTarget * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -147,22 +140,16 @@ EXTERN_C const IID IID_IPrintPreviewDxgiPackageTarget;
         DECLSPEC_XFGVIRT(IPrintPreviewDxgiPackageTarget, SetJobPageCount)
         HRESULT ( STDMETHODCALLTYPE *SetJobPageCount )( 
             __RPC__in IPrintPreviewDxgiPackageTarget * This,
-            /* [annotation][in] */ 
-            _In_  PageCountType countType,
-            /* [annotation][in] */ 
-            _In_  UINT32 count);
+            /* [in] */ PageCountType countType,
+            /* [in] */ UINT32 count);
         
         DECLSPEC_XFGVIRT(IPrintPreviewDxgiPackageTarget, DrawPage)
         HRESULT ( STDMETHODCALLTYPE *DrawPage )( 
             __RPC__in IPrintPreviewDxgiPackageTarget * This,
-            /* [annotation][in] */ 
-            _In_  UINT32 jobPageNumber,
-            /* [annotation][in] */ 
-            _In_  IDXGISurface *pageImage,
-            /* [annotation][in] */ 
-            _In_  FLOAT dpiX,
-            /* [annotation][in] */ 
-            _In_  FLOAT dpiY);
+            /* [in] */ UINT32 jobPageNumber,
+            /* [in] */ __RPC__in_opt IDXGISurface *pageImage,
+            /* [in] */ FLOAT dpiX,
+            /* [in] */ FLOAT dpiY);
         
         DECLSPEC_XFGVIRT(IPrintPreviewDxgiPackageTarget, InvalidatePreview)
         HRESULT ( STDMETHODCALLTYPE *InvalidatePreview )( 

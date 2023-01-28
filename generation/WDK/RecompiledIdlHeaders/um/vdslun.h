@@ -154,10 +154,10 @@ typedef struct _VDS_LUN_INFORMATION
     BYTE m_DeviceTypeModifier;
     BOOL m_bCommandQueueing;
     VDS_STORAGE_BUS_TYPE m_BusType;
-    /* [string] */ unsigned char *m_szVendorId;
-    /* [string] */ unsigned char *m_szProductId;
-    /* [string] */ unsigned char *m_szProductRevision;
-    /* [string] */ unsigned char *m_szSerialNumber;
+    /* [string] */ char *m_szVendorId;
+    /* [string] */ char *m_szProductId;
+    /* [string] */ char *m_szProductRevision;
+    /* [string] */ char *m_szSerialNumber;
     GUID m_diskSignature;
     VDS_STORAGE_DEVICE_ID_DESCRIPTOR m_deviceIdDescriptor;
     ULONG m_cInterconnects;

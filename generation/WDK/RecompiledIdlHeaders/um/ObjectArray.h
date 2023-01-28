@@ -97,16 +97,12 @@ EXTERN_C const IID IID_IObjectArray;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetCount( 
-            /* [annotation][out] */ 
-            _Out_  UINT *pcObjects) = 0;
+            /* [out] */ __RPC__out UINT *pcObjects) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetAt( 
-            /* [annotation][in] */ 
-            _In_  UINT uiIndex,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppv) = 0;
+            /* [in] */ UINT uiIndex,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][out] */ __RPC__deref_out_opt void **ppv) = 0;
         
     };
     
@@ -120,8 +116,7 @@ EXTERN_C const IID IID_IObjectArray;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IObjectArray * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -136,18 +131,14 @@ EXTERN_C const IID IID_IObjectArray;
         DECLSPEC_XFGVIRT(IObjectArray, GetCount)
         HRESULT ( STDMETHODCALLTYPE *GetCount )( 
             __RPC__in IObjectArray * This,
-            /* [annotation][out] */ 
-            _Out_  UINT *pcObjects);
+            /* [out] */ __RPC__out UINT *pcObjects);
         
         DECLSPEC_XFGVIRT(IObjectArray, GetAt)
         HRESULT ( STDMETHODCALLTYPE *GetAt )( 
             __RPC__in IObjectArray * This,
-            /* [annotation][in] */ 
-            _In_  UINT uiIndex,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppv);
+            /* [in] */ UINT uiIndex,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][out] */ __RPC__deref_out_opt void **ppv);
         
         END_INTERFACE
     } IObjectArrayVtbl;
@@ -205,16 +196,13 @@ EXTERN_C const IID IID_IObjectCollection;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE AddObject( 
-            /* [annotation][in] */ 
-            _In_  IUnknown *punk) = 0;
+            /* [in] */ __RPC__in_opt IUnknown *punk) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE AddFromArray( 
-            /* [annotation][in] */ 
-            _In_  IObjectArray *poaSource) = 0;
+            /* [in] */ __RPC__in_opt IObjectArray *poaSource) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE RemoveObjectAt( 
-            /* [annotation][in] */ 
-            _In_  UINT uiIndex) = 0;
+            /* [in] */ UINT uiIndex) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE Clear( void) = 0;
         
@@ -230,8 +218,7 @@ EXTERN_C const IID IID_IObjectCollection;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IObjectCollection * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -246,36 +233,29 @@ EXTERN_C const IID IID_IObjectCollection;
         DECLSPEC_XFGVIRT(IObjectArray, GetCount)
         HRESULT ( STDMETHODCALLTYPE *GetCount )( 
             __RPC__in IObjectCollection * This,
-            /* [annotation][out] */ 
-            _Out_  UINT *pcObjects);
+            /* [out] */ __RPC__out UINT *pcObjects);
         
         DECLSPEC_XFGVIRT(IObjectArray, GetAt)
         HRESULT ( STDMETHODCALLTYPE *GetAt )( 
             __RPC__in IObjectCollection * This,
-            /* [annotation][in] */ 
-            _In_  UINT uiIndex,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppv);
+            /* [in] */ UINT uiIndex,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][out] */ __RPC__deref_out_opt void **ppv);
         
         DECLSPEC_XFGVIRT(IObjectCollection, AddObject)
         HRESULT ( STDMETHODCALLTYPE *AddObject )( 
             __RPC__in IObjectCollection * This,
-            /* [annotation][in] */ 
-            _In_  IUnknown *punk);
+            /* [in] */ __RPC__in_opt IUnknown *punk);
         
         DECLSPEC_XFGVIRT(IObjectCollection, AddFromArray)
         HRESULT ( STDMETHODCALLTYPE *AddFromArray )( 
             __RPC__in IObjectCollection * This,
-            /* [annotation][in] */ 
-            _In_  IObjectArray *poaSource);
+            /* [in] */ __RPC__in_opt IObjectArray *poaSource);
         
         DECLSPEC_XFGVIRT(IObjectCollection, RemoveObjectAt)
         HRESULT ( STDMETHODCALLTYPE *RemoveObjectAt )( 
             __RPC__in IObjectCollection * This,
-            /* [annotation][in] */ 
-            _In_  UINT uiIndex);
+            /* [in] */ UINT uiIndex);
         
         DECLSPEC_XFGVIRT(IObjectCollection, Clear)
         HRESULT ( STDMETHODCALLTYPE *Clear )( 

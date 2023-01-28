@@ -90,12 +90,9 @@ EXTERN_C const IID IID_ISpatialInteractionManagerInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetForWindow( 
-            /* [annotation][in] */ 
-            _In_  HWND window,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **spatialInteractionManager) = 0;
+            /* [in] */ __RPC__in HWND window,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **spatialInteractionManager) = 0;
         
     };
     
@@ -109,8 +106,7 @@ EXTERN_C const IID IID_ISpatialInteractionManagerInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ISpatialInteractionManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -141,12 +137,9 @@ EXTERN_C const IID IID_ISpatialInteractionManagerInterop;
         DECLSPEC_XFGVIRT(ISpatialInteractionManagerInterop, GetForWindow)
         HRESULT ( STDMETHODCALLTYPE *GetForWindow )( 
             __RPC__in ISpatialInteractionManagerInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND window,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **spatialInteractionManager);
+            /* [in] */ __RPC__in HWND window,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **spatialInteractionManager);
         
         END_INTERFACE
     } ISpatialInteractionManagerInteropVtbl;

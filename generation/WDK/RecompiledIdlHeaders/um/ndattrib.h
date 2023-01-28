@@ -165,7 +165,7 @@ typedef struct tagHELPER_ATTRIBUTE
     /* [switch_is][switch_type] */ union 
         {
         /* [case()] */ BOOL Boolean;
-        /* [case()] */ unsigned char Char;
+        /* [case()] */ char Char;
         /* [case()] */ byte Byte;
         /* [case()] */ short Short;
         /* [case()] */ WORD Word;

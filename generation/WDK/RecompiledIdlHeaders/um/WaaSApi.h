@@ -110,8 +110,7 @@ EXTERN_C const IID IID_IWaaSAssessor;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetOSUpdateAssessment( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  OSUpdateAssessment *result) = 0;
+            /* [retval][out] */ __RPC__out OSUpdateAssessment *result) = 0;
         
     };
     
@@ -125,8 +124,7 @@ EXTERN_C const IID IID_IWaaSAssessor;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IWaaSAssessor * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -141,8 +139,7 @@ EXTERN_C const IID IID_IWaaSAssessor;
         DECLSPEC_XFGVIRT(IWaaSAssessor, GetOSUpdateAssessment)
         HRESULT ( STDMETHODCALLTYPE *GetOSUpdateAssessment )( 
             __RPC__in IWaaSAssessor * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  OSUpdateAssessment *result);
+            /* [retval][out] */ __RPC__out OSUpdateAssessment *result);
         
         END_INTERFACE
     } IWaaSAssessorVtbl;

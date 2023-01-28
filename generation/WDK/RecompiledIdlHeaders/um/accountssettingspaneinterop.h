@@ -91,28 +91,19 @@ EXTERN_C const IID IID_IAccountsSettingsPaneInterop;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetForWindow( 
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **accountsSettingsPane) = 0;
+            /* [in] */ __RPC__in HWND appWindow,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **accountsSettingsPane) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ShowManageAccountsForWindowAsync( 
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncAction) = 0;
+            /* [in] */ __RPC__in HWND appWindow,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **asyncAction) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ShowAddAccountForWindowAsync( 
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncAction) = 0;
+            /* [in] */ __RPC__in HWND appWindow,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **asyncAction) = 0;
         
     };
     
@@ -126,8 +117,7 @@ EXTERN_C const IID IID_IAccountsSettingsPaneInterop;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IAccountsSettingsPaneInterop * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -158,32 +148,23 @@ EXTERN_C const IID IID_IAccountsSettingsPaneInterop;
         DECLSPEC_XFGVIRT(IAccountsSettingsPaneInterop, GetForWindow)
         HRESULT ( STDMETHODCALLTYPE *GetForWindow )( 
             __RPC__in IAccountsSettingsPaneInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **accountsSettingsPane);
+            /* [in] */ __RPC__in HWND appWindow,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **accountsSettingsPane);
         
         DECLSPEC_XFGVIRT(IAccountsSettingsPaneInterop, ShowManageAccountsForWindowAsync)
         HRESULT ( STDMETHODCALLTYPE *ShowManageAccountsForWindowAsync )( 
             __RPC__in IAccountsSettingsPaneInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncAction);
+            /* [in] */ __RPC__in HWND appWindow,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **asyncAction);
         
         DECLSPEC_XFGVIRT(IAccountsSettingsPaneInterop, ShowAddAccountForWindowAsync)
         HRESULT ( STDMETHODCALLTYPE *ShowAddAccountForWindowAsync )( 
             __RPC__in IAccountsSettingsPaneInterop * This,
-            /* [annotation][in] */ 
-            _In_  HWND appWindow,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][retval][out] */ 
-            _COM_Outptr_retval_  void **asyncAction);
+            /* [in] */ __RPC__in HWND appWindow,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][retval][out] */ __RPC__deref_out_opt void **asyncAction);
         
         END_INTERFACE
     } IAccountsSettingsPaneInteropVtbl;

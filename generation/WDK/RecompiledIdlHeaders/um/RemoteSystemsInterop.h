@@ -91,16 +91,13 @@ EXTERN_C const IID IID_ICorrelationVectorInformation;
     {
     public:
         virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_LastCorrelationVectorForThread( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HSTRING *cv) = 0;
+            /* [retval][out] */ HSTRING *cv) = 0;
         
         virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_NextCorrelationVectorForThread( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HSTRING *cv) = 0;
+            /* [retval][out] */ HSTRING *cv) = 0;
         
         virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_NextCorrelationVectorForThread( 
-            /* [annotation][in] */ 
-            _In_  HSTRING cv) = 0;
+            /* [in] */ HSTRING cv) = 0;
         
     };
     
@@ -114,8 +111,7 @@ EXTERN_C const IID IID_ICorrelationVectorInformation;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ICorrelationVectorInformation * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -146,20 +142,17 @@ EXTERN_C const IID IID_ICorrelationVectorInformation;
         DECLSPEC_XFGVIRT(ICorrelationVectorInformation, get_LastCorrelationVectorForThread)
         /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_LastCorrelationVectorForThread )( 
             ICorrelationVectorInformation * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HSTRING *cv);
+            /* [retval][out] */ HSTRING *cv);
         
         DECLSPEC_XFGVIRT(ICorrelationVectorInformation, get_NextCorrelationVectorForThread)
         /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_NextCorrelationVectorForThread )( 
             ICorrelationVectorInformation * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HSTRING *cv);
+            /* [retval][out] */ HSTRING *cv);
         
         DECLSPEC_XFGVIRT(ICorrelationVectorInformation, put_NextCorrelationVectorForThread)
         /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_NextCorrelationVectorForThread )( 
             ICorrelationVectorInformation * This,
-            /* [annotation][in] */ 
-            _In_  HSTRING cv);
+            /* [in] */ HSTRING cv);
         
         END_INTERFACE
     } ICorrelationVectorInformationVtbl;

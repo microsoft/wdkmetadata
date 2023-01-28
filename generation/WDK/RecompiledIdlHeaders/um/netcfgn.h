@@ -192,8 +192,7 @@ EXTERN_C const IID IID_INetCfgPnpReconfigCallback;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             INetCfgPnpReconfigCallback * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -299,8 +298,7 @@ EXTERN_C const IID IID_INetCfgComponentControl;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             INetCfgComponentControl * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -445,8 +443,7 @@ EXTERN_C const IID IID_INetCfgComponentSetup;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             INetCfgComponentSetup * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -591,8 +588,7 @@ EXTERN_C const IID IID_INetCfgComponentPropertyUi;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             INetCfgComponentPropertyUi * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -751,8 +747,7 @@ EXTERN_C const IID IID_INetCfgComponentNotifyBinding;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             INetCfgComponentNotifyBinding * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -869,8 +864,7 @@ EXTERN_C const IID IID_INetCfgComponentNotifyGlobal;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             INetCfgComponentNotifyGlobal * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1007,8 +1001,7 @@ EXTERN_C const IID IID_INetCfgComponentUpperEdge;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             INetCfgComponentUpperEdge * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1107,8 +1100,7 @@ EXTERN_C const IID IID_INetLanConnectionUiInfo;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetDeviceGuid( 
-            /* [annotation][out] */ 
-            _Out_  GUID *pguid) = 0;
+            /* [out] */ __RPC__out GUID *pguid) = 0;
         
     };
     
@@ -1122,8 +1114,7 @@ EXTERN_C const IID IID_INetLanConnectionUiInfo;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in INetLanConnectionUiInfo * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1138,8 +1129,7 @@ EXTERN_C const IID IID_INetLanConnectionUiInfo;
         DECLSPEC_XFGVIRT(INetLanConnectionUiInfo, GetDeviceGuid)
         HRESULT ( STDMETHODCALLTYPE *GetDeviceGuid )( 
             __RPC__in INetLanConnectionUiInfo * This,
-            /* [annotation][out] */ 
-            _Out_  GUID *pguid);
+            /* [out] */ __RPC__out GUID *pguid);
         
         END_INTERFACE
     } INetLanConnectionUiInfoVtbl;
@@ -1234,8 +1224,7 @@ EXTERN_C const IID IID_INetRasConnectionIpUiInfo;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetUiInfo( 
-            /* [annotation][out] */ 
-            _Out_  RASCON_IPUI *pInfo) = 0;
+            /* [out] */ __RPC__out RASCON_IPUI *pInfo) = 0;
         
     };
     
@@ -1249,8 +1238,7 @@ EXTERN_C const IID IID_INetRasConnectionIpUiInfo;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in INetRasConnectionIpUiInfo * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -1265,8 +1253,7 @@ EXTERN_C const IID IID_INetRasConnectionIpUiInfo;
         DECLSPEC_XFGVIRT(INetRasConnectionIpUiInfo, GetUiInfo)
         HRESULT ( STDMETHODCALLTYPE *GetUiInfo )( 
             __RPC__in INetRasConnectionIpUiInfo * This,
-            /* [annotation][out] */ 
-            _Out_  RASCON_IPUI *pInfo);
+            /* [out] */ __RPC__out RASCON_IPUI *pInfo);
         
         END_INTERFACE
     } INetRasConnectionIpUiInfoVtbl;
@@ -1348,8 +1335,7 @@ EXTERN_C const IID IID_INetCfgComponentSysPrep;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             INetCfgComponentSysPrep * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

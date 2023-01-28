@@ -97,16 +97,13 @@ EXTERN_C const IID IID_ICodecAPI;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE IsSupported( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api) = 0;
+            /* [in] */ const GUID *Api) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE IsModifiable( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api) = 0;
+            /* [in] */ const GUID *Api) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetParameterRange( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][out] */ 
             _Out_  VARIANT *ValueMin,
             /* [annotation][out] */ 
@@ -115,48 +112,39 @@ EXTERN_C const IID IID_ICodecAPI;
             _Out_  VARIANT *SteppingDelta) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetParameterValues( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][size_is][size_is][out] */ 
             _Outptr_result_buffer_all_(*ValuesCount)  VARIANT **Values,
             /* [annotation][out] */ 
             _Out_  ULONG *ValuesCount) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetDefaultValue( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][out] */ 
             _Out_  VARIANT *Value) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetValue( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][out] */ 
             _Out_  VARIANT *Value) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetValue( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][in] */ 
             _In_  VARIANT *Value) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE RegisterForEvent( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
-            /* [annotation][in] */ 
-            _In_  LONG_PTR userData) = 0;
+            /* [in] */ const GUID *Api,
+            /* [in] */ LONG_PTR userData) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE UnregisterForEvent( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api) = 0;
+            /* [in] */ const GUID *Api) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetAllDefaults( void) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetValueWithNotify( 
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
-            /* [annotation][in] */ 
-            _In_  VARIANT *Value,
+            /* [in] */ const GUID *Api,
+            /* [in] */ VARIANT *Value,
             /* [annotation][size_is][size_is][out] */ 
             _Outptr_result_buffer_all_(*ChangedParamCount)  GUID **ChangedParam,
             /* [annotation][out] */ 
@@ -169,12 +157,10 @@ EXTERN_C const IID IID_ICodecAPI;
             _Out_  ULONG *ChangedParamCount) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetAllSettings( 
-            /* [annotation][in] */ 
-            _In_  IStream *__MIDL__ICodecAPI0000) = 0;
+            /* [in] */ IStream *__MIDL__ICodecAPI0000) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetAllSettings( 
-            /* [annotation][in] */ 
-            _In_  IStream *__MIDL__ICodecAPI0001) = 0;
+            /* [in] */ IStream *__MIDL__ICodecAPI0001) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetAllSettingsWithNotify( 
             IStream *__MIDL__ICodecAPI0002,
@@ -195,8 +181,7 @@ EXTERN_C const IID IID_ICodecAPI;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -211,20 +196,17 @@ EXTERN_C const IID IID_ICodecAPI;
         DECLSPEC_XFGVIRT(ICodecAPI, IsSupported)
         HRESULT ( STDMETHODCALLTYPE *IsSupported )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api);
+            /* [in] */ const GUID *Api);
         
         DECLSPEC_XFGVIRT(ICodecAPI, IsModifiable)
         HRESULT ( STDMETHODCALLTYPE *IsModifiable )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api);
+            /* [in] */ const GUID *Api);
         
         DECLSPEC_XFGVIRT(ICodecAPI, GetParameterRange)
         HRESULT ( STDMETHODCALLTYPE *GetParameterRange )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][out] */ 
             _Out_  VARIANT *ValueMin,
             /* [annotation][out] */ 
@@ -235,8 +217,7 @@ EXTERN_C const IID IID_ICodecAPI;
         DECLSPEC_XFGVIRT(ICodecAPI, GetParameterValues)
         HRESULT ( STDMETHODCALLTYPE *GetParameterValues )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][size_is][size_is][out] */ 
             _Outptr_result_buffer_all_(*ValuesCount)  VARIANT **Values,
             /* [annotation][out] */ 
@@ -245,40 +226,34 @@ EXTERN_C const IID IID_ICodecAPI;
         DECLSPEC_XFGVIRT(ICodecAPI, GetDefaultValue)
         HRESULT ( STDMETHODCALLTYPE *GetDefaultValue )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][out] */ 
             _Out_  VARIANT *Value);
         
         DECLSPEC_XFGVIRT(ICodecAPI, GetValue)
         HRESULT ( STDMETHODCALLTYPE *GetValue )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][out] */ 
             _Out_  VARIANT *Value);
         
         DECLSPEC_XFGVIRT(ICodecAPI, SetValue)
         HRESULT ( STDMETHODCALLTYPE *SetValue )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
+            /* [in] */ const GUID *Api,
             /* [annotation][in] */ 
             _In_  VARIANT *Value);
         
         DECLSPEC_XFGVIRT(ICodecAPI, RegisterForEvent)
         HRESULT ( STDMETHODCALLTYPE *RegisterForEvent )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
-            /* [annotation][in] */ 
-            _In_  LONG_PTR userData);
+            /* [in] */ const GUID *Api,
+            /* [in] */ LONG_PTR userData);
         
         DECLSPEC_XFGVIRT(ICodecAPI, UnregisterForEvent)
         HRESULT ( STDMETHODCALLTYPE *UnregisterForEvent )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api);
+            /* [in] */ const GUID *Api);
         
         DECLSPEC_XFGVIRT(ICodecAPI, SetAllDefaults)
         HRESULT ( STDMETHODCALLTYPE *SetAllDefaults )( 
@@ -287,10 +262,8 @@ EXTERN_C const IID IID_ICodecAPI;
         DECLSPEC_XFGVIRT(ICodecAPI, SetValueWithNotify)
         HRESULT ( STDMETHODCALLTYPE *SetValueWithNotify )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  const GUID *Api,
-            /* [annotation][in] */ 
-            _In_  VARIANT *Value,
+            /* [in] */ const GUID *Api,
+            /* [in] */ VARIANT *Value,
             /* [annotation][size_is][size_is][out] */ 
             _Outptr_result_buffer_all_(*ChangedParamCount)  GUID **ChangedParam,
             /* [annotation][out] */ 
@@ -307,14 +280,12 @@ EXTERN_C const IID IID_ICodecAPI;
         DECLSPEC_XFGVIRT(ICodecAPI, GetAllSettings)
         HRESULT ( STDMETHODCALLTYPE *GetAllSettings )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  IStream *__MIDL__ICodecAPI0000);
+            /* [in] */ IStream *__MIDL__ICodecAPI0000);
         
         DECLSPEC_XFGVIRT(ICodecAPI, SetAllSettings)
         HRESULT ( STDMETHODCALLTYPE *SetAllSettings )( 
             ICodecAPI * This,
-            /* [annotation][in] */ 
-            _In_  IStream *__MIDL__ICodecAPI0001);
+            /* [in] */ IStream *__MIDL__ICodecAPI0001);
         
         DECLSPEC_XFGVIRT(ICodecAPI, SetAllSettingsWithNotify)
         HRESULT ( STDMETHODCALLTYPE *SetAllSettingsWithNotify )( 

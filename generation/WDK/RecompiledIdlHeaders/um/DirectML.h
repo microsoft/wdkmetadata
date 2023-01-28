@@ -1302,10 +1302,8 @@ struct DML_GATHER_ELEMENTS_OPERATOR_DESC
     UINT Axis;
 };
 
-#if 0 // win32metadata - removed as clangsharp can't deal with it
 // Alias existing operator, symmetric with DML_GATHER_ELEMENTS_OPERATOR_DESC.
 using DML_SCATTER_ELEMENTS_OPERATOR_DESC = DML_SCATTER_OPERATOR_DESC;
-#endif
 
 struct DML_GATHER_ND_OPERATOR_DESC
 {

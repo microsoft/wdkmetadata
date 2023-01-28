@@ -4528,6 +4528,15 @@ Notes:
 #define DAM_WATCHDOG_TIMEOUT             ((ULONG)0x000001EBL)
 
 //
+// MessageId: USB4_HARDWARE_VIOLATION
+//
+// MessageText:
+//
+//  USB4_HARDWARE_VIOLATION
+//
+#define USB4_HARDWARE_VIOLATION          ((ULONG)0x000001F0L)
+
+//
 // MessageId: XBOX_VMCTRL_CS_TIMEOUT
 //
 // MessageText:

@@ -9089,6 +9089,10 @@ typedef struct _FILE_ID_EXTD_DIR_INFO {
 #define RPI_FLAG_SMB2_SHARECAP_CLUSTER                 0x00000040
 #endif
 
+// Protocol specific SMB2 share flags
+
+#define RPI_SMB2_SHAREFLAG_ENCRYPT_DATA           0x00000001
+
 // Protocol specific SMB2 server capability flags.
 
 #if (_WIN32_WINNT >= _WIN32_WINNT_WIN8)

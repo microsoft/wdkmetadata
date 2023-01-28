@@ -99,10 +99,8 @@ EXTERN_C const IID IID_IAppServiceConnectionExtendedExecution;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE OpenForExtendedExecutionAsync( 
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **operation) = 0;
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][out] */ __RPC__deref_out_opt void **operation) = 0;
         
     };
     
@@ -116,8 +114,7 @@ EXTERN_C const IID IID_IAppServiceConnectionExtendedExecution;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IAppServiceConnectionExtendedExecution * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -132,10 +129,8 @@ EXTERN_C const IID IID_IAppServiceConnectionExtendedExecution;
         DECLSPEC_XFGVIRT(IAppServiceConnectionExtendedExecution, OpenForExtendedExecutionAsync)
         HRESULT ( STDMETHODCALLTYPE *OpenForExtendedExecutionAsync )( 
             __RPC__in IAppServiceConnectionExtendedExecution * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **operation);
+            /* [in] */ __RPC__in REFIID riid,
+            /* [iid_is][out] */ __RPC__deref_out_opt void **operation);
         
         END_INTERFACE
     } IAppServiceConnectionExtendedExecutionVtbl;
@@ -204,8 +199,7 @@ EXTERN_C const IID IID_ICorrelationVectorSource;
     {
     public:
         virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_CorrelationVector( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HSTRING *cv) = 0;
+            /* [retval][out] */ __RPC__deref_out_opt HSTRING *cv) = 0;
         
     };
     
@@ -219,8 +213,7 @@ EXTERN_C const IID IID_ICorrelationVectorSource;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ICorrelationVectorSource * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -235,8 +228,7 @@ EXTERN_C const IID IID_ICorrelationVectorSource;
         DECLSPEC_XFGVIRT(ICorrelationVectorSource, get_CorrelationVector)
         /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_CorrelationVector )( 
             __RPC__in ICorrelationVectorSource * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  HSTRING *cv);
+            /* [retval][out] */ __RPC__deref_out_opt HSTRING *cv);
         
         END_INTERFACE
     } ICorrelationVectorSourceVtbl;

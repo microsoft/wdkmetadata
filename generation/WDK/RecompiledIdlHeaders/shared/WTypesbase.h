@@ -100,7 +100,7 @@ typedef WORD *LPWORD;
 
 typedef DWORD *LPDWORD;
 
-typedef unsigned char CHAR;
+typedef char CHAR;
 
 typedef /* [string] */  __RPC_string CHAR *LPSTR;
 
@@ -391,6 +391,7 @@ enum tagCLSCTX
         CLSCTX_ACTIVATE_AAA_AS_IU	= 0x800000,
         CLSCTX_RESERVED6	= 0x1000000,
         CLSCTX_ACTIVATE_ARM32_SERVER	= 0x2000000,
+        CLSCTX_ALLOW_LOWER_TRUST_REGISTRATION	= 0x4000000,
         CLSCTX_PS_DLL	= 0x80000000
     } 	CLSCTX;
 
@@ -414,6 +415,7 @@ enum tagCLSCTX
     CLSCTX_ACTIVATE_AAA_AS_IU | \
     CLSCTX_RESERVED6 | \
     CLSCTX_ACTIVATE_ARM32_SERVER | \
+    CLSCTX_ALLOW_LOWER_TRUST_REGISTRATION | \
     CLSCTX_PS_DLL)
 typedef 
 enum tagMSHLFLAGS

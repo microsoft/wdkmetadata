@@ -112,10 +112,8 @@ EXTERN_C const IID IID_IDeviceRequestCompletionCallback;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE RequestCompletion( 
-            /* [annotation][in] */ 
-            _In_  HRESULT requestResult,
-            /* [annotation][in] */ 
-            _In_  DWORD bytesReturned) = 0;
+            /* [in] */ HRESULT requestResult,
+            /* [in] */ DWORD bytesReturned) = 0;
         
     };
     
@@ -129,8 +127,7 @@ EXTERN_C const IID IID_IDeviceRequestCompletionCallback;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IDeviceRequestCompletionCallback * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -145,10 +142,8 @@ EXTERN_C const IID IID_IDeviceRequestCompletionCallback;
         DECLSPEC_XFGVIRT(IDeviceRequestCompletionCallback, RequestCompletion)
         HRESULT ( STDMETHODCALLTYPE *RequestCompletion )( 
             __RPC__in IDeviceRequestCompletionCallback * This,
-            /* [annotation][in] */ 
-            _In_  HRESULT requestResult,
-            /* [annotation][in] */ 
-            _In_  DWORD bytesReturned);
+            /* [in] */ HRESULT requestResult,
+            /* [in] */ DWORD bytesReturned);
         
         END_INTERFACE
     } IDeviceRequestCompletionCallbackVtbl;
@@ -248,8 +243,7 @@ EXTERN_C const IID IID_IDeviceIoControl;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDeviceIoControl * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -385,8 +379,7 @@ EXTERN_C const IID IID_ICreateDeviceAccessAsync;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             ICreateDeviceAccessAsync * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         

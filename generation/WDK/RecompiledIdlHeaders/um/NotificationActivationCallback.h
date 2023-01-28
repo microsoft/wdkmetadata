@@ -95,14 +95,10 @@ EXTERN_C const IID IID_INotificationActivationCallback;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE Activate( 
-            /* [annotation][string][in] */ 
-            _In_  LPCWSTR appUserModelId,
-            /* [annotation][unique][string][in] */ 
-            _In_  LPCWSTR invokedArgs,
-            /* [annotation][unique][size_is][in] */ 
-            _In_reads_(count)  const NOTIFICATION_USER_INPUT_DATA *data,
-            /* [annotation][in] */ 
-            _In_  ULONG count) = 0;
+            /* [string][in] */ __RPC__in_string LPCWSTR appUserModelId,
+            /* [unique][string][in] */ __RPC__in_opt_string LPCWSTR invokedArgs,
+            /* [unique][size_is][in] */ __RPC__in_ecount_full_opt(count) const NOTIFICATION_USER_INPUT_DATA *data,
+            /* [in] */ ULONG count) = 0;
         
     };
     
@@ -116,8 +112,7 @@ EXTERN_C const IID IID_INotificationActivationCallback;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in INotificationActivationCallback * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -132,14 +127,10 @@ EXTERN_C const IID IID_INotificationActivationCallback;
         DECLSPEC_XFGVIRT(INotificationActivationCallback, Activate)
         HRESULT ( STDMETHODCALLTYPE *Activate )( 
             __RPC__in INotificationActivationCallback * This,
-            /* [annotation][string][in] */ 
-            _In_  LPCWSTR appUserModelId,
-            /* [annotation][unique][string][in] */ 
-            _In_  LPCWSTR invokedArgs,
-            /* [annotation][unique][size_is][in] */ 
-            _In_reads_(count)  const NOTIFICATION_USER_INPUT_DATA *data,
-            /* [annotation][in] */ 
-            _In_  ULONG count);
+            /* [string][in] */ __RPC__in_string LPCWSTR appUserModelId,
+            /* [unique][string][in] */ __RPC__in_opt_string LPCWSTR invokedArgs,
+            /* [unique][size_is][in] */ __RPC__in_ecount_full_opt(count) const NOTIFICATION_USER_INPUT_DATA *data,
+            /* [in] */ ULONG count);
         
         END_INTERFACE
     } INotificationActivationCallbackVtbl;

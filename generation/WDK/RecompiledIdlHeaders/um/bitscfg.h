@@ -114,14 +114,11 @@ EXTERN_C const IID IID_IBITSExtensionSetup;
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE DisableBITSUploads( void) = 0;
         
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetCleanupTaskName( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  BSTR *pTaskName) = 0;
+            /* [retval][out] */ __RPC__deref_out_opt BSTR *pTaskName) = 0;
         
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetCleanupTask( 
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  IUnknown **ppUnk) = 0;
+            /* [in] */ __RPC__in REFIID riid,
+            /* [retval][out] */ __RPC__deref_out_opt IUnknown **ppUnk) = 0;
         
     };
     
@@ -135,8 +132,7 @@ EXTERN_C const IID IID_IBITSExtensionSetup;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IBITSExtensionSetup * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -151,31 +147,23 @@ EXTERN_C const IID IID_IBITSExtensionSetup;
         DECLSPEC_XFGVIRT(IDispatch, GetTypeInfoCount)
         HRESULT ( STDMETHODCALLTYPE *GetTypeInfoCount )( 
             __RPC__in IBITSExtensionSetup * This,
-            /* [annotation][out] */ 
-            _Out_  UINT *pctinfo);
+            /* [out] */ __RPC__out UINT *pctinfo);
         
         DECLSPEC_XFGVIRT(IDispatch, GetTypeInfo)
         HRESULT ( STDMETHODCALLTYPE *GetTypeInfo )( 
             __RPC__in IBITSExtensionSetup * This,
-            /* [annotation][in] */ 
-            _In_  UINT iTInfo,
-            /* [annotation][in] */ 
-            _In_  LCID lcid,
-            /* [annotation][out] */ 
-            _Out_  ITypeInfo **ppTInfo);
+            /* [in] */ UINT iTInfo,
+            /* [in] */ LCID lcid,
+            /* [out] */ __RPC__deref_out_opt ITypeInfo **ppTInfo);
         
         DECLSPEC_XFGVIRT(IDispatch, GetIDsOfNames)
         HRESULT ( STDMETHODCALLTYPE *GetIDsOfNames )( 
             __RPC__in IBITSExtensionSetup * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][size_is][in] */ 
-            _In_reads_(cNames)  LPOLESTR *rgszNames,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [size_is][in] */ __RPC__in_ecount_full(cNames) LPOLESTR *rgszNames,
             /* [range][in] */ __RPC__in_range(0,16384) UINT cNames,
-            /* [annotation][in] */ 
-            _In_  LCID lcid,
-            /* [annotation][size_is][out] */ 
-            _Out_writes_(cNames)  DISPID *rgDispId);
+            /* [in] */ LCID lcid,
+            /* [size_is][out] */ __RPC__out_ecount_full(cNames) DISPID *rgDispId);
         
         DECLSPEC_XFGVIRT(IDispatch, Invoke)
         /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
@@ -208,16 +196,13 @@ EXTERN_C const IID IID_IBITSExtensionSetup;
         DECLSPEC_XFGVIRT(IBITSExtensionSetup, GetCleanupTaskName)
         /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetCleanupTaskName )( 
             __RPC__in IBITSExtensionSetup * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  BSTR *pTaskName);
+            /* [retval][out] */ __RPC__deref_out_opt BSTR *pTaskName);
         
         DECLSPEC_XFGVIRT(IBITSExtensionSetup, GetCleanupTask)
         /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetCleanupTask )( 
             __RPC__in IBITSExtensionSetup * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  IUnknown **ppUnk);
+            /* [in] */ __RPC__in REFIID riid,
+            /* [retval][out] */ __RPC__deref_out_opt IUnknown **ppUnk);
         
         END_INTERFACE
     } IBITSExtensionSetupVtbl;
@@ -295,8 +280,7 @@ EXTERN_C const IID IID_IBITSExtensionSetupFactory;
     public:
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetObject( 
             /* [in] */ __RPC__in BSTR Path,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  IBITSExtensionSetup **ppExtensionSetup) = 0;
+            /* [retval][out] */ __RPC__deref_out_opt IBITSExtensionSetup **ppExtensionSetup) = 0;
         
     };
     
@@ -310,8 +294,7 @@ EXTERN_C const IID IID_IBITSExtensionSetupFactory;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in IBITSExtensionSetupFactory * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -326,31 +309,23 @@ EXTERN_C const IID IID_IBITSExtensionSetupFactory;
         DECLSPEC_XFGVIRT(IDispatch, GetTypeInfoCount)
         HRESULT ( STDMETHODCALLTYPE *GetTypeInfoCount )( 
             __RPC__in IBITSExtensionSetupFactory * This,
-            /* [annotation][out] */ 
-            _Out_  UINT *pctinfo);
+            /* [out] */ __RPC__out UINT *pctinfo);
         
         DECLSPEC_XFGVIRT(IDispatch, GetTypeInfo)
         HRESULT ( STDMETHODCALLTYPE *GetTypeInfo )( 
             __RPC__in IBITSExtensionSetupFactory * This,
-            /* [annotation][in] */ 
-            _In_  UINT iTInfo,
-            /* [annotation][in] */ 
-            _In_  LCID lcid,
-            /* [annotation][out] */ 
-            _Out_  ITypeInfo **ppTInfo);
+            /* [in] */ UINT iTInfo,
+            /* [in] */ LCID lcid,
+            /* [out] */ __RPC__deref_out_opt ITypeInfo **ppTInfo);
         
         DECLSPEC_XFGVIRT(IDispatch, GetIDsOfNames)
         HRESULT ( STDMETHODCALLTYPE *GetIDsOfNames )( 
             __RPC__in IBITSExtensionSetupFactory * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
-            /* [annotation][size_is][in] */ 
-            _In_reads_(cNames)  LPOLESTR *rgszNames,
+            /* [in] */ __RPC__in REFIID riid,
+            /* [size_is][in] */ __RPC__in_ecount_full(cNames) LPOLESTR *rgszNames,
             /* [range][in] */ __RPC__in_range(0,16384) UINT cNames,
-            /* [annotation][in] */ 
-            _In_  LCID lcid,
-            /* [annotation][size_is][out] */ 
-            _Out_writes_(cNames)  DISPID *rgDispId);
+            /* [in] */ LCID lcid,
+            /* [size_is][out] */ __RPC__out_ecount_full(cNames) DISPID *rgDispId);
         
         DECLSPEC_XFGVIRT(IDispatch, Invoke)
         /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
@@ -376,8 +351,7 @@ EXTERN_C const IID IID_IBITSExtensionSetupFactory;
         /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetObject )( 
             __RPC__in IBITSExtensionSetupFactory * This,
             /* [in] */ __RPC__in BSTR Path,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  IBITSExtensionSetup **ppExtensionSetup);
+            /* [retval][out] */ __RPC__deref_out_opt IBITSExtensionSetup **ppExtensionSetup);
         
         END_INTERFACE
     } IBITSExtensionSetupFactoryVtbl;

@@ -113,22 +113,14 @@ EXTERN_C const IID IID_IDownloadManager;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE Download( 
-            /* [annotation][in] */ 
-            _In_  IMoniker *pmk,
-            /* [annotation][in] */ 
-            _In_  IBindCtx *pbc,
-            /* [annotation][in] */ 
-            _In_  DWORD dwBindVerb,
-            /* [annotation][in] */ 
-            _In_  LONG grfBINDF,
-            /* [annotation][in] */ 
-            _In_  BINDINFO *pBindInfo,
-            /* [annotation][in] */ 
-            _In_  LPCOLESTR pszHeaders,
-            /* [annotation][in] */ 
-            _In_  LPCOLESTR pszRedir,
-            /* [annotation][in] */ 
-            _In_  UINT uiCP) = 0;
+            /* [in] */ IMoniker *pmk,
+            /* [in] */ IBindCtx *pbc,
+            /* [in] */ DWORD dwBindVerb,
+            /* [in] */ LONG grfBINDF,
+            /* [in] */ BINDINFO *pBindInfo,
+            /* [in] */ LPCOLESTR pszHeaders,
+            /* [in] */ LPCOLESTR pszRedir,
+            /* [in] */ UINT uiCP) = 0;
         
     };
     
@@ -142,8 +134,7 @@ EXTERN_C const IID IID_IDownloadManager;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IDownloadManager * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -158,22 +149,14 @@ EXTERN_C const IID IID_IDownloadManager;
         DECLSPEC_XFGVIRT(IDownloadManager, Download)
         HRESULT ( STDMETHODCALLTYPE *Download )( 
             IDownloadManager * This,
-            /* [annotation][in] */ 
-            _In_  IMoniker *pmk,
-            /* [annotation][in] */ 
-            _In_  IBindCtx *pbc,
-            /* [annotation][in] */ 
-            _In_  DWORD dwBindVerb,
-            /* [annotation][in] */ 
-            _In_  LONG grfBINDF,
-            /* [annotation][in] */ 
-            _In_  BINDINFO *pBindInfo,
-            /* [annotation][in] */ 
-            _In_  LPCOLESTR pszHeaders,
-            /* [annotation][in] */ 
-            _In_  LPCOLESTR pszRedir,
-            /* [annotation][in] */ 
-            _In_  UINT uiCP);
+            /* [in] */ IMoniker *pmk,
+            /* [in] */ IBindCtx *pbc,
+            /* [in] */ DWORD dwBindVerb,
+            /* [in] */ LONG grfBINDF,
+            /* [in] */ BINDINFO *pBindInfo,
+            /* [in] */ LPCOLESTR pszHeaders,
+            /* [in] */ LPCOLESTR pszRedir,
+            /* [in] */ UINT uiCP);
         
         END_INTERFACE
     } IDownloadManagerVtbl;

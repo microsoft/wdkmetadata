@@ -105,43 +105,30 @@ EXTERN_C const IID IID_ItsPubPlugin;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE GetResourceList( 
-            /* [annotation][in] */ 
-            _In_  LPCWSTR userID,
-            /* [annotation][out] */ 
-            _Out_  LONG *pceAppListSize,
-            /* [annotation][out] */ 
-            _Out_  pluginResource **resourceList) = 0;
+            /* [in] */ __RPC__in LPCWSTR userID,
+            /* [out] */ __RPC__out LONG *pceAppListSize,
+            /* [out] */ __RPC__deref_out_opt pluginResource **resourceList) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetResource( 
-            /* [annotation][in] */ 
-            _In_  LPCWSTR alias,
+            /* [in] */ __RPC__in LPCWSTR alias,
             LONG flags,
-            /* [annotation][out] */ 
-            _Out_  pluginResource *resource) = 0;
+            /* [out] */ __RPC__out pluginResource *resource) = 0;
         
         virtual /* [helpstring] */ HRESULT STDMETHODCALLTYPE GetCacheLastUpdateTime( 
-            /* [annotation][out] */ 
-            _Out_  unsigned long long *lastUpdateTime) = 0;
+            /* [out] */ __RPC__out unsigned long long *lastUpdateTime) = 0;
         
         virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_pluginName( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  BSTR *pVal) = 0;
+            /* [retval][out] */ __RPC__deref_out_opt BSTR *pVal) = 0;
         
         virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_pluginVersion( 
-            /* [annotation][retval][out] */ 
-            _Out_retval_  BSTR *pVal) = 0;
+            /* [retval][out] */ __RPC__deref_out_opt BSTR *pVal) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ResolveResource( 
-            /* [annotation][out] */ 
-            _Out_  DWORD *resourceType,
-            /* [annotation][out][string] */ 
-            _Out_  wchar_t resourceLocation[ 256 ],
-            /* [annotation][out][string] */ 
-            _Out_  wchar_t endPointName[ 256 ],
-            /* [annotation][string][in] */ 
-            _In_  wchar_t *userID,
-            /* [annotation][string][in] */ 
-            _In_  wchar_t *alias) = 0;
+            /* [out] */ __RPC__out DWORD *resourceType,
+            /* [out][string] */ __RPC__out_ecount_full_string(256) wchar_t resourceLocation[ 256 ],
+            /* [out][string] */ __RPC__out_ecount_full_string(256) wchar_t endPointName[ 256 ],
+            /* [string][in] */ __RPC__in_string wchar_t *userID,
+            /* [string][in] */ __RPC__in_string wchar_t *alias) = 0;
         
     };
     
@@ -155,8 +142,7 @@ EXTERN_C const IID IID_ItsPubPlugin;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             __RPC__in ItsPubPlugin * This,
-            /* [annotation][in] */ 
-            _In_  REFIID riid,
+            /* [in] */ __RPC__in REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -171,53 +157,40 @@ EXTERN_C const IID IID_ItsPubPlugin;
         DECLSPEC_XFGVIRT(ItsPubPlugin, GetResourceList)
         HRESULT ( STDMETHODCALLTYPE *GetResourceList )( 
             __RPC__in ItsPubPlugin * This,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR userID,
-            /* [annotation][out] */ 
-            _Out_  LONG *pceAppListSize,
-            /* [annotation][out] */ 
-            _Out_  pluginResource **resourceList);
+            /* [in] */ __RPC__in LPCWSTR userID,
+            /* [out] */ __RPC__out LONG *pceAppListSize,
+            /* [out] */ __RPC__deref_out_opt pluginResource **resourceList);
         
         DECLSPEC_XFGVIRT(ItsPubPlugin, GetResource)
         HRESULT ( STDMETHODCALLTYPE *GetResource )( 
             __RPC__in ItsPubPlugin * This,
-            /* [annotation][in] */ 
-            _In_  LPCWSTR alias,
+            /* [in] */ __RPC__in LPCWSTR alias,
             LONG flags,
-            /* [annotation][out] */ 
-            _Out_  pluginResource *resource);
+            /* [out] */ __RPC__out pluginResource *resource);
         
         DECLSPEC_XFGVIRT(ItsPubPlugin, GetCacheLastUpdateTime)
         /* [helpstring] */ HRESULT ( STDMETHODCALLTYPE *GetCacheLastUpdateTime )( 
             __RPC__in ItsPubPlugin * This,
-            /* [annotation][out] */ 
-            _Out_  unsigned long long *lastUpdateTime);
+            /* [out] */ __RPC__out unsigned long long *lastUpdateTime);
         
         DECLSPEC_XFGVIRT(ItsPubPlugin, get_pluginName)
         /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_pluginName )( 
             __RPC__in ItsPubPlugin * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  BSTR *pVal);
+            /* [retval][out] */ __RPC__deref_out_opt BSTR *pVal);
         
         DECLSPEC_XFGVIRT(ItsPubPlugin, get_pluginVersion)
         /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_pluginVersion )( 
             __RPC__in ItsPubPlugin * This,
-            /* [annotation][retval][out] */ 
-            _Out_retval_  BSTR *pVal);
+            /* [retval][out] */ __RPC__deref_out_opt BSTR *pVal);
         
         DECLSPEC_XFGVIRT(ItsPubPlugin, ResolveResource)
         HRESULT ( STDMETHODCALLTYPE *ResolveResource )( 
             __RPC__in ItsPubPlugin * This,
-            /* [annotation][out] */ 
-            _Out_  DWORD *resourceType,
-            /* [annotation][out][string] */ 
-            _Out_  wchar_t resourceLocation[ 256 ],
-            /* [annotation][out][string] */ 
-            _Out_  wchar_t endPointName[ 256 ],
-            /* [annotation][string][in] */ 
-            _In_  wchar_t *userID,
-            /* [annotation][string][in] */ 
-            _In_  wchar_t *alias);
+            /* [out] */ __RPC__out DWORD *resourceType,
+            /* [out][string] */ __RPC__out_ecount_full_string(256) wchar_t resourceLocation[ 256 ],
+            /* [out][string] */ __RPC__out_ecount_full_string(256) wchar_t endPointName[ 256 ],
+            /* [string][in] */ __RPC__in_string wchar_t *userID,
+            /* [string][in] */ __RPC__in_string wchar_t *alias);
         
         END_INTERFACE
     } ItsPubPluginVtbl;

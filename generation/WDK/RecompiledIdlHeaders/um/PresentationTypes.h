@@ -26,8 +26,8 @@
 #endif /* __RPCNDR_H_VERSION__ */
 
 
-#ifndef __presentationtypes_h__
-#define __presentationtypes_h__
+#ifndef __PresentationTypes_h__
+#define __PresentationTypes_h__
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
 #pragma once
@@ -53,7 +53,7 @@ extern "C"{
 #endif 
 
 
-/* interface __MIDL_itf_presentationtypes_0000_0000 */
+/* interface __MIDL_itf_PresentationTypes_0000_0000 */
 /* [local] */ 
 
 typedef struct SystemInterruptTime
@@ -83,8 +83,8 @@ enum PresentStatisticsKind
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_presentationtypes_0000_0000_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_presentationtypes_0000_0000_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_PresentationTypes_0000_0000_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_PresentationTypes_0000_0000_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

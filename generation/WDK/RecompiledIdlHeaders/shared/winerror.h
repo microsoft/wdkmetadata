@@ -3509,6 +3509,15 @@
 #define ERROR_INDEX_OUT_OF_BOUNDS        474L
 
 //
+// MessageId: ERROR_CLOUD_FILE_US_MESSAGE_TIMEOUT
+//
+// MessageText:
+//
+// The cloud provider failed to acknowledge a message before the time-out expired.
+//
+#define ERROR_CLOUD_FILE_US_MESSAGE_TIMEOUT 475L
+
+//
 // **** Available SYSTEM error codes ****
 //
 //
@@ -3744,6 +3753,24 @@
 // The volume is opened for exclusive write access, preventing files from being opened for write access.
 //
 #define ERROR_VOLUME_WRITE_ACCESS_DENIED 508L
+
+//
+// MessageId: ERROR_NOT_SUPPORTED_WITH_CACHED_HANDLE
+//
+// MessageText:
+//
+// The specified operation is not supported on a file opened for cached IO.
+//
+#define ERROR_NOT_SUPPORTED_WITH_CACHED_HANDLE 509L
+
+//
+// MessageId: ERROR_FS_METADATA_INCONSISTENT
+//
+// MessageText:
+//
+// The file system encountered a metadata file with inconsistent data.
+//
+#define ERROR_FS_METADATA_INCONSISTENT   510L
 
 //
 // **** Available SYSTEM error codes ****
@@ -22214,6 +22241,24 @@
 //
 #define ERROR_WEAK_WHFBKEY_BLOCKED       8651L
 
+//
+// MessageId: ERROR_DS_PER_ATTRIBUTE_AUTHZ_FAILED_DURING_ADD
+//
+// MessageText:
+//
+// The add object operation failed because the caller was not authorized to add one or more attributes included in the request.
+//
+#define ERROR_DS_PER_ATTRIBUTE_AUTHZ_FAILED_DURING_ADD 8652L
+
+//
+// MessageId: ERROR_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED
+//
+// MessageText:
+//
+// The local account policy modification request was rejected because the policy is controlled by a regional authority.
+//
+#define ERROR_LOCAL_POLICY_MODIFICATION_NOT_SUPPORTED 8653L
+
 
 ///////////////////////////////////////////////////
 //                                                /
@@ -38521,6 +38566,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 #define CERTSRV_E_PENDING_CLIENT_RESPONSE _HRESULT_TYPEDEF_(0x80094820L)
 
 //
+// MessageId: CERTSRV_E_SEC_EXT_DIRECTORY_SID_REQUIRED
+//
+// MessageText:
+//
+// The Active Directory SID is unavailable and cannot be added to the custom security extension.
+//
+#define CERTSRV_E_SEC_EXT_DIRECTORY_SID_REQUIRED _HRESULT_TYPEDEF_(0x80094821L)
+
+//
 // The range 0x5000-0x51ff is reserved for XENROLL errors.
 //
 //
@@ -50111,6 +50165,15 @@ FORCEINLINE _Translates_Win32_to_HRESULT_(x) HRESULT HRESULT_FROM_WIN32(unsigned
 // Creating new TPM context is not supported.
 //
 #define FVE_E_TPM_CONTEXT_SETUP_NOT_SUPPORTED _HRESULT_TYPEDEF_(0x803100E7L)
+
+//
+// MessageId: FVE_E_UPDATE_INVALID_CONFIG
+//
+// MessageText:
+//
+// The Secure Boot update was not applied due to a known incompatibility with the current BitLocker configuration.
+//
+#define FVE_E_UPDATE_INVALID_CONFIG      _HRESULT_TYPEDEF_(0x803100E8L)
 
 //
 // =======================================================
