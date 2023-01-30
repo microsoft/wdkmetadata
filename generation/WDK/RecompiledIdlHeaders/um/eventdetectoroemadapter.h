@@ -3,7 +3,7 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 8.01.0626 */
+ /* File created by MIDL compiler version 8.01.0628 */
 /* @@MIDL_FILE_HEADING(  ) */
 
 
@@ -38,7 +38,7 @@
 #endif
 
 #ifndef DECLSPEC_XFGVIRT
-#if _CONTROL_FLOW_GUARD_XFG
+#if defined(_CONTROL_FLOW_GUARD_XFG)
 #define DECLSPEC_XFGVIRT(base, func) __declspec(xfg_virtual(base, func))
 #else
 #define DECLSPEC_XFGVIRT(base, func)
@@ -178,27 +178,33 @@ EXTERN_C const IID IID_IEventDetectorOemAdapter;
             /* [full][out] */ WAVEFORMATEX **ppFormat) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetCapabilitiesForLanguage( 
-            /* [in] */ LANGID LangId,
+            /* [annotation][in] */ 
+            _In_  LANGID LangId,
             /* [full][out] */ DETECTIONEVENT **EventIds,
             /* [ref][out] */ ULONG *NumEvents) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE VerifyUserEventData( 
             /* [full][in] */ IStream *ModelData,
             /* [full][in] */ WAVEFORMATEX *UserRecording,
-            /* [in] */ DETECTIONEVENTSELECTOR EventSelector,
-            /* [in] */ LONG EventEndBytePos) = 0;
+            /* [annotation][in] */ 
+            _In_  DETECTIONEVENTSELECTOR EventSelector,
+            /* [annotation][in] */ 
+            _In_  LONG EventEndBytePos) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ComputeAndAddUserModelData( 
             /* [full][out][in] */ IStream *ModelData,
-            /* [in] */ DETECTIONEVENTSELECTOR EventSelector,
+            /* [annotation][in] */ 
+            _In_  DETECTIONEVENTSELECTOR EventSelector,
             /* [full][in] */ LONG *EventEndBytePos,
             /* [full][in] */ WAVEFORMATEX **UserRecordings,
-            /* [in] */ ULONG NumUserRecordings) = 0;
+            /* [annotation][in] */ 
+            _In_  ULONG NumUserRecordings) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE BuildArmingPatternData( 
             /* [full][in] */ IStream *UserModelData,
             /* [full][in] */ DETECTIONEVENTSELECTOR *EventSelectors,
-            /* [in] */ ULONG NumEventSelectors,
+            /* [annotation][in] */ 
+            _In_  ULONG NumEventSelectors,
             /* [full][out] */ SOUNDDETECTOR_PATTERNHEADER **PatternData) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ParseDetectionResultData( 
@@ -212,8 +218,10 @@ EXTERN_C const IID IID_IEventDetectorOemAdapter;
             /* [string][full][out] */ WCHAR **DebugOutput) = 0;
         
         virtual void STDMETHODCALLTYPE ReportOSDetectionResult( 
-            /* [in] */ DETECTIONEVENTSELECTOR EventSelector,
-            /* [in] */ EVENTACTION EventAction) = 0;
+            /* [annotation][in] */ 
+            _In_  DETECTIONEVENTSELECTOR EventSelector,
+            /* [annotation][in] */ 
+            _In_  EVENTACTION EventAction) = 0;
         
     };
     
@@ -227,7 +235,8 @@ EXTERN_C const IID IID_IEventDetectorOemAdapter;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IEventDetectorOemAdapter * This,
-            /* [in] */ REFIID riid,
+            /* [annotation][in] */ 
+            _In_  REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -251,7 +260,8 @@ EXTERN_C const IID IID_IEventDetectorOemAdapter;
         DECLSPEC_XFGVIRT(IEventDetectorOemAdapter, GetCapabilitiesForLanguage)
         HRESULT ( STDMETHODCALLTYPE *GetCapabilitiesForLanguage )( 
             IEventDetectorOemAdapter * This,
-            /* [in] */ LANGID LangId,
+            /* [annotation][in] */ 
+            _In_  LANGID LangId,
             /* [full][out] */ DETECTIONEVENT **EventIds,
             /* [ref][out] */ ULONG *NumEvents);
         
@@ -260,24 +270,29 @@ EXTERN_C const IID IID_IEventDetectorOemAdapter;
             IEventDetectorOemAdapter * This,
             /* [full][in] */ IStream *ModelData,
             /* [full][in] */ WAVEFORMATEX *UserRecording,
-            /* [in] */ DETECTIONEVENTSELECTOR EventSelector,
-            /* [in] */ LONG EventEndBytePos);
+            /* [annotation][in] */ 
+            _In_  DETECTIONEVENTSELECTOR EventSelector,
+            /* [annotation][in] */ 
+            _In_  LONG EventEndBytePos);
         
         DECLSPEC_XFGVIRT(IEventDetectorOemAdapter, ComputeAndAddUserModelData)
         HRESULT ( STDMETHODCALLTYPE *ComputeAndAddUserModelData )( 
             IEventDetectorOemAdapter * This,
             /* [full][out][in] */ IStream *ModelData,
-            /* [in] */ DETECTIONEVENTSELECTOR EventSelector,
+            /* [annotation][in] */ 
+            _In_  DETECTIONEVENTSELECTOR EventSelector,
             /* [full][in] */ LONG *EventEndBytePos,
             /* [full][in] */ WAVEFORMATEX **UserRecordings,
-            /* [in] */ ULONG NumUserRecordings);
+            /* [annotation][in] */ 
+            _In_  ULONG NumUserRecordings);
         
         DECLSPEC_XFGVIRT(IEventDetectorOemAdapter, BuildArmingPatternData)
         HRESULT ( STDMETHODCALLTYPE *BuildArmingPatternData )( 
             IEventDetectorOemAdapter * This,
             /* [full][in] */ IStream *UserModelData,
             /* [full][in] */ DETECTIONEVENTSELECTOR *EventSelectors,
-            /* [in] */ ULONG NumEventSelectors,
+            /* [annotation][in] */ 
+            _In_  ULONG NumEventSelectors,
             /* [full][out] */ SOUNDDETECTOR_PATTERNHEADER **PatternData);
         
         DECLSPEC_XFGVIRT(IEventDetectorOemAdapter, ParseDetectionResultData)
@@ -295,8 +310,10 @@ EXTERN_C const IID IID_IEventDetectorOemAdapter;
         DECLSPEC_XFGVIRT(IEventDetectorOemAdapter, ReportOSDetectionResult)
         void ( STDMETHODCALLTYPE *ReportOSDetectionResult )( 
             IEventDetectorOemAdapter * This,
-            /* [in] */ DETECTIONEVENTSELECTOR EventSelector,
-            /* [in] */ EVENTACTION EventAction);
+            /* [annotation][in] */ 
+            _In_  DETECTIONEVENTSELECTOR EventSelector,
+            /* [annotation][in] */ 
+            _In_  EVENTACTION EventAction);
         
         END_INTERFACE
     } IEventDetectorOemAdapterVtbl;

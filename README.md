@@ -21,7 +21,7 @@ DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the 
 * Port over full/incremental build support from [win32metadata](https://github.com/microsoft/win32metadata)
 * Port over baseline diffing support from [win32metadata](https://github.com/microsoft/win32metadata)
 * Port over CI and release pipelines from [win32metadata](https://github.com/microsoft/win32metadata)
-* Port over [header ingestion script](https://github.com/microsoft/win32metadata/blob/main/scripts/RecompileIdlFilesForScraping.ps1) from [win32metadata](https://github.com/microsoft/win32metadata) and include WDK headers
+* [DONE] Port over [header ingestion script](https://github.com/microsoft/win32metadata/blob/main/scripts/RecompileIdlFilesForScraping.ps1) from [win32metadata](https://github.com/microsoft/win32metadata) and include WDK headers
 * Onboard outside collaborators and community contributors
 
 # Notes
