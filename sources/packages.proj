@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.Build.Traversal">
+  <PropertyGroup>
+    <BuildInParallel>false</BuildInParallel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="nuget\Microsoft.Windows.WDK.Win32Metadata\WDKMetadataNuget.proj" />
+  </ItemGroup>
+</Project>

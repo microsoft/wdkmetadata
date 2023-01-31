@@ -3,9 +3,9 @@ $toolsDir = "$rootDir\tools"
 $binDir = "$rootDir\bin"
 $sourcesDir = "$rootDir\sources"
 $sdkApiPath = "$rootDir\ext\sdk-api"
-$windowsWin32ProjectRoot = "$rootDir\generation\WDK"
-$sdkGeneratedSourceDir = "$windowsWin32ProjectRoot\obj\generated"
-$recompiledIdlHeadersDir = "$windowsWin32ProjectRoot\RecompiledIdlHeaders"
+$wdkProjectRoot = "$rootDir\generation\WDK"
+$wdkGeneratedSourceDir = "$wdkProjectRoot\obj\generated"
+$recompiledIdlHeadersDir = "$wdkProjectRoot\RecompiledIdlHeaders"
 $metadataToolsBin = "$binDir\release\net6.0"
 
 # [VS 1673159]
@@ -86,7 +86,7 @@ function Replace-Text
 
 function Get-LibMappingsFile
 {
-    $libMappingOutputFileName = Join-Path -Path $windowsWin32ProjectRoot -ChildPath "libMappings.rsp"
+    $libMappingOutputFileName = Join-Path -Path $wdkProjectRoot -ChildPath "libMappings.rsp"
 
     return $libMappingOutputFileName
 }
@@ -212,11 +212,11 @@ function Get-OutputWinmdFileName
 
     if ($Arch -ne "crossarch")
     {
-        $path = "$binDir\Windows.Win32.$Arch.winmd"
+        $path = "$binDir\Microsoft.Windows.WDK.Win32Metadata.$Arch.winmd"
     }
     else
     {
-        $path = "$binDir\Windows.Win32.winmd"
+        $path = "$binDir\Microsoft.Windows.WDK.Win32Metadata.winmd"
     }
 
     return $path

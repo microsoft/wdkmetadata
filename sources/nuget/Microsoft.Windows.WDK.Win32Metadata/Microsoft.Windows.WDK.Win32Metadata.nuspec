@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<package>
+  <metadata>
+    <id>Microsoft.Windows.WDK.Win32Metadata</id>
+    <version>$version$</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <title>WDK Metadata</title>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <summary>This packages provides metadata (.winmd) for the Windows Driver Kit (WDK).</summary>
+    <description>This packages provides metadata (.winmd) for the Windows Driver Kit (WDK). It is intended to be used as the basis for generating language-specific projections. It is not loadable as a CLR assembly.</description>
+    <releaseNotes>https://github.com/microsoft/wdkmetadata/releases/tag/v$version$</releaseNotes>
+    <projectUrl>https://github.com/microsoft/wdkmetadata</projectUrl>
+    <tags>WDK Metadata</tags>
+    <license type="file">sdk_license.txt</license>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <icon>images\windows.png</icon>
+    <repository type="git" url="https://github.com/microsoft/wdkmetadata.git" />
+  </metadata>
+
+  <files>
+      <file src="licenses\sdk_license.txt" target=""/>
+      <file src="images\windows.png" target="images"/>
+
+      <file src="bin\Microsoft.Windows.WDK.Win32Metadata.winmd" target=""/>
+      <file src="buildTransitive\**" target="buildTransitive\"/>
+      <file src="buildTransitive\**" target="build\"/>
+  </files>
+</package>
