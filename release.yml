@@ -3,8 +3,8 @@ pr: none
 
 resources:
   pipelines:
-  - pipeline: win32metadata
-    source: microsoft.win32metadata
+  - pipeline: wdkmetadata
+    source: WDK Metadata
     trigger:
       tags:
       - auto-release
@@ -23,8 +23,8 @@ stages:
           steps:
           - download: none
           - powershell: |
-              Write-Host "##vso[build.updatebuildnumber]$(resources.pipeline.win32metadata.runName)"
-              $runName = "$(resources.pipeline.win32metadata.runName)"
+              Write-Host "##vso[build.updatebuildnumber]$(resources.pipeline.wdkmetadata.runName)"
+              $runName = "$(resources.pipeline.wdkmetadata.runName)"
               $tagName = $runName.Split('_')[0]
               Write-Output "##vso[task.setvariable variable=TagName]$tagName"
             displayName: Set pipeline name
@@ -33,7 +33,7 @@ stages:
             inputs:
               gitHubConnection: github.com_chenss3
               repositoryName: $(Build.Repository.Name)
-              target: $(resources.pipeline.win32metadata.sourceCommit)
+              target: $(resources.pipeline.wdkmetadata.sourceCommit)
               tagSource: userSpecifiedTag
               tag: v$(TagName)
               title: v$(TagName)
@@ -57,19 +57,16 @@ stages:
       runOnce:
         deploy:
           steps:
-          - download: win32metadata
+          - download: wdkmetadata
             artifact: NuGetPackages
             displayName: Download metadata and generators
-          - download: win32metadata
-            artifact: ApiDocsNuGetPackages
-            displayName: Download API docs
           - task: NuGetToolInstaller@1
             displayName: Use NuGet 5.x
             inputs:
               versionSpec: 5.x
           - powershell: |
-              Get-ChildItem .\NuGetPackages\*.nupkg,.\ApiDocsNuGetPackages\*.nupkg -Exclude Microsoft.Dia.Win32Metadata.*.nupkg |% {
+              Get-ChildItem .\NuGetPackages\*.nupkg |% {
                 nuget push $_ -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey $(NuGetOrgApiKey)
               }
             displayName: Push packages to nuget.org
-            workingDirectory: $(Pipeline.Workspace)/win32metadata
+            workingDirectory: $(Pipeline.Workspace)/wdkmetadata
