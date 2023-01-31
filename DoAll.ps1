@@ -32,7 +32,7 @@ if (!$SkipInstallTools.IsPresent)
     Install-BuildTools -Clean:$Clean.IsPresent
 }
 
-dotnet build generation/WDK
+.\scripts\BuildMetadataBin.ps1 -arch $arch -SkipInstallTools
 
 if (!$ExcludePackages)
 {
