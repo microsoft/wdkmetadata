@@ -38,3 +38,8 @@ if (!$ExcludePackages)
 {
     .\scripts\DoPackages.ps1 -SkipInstallTools
 }
+
+if (!$ExcludeTests)
+{
+    .\scripts\DoTests.ps1 -SkipInstallTools
+}

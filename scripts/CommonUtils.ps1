@@ -6,7 +6,6 @@ $sdkApiPath = "$rootDir\ext\sdk-api"
 $wdkProjectRoot = "$rootDir\generation\WDK"
 $wdkGeneratedSourceDir = "$wdkProjectRoot\obj\generated"
 $recompiledIdlHeadersDir = "$wdkProjectRoot\RecompiledIdlHeaders"
-$metadataToolsBin = "$binDir\release\net6.0"
 
 # [VS 1673159]
 # Temporarily disable strict mode to address bug introduced
@@ -125,10 +124,10 @@ function Get-WinSdkCppX64PkgPath
     return Get-BuildToolsNugetPropsProperty("PkgMicrosoft_Windows_SDK_CPP_x64")
 }
 
-function Get-Win32MetadataLastReleaseWinmdPath
+function Get-WDKMetadataLastReleaseWinmdPath
 {
-    $dir = Get-BuildToolsNugetPropsProperty("PkgMicrosoft_Windows_SDK_Win32Metadata")
-    return Join-Path $dir "Windows.Win32.winmd"
+    $dir = Get-BuildToolsNugetPropsProperty("PkgMicrosoft_Windows_WDK_Win32Metadata")
+    return Join-Path $dir "Microsoft.Windows.WDK.Win32Metadata.winmd"
 }
 
 function Invoke-PrepLibMappingsFile
