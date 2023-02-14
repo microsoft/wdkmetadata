@@ -1,4 +1,4 @@
 --traverse
 <IncludeRoot>/km/offreg.h
 --namespace
-Windows.WDK.System.OfflineRegistry
+Windows.Wdk.System.OfflineRegistry
