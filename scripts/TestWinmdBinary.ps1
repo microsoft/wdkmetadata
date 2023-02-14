@@ -13,15 +13,13 @@ if (!$SkipInstallTools.IsPresent)
 
 Write-Host "*** Running tests on .winmd" -ForegroundColor Blue
 
-$wdkTestsDir = "$rootDir\tests\Microsoft.Windows.WDK.Win32Metadata.Tests"
+$wdkTestsDir = "$rootDir\tests\Windows.Wdk.Tests"
 dotnet test $wdkTestsDir -c:Release
 ThrowOnNativeProcessError
 
 Write-Host "`n`e[32mTesting .winmd succeeded`e[0m"
 
-Write-Host "*** [SKIPPED] Comparing .winmd to last release" -ForegroundColor Blue
-
-# Write-Host "*** Comparing .winmd to last release. Uncomment when the first version of WDKMetadata ships." -ForegroundColor Blue
+Write-Host "*** [SKIPPED] Comparing .winmd to last release. Uncomment when the first version of WDKMetadata ships." -ForegroundColor Blue
 
 # & "$PSScriptRoot\CompareBinToLastRelease.ps1" -SkipInstallTools
 
