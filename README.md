@@ -16,10 +16,10 @@ DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the 
 
 * [DONE] Clone the win32metadata repo
 * [DONE] Remove win32metadata baggage (samples, scripts, sources, tests, etc.) and onboard to Microsoft.Windows.WinmdGenerator
-* [DONE] Rename generation/SDK to generation/WDK and rename Windows.Win32.winmd to Microsoft.Windows.WDK.Win32Metadata.winmd
+* [DONE] Rename generation/SDK to generation/WDK and rename Windows.Win32.winmd to Windows.Wdk.winmd
 * [DONE] Manually copy WDK headers to [RecompiledIdlHeaders](generation/WDK/RecompiledIdlHeaders)
 * [DONE] Create example API partition (https://github.com/microsoft/win32metadata/issues/509)
-* [DONE] Produce Microsoft.Windows.WDK.Win32Metadata NuGet package for Microsoft.Windows.WDK.Win32Metadata.winmd
+* [DONE] Produce Microsoft.Windows.WDK.Win32Metadata NuGet package for Windows.Wdk.winmd
 * Port over full/incremental build support from [win32metadata](https://github.com/microsoft/win32metadata)
 * Port over baseline diffing support from [win32metadata](https://github.com/microsoft/win32metadata)
 * Port over CI and release pipelines from [win32metadata](https://github.com/microsoft/win32metadata)

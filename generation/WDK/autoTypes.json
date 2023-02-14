@@ -1,2 +1,8 @@
 [
+  {
+    "Name": "ORHKEY",
+    "ValueType": "DECLARE_HANDLE",
+    "CloseApi": "ORCloseKey",
+    "InvalidHandleValues": [ -1, 0 ]
+  }
 ]

@@ -22,7 +22,7 @@
       <file src="licenses\sdk_license.txt" target=""/>
       <file src="images\windows.png" target="images"/>
 
-      <file src="bin\Microsoft.Windows.WDK.Win32Metadata.winmd" target=""/>
+      <file src="bin\Windows.Wdk.winmd" target=""/>
       <file src="buildTransitive\**" target="buildTransitive\"/>
       <file src="buildTransitive\**" target="build\"/>
   </files>

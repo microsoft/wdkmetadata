@@ -18,13 +18,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- <EmitterRsp Include="emitter.settings.rsp"/>
-    <EmitterRsp Include="requiredNamespacesForNames.rsp"/> -->
+    <EmitterRsp Include="emitter.settings.rsp"/>
+    <!-- <EmitterRsp Include="requiredNamespacesForNames.rsp"/> -->
   </ItemGroup>
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <OutputWinmd Condition="'$(OutputWinmd)' == ''">..\..\bin\Microsoft.Windows.WDK.Win32Metadata.winmd</OutputWinmd>
+    <OutputWinmd Condition="'$(OutputWinmd)' == ''">..\..\bin\Windows.Wdk.winmd</OutputWinmd>
     <WinmdVersion Condition="'$(WinmdVersion)' == ''">1.0.0.0</WinmdVersion>
     <GenerateAssemblyVersionInfo>false</GenerateAssemblyVersionInfo>
   </PropertyGroup>

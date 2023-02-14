@@ -127,7 +127,7 @@ function Get-WinSdkCppX64PkgPath
 function Get-WDKMetadataLastReleaseWinmdPath
 {
     $dir = Get-BuildToolsNugetPropsProperty("PkgMicrosoft_Windows_WDK_Win32Metadata")
-    return Join-Path $dir "Microsoft.Windows.WDK.Win32Metadata.winmd"
+    return Join-Path $dir "Windows.Wdk.winmd"
 }
 
 function Invoke-PrepLibMappingsFile
@@ -211,11 +211,11 @@ function Get-OutputWinmdFileName
 
     if ($Arch -ne "crossarch")
     {
-        $path = "$binDir\Microsoft.Windows.WDK.Win32Metadata.$Arch.winmd"
+        $path = "$binDir\Windows.Wdk.$Arch.winmd"
     }
     else
     {
-        $path = "$binDir\Microsoft.Windows.WDK.Win32Metadata.winmd"
+        $path = "$binDir\Windows.Wdk.winmd"
     }
 
     return $path

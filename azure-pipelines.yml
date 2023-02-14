@@ -168,7 +168,7 @@ jobs:
     inputs:
       ConnectedServiceName: 'Xlang Code Signing'
       FolderPath: '$(Build.SourcesDirectory)\bin'
-      Pattern: 'Microsoft.Windows.WDK.Win32Metadata.winmd'
+      Pattern: 'Windows.Wdk.winmd'
       signConfigType: 'inlineSignParams'
       inlineOperation: |
         [

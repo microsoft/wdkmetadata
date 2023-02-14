@@ -18,7 +18,7 @@ namespace TestCommon
             return Path.Combine(BinPath, "assets");
         }
 
-        public static string WDKWinmdPath => Path.GetFullPath(Path.Combine(BinPath, @"..\..\Microsoft.Windows.WDK.Win32Metadata.winmd"));
+        public static string WDKWinmdPath => Path.GetFullPath(Path.Combine(BinPath, @"..\..\Windows.Wdk.winmd"));
 
         public static string BinPath => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
