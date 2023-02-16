@@ -21,7 +21,7 @@ DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the 
   * NOTE: This repository needs both SDK headers and WDK headers since the WDK headers depend on the SDK headers to compile. Original SDK and WDK headers for Windows 11 Build 22000 were checked into [IdlHeaders](generation/WDK/IdlHeaders) and then recompiled to [RecompiledIdlHeaders](generation/WDK/RecompiledIdlHeaders) using an adapted version of [RecompileIdlFilesForScraping](scripts/RecompileIdlFilesForScraping.ps1). Only WDK headers should be added to partitions in this repository.
 * [DONE] Create example API partition (https://github.com/microsoft/win32metadata/issues/509)
 * [DONE] Produce Microsoft.Windows.WDK.Win32Metadata NuGet package for Windows.Wdk.winmd
-* Port over full/incremental build support from [win32metadata](https://github.com/microsoft/win32metadata)
+* [DONE] Port over full/incremental build support from [win32metadata](https://github.com/microsoft/win32metadata)
 * Port over baseline diffing support from [win32metadata](https://github.com/microsoft/win32metadata)
 * Port over CI and release pipelines from [win32metadata](https://github.com/microsoft/win32metadata)
 * [DONE] Port over [header ingestion script](https://github.com/microsoft/win32metadata/blob/main/scripts/RecompileIdlFilesForScraping.ps1) from [win32metadata](https://github.com/microsoft/win32metadata) and include WDK headers
