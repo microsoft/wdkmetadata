@@ -7,7 +7,7 @@ DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the 
 # Principles
 
 * This repository is sponsored by Microsoft but will primarily be driven by outside collaborators and community contributions
-* This repository will use public tooling provided by Microsoft.Windows.WinmdGenerator wherever possible
+* This repository will use public tooling provided by [Microsoft.Windows.WinmdGenerator](https://www.nuget.org/packages/Microsoft.Windows.WinmdGenerator/) wherever possible
 * This repository will aim to mirror [win32metadata](https://github.com/microsoft/win32metadata) in layout and development experience to provide a consistent contributor experience across the WDK and the SDK
 * This repository will provide foundational metadata for native APIs that ship in the WDK and will not provide abstractions
 * This repository does not change the license of the original WDK and SDK headers used to generate the metadata. Any such artifacts checked into this repository support metadata production only and do not imply a change of their original licenses.
