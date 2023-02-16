@@ -17,7 +17,8 @@ DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the 
 * [DONE] Clone the win32metadata repo
 * [DONE] Remove win32metadata baggage (samples, scripts, sources, tests, etc.) and onboard to Microsoft.Windows.WinmdGenerator
 * [DONE] Rename generation/SDK to generation/WDK and rename Windows.Win32.winmd to Windows.Wdk.winmd
-* [DONE] Manually copy WDK headers to [RecompiledIdlHeaders](generation/WDK/RecompiledIdlHeaders)
+* [DONE] Import WDK headers
+  * NOTE: This repository needs both SDK headers and WDK headers since the WDK headers depend on the SDK headers to compile. Original SDK and WDK headers for Windows 11 Build 22000 were checked into [IdlHeaders](generation/WDK/IdlHeaders) and then recompiled to [RecompiledIdlHeaders](generation/WDK/RecompiledIdlHeaders) using an adapted version of [RecompileIdlFilesForScraping](scripts/RecompileIdlFilesForScraping.ps1). Only WDK headers should be added to partitions in this repository.
 * [DONE] Create example API partition (https://github.com/microsoft/win32metadata/issues/509)
 * [DONE] Produce Microsoft.Windows.WDK.Win32Metadata NuGet package for Windows.Wdk.winmd
 * Port over full/incremental build support from [win32metadata](https://github.com/microsoft/win32metadata)
@@ -26,9 +27,3 @@ DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the 
 * [DONE] Port over [header ingestion script](https://github.com/microsoft/win32metadata/blob/main/scripts/RecompileIdlFilesForScraping.ps1) from [win32metadata](https://github.com/microsoft/win32metadata) and include WDK headers
 * Port over automatic import library detection to minimize changes to libMappings.rsp
 * Onboard outside collaborators and community contributors
-
-# Notes
-
-* This repository needs both SDK headers and WDK headers since the WDK depends on the SDK. SDK headers are a snapshot of what was in the win32metadata repo when it was cloned. WDK headers for the matching SDK build were manually copied to generation/WDK/RecompiledIdlHeaders rather than recompiled with a [header ingestion script](https://github.com/microsoft/win32metadata/blob/main/scripts/RecompileIdlFilesForScraping.ps1). Need to port over that script and update it to include the WDK to properly ingest WDK headers. 
-* scraper.settings.rsp remaps were imported from [win32metadata](https://github.com/microsoft/win32metadata) since types like _FILETIME need to be remapped in WDK headers as well
-* scraper.header.txt will need to be updated to include namespaces for SDK types that WDK APIs reference
