@@ -75,7 +75,6 @@ jobs:
   - publish: 'generation\WDK\obj\generated'
     displayName: Publish x86 generated assets
     artifact: 'generated_x86'
-    continueOnError: true
 
 - job: scrape_arm64
   displayName: "Scrape headers: arm64"
@@ -146,6 +145,7 @@ jobs:
     inputs:
       artifact: 'generated_x64'
       path: 'generation\WDK\obj\generated\x64'
+    continueOnError: true
 
   - task: DownloadPipelineArtifact@2
     displayName: Download x86 generated assets
@@ -158,6 +158,7 @@ jobs:
     inputs:
       artifact: 'generated_arm64'
       path: 'generation\WDK\obj\generated\arm64'
+      continueOnError: true
 
   - task: PowerShell@2
     displayName: Build metadata binary
