@@ -158,7 +158,7 @@ jobs:
     inputs:
       artifact: 'generated_arm64'
       path: 'generation\WDK\obj\generated\arm64'
-      continueOnError: true
+    continueOnError: true
 
   - task: PowerShell@2
     displayName: Build metadata binary
