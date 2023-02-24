@@ -23,7 +23,5 @@
       <file src="images\windows.png" target="images"/>
 
       <file src="bin\Windows.Wdk.winmd" target=""/>
-      <file src="buildTransitive\**" target="buildTransitive\"/>
-      <file src="buildTransitive\**" target="build\"/>
   </files>
 </package>
