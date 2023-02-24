@@ -4,6 +4,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="nuget\Microsoft.Windows.WDK.Win32Metadata\WDKMetadataNuget.proj" />
+    <ProjectReference Include="nuget\Microsoft.Windows.WDK.Win32Metadata\Microsoft.Windows.WDK.Win32Metadata.proj" />
   </ItemGroup>
 </Project>
