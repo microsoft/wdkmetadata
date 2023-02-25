@@ -23,7 +23,7 @@ DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the 
 * [DONE] Produce Microsoft.Windows.WDK.Win32Metadata NuGet package for Windows.Wdk.winmd
 * [DONE] Port over full/incremental build support from [win32metadata](https://github.com/microsoft/win32metadata)
 * Port over baseline diffing support from [win32metadata](https://github.com/microsoft/win32metadata)
-* Port over CI and release pipelines from [win32metadata](https://github.com/microsoft/win32metadata)
+* [DONE] Port over CI and release pipelines from [win32metadata](https://github.com/microsoft/win32metadata)
 * [DONE] Port over [header ingestion script](https://github.com/microsoft/win32metadata/blob/main/scripts/RecompileIdlFilesForScraping.ps1) from [win32metadata](https://github.com/microsoft/win32metadata) and include WDK headers
 * Port over automatic import library detection to minimize changes to libMappings.rsp
 * Onboard outside collaborators and community contributors
