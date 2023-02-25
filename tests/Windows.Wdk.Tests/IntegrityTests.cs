@@ -69,7 +69,7 @@ namespace Windows.Win32.Tests
         private void ExecWinmdUtils(string args)
         {
             // TODO: Remove the hardcoded path. Ideally depend on the GeneratePathProperty from the msbuild PackageReference.
-            string winmdUtilsDll = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget/packages/Microsoft.Windows.WinmdGenerator/0.41.25-preview/tools/net6.0/winmdutils.dll");
+            string winmdUtilsDll = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget/packages/Microsoft.Windows.WinmdGenerator/0.42.39-preview/tools/net6.0/winmdutils.dll");
             string fullArgs = $"\"{winmdUtilsDll}\" {args}";
             int ret = TestUtils.ExecuteCmd("dotnet", fullArgs, out var outputText, this.outputHelper);
             this.outputHelper.WriteLine(outputText);
