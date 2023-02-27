@@ -1,6 +1,6 @@
 # Overview
 
-This repository produces metadata for the Windows Driver Kit (WDK) using the tooling provided by the [win32metadata](https://github.com/microsoft/win32metadata) project. The metadata is published to NuGet.org as the Microsoft.Windows.WDK.Win32Metadata NuGet package. This mirrors the Microsoft.Windows.SDK.Win32Metadata package that it depends on.
+This repository produces metadata for the Windows Driver Kit (WDK) using the tooling provided by the [win32metadata](https://github.com/microsoft/win32metadata) project. The metadata is published to NuGet.org as the [Microsoft.Windows.WDK.Win32Metadata](https://www.nuget.org/packages/Microsoft.Windows.WDK.Win32Metadata/) NuGet package. This mirrors the [Microsoft.Windows.SDK.Win32Metadata](https://www.nuget.org/packages/Microsoft.Windows.SDK.Win32Metadata/) package that it depends on.
 
 DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the community to build out rich metadata for the WDK to enable driver development in language projections like the [windows crate](https://github.com/microsoft/windows-rs) for Rust.
 
