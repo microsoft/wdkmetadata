@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.IO;
+using System.Xml.Linq;
 using System.Reflection;
 using Xunit.Abstractions;
 
@@ -18,7 +20,16 @@ namespace TestCommon
             return Path.Combine(BinPath, "assets");
         }
 
-        public static string WDKWinmdPath => Path.GetFullPath(Path.Combine(BinPath, @"..\..\Windows.Wdk.winmd"));
+        public static string GetWinmdUtilsPath()
+        {
+            XDocument xDocument = XDocument.Load(Path.GetFullPath(Path.Combine(BinPath, @"../../../obj/BuildTools/BuildTools.proj.nuget.g.props")));
+
+            var winmdGeneratorPath = from e in xDocument.Descendants("{http://schemas.microsoft.com/developer/msbuild/2003}PkgMicrosoft_Windows_WinmdGenerator") select e.Value;
+
+            return Path.Combine(winmdGeneratorPath.First(), @"tools/net6.0/winmdutils.dll");
+        }
+
+        public static string WDKWinmdPath => Path.GetFullPath(Path.Combine(BinPath, @"../../Windows.Wdk.winmd"));
 
         public static string BinPath => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
