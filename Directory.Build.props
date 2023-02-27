@@ -25,7 +25,7 @@
     <PackageProjectUrl>https://github.com/microsoft/wdkmetadata</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>images/windows.png</PackageIcon>
-    <LastWDKMetadataReleaseVersion>41.0.25-preview</LastWDKMetadataReleaseVersion>
+    <LastWDKMetadataReleaseVersion>0.1.40-experimental</LastWDKMetadataReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
