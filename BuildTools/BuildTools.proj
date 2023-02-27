@@ -3,7 +3,7 @@
     <!-- These are here to support CommonUtils.ps1, which parses the .props file that nuget restore generates based on these. -->
     <PackageReference Include="Microsoft.Windows.SDK.CPP" Version="10.0.22000.194" GeneratePathProperty="true"/>
     <PackageReference Include="Microsoft.Windows.SDK.CPP.x64" Version="10.0.22000.194" GeneratePathProperty="true"/>
-    <PackageReference Include="Microsoft.Windows.WinmdGenerator" Version="0.42.39-preview" GeneratePathProperty="true"/>
+    <PackageReference Include="Microsoft.Windows.WinmdGenerator" Version="$(WinmdGeneratorVersion)" GeneratePathProperty="true"/>
     <!-- Used by CommonUtils.ps1 to get the path to the last release .winmd -->
     <PackageReference Include="Microsoft.Windows.WDK.Win32Metadata" Version="$(LastWDKMetadataReleaseVersion)" GeneratePathProperty="True">
       <PrivateAssets>all</PrivateAssets>
