@@ -16,6 +16,9 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <icon>images\windows.png</icon>
     <repository type="git" url="https://github.com/microsoft/wdkmetadata.git" />
+    <dependencies>
+      <dependency id="Microsoft.Windows.SDK.Win32Metadata" version="42.0.39-preview"/>
+    </dependencies>
   </metadata>
 
   <files>
