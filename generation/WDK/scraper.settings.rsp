@@ -1,5 +1,7 @@
 #--with-librarypath
 #--with-type
-#--exclude
+--exclude
+_PROCESSINFOCLASS
+_THREADINFOCLASS
 --remap
 PORHKEY=ORHKEY*
