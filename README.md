@@ -25,5 +25,6 @@ DISCLAIMER: wdkmetadata is EXPERIMENTAL and intended to provide a place for the 
 * [DONE] Port over baseline diffing support from [win32metadata](https://github.com/microsoft/win32metadata)
 * [DONE] Port over CI and release pipelines from [win32metadata](https://github.com/microsoft/win32metadata)
 * [DONE] Port over [header ingestion script](https://github.com/microsoft/win32metadata/blob/main/scripts/RecompileIdlFilesForScraping.ps1) from [win32metadata](https://github.com/microsoft/win32metadata) and include WDK headers
-* Port over automatic import library detection to minimize changes to libMappings.rsp
+* [DONE] Port over automatic import library detection to minimize changes to libMappings.rsp
+  * NOTE: When adding new headers or troubleshooting why APIs may not be emitted in the winmd, make sure that [libMappings.rsp](generation/WDK/libMappings.rsp) has entries for the APIs with a valid import library that includes the proper extension (e.g. dll, drv, exe, etc.).
 * Onboard outside collaborators and community contributors
