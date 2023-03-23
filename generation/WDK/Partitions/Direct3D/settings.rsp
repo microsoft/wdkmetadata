@@ -1,0 +1,6 @@
+--traverse
+<IncludeRoot>/shared/d3dkmdt.h
+<IncludeRoot>/shared/d3dkmthk.h
+<IncludeRoot>/shared/d3dukmdt.h
+--namespace
+Windows.Wdk.Graphics.Direct3D
