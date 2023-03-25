@@ -44,7 +44,7 @@ jobs:
       errorActionPreference: 'continue'
       pwsh: true
 
-  - publish: 'generation\WDK\obj\generated\x64'
+  - publish: 'generation\WDK\obj'
     displayName: Publish x64 generated assets
     artifact: 'generated_x64'
     continueOnError: true
@@ -73,7 +73,7 @@ jobs:
       errorActionPreference: 'continue'
       pwsh: true
 
-  - publish: 'generation\WDK\obj\generated'
+  - publish: 'generation\WDK\obj'
     displayName: Publish x86 generated assets
     artifact: 'generated_x86'
 
@@ -101,7 +101,7 @@ jobs:
       errorActionPreference: 'continue'
       pwsh: true
 
-  - publish: 'generation\WDK\obj\generated\arm64'
+  - publish: 'generation\WDK\obj'
     displayName: Publish arm64 generated assets
     artifact: 'generated_arm64'
     continueOnError: true
@@ -145,20 +145,20 @@ jobs:
     displayName: Download x64 generated assets
     inputs:
       artifact: 'generated_x64'
-      path: 'generation\WDK\obj\generated\x64'
+      path: 'generation\WDK\obj'
     continueOnError: true
 
   - task: DownloadPipelineArtifact@2
     displayName: Download x86 generated assets
     inputs:
       artifact: 'generated_x86'
-      path: 'generation\WDK\obj\generated'
+      path: 'generation\WDK\obj'
 
   - task: DownloadPipelineArtifact@2
     displayName: Download arm64 generated assets
     inputs:
       artifact: 'generated_arm64'
-      path: 'generation\WDK\obj\generated\arm64'
+      path: 'generation\WDK\obj'
     continueOnError: true
 
   - task: PowerShell@2
