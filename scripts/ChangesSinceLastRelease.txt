@@ -2258,3 +2258,5 @@ Windows.Wdk.Graphics.Direct3D.PFND3DKMT_WAITFORSYNCHRONIZATIONOBJECTFROMCPU adde
 Windows.Wdk.Graphics.Direct3D.PFND3DKMT_WAITFORSYNCHRONIZATIONOBJECTFROMGPU added
 Windows.Wdk.Graphics.Direct3D.PFND3DKMT_WAITFORVERTICALBLANKEVENT added
 Windows.Wdk.Graphics.Direct3D.PFND3DKMT_WAITFORVERTICALBLANKEVENT2 added
+# Added missing export.
+Windows.Wdk.Graphics.Direct3D.Apis.D3DKMTChangeSurfacePointer added

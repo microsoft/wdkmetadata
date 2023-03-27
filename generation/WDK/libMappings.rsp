@@ -4209,6 +4209,7 @@ D3DKMTAddSurfaceToSwapChain=GDI32.dll
 D3DKMTAdjustFullscreenGamma=GDI32.dll
 D3DKMTCacheHybridQueryValue=GDI32.dll
 D3DKMTCancelPresents=GDI32.dll
+D3DKMTChangeSurfacePointer=GDI32.dll
 D3DKMTChangeVideoMemoryReservation=GDI32.dll
 D3DKMTCheckExclusiveOwnership=GDI32.dll
 D3DKMTCheckMonitorPowerState=GDI32.dll
