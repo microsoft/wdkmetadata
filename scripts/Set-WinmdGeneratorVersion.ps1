@@ -4,6 +4,12 @@ Param(
     [string]$WinmdGeneratorVersion
 )
 
+function Get-Version([string]$fullVersion)
+{
+    $null = $fullVersion -match "(\d+)\.(\d+)\.(\d+)(-.+)?"
+    return $matches[1], $matches[2], $matches[3], $matches[4]
+}
+
 $dirBuildPropsFile = Join-Path $PSScriptRoot "..\Directory.Build.Props"
 Write-Verbose "Updating $dirBuildPropsFile..."
 
@@ -20,4 +26,13 @@ Write-Verbose "Updating $globalJson..."
 $json = Get-Content $globalJson -raw | ConvertFrom-Json
 $json."msbuild-sdks"."Microsoft.Windows.WinmdGenerator" = $WinmdGeneratorVersion
 $json | ConvertTo-Json | Out-File $globalJson
+
+$nuspec = Join-Path $PSScriptRoot "..\sources\nuget\Microsoft.Windows.WDK.Win32Metadata\Microsoft.Windows.WDK.Win32Metadata.nuspec"
+Write-Verbose "Updating $nuspec..."
+
+$major, $minor, $revision, $suffix = Get-Version $WinmdGeneratorVersion
+$sdkMetadataPackageVersion = "$minor.$major.$revision$($suffix)"
+(Get-Content $nuspec) -Replace "<dependency id=""Microsoft.Windows.SDK.Win32Metadata"".*",
+                               "<dependency id=""Microsoft.Windows.SDK.Win32Metadata"" version=""$sdkMetadataPackageVersion"" />" |
+Set-Content $nuspec
 
