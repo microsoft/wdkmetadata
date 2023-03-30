@@ -1,1 +1,8 @@
-#--requiredNamespaceForName
+--requiredNamespaceForName
+# region ntifs.h
+COMPRESSED_DATA_INFO=Windows.Wdk.System.SystemServices
+DUAL_OPLOCK_KEY_ECP_CONTEXT=Windows.Wdk.System.SystemServices
+FILE_GET_QUOTA_INFORMATION=Windows.Wdk.System.SystemServices
+KQUEUE=Windows.Wdk.System.SystemServices
+OPLOCK_KEY_ECP_CONTEXT=Windows.Wdk.System.SystemServices
+# endregion

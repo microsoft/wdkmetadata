@@ -1,5 +1,10 @@
 [
   {
+    "Namespace": "Windows.Wdk.System.SystemServices",
+    "Name": "SECURITY_CONTEXT_TRACKING_MODE",
+    "ValueType": "byte"
+  },
+  {
     "Name": "ORHKEY",
     "ValueType": "DECLARE_HANDLE",
     "CloseApi": "ORCloseKey",

@@ -1,0 +1,8 @@
+--exclude
+_ARM64EC_NT_CONTEXT
+--traverse
+<IncludeRoot>/km/mce.h
+<IncludeRoot>/km/ntddk.h
+<IncludeRoot>/km/wdm.h
+--namespace
+Windows.Wdk.System.SystemServices

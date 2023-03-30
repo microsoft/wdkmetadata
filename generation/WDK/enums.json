@@ -2,5 +2,115 @@
   "$schema": "enums.schema.json",
   "items":
 [
+  {
+    "name": "NTCREATEFILE_CREATE_OPTIONS",
+    "flags": true,
+    "members": [
+      {
+        "name": "FILE_DIRECTORY_FILE"
+      },
+      {
+        "name": "FILE_NON_DIRECTORY_FILE"
+      },
+      {
+        "name": "FILE_WRITE_THROUGH"
+      },
+      {
+        "name": "FILE_SEQUENTIAL_ONLY"
+      },
+      {
+        "name": "FILE_RANDOM_ACCESS"
+      },
+      {
+        "name": "FILE_NO_INTERMEDIATE_BUFFERING"
+      },
+      {
+        "name": "FILE_SYNCHRONOUS_IO_ALERT"
+      },
+      {
+        "name": "FILE_SYNCHRONOUS_IO_NONALERT"
+      },
+      {
+        "name": "FILE_CREATE_TREE_CONNECTION"
+      },
+      {
+        "name": "FILE_NO_EA_KNOWLEDGE"
+      },
+      {
+        "name": "FILE_OPEN_REPARSE_POINT"
+      },
+      {
+        "name": "FILE_DELETE_ON_CLOSE"
+      },
+      {
+        "name": "FILE_OPEN_BY_FILE_ID"
+      },
+      {
+        "name": "FILE_OPEN_FOR_BACKUP_INTENT"
+      },
+      {
+        "name": "FILE_RESERVE_OPFILTER"
+      },
+      {
+        "name": "FILE_OPEN_REQUIRING_OPLOCK"
+      },
+      {
+        "name": "FILE_COMPLETE_IF_OPLOCKED"
+      },
+      {
+        "name": "FILE_OPEN_FOR_FREE_SPACE_QUERY"
+      },
+      {
+        "name": "FILE_CONTAINS_EXTENDED_CREATE_INFORMATION"
+      },
+      {
+        "name": "FILE_NO_COMPRESSION"
+      },
+      {
+        "name": "FILE_DISALLOW_EXCLUSIVE"
+      },
+      {
+        "name": "FILE_SESSION_AWARE"
+      },
+      {
+        "name": "FILE_OPEN_NO_RECALL"
+      }
+    ],
+    "uses": [
+      {
+        "method": "NtCreateFile",
+        "parameter": "CreateOptions"
+      }
+    ]
+  },
+  {
+    "name": "NTCREATEFILE_CREATE_DISPOSITION",
+    "members": [
+      {
+        "name": "FILE_SUPERSEDE"
+      },
+      {
+        "name": "FILE_CREATE"
+      },
+      {
+        "name": "FILE_OPEN"
+      },
+      {
+        "name": "FILE_OPEN_IF"
+      },
+      {
+        "name": "FILE_OVERWRITE"
+      },
+      {
+        "name": "FILE_OVERWRITE_IF"
+      }
+    ],
+    "uses": [
+      {
+        "method": "NtCreateFile",
+        "parameter": "CreateDisposition"
+      }
+    ]
+  }
 ]
 }
