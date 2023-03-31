@@ -404,6 +404,10 @@
 #define WDI_TLV_LIMITED_CONNECTIVITY                            0x201
 #define WDI_TLV_SECONDARY_STA_BAND_CHANNEL                      0x202
 
+// Wi-Fi 7 TLVs
+#define WDI_TLV_LINK_ID                                         0x203
+#define WDI_TLV_LINK_INFO                                       0x204
+
 #define WDI_TEST_TASK                                           0xFFE0
 #define WDI_TLV_TEST1                                           0xFFE1
 #define WDI_TLV_TEST2                                           0xFFE2
@@ -459,6 +463,7 @@ typedef enum _WDI_PHY_TYPE
     WDI_PHY_TYPE_VHT = 8,                   // 11ac
     WDI_PHY_TYPE_DMG = 9,                   // 11ad
     WDI_PHY_TYPE_HE = 10,                   // 11ax
+    WDI_PHY_TYPE_EHT = 11,                  // 11be
     WDI_PHY_TYPE_IHV_START = 0x80000000,
     WDI_PHY_TYPE_IHV_END = 0xffffffff,
 } WDI_PHY_TYPE;
@@ -637,6 +642,7 @@ typedef enum _WDI_ASSOC_STATUS
      */
     WDI_ASSOC_STATUS_RESERVED_0 = 0x01000000U,
     WDI_ASSOC_STATUS_RESERVED_1 = 0x01000001U,
+    WDI_ASSOC_STATUS_RESERVED_2 = 0x01000002U,
 
 } WDI_ASSOC_STATUS;
 

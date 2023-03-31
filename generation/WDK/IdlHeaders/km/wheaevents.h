@@ -6,7 +6,7 @@
 #pragma once
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Provider "Microsoft-Windows-Kernel-WHEA" event count 32
+// Provider "Microsoft-Windows-Kernel-WHEA" event count 33
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Provider GUID = 7b563579-53c8-44e7-8236-0f87b9fe6594
@@ -20,8 +20,11 @@ EXTERN_C __declspec(selectany) const GUID WHEA_ETW_PROVIDER = {0x7b563579, 0x53c
 // Channel
 //
 #define WHEA_ETW_PROVIDER_CHANNEL_systemChannel 0x8
+#define WHEA_ETW_PROVIDER_CHANNEL_systemChannel_KEYWORD 0x8000000000000000
 #define WHEA_CHANNEL 0x10
+#define WHEA_CHANNEL_KEYWORD 0x4000000000000000
 #define WHEA_EVENTLOG_CHANNEL 0x11
+#define WHEA_EVENTLOG_CHANNEL_KEYWORD 0x2000000000000000
 
 //
 // Keyword
@@ -36,6 +39,8 @@ EXTERN_C __declspec(selectany) const EVENT_DESCRIPTOR EVENT_WHEA_INIT_OP = {0x5,
 #define EVENT_WHEA_INIT_OP_value 0x5
 EXTERN_C __declspec(selectany) const EVENT_DESCRIPTOR EVENT_WHEA_ERROR = {0x14, 0x0, 0x10, 0x4, 0x0, 0x0, 0x4000000000000800};
 #define EVENT_WHEA_ERROR_value 0x14
+EXTERN_C __declspec(selectany) const EVENT_DESCRIPTOR EVENT_WHEA_ERROR_PART = {0x15, 0x0, 0x10, 0x4, 0x0, 0x0, 0x4000000000000800};
+#define EVENT_WHEA_ERROR_PART_value 0x15
 EXTERN_C __declspec(selectany) const EVENT_DESCRIPTOR EVENT_WHEA_MEMORY_OFFLINE = {0x1f, 0x0, 0x8, 0x4, 0x0, 0x0, 0x8000000000000800};
 #define EVENT_WHEA_MEMORY_OFFLINE_value 0x1f
 EXTERN_C __declspec(selectany) const EVENT_DESCRIPTOR WHEA_SQM_EVENT_START_SESSION = {0x20, 0x0, 0x0, 0x4, 0x0, 0x0, 0x8000000000000};

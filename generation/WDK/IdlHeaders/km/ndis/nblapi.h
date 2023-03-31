@@ -19,11 +19,16 @@ EXTERN_C_START
 
 #define NET_BUFFER_LIST_POOL_PARAMETERS_REVISION_1 1
 
+#if NDIS_SUPPORT_NDIS687
+#define NET_BUFFER_LIST_POOL_PARAMETERS_REVISION_2 2
+#define NET_BUFFER_LIST_POOL_FLAG_VERIFY 0x00000001
+#endif
+
 typedef struct _NET_BUFFER_LIST_POOL_PARAMETERS
 {
     /*
         Parameters.Header.Type = NDIS_OBJECT_TYPE_DEFAULT;
-        Parameters.Header.Revision = NET_BUFFER_LIST_POOL_PARAMETERS_REVISION_1;
+        Parameters.Header.Revision = NET_BUFFER_LIST_POOL_PARAMETERS_REVISION_2;
         Parameters.Header.Size = sizeof(Parameters);
     */
     NDIS_OBJECT_HEADER      Header;
@@ -32,10 +37,18 @@ typedef struct _NET_BUFFER_LIST_POOL_PARAMETERS
     USHORT                  ContextSize;
     ULONG                   PoolTag;
     ULONG                   DataSize;
+#if NDIS_SUPPORT_NDIS687
+    ULONG                   Flags;
+#endif
 } NET_BUFFER_LIST_POOL_PARAMETERS, *PNET_BUFFER_LIST_POOL_PARAMETERS;
 
 #define NDIS_SIZEOF_NET_BUFFER_LIST_POOL_PARAMETERS_REVISION_1 \
         RTL_SIZEOF_THROUGH_FIELD(NET_BUFFER_LIST_POOL_PARAMETERS, DataSize)
+
+#if NDIS_SUPPORT_NDIS687
+#define NDIS_SIZEOF_NET_BUFFER_LIST_POOL_PARAMETERS_REVISION_2 \
+        RTL_SIZEOF_THROUGH_FIELD(NET_BUFFER_LIST_POOL_PARAMETERS, Flags)
+#endif
 
 _Must_inspect_result_
 __drv_allocatesMem(mem)
@@ -99,20 +112,33 @@ NdisGetPoolFromNetBufferList(
 
 #define NET_BUFFER_POOL_PARAMETERS_REVISION_1 1
 
+#if NDIS_SUPPORT_NDIS687
+#define NET_BUFFER_POOL_PARAMETERS_REVISION_2 2
+#define NET_BUFFER_POOL_FLAG_VERIFY 0x00000001
+#endif
+
 typedef struct _NET_BUFFER_POOL_PARAMETERS
 {
     /*
         Parameters.Header.Type = NDIS_OBJECT_TYPE_DEFAULT;
-        Parameters.Header.Revision = NET_BUFFER_POOL_PARAMETERS_REVISION_1;
+        Parameters.Header.Revision = NET_BUFFER_POOL_PARAMETERS_REVISION_2;
         Parameters.Header.Size = sizeof(Parameters);
     */
     NDIS_OBJECT_HEADER      Header;
     ULONG                   PoolTag;
     ULONG                   DataSize;
+#if NDIS_SUPPORT_NDIS687
+    ULONG                   Flags;
+#endif
 } NET_BUFFER_POOL_PARAMETERS, *PNET_BUFFER_POOL_PARAMETERS;
 
 #define NDIS_SIZEOF_NET_BUFFER_POOL_PARAMETERS_REVISION_1   \
         RTL_SIZEOF_THROUGH_FIELD(NET_BUFFER_POOL_PARAMETERS, DataSize)
+
+#if NDIS_SUPPORT_NDIS687
+#define NDIS_SIZEOF_NET_BUFFER_POOL_PARAMETERS_REVISION_2   \
+        RTL_SIZEOF_THROUGH_FIELD(NET_BUFFER_POOL_PARAMETERS, Flags)
+#endif
 
 _Must_inspect_result_
 __drv_allocatesMem(mem)

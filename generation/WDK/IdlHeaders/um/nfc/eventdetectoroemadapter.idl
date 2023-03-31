@@ -1,0 +1,307 @@
+//-----------------------------------------------------------------------------
+//
+// Expiremental Keyword Detector Oem Adapter Interface Definition
+//
+// Purpose: 
+//      This file describes the Event Detector Oem interface to be used for
+//      hardware keyword spotters.
+//
+// Copyright (c) Microsoft Corporation. All rights reserved.
+//
+//-----------------------------------------------------------------------------
+
+import "unknwn.idl";
+import "objidl.idl";
+import "wtypes.idl";
+import "mmreg.h";
+
+cpp_quote("#define _IKsControl_")
+cpp_quote("#include \"ks.h\"")
+cpp_quote("#include \"ksmedia.h\"")
+cpp_quote("#include \"mmreg.h\"")
+cpp_quote("#ifndef _KS_")
+cpp_quote("#define _")
+
+#define EVENTNAME_MAX 100
+
+typedef struct {
+    ULONG   Size;                      // Size of the data including this header
+    GUID    PatternType;               // Identifies the format of the pattern data
+} SOUNDDETECTOR_PATTERNHEADER;
+
+cpp_quote("#endif")
+
+// START BASIC TYPES
+typedef GUID DETECTIONEVENTID; // Unique identifier for the keyword or audio event
+typedef GUID EVENTPROVIDERID;  // Identifies the original event or keyword author
+
+typedef unsigned short LANGID; // speech or display language
+// END BASIC TYPES
+
+// START EVENT TYPES
+typedef enum {
+    EVENTFEATURES_NoEventFeatures            = 0,
+    EVENTFEATURES_SupportsUserTraining       = 0x1, // SpeakerID support
+    EVENTFEATURES_SupportUserCustomization   = 0x2, // User defined keyword
+    // Global only features
+    EVENTFEATURES_ArmPatternRequiresArmState = 0x4, // Is active arm state required for BuildArmingPatternData
+    EVENTFEATURES_SupportsSingleLanguage     = 0x8  // This DSP implementation is restricted to a single language
+}EVENTFEATURES;
+
+// Struct to specify uniquily supported detection events available
+typedef struct {
+    DETECTIONEVENTID EventId;
+    EVENTFEATURES    EventFeat;
+    EVENTPROVIDERID  ProviderId;
+    WCHAR            DisplayName[EVENTNAME_MAX];
+    BOOL             UserModelValid;  // FALSE if user model retraining is required for this event
+} DETECTIONEVENT;
+
+// Struct to reference a specific detection event
+typedef struct {
+    DETECTIONEVENT Event;
+    LANGID         LangId;  // LanguageID
+    ULONG          UserId;  // Specifies the User. 0 if no user indicated
+    BOOL           Armed;   // Specifies if the keyword is currently armed
+} DETECTIONEVENTSELECTOR;       // If ModelRequeiresArmState feature
+// END EVENT TYPES             // Disarm\BuildArmingPatternData\Arm is required on state change
+
+// START TELEMETRY SUPPORT
+// Actions to take on a detection
+typedef enum {
+    EVENTACTIONTYPE_Accept = 0, // Event detection should be processed by the OS
+    EVENTACTIONTYPE_Reject = 1, // Event detection should be rejected by OS - data collection should occur
+    EVENTACTIONTYPE_Error  = 3  // Error occured, failing HR expected in EVENTACTION return
+} EVENTACTIONTYPE;
+
+// Enumeration the types of context associated with an action
+typedef enum {
+    EVENTACTIONCONTEXTTYPE_None       = 0, // no additional conxt provided
+    EVENTACTIONCONTEXTTYPE_Confidence = 1, // Value between 0.0 and 1.0
+    EVENTACTIONCONTEXTTYPE_Scale      = 2, // High, Medium, Low
+    EVENTACTIONCONTEXTTYPE_ErrorCode  = 3  // E_* OEM defined
+} EVENTACTIONCONTEXTTYPE;
+
+// Enumeration defining the quality associated with a specific detection
+// can be used for telemetry when no confidenece is available or confidence
+// is confusing to report
+typedef enum {
+    EVENTACTIONSCALE_High   = 0,
+    EVENTACTIONSCALE_Medium = 1,
+    EVENTACTIONSCALE_Low    = 2 
+} EVENTACTIONSCALE;
+
+// Struct used to provide detail from ParseDetectionResults
+typedef struct
+{
+    EVENTACTIONTYPE        EventdActionType;
+    EVENTACTIONCONTEXTTYPE EventActionContextType;
+    union {
+        float              Confidence;
+        EVENTACTIONSCALE   Scale;
+        HRESULT            ErrorCode;
+    };
+} EVENTACTION;
+// END TELEMETRY SUPPORT
+
+[
+    object,
+    local,
+    uuid(3B650B60-F000-45D3-B49E-B9091C7286EA),
+    version(1.0),
+    pointer_default(unique)
+]
+
+interface IEventDetectorOemAdapter : IUnknown
+{
+    // START INITIALIZATION
+    // -----------------------------------------------------------------------------
+    //  GetCapabilities - Returns langauges and detector features supported by the object.
+    //
+    //  Outputs:
+    //      GlobalFeatureSupport   - Pointer to EVENTFEATURES indicating what features are supported
+    //      LangIds                - Pointer to an array of LANGIDs supported by the object
+    //      NumLanguages           - Pointer to the number of LANGIDs in the array
+    //      NumUserRecordings      - Pointer to the number of user recordings required for training
+    //      ppFormat               - Pointer to a pointer to the media type required by the object for user training and user customization
+    //
+    //  Return value:
+    //      It returns S_OK if the function exit successfully. Otherwise it returns:
+    //      E_POINTER    - One of the out parameter pointers is NULL
+    //
+    // -----------------------------------------------------------------------------
+    HRESULT GetCapabilities(
+        [out, ref] EVENTFEATURES* GlobalFeatureSupport,
+        [out, ptr] LANGID**       LangIds,
+        [out, ref] ULONG*         NumLanguages,
+        [out, ptr] ULONG*         NumUserRecordings,
+        [out, ptr] WAVEFORMATEX** ppFormat);
+
+
+    // -----------------------------------------------------------------------------
+    //  GetCapabilitiesForLanguage - Returns the events supported by the specific language.
+    //
+    //  Input:
+    //      LangId                 - Language ID for this display\speech language - language changes should be viewed as re-initialization
+    // 
+    //  Outputs:
+    //      EventIds               - Pointer to an array of DETECTIONEVENTs supported by this detector
+    //      NumEvents              - Pointer to the number of DETECTIONEVENTs in the array
+    //
+    //  Return value:
+    //      It returns S_OK if the function exit successfully. Otherwise it returns:
+    //      E_POINTER    - One of the out parameter pointers is NULL
+    //
+    // -----------------------------------------------------------------------------
+    HRESULT GetCapabilitiesForLanguage(
+        [in]       LANGID                   LangId,
+        [out, ptr] DETECTIONEVENT**         EventIds,
+        [out, ref] ULONG*                   NumEvents);
+    // END INITIALIZATION
+
+    // START USER TRAINING
+
+    // -----------------------------------------------------------------------------
+    //  VerifyUserEventData     - Verifies the user recording for the given EVENTID.
+    //
+    //  Inputs:
+    //      ModelData         - Pointer to IStream bound to model data for a given stored model (optional)
+    //      EventSelector     - The DETECTIONEVENTELECTOR associated with this UserRecording
+    //      EventEndBytePos   - Byte position of the end of the sound pattern in the UserRecording.
+    //                          A value of -1 indicates the position was unavailable.
+    //      UserRecording     - Pointer to the buffer containing the raw data in the
+    //                          appropriate format
+    //                          NOTE: Non-standard use of cbSize in WAVEFORMATEX - it is the size of the following
+    //                                PCM data for the user recording
+    //
+    //  Return value:
+    //      It returns S_OK if the function exit successfully. Otherwise it returns:
+    //         E_INVALIDARG    - UserModelData pointer is null or Keyword Id or LangId are invalid
+    //         E_NO_MATCH      - The user recording didn't contain the keyword
+    //
+    //  Optional return values that may be implemented:
+    //     E_VOICE_TOO_SOFT     - User recording isn't loud enough
+    //     E_VOICE_TOO_LOUD     - User recording is too loud
+    //     E_VOICE_TOO_SLOW     - User was speaking too slowly for recognition
+    //     E_VOICE_TOO_FAST     - User was speaking too fast for recognition
+    //     E_VOICE_PROCESSING_ERROR - An unrecoverable error occurred
+    //
+    // -----------------------------------------------------------------------------
+    HRESULT VerifyUserEventData(
+        [in, ptr] IStream*          ModelData,
+        [in, ptr] WAVEFORMATEX*     UserRecording,
+        [in] DETECTIONEVENTSELECTOR EventSelector,
+        [in] LONG                   EventEndBytePos);
+
+    // -----------------------------------------------------------------------------
+    //  ComputeAndAddUserModelData - Adds the user specific model data to an existing
+    //                               model data blob.
+    //
+    //  Inputs:
+    //      ModelData          - Pointer to IStream bound to model data, updated by this call
+    //      EventSelector      - The DETECTIONEVENTELECTOR that uniquely identifies this model
+    //      EventEndBytePos    - A pointer to an array byte positions of the end of the
+    //                           audio envent in the corresponding UserRecording. A value of -1 
+    //                           indicates the position was unavailable.
+    //      UserRecordings     - Pointer to an array of pointers to the previously verified
+    //                           recordings of the user
+    //                           NOTE: Non-standard use of cbSize in WAVEFORMATEX - it is the size of the following
+    //                                 PCM data for the user recording
+    //      NumUserRecordings  - Number of recordings
+    //
+    //  Return value:
+    //      It returns S_OK if the function exit successfully. Otherwise it returns:
+    //         E_POINTER    - UserModelData pointer is null
+    //         E_INVALIDARG - the DETECTIONEVENTELECTOR contains an invalid id
+    //         HRESULT_FROM_WIN32(ERROR_GEN_FAILURE) = unable to complete the processing.
+    //
+    // -----------------------------------------------------------------------------
+    HRESULT ComputeAndAddUserModelData(
+        [in, out, ptr] IStream*     ModelData,
+        [in] DETECTIONEVENTSELECTOR EventSelector,
+        [in, ptr] LONG*             EventEndBytePos,
+        [in, ptr] WAVEFORMATEX**    UserRecordings,
+        [in] ULONG                  NumUserRecordings);
+
+    // END USER TRAINING
+
+    // START OPERATION
+    // -----------------------------------------------------------------------------
+    //  BuildArmingPatternData
+    //      Builds the pattern data to be used on a subsequent arm request - this is done once for each pin instance
+    //      the GUID in the SOUNDDETECTOR_PATTERNHEADER can be used to provide additional context to allow optional model use
+    //      but the expectation is that the individual DETECTIONEVENTS can be armed and disarmed given appropriate feature support
+    //
+    //  Inputs:
+    //                      
+    //      UserModelData     - Pointer to IStream bound to model data (optional)
+    //      EventSelectors    - Pointer to the array of DETECTIONEVENTELECTOR structs to be
+    //                          detected - associated with this BurstID
+    //      NumEventSelectors - Number of DETECTIONEVENTELECTOR structs passed
+    //
+    //  Outputs:
+    //      PatternData   -   pattern data created to reflect
+    //                        the input event/language/user sets for an arm
+    //
+    //  Return value:
+    //      It returns S_OK if the function exit successfully. Otherwise it returns:
+    //         E_INVALIDARG - UserModelData pointer is null or one or more of the DETECTIONEVENTELECTOR 
+    //                        contains invalid ids
+    //         HRESULT_FROM_WIN32(ERROR_GEN_FAILURE) = unable to complete the processing.
+    //
+    // -----------------------------------------------------------------------------
+    HRESULT BuildArmingPatternData(
+        [in, ptr] IStream*                       UserModelData,
+        [in, ptr] DETECTIONEVENTSELECTOR*        EventSelectors,
+        [in] ULONG                               NumEventSelectors,
+        [out, ptr] SOUNDDETECTOR_PATTERNHEADER** PatternData);
+
+    // -----------------------------------------------------------------------------
+    //  ParseDetectionResultData - Uses the input model data and SOUNDDETECTOR_PATTERNHEADER
+    //                             to determine the DETECTIONEVENTID,LANGID and USER detected.
+    //
+    //  Inputs:
+    //      UserModelData    - Pointer to IStream bound to model data for the arming pattern (Optional)
+    //      Result           - Pointer to the SOUNDDETECTOR_PATTERNHEADER from DDI
+    //      AssistantContext - Data to be provided to the assistant
+
+    //
+    //  Outputs:
+    //      EventSelector - the DETECTIONEVENTELECTOR associated with this detection
+    //      EventAction - Action for the system to take, along with associated context
+    //      EventStartPerformanceCounterValue - Event start time, if available, else zero
+    //      EventEndPerformanceCounterValue   - Event end time, if available, else zero
+    //      DebugOutput - Optional string to provide open detail, used for logging and telemetry
+    //
+    //  Return value:
+    //      It returns S_OK if the function exit successfully. Otherwise it returns:
+    //         E_INVALIDARG - If called inconsistently w.r.t. the model data and its header
+    //         E_POINTER    - One or more of the out parameter pointers is null
+    //         HRESULT_FROM_WIN32(ERROR_GEN_FAILURE) = unable to complete the processing.
+    //
+    // -----------------------------------------------------------------------------
+    HRESULT ParseDetectionResultData(
+        [in, ptr] IStream*                       UserModelData,
+        [in, ptr] SOUNDDETECTOR_PATTERNHEADER*   Result,
+        [out, ptr] SOUNDDETECTOR_PATTERNHEADER** AssistantContext,
+        [out, ptr] DETECTIONEVENTSELECTOR*       EventSelector,
+        [out, ptr] EVENTACTION*                  EventAction,
+        [out, ptr] ULONG64*                      EventStartPerformanceCounterValue,
+        [out, ptr] ULONG64*                      EventEndPerformanceCounterValue,
+        [out, ptr, string] WCHAR**               DebugOutput);
+
+    // -----------------------------------------------------------------------------
+    //  ReportOSDetectionResult - Called to provide second stage result to OEM dll
+    //
+    //  Inputs:
+    //      EventSelector   - Pointer to IStream bound to model data for the arming pattern (Optional)
+    //      EventAction     - Pointer to the SOUNDDETECTOR_PATTERNHEADER from DDI
+    // -----------------------------------------------------------------------------
+    void ReportOSDetectionResult(
+        [in] DETECTIONEVENTSELECTOR EventSelector,
+        [in] EVENTACTION            EventAction);
+};
+
+//END OPERATION
+// {02C09BB8-574A-42C1-B063-55F6F291EF5B}
+cpp_quote("DEFINE_GUID(CLSID_ExprKeywordDetectorOemAdapter, 0x2c09bb8, 0x574a, 0x42c1, 0xb0, 0x63, 0x55, 0xf6, 0xf2, 0x91, 0xef, 0x5b);")

@@ -349,7 +349,6 @@ typedef enum _KNOWN_TIMER_TYPE {
     TimerHpet,
     Timer8254,
     TimerProcessor,
-    TimerSfi,
     TimerApic,
     TimerHypervisor,
     TimerBrokenAcpi,

@@ -32,6 +32,8 @@ typedef enum _MBB_MBIM_EXTENDED_VERSION {
     MbbMbimExtendedVersion1Dot0 = 0,
     MbbMbimExtendedVersion2Dot0,
     MbbMbimExtendedVersion3Dot0,
+    MbbMbimExtendedVersion4Dot0,
+    MbbMbimExtendedVersionMax = MbbMbimExtendedVersion4Dot0,
 } MBB_MBIM_EXTENDED_VERSION;
 
 typedef enum _MBB_WAKE_REASON_TYPE {

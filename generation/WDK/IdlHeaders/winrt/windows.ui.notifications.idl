@@ -756,7 +756,7 @@ namespace Windows
                 Added   = 3
             };
 
-            [contract(Windows.Foundation.UniversalApiContract, 14.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 15.0)]
             enum ToastNotificationMode
             {
                 Unrestricted = 0,
@@ -1395,7 +1395,7 @@ namespace Windows
                 [overload("GetToastCollectionManager")] HRESULT GetToastCollectionManagerWithAppId([in] HSTRING appId, [out] [retval] Windows.UI.Notifications.ToastCollectionManager** result);
             }
 
-            [contract(Windows.Foundation.UniversalApiContract, 14.0)]
+            [contract(Windows.Foundation.UniversalApiContract, 15.0)]
             [exclusiveto(Windows.UI.Notifications.ToastNotificationManagerForUser)]
             [uuid(3EFCB176-6CC1-56DC-973B-251F7AACB1C5)]
             interface IToastNotificationManagerForUser3 : IInspectable
@@ -1773,7 +1773,7 @@ namespace Windows
             {
                 [default] interface Windows.UI.Notifications.IToastNotificationManagerForUser;
                 [contract(Windows.Foundation.UniversalApiContract, 4.0)] interface Windows.UI.Notifications.IToastNotificationManagerForUser2;
-                [contract(Windows.Foundation.UniversalApiContract, 14.0)] interface Windows.UI.Notifications.IToastNotificationManagerForUser3;
+                [contract(Windows.Foundation.UniversalApiContract, 15.0)] interface Windows.UI.Notifications.IToastNotificationManagerForUser3;
             }
 
             [contract(Windows.Foundation.UniversalApiContract, 1.0)]

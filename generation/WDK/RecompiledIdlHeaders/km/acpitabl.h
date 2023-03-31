@@ -1710,23 +1710,8 @@ typedef struct _HPET_DESCRIPTION_TABLE {
 #define HPET_SIGNATURE  0x54455048      // "HPET"
 
 //
-// Definitions for the Moorestown SFI Timer.
-//
-
-typedef struct _SFI_TIMER {
-    GEN_ADDR   Address;
-    ULONG      FemtosecondsPerTick;
-    ULONG      Gsi;
-} SFI_TIMER, *PSFI_TIMER;
-
-typedef struct _SFI_TIMER_DESCRIPTION_TABLE {
-    DESCRIPTION_HEADER Header;
-    SFI_TIMER Timers[ANYSIZE_ARRAY];
-} SFI_TIMER_DESCRIPTION_TABLE, *PSFI_TIMER_DESCRIPTION_TABLE;
-
-#define SFI_TIMER_SIGNATURE     0x524d544d      // "MTMR"
-
 // TCG Hardware Interface Description Table Formats for Clients and Servers
+//
 
 typedef struct _TCG_DESCRIPTION_TABLE_CLIENT {
     DESCRIPTION_HEADER Header;
@@ -3199,17 +3184,29 @@ typedef enum _TPM20_START_METHOD {
 //
 
 #define MHSP_TABLE_SIGNATURE 'PSHM'
+#define HSP_TABLE_SIZE 0xc8
+
+typedef struct _MHSP_CHANNEL {
+    UINT64 ChannelBaseAddress;
+    UINT64 RequestDoorbellAddress;
+    UINT64 ReplyDoorbellAddress;
+    UINT32 ChannelSize;
+    UINT32 IrqResource;
+    UINT32 ChannelParameters[2];
+} MHSP_CHANNEL, *PMHSP_CHANNEL;
 
 typedef struct _MHSP_TABLE {
     DESCRIPTION_HEADER Header;
-
-    UINT32 Instance;
-    UINT64 ControlAreaAddress;
-    UINT32 ControlAreaSize;
-    GEN_ADDR StartAddress;
-    GEN_ADDR ReplyAddress;
-    UINT32 IrqResource;
+    UINT32 ProtocolId;
+    MHSP_CHANNEL Channels[4];
 } MHSP_TABLE, *PMHSP_TABLE;
+
+C_ASSERT(sizeof(MHSP_TABLE) == HSP_TABLE_SIZE);
+
+typedef enum _HSP_PROTOCOL_ID {
+    HspTableProtocolInvalid = 0,
+    HspTableProtocolACPI    = 1, //AMD ACPI based mailbox protocol
+} HSP_PROTOCOL_ID, *PHSP_PROTOCOL_ID;
 
 //
 // ACPI Physical Location Descriptor, Revision 1
@@ -4225,10 +4222,70 @@ typedef struct _SPMI_DESCRIPTION_TABLE {
 #endif
 
 //
+// AMD Secure Processor Table (ASPT) Table
+//
+
+#define ASPT_SIGNATURE 0x54505341 // 'TPSA'
+#define ASPT_REVISION 0x01
+
+#define ASPT_ENTRY_TYPE_ASP_GLOBAL_REGISTERS    0
+#define ASPT_ENTRY_TYPE_SEV_MAILBOX_REGISTERS   1
+#define ASPT_ENTRY_TYPE_ACPI_MAILBOX_REGISTERS  2
+
+#define ASPT_ASP_MAILBOX_INTERRUPT_ID_SEV_MAILBOX   1
+
+typedef struct _ASPT_ENTRY_HEADER
+{
+    UINT16 Type;
+    UINT16 Length;
+} ASPT_ENTRY_HEADER, *PASPT_ENTRY_HEADER;
+
+typedef struct _ASPT_ENTRY_ASP_GLOBAL_REGISTERS
+{
+    ASPT_ENTRY_HEADER Header;
+    UINT32 Reserved;
+    UINT64 FeatureRegisterAddress;
+    UINT64 InterruptEnableRegisterAddress;
+    UINT64 InterruptStatusRegisterAddress;
+} ASPT_ENTRY_ASP_GLOBAL_REGISTERS, *PASPT_ENTRY_ASP_GLOBAL_REGISTERS;
+
+typedef struct _ASPT_ENTRY_SEV_MAILBOX_REGISTERS
+{
+    ASPT_ENTRY_HEADER Header;
+    UINT8  MailboxInterruptId;
+    UINT8  Reserved[3];
+    UINT64 CmdRespRegisterAddress;
+    UINT64 CmdBufAddrLoRegisterAddress;
+    UINT64 CmdBufAddrHiRegisterAddress;
+} ASPT_ENTRY_SEV_MAILBOX_REGISTERS, *PASPT_ENTRY_SEV_MAILBOX_REGISTERS;
+
+typedef struct _ASPT_ENTRY_ACPI_MAILBOX_REGISTERS
+{
+    ASPT_ENTRY_HEADER Header;
+    UINT32 Reserved1;
+    UINT64 CmdRespRegisterAddress;
+    UINT64 Reserved2[2];
+} ASPT_ENTRY_ACPI_MAILBOX_REGISTERS, *PASPT_ENTRY_ACPI_MAILBOX_REGISTERS;
+
+typedef union _ASPT_ENTRY
+{
+    ASPT_ENTRY_HEADER Header;
+    ASPT_ENTRY_ASP_GLOBAL_REGISTERS AspGlobalRegisters;
+    ASPT_ENTRY_SEV_MAILBOX_REGISTERS SevMailboxRegisters;
+    ASPT_ENTRY_ACPI_MAILBOX_REGISTERS AcpiMailboxRegisters;
+} ASPT_ENTRY, *PASPT_ENTRY;
+
+typedef struct _ASPT_TABLE
+{
+    DESCRIPTION_HEADER Header;
+    UINT32 NumberOfAsptEntries;
+//ASPT_ENTRY AsptEntries[NumberOfAsptEntries];
+} ASPT_TABLE, *PASPT_TABLE;
+
+//
 // Resume normal structure packing
 //
 
 #include <poppack.h>
 
 #endif // _ACPITBL_H
-

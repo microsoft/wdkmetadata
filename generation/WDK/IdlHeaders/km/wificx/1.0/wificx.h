@@ -179,6 +179,9 @@ typedef struct _WIFI_STATION_CAPABILITIES
     PDOT11_AUTH_CIPHER_PAIR MulticastMgmtAlgorithmsList;
     ULONG NumSecondaryStaBandCombinations;
     WIFI_STA_BANDS_COMBINATION * SecondaryStaBandsCombinations;
+    ULONG MaxMultiLinkConnectionsSupported;     // Max number of Links supported by hardware for MLO connections
+    BOOLEAN MultiLinkConnectionsEnabled;        // Multi-Link connectivity is enabled or not
+    WDI_MAC_ADDRESS * MultiLinkAddressesList;   // Array of MultiLink MAC Addresses with MaxMultiLinkConnectionsSupported elements
 } WIFI_STATION_CAPABILITIES;
 
 typedef struct _WIFI_WIFIDIRECT_CAPABILITIES

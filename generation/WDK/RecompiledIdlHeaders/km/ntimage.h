@@ -1731,6 +1731,10 @@ typedef PIMAGE_DYNAMIC_RELOCATION32_V2      PIMAGE_DYNAMIC_RELOCATION_V2;
 #define IMAGE_DYNAMIC_RELOCATION_GUARD_INDIR_CONTROL_TRANSFER   0x00000004
 #define IMAGE_DYNAMIC_RELOCATION_GUARD_SWITCHTABLE_BRANCH       0x00000005
 // end_winnt end_ntoshvp
+#define IMAGE_DYNAMIC_RELOCATION_ARM64X                         0x00000006
+// begin_winnt begin_ntoshvp
+#define IMAGE_DYNAMIC_RELOCATION_FUNCTION_OVERRIDE              0x00000007
+// end_winnt end_ntoshvp
 #define IMAGE_DYNAMIC_RELOCATION_MM_SHARED_USER_DATA_VA         0x7FFE0000
 #define IMAGE_DYNAMIC_RELOCATION_KI_USER_SHARED_DATA64          0xFFFFF78000000000UI64
 // begin_winnt begin_ntoshvp
@@ -1774,6 +1778,48 @@ typedef struct _IMAGE_SWITCHTABLE_BRANCH_DYNAMIC_RELOCATION {
     USHORT      RegisterNumber     : 4;
 } IMAGE_SWITCHTABLE_BRANCH_DYNAMIC_RELOCATION;
 typedef IMAGE_SWITCHTABLE_BRANCH_DYNAMIC_RELOCATION UNALIGNED * PIMAGE_SWITCHTABLE_BRANCH_DYNAMIC_RELOCATION;
+
+typedef struct _IMAGE_FUNCTION_OVERRIDE_HEADER {
+    ULONG FuncOverrideSize;
+ // IMAGE_FUNCTION_OVERRIDE_DYNAMIC_RELOCATION  FuncOverrideInfo[ANYSIZE_ARRAY]; // FuncOverrideSize bytes in size
+ // IMAGE_BDD_INFO BDDInfo; // BDD region, size in bytes: DVRTEntrySize - sizeof(IMAGE_FUNCTION_OVERRIDE_HEADER) - FuncOverrideSize
+} IMAGE_FUNCTION_OVERRIDE_HEADER;
+typedef IMAGE_FUNCTION_OVERRIDE_HEADER UNALIGNED * PIMAGE_FUNCTION_OVERRIDE_HEADER;
+
+typedef struct _IMAGE_FUNCTION_OVERRIDE_DYNAMIC_RELOCATION {
+    ULONG OriginalRva;          // RVA of original function
+    ULONG BDDOffset;            // Offset into the BDD region
+    ULONG RvaSize;              // Size in bytes taken by RVAs. Must be multiple of sizeof(ULONG).
+    ULONG BaseRelocSize;        // Size in bytes taken by BaseRelocs
+
+    // ULONG RVAs[RvaSize / sizeof(ULONG)];     // Array containing overriding func RVAs.
+
+    // IMAGE_BASE_RELOCATION  BaseRelocs[ANYSIZE_ARRAY]; // Base relocations (RVA + Size + TO)
+                                                         //  Padded with extra TOs for 4B alignment
+                                                         // BaseRelocSize size in bytes
+} IMAGE_FUNCTION_OVERRIDE_DYNAMIC_RELOCATION;
+typedef IMAGE_FUNCTION_OVERRIDE_DYNAMIC_RELOCATION * PIMAGE_FUNCTION_OVERRIDE_DYNAMIC_RELOCATION;
+
+typedef struct _IMAGE_BDD_INFO {
+    ULONG         Version;      // decides the semantics of serialized BDD
+    ULONG         BDDSize;
+    // IMAGE_BDD_DYNAMIC_RELOCATION BDDNodes[ANYSIZE_ARRAY]; // BDDSize size in bytes.
+} IMAGE_BDD_INFO;
+typedef IMAGE_BDD_INFO * PIMAGE_BDD_INFO;
+
+typedef struct _IMAGE_BDD_DYNAMIC_RELOCATION {
+    USHORT Left;                // Index of FALSE edge in BDD array
+    USHORT Right;               // Index of TRUE edge in BDD array
+    ULONG  Value;               // Either FeatureNumber or Index into RVAs array
+} IMAGE_BDD_DYNAMIC_RELOCATION;
+typedef IMAGE_BDD_DYNAMIC_RELOCATION * PIMAGE_BDD_DYNAMIC_RELOCATION;
+
+// Function override relocation types in DVRT records.
+
+#define IMAGE_FUNCTION_OVERRIDE_INVALID         0
+#define IMAGE_FUNCTION_OVERRIDE_X64_REL32       1  // 32-bit relative address from byte following reloc
+#define IMAGE_FUNCTION_OVERRIDE_ARM64_BRANCH26  2  // 26 bit offset << 2 & sign ext. for B & BL
+#define IMAGE_FUNCTION_OVERRIDE_ARM64_THUNK     3
 
 #include "poppack.h"                    // Back to 4 byte packing
 
@@ -1826,10 +1872,11 @@ typedef struct _IMAGE_LOAD_CONFIG_DIRECTORY32 {
     ULONG   VolatileMetadataPointer;        // VA
     ULONG   GuardEHContinuationTable;       // VA
     ULONG   GuardEHContinuationCount;
-    ULONG   GuardXFGCheckFunctionPointer;    // VA
+    ULONG   GuardXFGCheckFunctionPointer;   // VA
     ULONG   GuardXFGDispatchFunctionPointer; // VA
     ULONG   GuardXFGTableDispatchFunctionPointer; // VA
     ULONG   CastGuardOsDeterminedFailureMode; // VA
+    ULONG   GuardMemcpyFunctionPointer;     // VA
 } IMAGE_LOAD_CONFIG_DIRECTORY32, *PIMAGE_LOAD_CONFIG_DIRECTORY32;
 
 typedef struct _IMAGE_LOAD_CONFIG_DIRECTORY64 {
@@ -1873,14 +1920,15 @@ typedef struct _IMAGE_LOAD_CONFIG_DIRECTORY64 {
     ULONGLONG  GuardRFVerifyStackPointerFunctionPointer; // VA
     ULONG      HotPatchTableOffset;
     ULONG      Reserved3;
-    ULONGLONG  EnclaveConfigurationPointer;     // VA
-    ULONGLONG  VolatileMetadataPointer;         // VA
-    ULONGLONG  GuardEHContinuationTable;        // VA
+    ULONGLONG  EnclaveConfigurationPointer;    // VA
+    ULONGLONG  VolatileMetadataPointer;        // VA
+    ULONGLONG  GuardEHContinuationTable;       // VA
     ULONGLONG  GuardEHContinuationCount;
-    ULONGLONG  GuardXFGCheckFunctionPointer;    // VA
+    ULONGLONG  GuardXFGCheckFunctionPointer;   // VA
     ULONGLONG  GuardXFGDispatchFunctionPointer; // VA
     ULONGLONG  GuardXFGTableDispatchFunctionPointer; // VA
     ULONGLONG  CastGuardOsDeterminedFailureMode; // VA
+    ULONGLONG  GuardMemcpyFunctionPointer;     // VA
 } IMAGE_LOAD_CONFIG_DIRECTORY64, *PIMAGE_LOAD_CONFIG_DIRECTORY64;
 
 // end_ntoshvp
@@ -1946,8 +1994,6 @@ typedef struct _IMAGE_ARM64EC_CODE_RANGE_ENTRY_POINT {
     ULONG EndRva;
     ULONG EntryPoint;
 } IMAGE_ARM64EC_CODE_RANGE_ENTRY_POINT;
-
-#define IMAGE_DYNAMIC_RELOCATION_ARM64X     0x00000006
 
 #define IMAGE_DVRT_ARM64X_FIXUP_TYPE_ZEROFILL   0
 #define IMAGE_DVRT_ARM64X_FIXUP_TYPE_VALUE      1
@@ -2046,6 +2092,8 @@ typedef struct _IMAGE_HOT_PATCH_HASHES {
 // DO_NOT_USE                                          0x00200000 // Was EHCont flag on VB (20H1)
 #define IMAGE_GUARD_EH_CONTINUATION_TABLE_PRESENT      0x00400000 // Module contains EH continuation target information
 #define IMAGE_GUARD_XFG_ENABLED                        0x00800000 // Module was built with xfg
+#define IMAGE_GUARD_CASTGUARD_PRESENT                  0x01000000 // Module has CastGuard instrumentation present
+#define IMAGE_GUARD_MEMCPY_PRESENT                     0x02000000 // Module has Guarded Memcpy instrumentation present
 
 #define IMAGE_GUARD_CF_FUNCTION_TABLE_SIZE_MASK        0xF0000000 // Stride of Guard CF function table encoded in these bits (additional count of bytes per element)
 #define IMAGE_GUARD_CF_FUNCTION_TABLE_SIZE_SHIFT       28         // Shift to right-justify Guard CF function table stride
@@ -2132,7 +2180,7 @@ typedef union IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
         ULONG EpilogInHeader : 1;
         ULONG EpilogCount : 5;          // number of epilogs or byte index of the first unwind code for the one only epilog
         ULONG CodeWords : 5;            // number of dwords with unwind codes
-    };
+    } DUMMYSTRUCTNAME;
 } IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA;
 
 typedef struct _IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY {
@@ -2290,12 +2338,14 @@ typedef struct _IMAGE_DEBUG_DIRECTORY {
 #define IMAGE_DEBUG_TYPE_OMAP_FROM_SRC          8
 #define IMAGE_DEBUG_TYPE_BORLAND                9
 #define IMAGE_DEBUG_TYPE_RESERVED10             10
+#define IMAGE_DEBUG_TYPE_BBT                    IMAGE_DEBUG_TYPE_RESERVED10
 #define IMAGE_DEBUG_TYPE_CLSID                  11
 #define IMAGE_DEBUG_TYPE_VC_FEATURE             12
 #define IMAGE_DEBUG_TYPE_POGO                   13
 #define IMAGE_DEBUG_TYPE_ILTCG                  14
 #define IMAGE_DEBUG_TYPE_MPX                    15
 #define IMAGE_DEBUG_TYPE_REPRO                  16
+#define IMAGE_DEBUG_TYPE_SPGO                   18
 #define IMAGE_DEBUG_TYPE_EX_DLLCHARACTERISTICS  20
 
 #define IMAGE_DLLCHARACTERISTICS_EX_CET_COMPAT                                  0x01

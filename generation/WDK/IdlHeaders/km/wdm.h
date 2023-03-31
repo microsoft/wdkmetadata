@@ -311,6 +311,11 @@ typedef KSPIN_LOCK *PKSPIN_LOCK;
 //
 //      The owner bit is set when the processor owns the respective lock.
 //
+//      The halted bit is set when the processor is invoking halt-on-address
+//      instead of spinning. This is only performed on 64-bit systems, because
+//      on 32-bit systems there is no space for this bit in the lower spare
+//      bits of the LockQueue->Lock pointer.
+//
 //      The next field of the spin lock queue structure is used to line the
 //      queued lock structures together in fifo order. It also can set set and
 //      cleared noninterlocked.
@@ -321,6 +326,19 @@ typedef KSPIN_LOCK *PKSPIN_LOCK;
 
 #define LOCK_QUEUE_OWNER 2
 #define LOCK_QUEUE_OWNER_BIT 1
+
+#define LOCK_QUEUE_HALTED 4
+#define LOCK_QUEUE_HALTED_BIT 2
+
+#if defined(_AMD64_) || defined(_ARM64_)
+
+#define LOCK_QUEUE_VALID_FLAGS    (LOCK_QUEUE_WAIT | LOCK_QUEUE_OWNER | LOCK_QUEUE_HALTED)
+
+#else
+
+#define LOCK_QUEUE_VALID_FLAGS    (LOCK_QUEUE_WAIT | LOCK_QUEUE_OWNER)
+
+#endif
 
 #if defined(_AMD64_)
 
@@ -523,8 +541,8 @@ typedef struct _KERNEL_CET_CONTEXT {
             USHORT UseWrss : 1;
             USHORT PopShadowStackOne : 1;
             USHORT Unused : 14;
-        };
-    };
+        } DUMMYSTRUCTNAME;
+    } DUMMYUNIONNAME;
     USHORT Fill[2];
 } KERNEL_CET_CONTEXT, *PKERNEL_CET_CONTEXT;
 
@@ -993,9 +1011,9 @@ InterlockedExchange16 (
 #define InterlockedIncrement16 _InterlockedIncrement16
 #define InterlockedDecrement16 _InterlockedDecrement16
 
-char 
+char
 InterlockedExchangeAdd8 (
-    _Inout_ _Interlocked_operand_ char volatile * _Addend, 
+    _Inout_ _Interlocked_operand_ char volatile * _Addend,
     _In_ char _Value
     );
 
@@ -1388,6 +1406,13 @@ __writefsdword (
 #pragma intrinsic(__writefsword)
 #pragma intrinsic(__writefsdword)
 
+VOID
+_ReadWriteBarrier (
+    VOID
+    );
+
+#pragma intrinsic(_ReadWriteBarrier)
+
 #endif // !defined(_M_CEE_PURE)
 
 
@@ -1556,7 +1581,7 @@ _interlockedbittestandreset64 (
 #pragma intrinsic(_bittestandset)
 #pragma intrinsic(_bittestandreset)
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic(_interlockedbittestandset)
 #pragma intrinsic(_interlockedbittestandreset)
 #endif
@@ -1566,7 +1591,7 @@ _interlockedbittestandreset64 (
 #pragma intrinsic(_bittestandset64)
 #pragma intrinsic(_bittestandreset64)
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic(_interlockedbittestandset64)
 #pragma intrinsic(_interlockedbittestandreset64)
 #endif
@@ -1914,7 +1939,7 @@ InterlockedExchangePointer(
     _In_opt_ PVOID Value
     );
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic(_InterlockedIncrement16)
 #pragma intrinsic(_InterlockedDecrement16)
 #pragma intrinsic(_InterlockedCompareExchange16)
@@ -1965,7 +1990,7 @@ InterlockedExchange16 (
     _In_ SHORT ExChange
     );
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic(_InterlockedExchange8)
 #pragma intrinsic(_InterlockedExchange16)
 #endif
@@ -2033,7 +2058,7 @@ InterlockedXor16(
     _In_ SHORT Value
     );
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
+#if !defined(_M_ARM64EC)
 #pragma intrinsic (_InterlockedExchangeAdd8)
 #pragma intrinsic (_InterlockedAnd8)
 #pragma intrinsic (_InterlockedOr8)
@@ -2901,17 +2926,6 @@ YieldProcessor (
 #pragma intrinsic(_bittestandset)
 #pragma intrinsic(_bittestandreset)
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_interlockedbittestandset)
-#pragma intrinsic(_interlockedbittestandset_acq)
-#pragma intrinsic(_interlockedbittestandset_rel)
-#pragma intrinsic(_interlockedbittestandset_nf)
-#pragma intrinsic(_interlockedbittestandreset)
-#pragma intrinsic(_interlockedbittestandreset_acq)
-#pragma intrinsic(_interlockedbittestandreset_rel)
-#pragma intrinsic(_interlockedbittestandreset_nf)
-#endif
-
 //
 // Define bit scan functions
 //
@@ -2943,46 +2957,6 @@ _InlineBitScanReverse64 (
 }
 
 #define BitScanReverse64 _InlineBitScanReverse64
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-
-//
-// Interlocked intrinsic functions.
-//
-
-#pragma intrinsic(_InterlockedAnd8)
-#pragma intrinsic(_InterlockedOr8)
-#pragma intrinsic(_InterlockedXor8)
-#pragma intrinsic(_InterlockedExchange8)
-#pragma intrinsic(_InterlockedExchangeAdd8)
-
-#pragma intrinsic(_InterlockedAnd16)
-#pragma intrinsic(_InterlockedOr16)
-#pragma intrinsic(_InterlockedXor16)
-#pragma intrinsic(_InterlockedIncrement16)
-#pragma intrinsic(_InterlockedDecrement16)
-#pragma intrinsic(_InterlockedCompareExchange16)
-
-#pragma intrinsic(_InterlockedAnd)
-#pragma intrinsic(_InterlockedOr)
-#pragma intrinsic(_InterlockedXor)
-#pragma intrinsic(_InterlockedIncrement)
-#pragma intrinsic(_InterlockedDecrement)
-#pragma intrinsic(_InterlockedExchange)
-#pragma intrinsic(_InterlockedExchangeAdd)
-#pragma intrinsic(_InterlockedCompareExchange)
-
-#pragma intrinsic(_InterlockedAnd64)
-#pragma intrinsic(_InterlockedOr64)
-#pragma intrinsic(_InterlockedXor64)
-#pragma intrinsic(_InterlockedIncrement64)
-#pragma intrinsic(_InterlockedDecrement64)
-#pragma intrinsic(_InterlockedExchange64)
-#pragma intrinsic(_InterlockedCompareExchange64)
-
-#pragma intrinsic(_InterlockedExchangePointer)
-#pragma intrinsic(_InterlockedCompareExchangePointer)
-#endif
 
 #define InterlockedAnd8 _InterlockedAnd8
 #define InterlockedOr8 _InterlockedOr8
@@ -3022,96 +2996,7 @@ _InlineBitScanReverse64 (
 #define InterlockedExchangePointer _InterlockedExchangePointer
 #define InterlockedCompareExchangePointer _InterlockedCompareExchangePointer
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_InterlockedExchange16)
-#endif
 #define InterlockedExchange16 _InterlockedExchange16
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_InterlockedAnd8_acq)
-#pragma intrinsic(_InterlockedAnd8_rel)
-#pragma intrinsic(_InterlockedAnd8_nf)
-#pragma intrinsic(_InterlockedOr8_acq)
-#pragma intrinsic(_InterlockedOr8_rel)
-#pragma intrinsic(_InterlockedOr8_nf)
-#pragma intrinsic(_InterlockedXor8_acq)
-#pragma intrinsic(_InterlockedXor8_rel)
-#pragma intrinsic(_InterlockedXor8_nf)
-#pragma intrinsic(_InterlockedExchange8_acq)
-#pragma intrinsic(_InterlockedExchange8_nf)
-
-#pragma intrinsic(_InterlockedAnd16_acq)
-#pragma intrinsic(_InterlockedAnd16_rel)
-#pragma intrinsic(_InterlockedAnd16_nf)
-#pragma intrinsic(_InterlockedOr16_acq)
-#pragma intrinsic(_InterlockedOr16_rel)
-#pragma intrinsic(_InterlockedOr16_nf)
-#pragma intrinsic(_InterlockedXor16_acq)
-#pragma intrinsic(_InterlockedXor16_rel)
-#pragma intrinsic(_InterlockedXor16_nf)
-#pragma intrinsic(_InterlockedIncrement16_acq)
-#pragma intrinsic(_InterlockedIncrement16_rel)
-#pragma intrinsic(_InterlockedIncrement16_nf)
-#pragma intrinsic(_InterlockedDecrement16_acq)
-#pragma intrinsic(_InterlockedDecrement16_rel)
-#pragma intrinsic(_InterlockedDecrement16_nf)
-#pragma intrinsic(_InterlockedExchange16_acq)
-#pragma intrinsic(_InterlockedExchange16_nf)
-#pragma intrinsic(_InterlockedCompareExchange16_acq)
-#pragma intrinsic(_InterlockedCompareExchange16_rel)
-#pragma intrinsic(_InterlockedCompareExchange16_nf)
-
-#pragma intrinsic(_InterlockedAnd_acq)
-#pragma intrinsic(_InterlockedAnd_rel)
-#pragma intrinsic(_InterlockedAnd_nf)
-#pragma intrinsic(_InterlockedOr_acq)
-#pragma intrinsic(_InterlockedOr_rel)
-#pragma intrinsic(_InterlockedOr_nf)
-#pragma intrinsic(_InterlockedXor_acq)
-#pragma intrinsic(_InterlockedXor_rel)
-#pragma intrinsic(_InterlockedXor_nf)
-#pragma intrinsic(_InterlockedIncrement_acq)
-#pragma intrinsic(_InterlockedIncrement_rel)
-#pragma intrinsic(_InterlockedIncrement_nf)
-#pragma intrinsic(_InterlockedDecrement_acq)
-#pragma intrinsic(_InterlockedDecrement_rel)
-#pragma intrinsic(_InterlockedDecrement_nf)
-#pragma intrinsic(_InterlockedExchange_acq)
-#pragma intrinsic(_InterlockedExchange_nf)
-#pragma intrinsic(_InterlockedExchangeAdd_acq)
-#pragma intrinsic(_InterlockedExchangeAdd_rel)
-#pragma intrinsic(_InterlockedExchangeAdd_nf)
-#pragma intrinsic(_InterlockedCompareExchange_acq)
-#pragma intrinsic(_InterlockedCompareExchange_rel)
-#pragma intrinsic(_InterlockedCompareExchange_nf)
-
-#pragma intrinsic(_InterlockedAnd64_acq)
-#pragma intrinsic(_InterlockedAnd64_rel)
-#pragma intrinsic(_InterlockedAnd64_nf)
-#pragma intrinsic(_InterlockedOr64_acq)
-#pragma intrinsic(_InterlockedOr64_rel)
-#pragma intrinsic(_InterlockedOr64_nf)
-#pragma intrinsic(_InterlockedXor64_acq)
-#pragma intrinsic(_InterlockedXor64_rel)
-#pragma intrinsic(_InterlockedXor64_nf)
-#pragma intrinsic(_InterlockedIncrement64_acq)
-#pragma intrinsic(_InterlockedIncrement64_rel)
-#pragma intrinsic(_InterlockedIncrement64_nf)
-#pragma intrinsic(_InterlockedDecrement64_acq)
-#pragma intrinsic(_InterlockedDecrement64_rel)
-#pragma intrinsic(_InterlockedDecrement64_nf)
-#pragma intrinsic(_InterlockedExchange64_acq)
-#pragma intrinsic(_InterlockedExchange64_nf)
-#pragma intrinsic(_InterlockedCompareExchange64_acq)
-#pragma intrinsic(_InterlockedCompareExchange64_rel)
-#pragma intrinsic(_InterlockedCompareExchange64_nf)
-
-#pragma intrinsic(_InterlockedExchangePointer_acq)
-#pragma intrinsic(_InterlockedExchangePointer_nf)
-#pragma intrinsic(_InterlockedCompareExchangePointer_acq)
-#pragma intrinsic(_InterlockedCompareExchangePointer_rel)
-#pragma intrinsic(_InterlockedCompareExchangePointer_nf)
-#endif
 
 #define InterlockedAndAcquire8 _InterlockedAnd8_acq
 #define InterlockedAndRelease8 _InterlockedAnd8_rel
@@ -3452,6 +3337,17 @@ WriteNoFence64 (
     return;
 }
 
+FORCEINLINE
+VOID
+BarrierAfterRead (
+    VOID
+    )
+
+{
+    __dmb(_ARM_BARRIER_ISH);
+    return;
+}
+
 
 //
 // Define coprocessor access intrinsics.  Coprocessor 15 contains
@@ -3588,10 +3484,13 @@ YieldProcessor (
 //
 // Temporary workaround for C++ bug: 64-bit bit test intrinsics are
 // not honoring the full 64-bit wide index, so pre-process the index
-// down to a qword base and a bit index 0-63 before calling through 
-// to the true intrinsic.
+// down to a qword base and a bit index 0-63 before calling through
+// to the true intrinsic. This issue was fixed as of compiler build
+// 19.28.29395.7.
 //
+#if defined(_MSC_FULL_VER) && (_MSC_FULL_VER < 192829395 || (_MSC_FULL_VER == 192829395 && _MSC_BUILD < 7))
 #define __ARM64_COMPILER_BITTEST64_WORKAROUND
+#endif
 
 #if !defined(__ARM64_COMPILER_BITTEST64_WORKAROUND)
 #define BitTest64 _bittest64
@@ -3655,33 +3554,11 @@ _BitTestAndSet64(__int64 *Base, __int64 Index)
 #pragma intrinsic(_bittestandset)
 #pragma intrinsic(_bittestandreset)
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_interlockedbittestandset)
-#pragma intrinsic(_interlockedbittestandset_acq)
-#pragma intrinsic(_interlockedbittestandset_rel)
-#pragma intrinsic(_interlockedbittestandset_nf)
-#pragma intrinsic(_interlockedbittestandreset)
-#pragma intrinsic(_interlockedbittestandreset_acq)
-#pragma intrinsic(_interlockedbittestandreset_rel)
-#pragma intrinsic(_interlockedbittestandreset_nf)
-#endif
-
 #if !defined(__ARM64_COMPILER_BITTEST64_WORKAROUND)
 #pragma intrinsic(_bittest64)
 #pragma intrinsic(_bittestandcomplement64)
 #pragma intrinsic(_bittestandset64)
 #pragma intrinsic(_bittestandreset64)
-#endif
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_interlockedbittestandset64)
-#pragma intrinsic(_interlockedbittestandset64_acq)
-#pragma intrinsic(_interlockedbittestandset64_rel)
-#pragma intrinsic(_interlockedbittestandset64_nf)
-#pragma intrinsic(_interlockedbittestandreset64)
-#pragma intrinsic(_interlockedbittestandreset64_acq)
-#pragma intrinsic(_interlockedbittestandreset64_rel)
-#pragma intrinsic(_interlockedbittestandreset64_nf)
 #endif
 
 //
@@ -3697,45 +3574,6 @@ _BitTestAndSet64(__int64 *Base, __int64 Index)
 #pragma intrinsic(_BitScanReverse)
 #pragma intrinsic(_BitScanForward64)
 #pragma intrinsic(_BitScanReverse64)
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-//
-// Interlocked intrinsic functions.
-//
-
-#pragma intrinsic(_InterlockedAnd8)
-#pragma intrinsic(_InterlockedOr8)
-#pragma intrinsic(_InterlockedXor8)
-#pragma intrinsic(_InterlockedExchangeAdd8)
-
-#pragma intrinsic(_InterlockedAnd16)
-#pragma intrinsic(_InterlockedOr16)
-#pragma intrinsic(_InterlockedXor16)
-#pragma intrinsic(_InterlockedIncrement16)
-#pragma intrinsic(_InterlockedDecrement16)
-#pragma intrinsic(_InterlockedCompareExchange16)
-
-#pragma intrinsic(_InterlockedAnd)
-#pragma intrinsic(_InterlockedOr)
-#pragma intrinsic(_InterlockedXor)
-#pragma intrinsic(_InterlockedIncrement)
-#pragma intrinsic(_InterlockedDecrement)
-#pragma intrinsic(_InterlockedExchange)
-#pragma intrinsic(_InterlockedExchangeAdd)
-#pragma intrinsic(_InterlockedCompareExchange)
-
-#pragma intrinsic(_InterlockedAnd64)
-#pragma intrinsic(_InterlockedOr64)
-#pragma intrinsic(_InterlockedXor64)
-#pragma intrinsic(_InterlockedIncrement64)
-#pragma intrinsic(_InterlockedDecrement64)
-#pragma intrinsic(_InterlockedExchange64)
-#pragma intrinsic(_InterlockedCompareExchange64)
-
-#pragma intrinsic(_InterlockedCompareExchange128)
-#pragma intrinsic(_InterlockedExchangePointer)
-#pragma intrinsic(_InterlockedCompareExchangePointer)
-#endif
 
 #define InterlockedAnd8 _InterlockedAnd8
 #define InterlockedOr8 _InterlockedOr8
@@ -3774,97 +3612,8 @@ _BitTestAndSet64(__int64 *Base, __int64 Index)
 #define InterlockedExchangePointer _InterlockedExchangePointer
 #define InterlockedCompareExchangePointer _InterlockedCompareExchangePointer
 
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_InterlockedExchange8)
-#pragma intrinsic(_InterlockedExchange16)
-#endif
 #define InterlockedExchange16 _InterlockedExchange16
 #define InterlockedExchange8 _InterlockedExchange8
-
-#if !defined(ARM64X_INTRINSICS_FUNCTIONS)
-#pragma intrinsic(_InterlockedAnd8_acq)
-#pragma intrinsic(_InterlockedAnd8_rel)
-#pragma intrinsic(_InterlockedAnd8_nf)
-#pragma intrinsic(_InterlockedOr8_acq)
-#pragma intrinsic(_InterlockedOr8_rel)
-#pragma intrinsic(_InterlockedOr8_nf)
-#pragma intrinsic(_InterlockedXor8_acq)
-#pragma intrinsic(_InterlockedXor8_rel)
-#pragma intrinsic(_InterlockedXor8_nf)
-#pragma intrinsic(_InterlockedExchange8_acq)
-#pragma intrinsic(_InterlockedExchange8_nf)
-
-#pragma intrinsic(_InterlockedAnd16_acq)
-#pragma intrinsic(_InterlockedAnd16_rel)
-#pragma intrinsic(_InterlockedAnd16_nf)
-#pragma intrinsic(_InterlockedOr16_acq)
-#pragma intrinsic(_InterlockedOr16_rel)
-#pragma intrinsic(_InterlockedOr16_nf)
-#pragma intrinsic(_InterlockedXor16_acq)
-#pragma intrinsic(_InterlockedXor16_rel)
-#pragma intrinsic(_InterlockedXor16_nf)
-#pragma intrinsic(_InterlockedIncrement16_acq)
-#pragma intrinsic(_InterlockedIncrement16_rel)
-#pragma intrinsic(_InterlockedIncrement16_nf)
-#pragma intrinsic(_InterlockedDecrement16_acq)
-#pragma intrinsic(_InterlockedDecrement16_rel)
-#pragma intrinsic(_InterlockedDecrement16_nf)
-#pragma intrinsic(_InterlockedExchange16_acq)
-#pragma intrinsic(_InterlockedExchange16_nf)
-#pragma intrinsic(_InterlockedCompareExchange16_acq)
-#pragma intrinsic(_InterlockedCompareExchange16_rel)
-#pragma intrinsic(_InterlockedCompareExchange16_nf)
-
-#pragma intrinsic(_InterlockedAnd_acq)
-#pragma intrinsic(_InterlockedAnd_rel)
-#pragma intrinsic(_InterlockedAnd_nf)
-#pragma intrinsic(_InterlockedOr_acq)
-#pragma intrinsic(_InterlockedOr_rel)
-#pragma intrinsic(_InterlockedOr_nf)
-#pragma intrinsic(_InterlockedXor_acq)
-#pragma intrinsic(_InterlockedXor_rel)
-#pragma intrinsic(_InterlockedXor_nf)
-#pragma intrinsic(_InterlockedIncrement_acq)
-#pragma intrinsic(_InterlockedIncrement_rel)
-#pragma intrinsic(_InterlockedIncrement_nf)
-#pragma intrinsic(_InterlockedDecrement_acq)
-#pragma intrinsic(_InterlockedDecrement_rel)
-#pragma intrinsic(_InterlockedDecrement_nf)
-#pragma intrinsic(_InterlockedExchange_acq)
-#pragma intrinsic(_InterlockedExchange_nf)
-#pragma intrinsic(_InterlockedExchangeAdd_acq)
-#pragma intrinsic(_InterlockedExchangeAdd_rel)
-#pragma intrinsic(_InterlockedExchangeAdd_nf)
-#pragma intrinsic(_InterlockedCompareExchange_rel)
-#pragma intrinsic(_InterlockedCompareExchange_nf)
-
-#pragma intrinsic(_InterlockedAnd64_acq)
-#pragma intrinsic(_InterlockedAnd64_rel)
-#pragma intrinsic(_InterlockedAnd64_nf)
-#pragma intrinsic(_InterlockedOr64_acq)
-#pragma intrinsic(_InterlockedOr64_rel)
-#pragma intrinsic(_InterlockedOr64_nf)
-#pragma intrinsic(_InterlockedXor64_acq)
-#pragma intrinsic(_InterlockedXor64_rel)
-#pragma intrinsic(_InterlockedXor64_nf)
-#pragma intrinsic(_InterlockedIncrement64_acq)
-#pragma intrinsic(_InterlockedIncrement64_rel)
-#pragma intrinsic(_InterlockedIncrement64_nf)
-#pragma intrinsic(_InterlockedDecrement64_acq)
-#pragma intrinsic(_InterlockedDecrement64_rel)
-#pragma intrinsic(_InterlockedDecrement64_nf)
-#pragma intrinsic(_InterlockedExchange64_acq)
-#pragma intrinsic(_InterlockedExchange64_nf)
-#pragma intrinsic(_InterlockedCompareExchange64_acq)
-#pragma intrinsic(_InterlockedCompareExchange64_rel)
-#pragma intrinsic(_InterlockedCompareExchange64_nf)
-
-#pragma intrinsic(_InterlockedExchangePointer_acq)
-#pragma intrinsic(_InterlockedExchangePointer_nf)
-#pragma intrinsic(_InterlockedCompareExchangePointer_acq)
-#pragma intrinsic(_InterlockedCompareExchangePointer_rel)
-#pragma intrinsic(_InterlockedCompareExchangePointer_nf)
-#endif
 
 #define InterlockedAndAcquire8 _InterlockedAnd8_acq
 #define InterlockedAndRelease8 _InterlockedAnd8_rel
@@ -4279,6 +4028,17 @@ WriteNoFence64 (
     return;
 }
 
+FORCEINLINE
+VOID
+BarrierAfterRead (
+    VOID
+    )
+
+{
+    __dmb(_ARM64_BARRIER_ISH);
+    return;
+}
+
 //
 //
 
@@ -4577,8 +4337,8 @@ Multiply128 (
 {
     LONG64 Result = (LONG64)UnsignedMultiply128((ULONG64)Multiplier, (ULONG64)Multiplicand, (ULONG64 *)HighProduct);
 
-    *HighProduct -= (Multiplier >> 63) * Multiplicand;
-    *HighProduct -= Multiplier * (Multiplicand >> 63);
+    *HighProduct += (Multiplier >> 63) * Multiplicand;
+    *HighProduct += Multiplier * (Multiplicand >> 63);
 
     return Result;
 }
@@ -4953,6 +4713,21 @@ WriteNoFence64 (
     return;
 }
 
+#if !defined(_M_CEE_PURE)
+
+FORCEINLINE
+VOID
+BarrierAfterRead (
+    VOID
+    )
+
+{
+    _ReadWriteBarrier();
+    return;
+}
+
+#endif
+
 #ifdef __cplusplus
 }
 #endif
@@ -5117,6 +4892,16 @@ ReadBooleanNoFence (
 {
 
     return (BOOLEAN)ReadNoFence8((PCHAR)Source);
+}
+
+FORCEINLINE
+UCHAR
+ReadBooleanRaw (
+    _In_ _Interlocked_operand_ BOOLEAN const volatile *Source
+    )
+
+{
+    return (BOOLEAN)ReadRaw8((PCHAR)Source);
 }
 
 FORCEINLINE
@@ -7368,6 +7153,53 @@ typedef struct _SE_ADT_PARAMETER_ARRAY_EX {
 #define FILE_VALID_SET_FLAGS                    0x00000036
 
 //
+// While the highest 8 bits of the create options are reserved for the
+// create disposition in the IRP, if a create option flag is processed
+// prior to IRP creation, we can utilize these bits. These values are
+// masked out of the open packet in IopCreateFile prior to the later
+// call to IopParseDevice, where we create the IRP.
+// Currently this includes the flag to interpet the EABuffer as an
+// instance of EXTENDED_CREATE_INFORMATION.
+//
+
+#define FILE_CONTAINS_EXTENDED_CREATE_INFORMATION   0x10000000
+#define FILE_VALID_EXTENDED_OPTION_FLAGS            0x10000000
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI)
+
+//
+//================= Extended Create Information ====================
+//
+
+//
+// This struct can be extended and new fields may be added to the end
+// of the struct in the future.
+//
+typedef struct _EXTENDED_CREATE_INFORMATION {
+    LONGLONG ExtendedCreateFlags;   // extended create flags
+    PVOID EaBuffer;                 // EA buffer
+    ULONG EaLength;                 // EA buffer length
+} EXTENDED_CREATE_INFORMATION, *PEXTENDED_CREATE_INFORMATION;
+
+//
+// 32-bit version of EXTENDED_CREATE_INFORMATION struct
+//
+typedef struct _EXTENDED_CREATE_INFORMATION_32 {
+    LONGLONG ExtendedCreateFlags;   // extended create flags
+    void* POINTER_32 EaBuffer;      // EA buffer
+    ULONG EaLength;                 // EA buffer length
+} EXTENDED_CREATE_INFORMATION_32, *PEXTENDED_CREATE_INFORMATION_32;
+
+//
+// Define extra create/open option flags. These are passed in through
+// the defined ExtendedInformation struct in the EaBuffer.
+//
+#define EX_CREATE_FLAG_FILE_SOURCE_OPEN_FOR_COPY        0x00000001
+#define EX_CREATE_FLAG_FILE_DEST_OPEN_FOR_COPY          0x00000002
+
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_NI)
+
+//
 // Define the I/O status information return values for NtCreateFile/NtOpenFile
 //
 
@@ -7680,8 +7512,13 @@ typedef enum _FILE_INFORMATION_CLASS {
 } FILE_INFORMATION_CLASS, *PFILE_INFORMATION_CLASS;
 
 typedef enum _DIRECTORY_NOTIFY_INFORMATION_CLASS {
-    DirectoryNotifyInformation         = 1,
-    DirectoryNotifyExtendedInformation // 2
+    DirectoryNotifyInformation           = 1,
+    DirectoryNotifyExtendedInformation, // 2
+#if (_WIN32_WINNT >= _WIN32_WINNT_WIN10_NI)
+    DirectoryNotifyFullInformation,     // 3
+#endif
+                                        // add new classes above
+    DirectoryNotifyMaximumInformation
 } DIRECTORY_NOTIFY_INFORMATION_CLASS, *PDIRECTORY_NOTIFY_INFORMATION_CLASS;
 
 //
@@ -8566,6 +8403,7 @@ typedef struct _MEM_ADDRESS_REQUIREMENTS {
 #define MEM_EXTENDED_PARAMETER_NONPAGED_HUGE            0x00000010
 #define MEM_EXTENDED_PARAMETER_SOFT_FAULT_PAGES         0x00000020
 #define MEM_EXTENDED_PARAMETER_EC_CODE                  0x00000040
+#define MEM_EXTENDED_PARAMETER_IMAGE_NO_HPAT            0x00000080
 
 //
 // Use the high ULONG64 bit of the MEM_EXTENDED_PARAMETER to indicate
@@ -9220,6 +9058,14 @@ DEFINE_GUID(GUID_STANDBY_RESET_PERCENT, 0x49cb11a5, 0x56e2, 0x4afb, 0x9d, 0x38, 
 // {0A7D6AB6-AC83-4AD1-8282-ECA5B58308F3}
 //
 DEFINE_GUID(GUID_HUPR_ADAPTIVE_DISPLAY_TIMEOUT, 0x0A7D6AB6, 0xAC83, 0x4AD1, 0x82, 0x82, 0xEC, 0xA5, 0xB5, 0x83, 0x08, 0xF3);
+
+//
+// Defines a guid to control Human Presence Sensor Adaptive Dim Timeout;
+//
+// {CF8C6097-12B8-4279-BBDD-44601EE5209D}
+//
+
+DEFINE_GUID(GUID_HUPR_ADAPTIVE_DIM_TIMEOUT, 0xCF8C6097, 0x12B8, 0x4279, 0xBB, 0xDD, 0x44, 0x60, 0x1E, 0xE5, 0x20, 0x9D);
 
 //
 // Defines a guid for enabling/disabling standby (S1-S3) states. This does not
@@ -9994,6 +9840,41 @@ DEFINE_GUID( GUID_PROCESSOR_LATENCY_HINT_MIN_UNPARK, 0x616cdaa5, 0x695e, 0x4545,
 DEFINE_GUID( GUID_PROCESSOR_LATENCY_HINT_MIN_UNPARK_1, 0x616cdaa5, 0x695e, 0x4545, 0x97, 0xad, 0x97, 0xdc, 0x2d, 0x1b, 0xdd, 0x89);
 
 //
+// Specifies the module unparking policy.
+//
+// {b0deaf6b-59c0-4523-8a45-ca7f40244114}
+//
+DEFINE_GUID( GUID_PROCESSOR_MODULE_PARKING_POLICY, 0xb0deaf6b, 0x59c0, 0x4523, 0x8a, 0x45, 0xca, 0x7f, 0x40, 0x24, 0x41, 0x14);
+
+//
+// Specifies the complex llc unparking policy.
+//
+// {b669a5e9-7b1d-4132-baaa-49190abcfeb6}
+//
+DEFINE_GUID(GUID_PROCESSOR_COMPLEX_PARKING_POLICY, 0xb669a5e9, 0x7b1d, 0x4132, 0xba, 0xaa, 0x49, 0x19, 0xa, 0xbc, 0xfe, 0xb6);
+
+//
+// PO topology(module or complex) parking Policies
+//
+
+#define PARKING_TOPOLOGY_POLICY_DISABLED    0
+#define PARKING_TOPOLOGY_POLICY_ROUNDROBIN  1
+#define PARKING_TOPOLOGY_POLICY_SEQUENTIAL  2
+
+//
+// Specifies the Smt unparking policy.
+//
+// {b28a6829-c5f7-444e-8f61-10e24e85c532}
+//
+
+DEFINE_GUID(GUID_PROCESSOR_SMT_UNPARKING_POLICY, 0xb28a6829, 0xc5f7, 0x444e, 0x8f, 0x61, 0x10, 0xe2, 0x4e, 0x85, 0xc5, 0x32);
+
+#define SMT_UNPARKING_POLICY_CORE 0
+#define SMT_UNPARKING_POLICY_CORE_PER_THREAD 1
+#define SMT_UNPARKING_POLICY_LP_ROUNDROBIN 2
+#define SMT_UNPARKING_POLICY_LP_SEQUENTIAL 3
+
+//
 // Specifies whether the core parking engine should distribute processor
 // utility.
 //
@@ -10039,12 +9920,30 @@ DEFINE_GUID( GUID_PROCESSOR_HETERO_DECREASE_THRESHOLD, 0xf8861c27, 0x95e7, 0x475
 
 //
 // Specifies the performance level (in units of Processor Power Efficiency
+// Class 1 processor performance) at which the number of Processor Power
+// Efficiency Class 2 processors is decreased.
+//
+// {f8861c27-95e7-475c-865b-13c0cb3f9d6c}
+//
+DEFINE_GUID( GUID_PROCESSOR_HETERO_DECREASE_THRESHOLD_1, 0xf8861c27, 0x95e7, 0x475c, 0x86, 0x5b, 0x13, 0xc0, 0xcb, 0x3f, 0x9d, 0x6c);
+
+//
+// Specifies the performance level (in units of Processor Power Efficiency
 // Class 0 processor performance) at which the number of Processor Power
 // Efficiency Class 1 processors is increased.
 //
 // {b000397d-9b0b-483d-98c9-692a6060cfbf}
 //
 DEFINE_GUID( GUID_PROCESSOR_HETERO_INCREASE_THRESHOLD, 0xb000397d, 0x9b0b, 0x483d, 0x98, 0xc9, 0x69, 0x2a, 0x60, 0x60, 0xcf, 0xbf);
+
+//
+// Specifies the performance level (in units of Processor Power Efficiency
+// Class 1 processor performance) at which the number of Processor Power
+// Efficiency Class 2 processors is increased.
+//
+// {b000397d-9b0b-483d-98c9-692a6060cfc0}
+//
+DEFINE_GUID( GUID_PROCESSOR_HETERO_INCREASE_THRESHOLD_1, 0xb000397d, 0x9b0b, 0x483d, 0x98, 0xc9, 0x69, 0x2a, 0x60, 0x60, 0xcf, 0xc0);
 
 //
 // Specifies the performance target floor of a Processor Power Efficiency
@@ -10090,6 +9989,37 @@ DEFINE_GUID( GUID_PROCESSOR_SHORT_THREAD_SCHEDULING_POLICY,
 DEFINE_GUID( GUID_PROCESSOR_SHORT_THREAD_RUNTIME_THRESHOLD,
 0xd92998c2, 0x6a48, 0x49ca, 0x85, 0xd4, 0x8c, 0xce, 0xec, 0x29, 0x45, 0x70);
 
+//
+// Specify the upper limit of architecture class for short run threads.
+//
+// {828423EB-8662-4344-90F7-52BF15870F5A}
+//
+DEFINE_GUID( GUID_PROCESSOR_SHORT_THREAD_ARCH_CLASS_UPPER_THRESHOLD,
+0x828423eb, 0x8662, 0x4344, 0x90, 0xf7, 0x52, 0xbf, 0x15, 0x87, 0x0f, 0x5a);
+
+//
+// Specify the lower limit of architecture class for short run threads.
+//
+// {53824D46-87BD-4739-AA1B-AA793FAC36D6}
+//
+DEFINE_GUID( GUID_PROCESSOR_SHORT_THREAD_ARCH_CLASS_LOWER_THRESHOLD,
+0x53824d46, 0x87bd, 0x4739, 0xaa, 0x1b, 0xaa, 0x79, 0x3f, 0xac, 0x36, 0xd6);
+
+//
+// Specify the upper limit of architecture class for long run threads.
+//
+// {BF903D33-9D24-49D3-A468-E65E0325046A}
+//
+DEFINE_GUID( GUID_PROCESSOR_LONG_THREAD_ARCH_CLASS_UPPER_THRESHOLD,
+0xbf903d33, 0x9d24, 0x49d3, 0xa4, 0x68, 0xe6, 0x5e, 0x03, 0x25, 0x04, 0x6a);
+
+//
+// Specify the lower limit of architecture class for long run threads.
+//
+// {43F278BC-0F8A-46D0-8B31-9A23E615D713}
+//
+DEFINE_GUID( GUID_PROCESSOR_LONG_THREAD_ARCH_CLASS_LOWER_THRESHOLD,
+0x43f278bc, 0x0f8a, 0x46d0, 0x8b, 0x31, 0x9a, 0x23, 0xe6, 0x15, 0xd7, 0x13);
 
 //
 // Specifies active vs passive cooling.  Although not directly related to
@@ -10726,7 +10656,7 @@ typedef enum {
     MonitorInvocation,
     FirmwareTableInformationRegistered,
     SetShutdownSelectedTime,
-    SuspendResumeInvocation,
+    SuspendResumeInvocation,                        // Deprecated
     PlmPowerRequestCreate,
     ScreenOff,
     CsDeviceNotification,
@@ -10752,6 +10682,7 @@ typedef enum {
     UpdateBlackBoxRecorder,
     SessionAllowExternalDmaDevices,
     SendSuspendResumeNotification,
+    BlackBoxRecorderDirectAccessBuffer,
     PowerInformationLevelMaximum
 } POWER_INFORMATION_LEVEL;
 
@@ -13972,6 +13903,42 @@ memcpy_inline (
 #define RtlFillMemory(Destination,Length,Fill) memset((Destination),(Fill),(Length))
 #define RtlZeroMemory(Destination,Length) memset((Destination),0,(Length))
 
+#if !defined(MIDL_PASS)
+
+_Check_return_
+FORCEINLINE
+int
+RtlConstantTimeEqualMemory(
+    _In_reads_bytes_(len) const void* v1,
+    _In_reads_bytes_(len) const void* v2,
+    unsigned long len
+    )
+{
+    char x = 0;
+    unsigned long i = 0;
+
+    // Use volatile to prevent compiler from optimizing read
+    volatile const char* p1 = (volatile const char*) v1;
+    volatile const char* p2 = (volatile const char*) v2;
+
+    for (; i < len; i += 1) {
+
+#if !defined(_M_CEE) && (defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC))
+
+        x |= __iso_volatile_load8(&p1[i]) ^ __iso_volatile_load8(&p2[i]);
+
+#else
+
+        x |= p1[i] ^ p2[i];
+
+#endif
+
+    }
+
+    return x == 0;
+}
+
+#endif
 
 #if !defined(MIDL_PASS)
 
@@ -15249,6 +15216,8 @@ RtlFindClearRuns (
     );
 #endif
 
+
+
 //
 //  The following routine locates the longest contiguous region of
 //  clear bits within the bitmap.  The returned starting index value
@@ -15585,6 +15554,7 @@ RtlSetDaclSecurityDescriptor (
 #define SEF_AI_USE_EXTRA_PARAMS           0x800
 #define SEF_AVOID_OWNER_RESTRICTION       0x1000
 #define SEF_FORCE_USER_MODE               0x2000
+#define SEF_NORMALIZE_OUTPUT_DESCRIPTOR   0x4000
 
 #define SEF_MACL_VALID_FLAGS              (SEF_MACL_NO_WRITE_UP   | \
                                            SEF_MACL_NO_READ_UP    | \
@@ -16153,6 +16123,8 @@ typedef struct _IMAGE_POLICY_ENTRY {
 } IMAGE_POLICY_ENTRY;
 typedef const IMAGE_POLICY_ENTRY* PCIMAGE_POLICY_ENTRY;
 
+#ifdef _MSC_EXTENSIONS
+
 #pragma warning(push)
 #pragma warning(disable:4200) // zero-sized array in struct/union
 typedef struct _IMAGE_POLICY_METADATA {
@@ -16178,6 +16150,8 @@ IMAGE_POLICY_METADATA IMAGE_POLICY_METADATA_NAME = {                          \
     }                                                                         \
 };                                                                            \
 __pragma(const_seg(pop))
+
+#endif
 
 #define IMAGE_POLICY_BOOL(_PolicyId_, _Value_)             \
     {ImagePolicyEntryTypeBool, _PolicyId_, (const VOID*)_Value_},
@@ -17316,6 +17290,8 @@ typedef _Enum_is_bitflag_ enum _POOL_TYPE POOL_TYPE;
 
 
 
+typedef ULONG64 POOL_FLAGS;
+
 typedef
 _IRQL_requires_same_
 _Function_class_(ALLOCATE_FUNCTION)
@@ -17498,7 +17474,7 @@ typedef KSYNCHRONIZE_ROUTINE *PKSYNCHRONIZE_ROUTINE;
 
 typedef struct _KAPC {                  
     UCHAR Type;                         
-    UCHAR SpareByte0;                   
+        UCHAR AllFlags;                 
     UCHAR Size;                         
     UCHAR SpareByte1;                   
     ULONG SpareLong0;                   
@@ -17513,7 +17489,6 @@ typedef struct _KAPC {
     BOOLEAN Inserted;                   
 } KAPC, *PKAPC, *PRKAPC;        
 
-#define KAPC_OFFSET_TO_SPARE_BYTE0 FIELD_OFFSET(KAPC, SpareByte0)
 #define KAPC_OFFSET_TO_SPARE_BYTE1 FIELD_OFFSET(KAPC, SpareByte1)
 #define KAPC_OFFSET_TO_SPARE_LONG FIELD_OFFSET(KAPC, SpareLong0)
 #define KAPC_OFFSET_TO_SYSTEMARGUMENT1 FIELD_OFFSET(KAPC, SystemArgument1)
@@ -21900,6 +21875,7 @@ typedef enum _KWAIT_REASON {
     WrDeferredPreempt,
     WrPhysicalFault,
     WrIoRing,
+    WrMdlCache,
     MaximumWaitReason
 } KWAIT_REASON;
 
@@ -23157,6 +23133,7 @@ typedef struct _KBUGCHECK_REASON_CALLBACK_RECORD {
     UCHAR State;
 } KBUGCHECK_REASON_CALLBACK_RECORD, *PKBUGCHECK_REASON_CALLBACK_RECORD;
 
+
 typedef struct _KBUGCHECK_SECONDARY_DUMP_DATA {
     IN PVOID InBuffer;
     IN ULONG InBufferLength;
@@ -24212,9 +24189,10 @@ DECLSPEC_SELECTANY ULONG ExDefaultMdlProtection = 0;
 
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
 
-DECLSPEC_DEPRECATED_DDK                     // Use ExAllocatePoolWithTag
-__drv_preferredFunction("ExAllocatePoolWithTag",
-                        "No tag interferes with debugging.")
+__declspec(deprecated("ExAllocatePool is deprecated, use ExAllocatePool2."))
+
+__drv_preferredFunction("ExAllocatePool2",
+                        "ExAllocatePool2 returns zeroized memory.")
 __drv_allocatesMem(Mem)
 _When_((PoolType & PagedPool) != 0, _IRQL_requires_max_(APC_LEVEL))
 _When_((PoolType & PagedPool) == 0, _IRQL_requires_max_(DISPATCH_LEVEL))
@@ -24239,9 +24217,10 @@ ExAllocatePool (
 
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
 
-DECLSPEC_DEPRECATED_DDK                     // Use ExAllocatePoolWithQuotaTag
-__drv_preferredFunction("ExAllocatePoolWithQuotaTag",
-                        "No tag interferes with debugging.")
+__declspec(deprecated("ExAllocatePoolWithQuota is deprecated, use ExAllocatePool2."))
+
+__drv_preferredFunction("ExAllocatePool2",
+                        "ExAllocatePool2 returns zeroized memory.")
 __drv_allocatesMem(Mem)
 _When_((PoolType & PagedPool) != 0, _IRQL_requires_max_(APC_LEVEL))
 _When_((PoolType & PagedPool) == 0, _IRQL_requires_max_(DISPATCH_LEVEL))
@@ -24262,6 +24241,8 @@ ExAllocatePoolWithQuota (
 #endif
 
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
+
+__declspec(deprecated("ExAllocatePoolWithTag is deprecated, use ExAllocatePool2."))
 
 __drv_allocatesMem(Mem)
 _When_((PoolType & PagedPool) != 0, _IRQL_requires_max_(APC_LEVEL))
@@ -24325,6 +24306,8 @@ typedef _Enum_is_bitflag_ enum _EX_POOL_PRIORITY {
 } EX_POOL_PRIORITY;
 
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
+
+__declspec(deprecated("ExAllocatePoolWithTagPriority is deprecated, use ExAllocatePool3."))
 
 __drv_allocatesMem(Mem)
 _When_((PoolType & PagedPool) != 0, _IRQL_requires_max_(APC_LEVEL))
@@ -24396,7 +24379,9 @@ typedef struct _POOL_EXTENDED_PARAMETER {
 typedef CONST POOL_EXTENDED_PARAMETER *PCPOOL_EXTENDED_PARAMETER;
 
 
-typedef ULONG64 POOL_FLAGS;
+typedef
+_When_((_Curr_ & POOL_FLAG_NON_PAGED_EXECUTE) != 0, __drv_reportError("Warning: Allocating executable POOL_FLAGS memory"))
+ULONG64 POOL_FLAGS;
 
 
 __drv_allocatesMem(Mem)
@@ -24495,6 +24480,8 @@ ExSecurePoolValidate (
 
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
 
+__declspec(deprecated("ExAllocatePoolWithQuotaTag is deprecated, use ExAllocatePool2."))
+
 __drv_allocatesMem(Mem)
 _When_((PoolType & PagedPool) != 0, _IRQL_requires_max_(APC_LEVEL))
 _When_((PoolType & PagedPool) == 0, _IRQL_requires_max_(DISPATCH_LEVEL))
@@ -24556,6 +24543,7 @@ ExAllocatePoolZero (
 {
     PVOID Allocation;
 
+    #pragma warning( suppress : 4996 28751 )
     Allocation = ExAllocatePoolWithTag((POOL_TYPE) (PoolType | POOL_ZERO_ALLOCATION),
                                        NumberOfBytes,
                                        Tag);
@@ -24593,6 +24581,7 @@ ExAllocatePoolUninitialized (
     _In_ ULONG Tag
     )
 {
+    #pragma warning( suppress : 4996 28751 )
     return ExAllocatePoolWithTag(PoolType,
                                  NumberOfBytes,
                                  Tag);
@@ -24622,6 +24611,7 @@ ExAllocatePoolQuotaZero (
 {
     PVOID Allocation;
 
+    #pragma warning( suppress : 4996 28751 )
     Allocation = ExAllocatePoolWithQuotaTag((POOL_TYPE) (PoolType | POOL_ZERO_ALLOCATION),
                                             NumberOfBytes,
                                             Tag);
@@ -24659,6 +24649,7 @@ ExAllocatePoolQuotaUninitialized (
     _In_ ULONG Tag
     )
 {
+    #pragma warning( suppress : 4996 28751 )
     return ExAllocatePoolWithQuotaTag(PoolType,
                                       NumberOfBytes,
                                       Tag);
@@ -24689,6 +24680,7 @@ ExAllocatePoolPriorityZero (
 {
     PVOID Allocation;
 
+    #pragma warning( suppress : 4996 28751 )
     Allocation = ExAllocatePoolWithTagPriority((POOL_TYPE) (PoolType | POOL_ZERO_ALLOCATION),
                                                NumberOfBytes,
                                                Tag,
@@ -24728,6 +24720,7 @@ ExAllocatePoolPriorityUninitialized (
     _In_ EX_POOL_PRIORITY Priority
     )
 {
+    #pragma warning( suppress : 4996 28751 )
     return ExAllocatePoolWithTagPriority(PoolType,
                                          NumberOfBytes,
                                          Tag,
@@ -25345,6 +25338,27 @@ ExFlushLookasideListEx (
     _Inout_ PLOOKASIDE_LIST_EX Lookaside
     );
 
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI)
+
+__drv_allocatesMem(Mem)
+_Must_inspect_result_
+_IRQL_requires_max_(DISPATCH_LEVEL)
+NTKERNELAPI
+PVOID
+ExAllocateFromLookasideListEx (
+    _Inout_ PLOOKASIDE_LIST_EX Lookaside
+    );
+
+_IRQL_requires_max_(DISPATCH_LEVEL)
+NTKERNELAPI
+VOID
+ExFreeToLookasideListEx (
+    _Inout_ PLOOKASIDE_LIST_EX Lookaside,
+    _In_ __drv_freesMem(Entry) PVOID Entry
+    );
+
+#else
+
 __drv_allocatesMem(Mem)
 _Must_inspect_result_
 _IRQL_requires_max_(DISPATCH_LEVEL)
@@ -25433,6 +25447,8 @@ Return Value:
     return;
 }
 
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_NI)
+
 #endif // (NTDDI_VERSION >= NTDDI_VISTA)
 
 typedef struct LOOKASIDE_ALIGN _NPAGED_LOOKASIDE_LIST {
@@ -25518,6 +25534,28 @@ ExDeleteNPagedLookasideList (
     );
 
 #endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI)
+
+__drv_allocatesMem(Mem)
+_IRQL_requires_max_(DISPATCH_LEVEL)
+_Ret_maybenull_
+_Post_writable_byte_size_(Lookaside->L.Size)
+NTKERNELAPI
+PVOID
+ExAllocateFromNPagedLookasideList (
+    _Inout_ PNPAGED_LOOKASIDE_LIST Lookaside
+    );
+
+_IRQL_requires_max_(DISPATCH_LEVEL)
+NTKERNELAPI
+VOID
+ExFreeToNPagedLookasideList (
+    _Inout_ PNPAGED_LOOKASIDE_LIST Lookaside,
+    _In_ __drv_freesMem(Mem) PVOID Entry
+    );
+
+#else
 
 __drv_allocatesMem(Mem)
 _IRQL_requires_max_(DISPATCH_LEVEL)
@@ -25630,6 +25668,8 @@ Return Value:
     return;
 }
 
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_NI)
+
 
 
 typedef struct LOOKASIDE_ALIGN _PAGED_LOOKASIDE_LIST {
@@ -25673,7 +25713,7 @@ ExDeletePagedLookasideList (
 
 #endif
 
-#if defined(_WIN2K_COMPAT_SLIST_USAGE) && defined(_X86_)
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI) || (defined(_WIN2K_COMPAT_SLIST_USAGE) && defined(_X86_))
 
 _IRQL_requires_max_(APC_LEVEL)
 NTKERNELAPI
@@ -25731,9 +25771,9 @@ Return Value:
 
 #pragma warning(pop)
 
-#endif
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_NI) || (defined(_WIN2K_COMPAT_SLIST_USAGE) && defined(_X86_))
 
-#if defined(_WIN2K_COMPAT_SLIST_USAGE) && defined(_X86_)
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI) || defined(_WIN2K_COMPAT_SLIST_USAGE) && defined(_X86_)
 
 _IRQL_requires_max_(APC_LEVEL)
 NTKERNELAPI
@@ -25788,7 +25828,7 @@ Return Value:
     return;
 }
 
-#endif
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_NI) || (defined(_WIN2K_COMPAT_SLIST_USAGE) && defined(_X86_))
 
 
 #if defined(_NTDDK_) || defined(_NTIFS_)
@@ -27052,12 +27092,14 @@ ExReleasePushLockSharedEx (
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_CO)
 
+#define ATS_DEVICE_SVM_OPTOUT 0x1
+
 _IRQL_requires_max_(PASSIVE_LEVEL)
 NTKERNELAPI
 NTSTATUS
 ExInitializeDeviceAts (
     _In_ struct _DEVICE_OBJECT *PhysicalDeviceObject,
-    _In_ BOOLEAN SvmOptOut
+    _In_ ULONG Flags
     );
 
 #endif
@@ -28485,10 +28527,10 @@ typedef enum _MM_PAGE_PRIORITY {
     HighPagePriority = 32
 } MM_PAGE_PRIORITY;
 
-
-
 #define MdlMappingNoWrite       0x80000000  // Create the mapping as nowrite
 #define MdlMappingNoExecute     0x40000000  // Create the mapping as noexecute
+#define MdlMappingWithGuardPtes 0x20000000  // Create the mapping with guard PTEs
+
 
 
 
@@ -30553,6 +30595,13 @@ typedef struct _IO_SECURITY_CONTEXT {
 
 #define VPB_FLAGS_BYPASSIO_BLOCKED          0x0040
 
+//
+//  Flag that this VPB is for a volume that is being dismounted.
+//  (Note: this flag is likely temporary.)
+//
+
+#define VPB_DISMOUNTING                     0x0080
+
 #endif
 
 //
@@ -30876,6 +30925,19 @@ typedef SECTION_OBJECT_POINTERS *PSECTION_OBJECT_POINTERS;
 typedef struct _IO_COMPLETION_CONTEXT {
     PVOID Port;
     PVOID Key;
+
+    //
+    // Used to prevent the completion context IOCP from being removed or
+    // replaced when it's being used. Note that because this field is protected
+    // by a spin lock, for perf reasons this value is only updated in code
+    // paths that are not already protected by other mechanisms. For example,
+    // the IOCP removal/replacement code already fails if there are any IRPs
+    // queued to the file object, therefore this value does not need to be
+    // updated when completing an IRP that is queued to a file object. The
+    // initial value is 0.
+    //
+
+    LONG_PTR UsageCount;
 } IO_COMPLETION_CONTEXT, *PIO_COMPLETION_CONTEXT;
 
 
@@ -31342,6 +31404,7 @@ typedef IO_COMPLETION_ROUTINE *PIO_COMPLETION_ROUTINE;
 #define SL_FORCE_DIRECT_WRITE               0x10
 #define SL_REALTIME_STREAM                  0x20    // valid only with optical media
 #define SL_PERSISTENT_MEMORY_FIXED_MAPPING  0x20    // valid only with persistent memory device and IRP_MJ_WRITE
+#define SL_BYPASS_IO                        0x40
 
 //
 // SL_KEY_SPECIFIED - when set this flag indicates that the IO_STACK_LOCATION.Parameters.Read(OrWrite).Key
@@ -31366,6 +31429,10 @@ typedef IO_COMPLETION_ROUTINE *PIO_COMPLETION_ROUTINE;
 // If the flag is set, a persistent memory driver shall not remap the physical addresses corresponding
 // to the LBAs.  If that means sector atomicity can't be provided, so be it.  However, the driver is more
 // than welcome to provide sector atomicity as long as there is no remapping.
+//
+// SL_BYPASS_IO - flag indicates that this IO is using Bypass IO. Some drivers on the file/storage path can be
+// bypassed if they support Byass IO. Drivers can use this flag to determine if a perticular IO is Bypass IO
+// to deploy further optimizations.
 //
 
 //
@@ -33210,10 +33277,9 @@ IoCreateUnprotectedSymbolicLink(
 
 #if (NTDDI_VERSION >= NTDDI_WIN2K)
 _IRQL_requires_max_(APC_LEVEL)
-_Kernel_clear_do_init_(__yes)
 NTKERNELAPI
 VOID
-IoDeleteDevice(
+IoDeleteDevice (
     _In_ __drv_freesMem(Mem) PDEVICE_OBJECT DeviceObject
     );
 #endif
@@ -37583,13 +37649,18 @@ typedef struct _FUNCTION_LEVEL_DEVICE_RESET_PARAMETERS {
 } FUNCTION_LEVEL_DEVICE_RESET_PARAMETERS, *PFUNCTION_LEVEL_DEVICE_RESET_PARAMETERS;
 
 typedef
+_IRQL_requires_same_
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Function_class_(DEVICE_RESET_HANDLER)
 NTSTATUS
-(*PDEVICE_RESET_HANDLER)(
+DEVICE_RESET_HANDLER(
     _In_ PVOID InterfaceContext,
     _In_ DEVICE_RESET_TYPE ResetType,
     _In_ ULONG Flags,
     _In_opt_ PVOID ResetParameters
     );
+
+typedef DEVICE_RESET_HANDLER *PDEVICE_RESET_HANDLER;
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_FE)
 
@@ -37603,34 +37674,68 @@ typedef struct _DEVICE_BUS_SPECIFIC_RESET_INFO {
 
 } DEVICE_BUS_SPECIFIC_RESET_INFO, *PDEVICE_BUS_SPECIFIC_RESET_INFO;
 
-#define RESET_FLAG_PLDR_KEEP_DRIVER_STACK  0x1
-
 typedef
+_IRQL_requires_same_
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Function_class_(DEVICE_QUERY_BUS_SPECIFIC_RESET_HANDLER)
 NTSTATUS
-(*PDEVICE_QUERY_BUS_SPECIFIC_RESET_HANDLER)(
+DEVICE_QUERY_BUS_SPECIFIC_RESET_HANDLER(
     _In_ PVOID InterfaceContext,
     _Out_ PULONG ResetInfoCount,
     _Out_ PDEVICE_BUS_SPECIFIC_RESET_INFO ResetInfoSupported
 );
 
+typedef DEVICE_QUERY_BUS_SPECIFIC_RESET_HANDLER *PDEVICE_QUERY_BUS_SPECIFIC_RESET_HANDLER;
+
+typedef union _BUS_SPECIFIC_RESET_FLAGS {
+    struct {
+        ULONGLONG KeepStackReset:1;
+        ULONGLONG Reserved:63;
+    } u;
+    ULONGLONG AsUlonglong;
+} BUS_SPECIFIC_RESET_FLAGS, *PBUS_SPECIFIC_RESET_FLAGS;
+
+C_ASSERT(sizeof(BUS_SPECIFIC_RESET_FLAGS) == sizeof(ULONGLONG));
+
 typedef
+_IRQL_requires_same_
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Function_class_(DEVICE_BUS_SPECIFIC_RESET_HANDLER)
 NTSTATUS
-(*PDEVICE_BUS_SPECIFIC_RESET_HANDLER)(
+DEVICE_BUS_SPECIFIC_RESET_HANDLER(
     _In_ PVOID InterfaceContext,
     _In_ CONST GUID *BusType,
     _In_ DEVICE_BUS_SPECIFIC_RESET_TYPE ResetTypeSelected,
-    _In_ ULONGLONG Flags,
+    _In_ PBUS_SPECIFIC_RESET_FLAGS Flags,
     _In_ PVOID ResetParameters
 );
 
+typedef DEVICE_BUS_SPECIFIC_RESET_HANDLER *PDEVICE_BUS_SPECIFIC_RESET_HANDLER;
+
+typedef union _DEVICE_RESET_STATUS_FLAGS {
+    struct {
+        ULONGLONG KeepStackReset:1;
+        ULONGLONG RecoveringFromBusError:1;
+        ULONGLONG Reserved:62;
+    } u;
+    ULONGLONG AsUlonglong;
+} DEVICE_RESET_STATUS_FLAGS, *PDEVICE_RESET_STATUS_FLAGS;
+
+C_ASSERT(sizeof(DEVICE_RESET_STATUS_FLAGS) == sizeof(ULONGLONG));
+
 typedef
+_IRQL_requires_same_
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Function_class_(GET_DEVICE_RESET_STATUS)
 NTSTATUS
-(*PGET_DEVICE_RESET_STATUS)(
+GET_DEVICE_RESET_STATUS(
     _In_ PVOID InterfaceContext,
     _Out_ PBOOLEAN IsResetting,
     _Out_ PDEVICE_BUS_SPECIFIC_RESET_TYPE ResetTypeSelected,
-    _Out_ PULONGLONG Flags
+    _Out_ PDEVICE_RESET_STATUS_FLAGS Flags
 );
+
+typedef GET_DEVICE_RESET_STATUS *PGET_DEVICE_RESET_STATUS;
 
 #endif
 
@@ -37774,7 +37879,8 @@ typedef struct _DEVICE_DESCRIPTION {
 // Define the supported version numbers for the DMA adapter info structure.
 //
 
-#define DMA_ADAPTER_INFO_VERSION1   1
+#define DMA_ADAPTER_INFO_VERSION1           1
+#define DMA_ADAPTER_INFO_VERSION_CRASHDUMP  MAXULONG
 
 typedef struct _DMA_ADAPTER_INFO_V1 {
     ULONG ReadDmaCounterAvailable;
@@ -37784,10 +37890,17 @@ typedef struct _DMA_ADAPTER_INFO_V1 {
     ULONG MinimumTransferUnit;
 } DMA_ADAPTER_INFO_V1, *PDMA_ADAPTER_INFO_V1;
 
+typedef struct _DMA_ADAPTER_INFO_CRASHDUMP {
+    DEVICE_DESCRIPTION DeviceDescription;
+    SIZE_T DeviceIdSize;
+    PVOID DeviceId;
+} DMA_ADAPTER_INFO_CRASHDUMP, *PDMA_ADAPTER_INFO_CRASHDUMP;
+
 typedef struct _DMA_ADAPTER_INFO {
     ULONG Version;
     union {
         DMA_ADAPTER_INFO_V1 V1;
+        DMA_ADAPTER_INFO_CRASHDUMP Crashdump;
     };
 } DMA_ADAPTER_INFO, *PDMA_ADAPTER_INFO;
 
@@ -38829,6 +38942,7 @@ typedef union _IOMMU_DMA_DOMAIN_CREATION_FLAGS {
 typedef enum _IOMMU_DEVICE_CREATION_CONFIGURATION_TYPE {
     IommuDeviceCreationConfigTypeNone,
     IommuDeviceCreationConfigTypeAcpi,
+    IommuDeviceCreationConfigTypeDeviceId,
     IommuDeviceCreationConfigTypeMax
 } IOMMU_DEVICE_CREATION_CONFIGURATION_TYPE,
   *PIOMMU_DEVICE_CREATION_CONFIGURATION_TYPE;
@@ -38844,6 +38958,7 @@ typedef struct _IOMMU_DEVICE_CREATION_CONFIGURATION {
     IOMMU_DEVICE_CREATION_CONFIGURATION_TYPE ConfigType;
     union {
         IOMMU_DEVICE_CREATION_CONFIGURATION_ACPI Acpi;
+        PVOID DeviceId;
 
         //
         // Future configs.
@@ -40753,6 +40868,7 @@ typedef struct _PO_FX_DEVICE_V2 {
 
 #define PO_FX_DEVICE_FLAG_DISABLE_FAST_RESUME          (0x0000000000000008ull)
 #define PO_FX_DEVICE_FLAG_ENABLE_FAST_RESUME           (0x0000000000000010ull)
+#define PO_FX_DEVICE_FLAG_NO_FAULT_CALLBACKS           (0x0000000000000020ull)
 
 #define PO_FX_DIRECTED_FX_DEFAULT_IDLE_TIMEOUT    (0ul)
 #define PO_FX_DIRECTED_FX_IMMEDIATE_IDLE_TIMEOUT  ((ULONG)-1)
@@ -43491,8 +43607,8 @@ ZwCreateKeyTransacted(
 #endif
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_TH2)
-_Must_inspect_result_ 
-_IRQL_requires_max_ (PASSIVE_LEVEL) 
+_Must_inspect_result_
+_IRQL_requires_max_ (PASSIVE_LEVEL)
 __kernel_entry NTSYSCALLAPI
 NTSTATUS
 NTAPI

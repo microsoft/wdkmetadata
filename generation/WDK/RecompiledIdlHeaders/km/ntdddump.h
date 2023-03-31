@@ -227,7 +227,7 @@ typedef struct _FILTER_INITIALIZATION_DATA {
 //
 // FILTER_INITIALIZATION_DATA flags
 //
-#define DUMP_FILTER_FLAG_SYSTEM_SUPPORT_READ	             0x1
+#define DUMP_FILTER_FLAG_SYSTEM_SUPPORT_READ                 0x1
 #define DUMP_FILTER_FLAG_SYSTEM_SUPPORT_FILTER_EXTENSION_EX  0x2
 
 //
@@ -235,6 +235,19 @@ typedef struct _FILTER_INITIALIZATION_DATA {
 // supports addressing full memory within a single 4GB region
 //
 #define DUMP_FILTER_FLAG_SYSTEM_SUPPORT_64BIT_MEMORY         0x4
+
+//
+// Indicates to the dump filter driver that the dump stack
+// is being constructed to participate in the early crash dump
+// scenario support
+//
+#define DUMP_FILTER_FLAG_EARLY_INIT                          0x8
+
+//
+// Indicates to the dump filter driver that early dump generation
+// is supported
+//
+#define DUMP_FILTER_FLAG_EARLY_DUMP_SUPPORTED                0x10
 
 #endif // __NTDDDUMP_H__
 

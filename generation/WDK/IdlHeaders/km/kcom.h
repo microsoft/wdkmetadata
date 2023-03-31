@@ -264,7 +264,16 @@ inline PVOID operator new
     POOL_TYPE       poolType
 )
 {
+    #if PRAGMA_DEPRECATED_DDK == 0
+    #pragma warning ( push )
+    #pragma warning ( disable: 4996 )
+    #endif
+
     PVOID result = ExAllocatePoolWithTag(poolType,iSize,'wNCK');
+
+    #if PRAGMA_DEPRECATED_DDK == 0
+    #pragma warning ( pop )
+    #endif
 
     if (result) {
         RtlZeroMemory(result,iSize);
@@ -283,7 +292,16 @@ inline PVOID operator new
     ULONG           tag
 )
 {
+    #if PRAGMA_DEPRECATED_DDK == 0
+    #pragma warning ( push )
+    #pragma warning ( disable: 4996 )
+    #endif
+
     PVOID result = ExAllocatePoolWithTag(poolType,iSize,tag);
+
+    #if PRAGMA_DEPRECATED_DDK == 0
+    #pragma warning ( pop )
+    #endif
 
     if (result) {
         RtlZeroMemory(result,iSize);

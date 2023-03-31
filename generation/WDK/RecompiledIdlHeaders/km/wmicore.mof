@@ -523,6 +523,33 @@ class WHEAPluginCtlMethods : WHEA
         );
 };
 
+[WMI,
+ Dynamic,
+ Provider("WMIProv"),
+ Locale("MS\\0x409"),
+ Description("WHEA Page Offlining Interface") : amended,
+ guid("{8a13d6df-a461-4882-b459-5e68b7146c3d}")
+]
+class WHEAPageOfflineMethods : WHEA
+{
+    [key, read]
+    string InstanceName;
+
+    [read] boolean Active;
+
+    [WmiMethodId(1),
+     Implemented,
+     DisplayName("WHEA Page Offlining Interface") : amended,
+     HeaderName("WHEA_PAGE_OFFLINING_INTERFACE"),
+     Description("WHEA Page Offlining Interface") : amended
+    ]
+    void WheaPageOfflineInterfaceRtn(
+        [in] uint32 InputLength,
+        [in, WmiSizeIs("InputLength")] uint8 InputBuffer[],
+        [out] uint32 Status
+        );
+};
+
 //
 // SMBIOS data classes
 //
@@ -15676,9 +15703,43 @@ class PageFault:MSNT_SystemTrace
 [Dynamic,
  Description("Heap Range Rundown Event") : amended,
  EventType(100),
+ EventVersion(4),
  EventTypeName("HRRundown") : amended
 ]
-class PageFault_HeapRangeRundown:PageFault
+class PageFault_HeapRangeRundown_V4:PageFault
+{
+    [WmiDataId(1),
+     Description("HeapHandle") : amended,
+     pointer,
+     read]
+     uint32  HeapHandle;
+    [WmiDataId(2),
+     Description("HRFlags") : amended,
+     format("x"),
+     read]
+     uint32  HRFlags;
+    [WmiDataId(3),
+     Description("HRPid") : amended,
+     format("x"),
+     read]
+     uint32  HRPid;
+    [WmiDataId(4),
+     Description("HRRangeCount") : amended,
+     read]
+     uint32  HRRangeCount;
+    [WmiDataId(5),
+     Description("HRHeapTag") : amended,
+     read]
+     uint64  HRHeapTag;
+};
+
+[Dynamic,
+ Description("Heap Range Rundown Event") : amended,
+ EventType(100),
+ EventVersion(3),
+ EventTypeName("HRRundown") : amended
+]
+class PageFault_HeapRangeRundown_V3:PageFault_V2
 {
     [WmiDataId(1),
      Description("HeapHandle") : amended,

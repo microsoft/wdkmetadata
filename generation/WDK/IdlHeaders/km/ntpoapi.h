@@ -474,6 +474,14 @@ DEFINE_GUID(GUID_STANDBY_RESET_PERCENT, 0x49cb11a5, 0x56e2, 0x4afb, 0x9d, 0x38, 
 DEFINE_GUID(GUID_HUPR_ADAPTIVE_DISPLAY_TIMEOUT, 0x0A7D6AB6, 0xAC83, 0x4AD1, 0x82, 0x82, 0xEC, 0xA5, 0xB5, 0x83, 0x08, 0xF3);
 
 //
+// Defines a guid to control Human Presence Sensor Adaptive Dim Timeout;
+//
+// {CF8C6097-12B8-4279-BBDD-44601EE5209D}
+//
+
+DEFINE_GUID(GUID_HUPR_ADAPTIVE_DIM_TIMEOUT, 0xCF8C6097, 0x12B8, 0x4279, 0xBB, 0xDD, 0x44, 0x60, 0x1E, 0xE5, 0x20, 0x9D);
+
+//
 // Defines a guid for enabling/disabling standby (S1-S3) states. This does not
 // affect hibernation (S4).
 //
@@ -1246,6 +1254,41 @@ DEFINE_GUID( GUID_PROCESSOR_LATENCY_HINT_MIN_UNPARK, 0x616cdaa5, 0x695e, 0x4545,
 DEFINE_GUID( GUID_PROCESSOR_LATENCY_HINT_MIN_UNPARK_1, 0x616cdaa5, 0x695e, 0x4545, 0x97, 0xad, 0x97, 0xdc, 0x2d, 0x1b, 0xdd, 0x89);
 
 //
+// Specifies the module unparking policy.
+//
+// {b0deaf6b-59c0-4523-8a45-ca7f40244114}
+//
+DEFINE_GUID( GUID_PROCESSOR_MODULE_PARKING_POLICY, 0xb0deaf6b, 0x59c0, 0x4523, 0x8a, 0x45, 0xca, 0x7f, 0x40, 0x24, 0x41, 0x14);
+
+//
+// Specifies the complex llc unparking policy.
+//
+// {b669a5e9-7b1d-4132-baaa-49190abcfeb6}
+//
+DEFINE_GUID(GUID_PROCESSOR_COMPLEX_PARKING_POLICY, 0xb669a5e9, 0x7b1d, 0x4132, 0xba, 0xaa, 0x49, 0x19, 0xa, 0xbc, 0xfe, 0xb6);
+
+//
+// PO topology(module or complex) parking Policies
+//
+
+#define PARKING_TOPOLOGY_POLICY_DISABLED    0
+#define PARKING_TOPOLOGY_POLICY_ROUNDROBIN  1
+#define PARKING_TOPOLOGY_POLICY_SEQUENTIAL  2
+
+//
+// Specifies the Smt unparking policy.
+//
+// {b28a6829-c5f7-444e-8f61-10e24e85c532}
+//
+
+DEFINE_GUID(GUID_PROCESSOR_SMT_UNPARKING_POLICY, 0xb28a6829, 0xc5f7, 0x444e, 0x8f, 0x61, 0x10, 0xe2, 0x4e, 0x85, 0xc5, 0x32);
+
+#define SMT_UNPARKING_POLICY_CORE 0
+#define SMT_UNPARKING_POLICY_CORE_PER_THREAD 1
+#define SMT_UNPARKING_POLICY_LP_ROUNDROBIN 2
+#define SMT_UNPARKING_POLICY_LP_SEQUENTIAL 3
+
+//
 // Specifies whether the core parking engine should distribute processor
 // utility.
 //
@@ -1291,12 +1334,30 @@ DEFINE_GUID( GUID_PROCESSOR_HETERO_DECREASE_THRESHOLD, 0xf8861c27, 0x95e7, 0x475
 
 //
 // Specifies the performance level (in units of Processor Power Efficiency
+// Class 1 processor performance) at which the number of Processor Power
+// Efficiency Class 2 processors is decreased.
+//
+// {f8861c27-95e7-475c-865b-13c0cb3f9d6c}
+//
+DEFINE_GUID( GUID_PROCESSOR_HETERO_DECREASE_THRESHOLD_1, 0xf8861c27, 0x95e7, 0x475c, 0x86, 0x5b, 0x13, 0xc0, 0xcb, 0x3f, 0x9d, 0x6c);
+
+//
+// Specifies the performance level (in units of Processor Power Efficiency
 // Class 0 processor performance) at which the number of Processor Power
 // Efficiency Class 1 processors is increased.
 //
 // {b000397d-9b0b-483d-98c9-692a6060cfbf}
 //
 DEFINE_GUID( GUID_PROCESSOR_HETERO_INCREASE_THRESHOLD, 0xb000397d, 0x9b0b, 0x483d, 0x98, 0xc9, 0x69, 0x2a, 0x60, 0x60, 0xcf, 0xbf);
+
+//
+// Specifies the performance level (in units of Processor Power Efficiency
+// Class 1 processor performance) at which the number of Processor Power
+// Efficiency Class 2 processors is increased.
+//
+// {b000397d-9b0b-483d-98c9-692a6060cfc0}
+//
+DEFINE_GUID( GUID_PROCESSOR_HETERO_INCREASE_THRESHOLD_1, 0xb000397d, 0x9b0b, 0x483d, 0x98, 0xc9, 0x69, 0x2a, 0x60, 0x60, 0xcf, 0xc0);
 
 //
 // Specifies the performance target floor of a Processor Power Efficiency
@@ -1342,6 +1403,37 @@ DEFINE_GUID( GUID_PROCESSOR_SHORT_THREAD_SCHEDULING_POLICY,
 DEFINE_GUID( GUID_PROCESSOR_SHORT_THREAD_RUNTIME_THRESHOLD,
 0xd92998c2, 0x6a48, 0x49ca, 0x85, 0xd4, 0x8c, 0xce, 0xec, 0x29, 0x45, 0x70);
 
+//
+// Specify the upper limit of architecture class for short run threads.
+//
+// {828423EB-8662-4344-90F7-52BF15870F5A}
+//
+DEFINE_GUID( GUID_PROCESSOR_SHORT_THREAD_ARCH_CLASS_UPPER_THRESHOLD,
+0x828423eb, 0x8662, 0x4344, 0x90, 0xf7, 0x52, 0xbf, 0x15, 0x87, 0x0f, 0x5a);
+
+//
+// Specify the lower limit of architecture class for short run threads.
+//
+// {53824D46-87BD-4739-AA1B-AA793FAC36D6}
+//
+DEFINE_GUID( GUID_PROCESSOR_SHORT_THREAD_ARCH_CLASS_LOWER_THRESHOLD,
+0x53824d46, 0x87bd, 0x4739, 0xaa, 0x1b, 0xaa, 0x79, 0x3f, 0xac, 0x36, 0xd6);
+
+//
+// Specify the upper limit of architecture class for long run threads.
+//
+// {BF903D33-9D24-49D3-A468-E65E0325046A}
+//
+DEFINE_GUID( GUID_PROCESSOR_LONG_THREAD_ARCH_CLASS_UPPER_THRESHOLD,
+0xbf903d33, 0x9d24, 0x49d3, 0xa4, 0x68, 0xe6, 0x5e, 0x03, 0x25, 0x04, 0x6a);
+
+//
+// Specify the lower limit of architecture class for long run threads.
+//
+// {43F278BC-0F8A-46D0-8B31-9A23E615D713}
+//
+DEFINE_GUID( GUID_PROCESSOR_LONG_THREAD_ARCH_CLASS_LOWER_THRESHOLD,
+0x43f278bc, 0x0f8a, 0x46d0, 0x8b, 0x31, 0x9a, 0x23, 0xe6, 0x15, 0xd7, 0x13);
 
 //
 // Specifies active vs passive cooling.  Although not directly related to
@@ -2007,7 +2099,7 @@ typedef enum {
     MonitorInvocation,
     FirmwareTableInformationRegistered,
     SetShutdownSelectedTime,
-    SuspendResumeInvocation,
+    SuspendResumeInvocation,                        // Deprecated
     PlmPowerRequestCreate,
     ScreenOff,
     CsDeviceNotification,
@@ -2033,6 +2125,7 @@ typedef enum {
     UpdateBlackBoxRecorder,
     SessionAllowExternalDmaDevices,
     SendSuspendResumeNotification,
+    BlackBoxRecorderDirectAccessBuffer,
     PowerInformationLevelMaximum
 } POWER_INFORMATION_LEVEL;
 

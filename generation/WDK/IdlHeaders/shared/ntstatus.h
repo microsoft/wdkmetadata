@@ -729,6 +729,15 @@ Notes:
 #define STATUS_REPARSE_GLOBAL            ((NTSTATUS)0x00000368L)
 
 //
+// MessageId: STATUS_PAGE_FAULT_RETRY
+//
+// MessageText:
+//
+// Page fault should be retried.
+//
+#define STATUS_PAGE_FAULT_RETRY          ((NTSTATUS)0x00000369L)
+
+//
 // MessageId: DBG_EXCEPTION_HANDLED
 //
 // MessageText:
@@ -1967,6 +1976,27 @@ Notes:
 // The buffer is too small to contain the entry. No information has been written to the buffer.
 //
 #define STATUS_FLT_BUFFER_TOO_SMALL      ((NTSTATUS)0x801C0001L)
+
+/*++
+
+ Graphics Facility Warning messages (dxgkrnl.sys)
+
+--*/
+//
+// MessageId: STATUS_GRAPHICS_LINK_CONFIGURATION_IN_PROGRESS
+//
+// MessageText:
+//
+// Link configuration for the display timing is still in progress.
+// 
+// ;/*++
+// ;
+// ; End of Graphics Facility Warning messages.
+// ;
+// ;--*/
+// 
+//
+#define STATUS_GRAPHICS_LINK_CONFIGURATION_IN_PROGRESS ((NTSTATUS)0x801E0000L)
 
 //
 // MessageId: STATUS_FVE_PARTIAL_METADATA
@@ -10486,6 +10516,15 @@ Notes:
 #define STATUS_VOLUME_WRITE_ACCESS_DENIED ((NTSTATUS)0xC00004D3L)
 
 //
+// MessageId: STATUS_PATCH_NOT_REGISTERED
+//
+// MessageText:
+//
+// The patch is not currently registered for the corresponding base image.
+//
+#define STATUS_PATCH_NOT_REGISTERED      ((NTSTATUS)0xC00004D4L)
+
+//
 // MessageId: STATUS_NOT_SUPPORTED_WITH_CACHED_HANDLE
 //
 // MessageText:
@@ -11441,6 +11480,42 @@ Notes:
 // The specified section is supported by direct map technology but the caller specifically does not want that.
 //
 #define STATUS_SECTION_DIRECT_MAP_ONLY   ((NTSTATUS)0xC0000911L)
+
+//
+// MessageId: STATUS_BLOCK_WEAK_REFERENCE_INVALID
+//
+// MessageText:
+//
+// A file system block has been modified after containing a weak reference.
+//
+#define STATUS_BLOCK_WEAK_REFERENCE_INVALID ((NTSTATUS)0xC0000912L)
+
+//
+// MessageId: STATUS_BLOCK_SOURCE_WEAK_REFERENCE_INVALID
+//
+// MessageText:
+//
+// The source file system block has been modified after containing a weak reference.
+//
+#define STATUS_BLOCK_SOURCE_WEAK_REFERENCE_INVALID ((NTSTATUS)0xC0000913L)
+
+//
+// MessageId: STATUS_BLOCK_TARGET_WEAK_REFERENCE_INVALID
+//
+// MessageText:
+//
+// The target file system block has been modified after containing a weak reference.
+//
+#define STATUS_BLOCK_TARGET_WEAK_REFERENCE_INVALID ((NTSTATUS)0xC0000914L)
+
+//
+// MessageId: STATUS_BLOCK_SHARED
+//
+// MessageText:
+//
+// The target file system block is shared between multiple extents.
+//
+#define STATUS_BLOCK_SHARED              ((NTSTATUS)0xC0000915L)
 
 /*++
 
@@ -16909,6 +16984,15 @@ Notes:
 #define STATUS_GRAPHICS_INDIRECT_DISPLAY_DEVICE_STOPPED ((NTSTATUS)0xC01E0013L)
 
 //
+// MessageId: STATUS_GRAPHICS_MPO_ALLOCATION_UNPINNED
+//
+// MessageText:
+//
+// The allocation for the MPO has been unpinned.
+//
+#define STATUS_GRAPHICS_MPO_ALLOCATION_UNPINNED ((NTSTATUS)0xC01E0018L)
+
+//
 //   Video Memory Manager (VidMM) specific status codes {0x0100..0x01ff}
 //
 //
@@ -19039,6 +19123,33 @@ Notes:
 // BitLocker can't enable encryption on this hardware encrypting drive volume because the drive bands couldn't be enumerated.
 //
 #define STATUS_FVE_EDRIVE_BAND_ENUMERATION_FAILED ((NTSTATUS)0xC0210041L)
+
+//
+// MessageId: STATUS_FVE_POLICY_ON_RDV_EXCLUSION_LIST
+//
+// MessageText:
+//
+// This removable data drive has been excluded from device encryption by BitLocker Drive Encryption policy.
+//
+#define STATUS_FVE_POLICY_ON_RDV_EXCLUSION_LIST ((NTSTATUS)0xC0210042L)
+
+//
+// MessageId: STATUS_FVE_DATASET_FULL
+//
+// MessageText:
+//
+// This operation cannot be completed because dataset is full.
+//
+#define STATUS_FVE_DATASET_FULL          ((NTSTATUS)0xC0210043L)
+
+//
+// MessageId: STATUS_FVE_METADATA_FULL
+//
+// MessageText:
+//
+// This operation cannot be completed because BitLocker Drive Encryption metadata area is full. Consider removing unnecessary key protectors for this drive.
+//
+#define STATUS_FVE_METADATA_FULL         ((NTSTATUS)0xC0210044L)
 
 
 //
@@ -22688,6 +22799,51 @@ Notes:
 #define STATUS_HV_MSR_ACCESS_FAILED      ((NTSTATUS)0xC0350080L)
 
 //
+// MessageId: STATUS_HV_INSUFFICIENT_MEMORY_MIRRORING
+//
+// MessageText:
+//
+// There is not enough memory in the partition's pool to complete the mirroring operation.
+//
+#define STATUS_HV_INSUFFICIENT_MEMORY_MIRRORING ((NTSTATUS)0xC0350081L)
+
+//
+// MessageId: STATUS_HV_INSUFFICIENT_CONTIGUOUS_MEMORY_MIRRORING
+//
+// MessageText:
+//
+// There is not enough contiguous memory in the partition's pool to complete the mirroring operation.
+//
+#define STATUS_HV_INSUFFICIENT_CONTIGUOUS_MEMORY_MIRRORING ((NTSTATUS)0xC0350082L)
+
+//
+// MessageId: STATUS_HV_INSUFFICIENT_CONTIGUOUS_ROOT_MEMORY
+//
+// MessageText:
+//
+// There is not enough contiguous memory in the root partition's pool to complete the operation.
+//
+#define STATUS_HV_INSUFFICIENT_CONTIGUOUS_ROOT_MEMORY ((NTSTATUS)0xC0350083L)
+
+//
+// MessageId: STATUS_HV_INSUFFICIENT_ROOT_MEMORY_MIRRORING
+//
+// MessageText:
+//
+// There is not enough memory in the root partition's pool to complete the mirroring operation.
+//
+#define STATUS_HV_INSUFFICIENT_ROOT_MEMORY_MIRRORING ((NTSTATUS)0xC0350084L)
+
+//
+// MessageId: STATUS_HV_INSUFFICIENT_CONTIGUOUS_ROOT_MEMORY_MIRRORING
+//
+// MessageText:
+//
+// There is not enough contiguous memory in the root partition's pool to complete the mirroring operation.
+//
+#define STATUS_HV_INSUFFICIENT_CONTIGUOUS_ROOT_MEMORY_MIRRORING ((NTSTATUS)0xC0350085L)
+
+//
 // MessageId: STATUS_HV_NOT_PRESENT
 //
 // MessageText:
@@ -23083,6 +23239,74 @@ Notes:
 // The specified VTL does not have the permission to access the resource.
 //
 #define STATUS_VID_VTL_ACCESS_DENIED     ((NTSTATUS)0xC037002AL)
+
+//
+// MessageId: STATUS_VID_INSUFFICIENT_RESOURCES_RESERVE
+//
+// MessageText:
+//
+// Failed to allocate backing memory due to insufficient memory resources.
+//
+#define STATUS_VID_INSUFFICIENT_RESOURCES_RESERVE ((NTSTATUS)0xC037002BL)
+
+//
+// MessageId: STATUS_VID_INSUFFICIENT_RESOURCES_PHYSICAL_BUFFER
+//
+// MessageText:
+//
+// Failed to allocate memory for the physical buffer used to back certain internal structures.
+//
+#define STATUS_VID_INSUFFICIENT_RESOURCES_PHYSICAL_BUFFER ((NTSTATUS)0xC037002CL)
+
+//
+// MessageId: STATUS_VID_INSUFFICIENT_RESOURCES_HV_DEPOSIT
+//
+// MessageText:
+//
+// Failed to allocate memory to be deposited in the hypervisor.
+//
+#define STATUS_VID_INSUFFICIENT_RESOURCES_HV_DEPOSIT ((NTSTATUS)0xC037002DL)
+
+//
+// MessageId: STATUS_VID_MEMORY_TYPE_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Memory type not supported for requested operation.
+//
+#define STATUS_VID_MEMORY_TYPE_NOT_SUPPORTED ((NTSTATUS)0xC037002EL)
+
+//
+// MessageId: STATUS_VID_INSUFFICIENT_RESOURCES_WITHDRAW
+//
+// MessageText:
+//
+// Failed to withdraw memory.
+//
+#define STATUS_VID_INSUFFICIENT_RESOURCES_WITHDRAW ((NTSTATUS)0xC037002FL)
+
+//
+// MessageId: STATUS_VID_PROCESS_ALREADY_SET
+//
+// MessageText:
+//
+// The process has already been set.
+//
+#define STATUS_VID_PROCESS_ALREADY_SET   ((NTSTATUS)0xC0370030L)
+
+
+//
+// DM / Resize related error codes (0x0600-0x06ff)
+//
+
+//
+// MessageId: STATUS_DM_OPERATION_LIMIT_EXCEEDED
+//
+// MessageText:
+//
+// The attempted DM / resize operation exceeds the supported size.
+//
+#define STATUS_DM_OPERATION_LIMIT_EXCEEDED ((NTSTATUS)0xC0370600L)
 
 //
 // Warnings:
@@ -25124,6 +25348,24 @@ Notes:
 #define STATUS_SYSTEM_INTEGRITY_REPUTATION_OFFLINE ((NTSTATUS)0xC0E9000AL)
 
 //
+// MessageId: STATUS_SYSTEM_INTEGRITY_REPUTATION_UNFRIENDLY_FILE
+//
+// MessageText:
+//
+// System Integrity policy has been violated.  Unfriendly file.
+//
+#define STATUS_SYSTEM_INTEGRITY_REPUTATION_UNFRIENDLY_FILE ((NTSTATUS)0xC0E9000BL)
+
+//
+// MessageId: STATUS_SYSTEM_INTEGRITY_REPUTATION_UNATTAINABLE
+//
+// MessageText:
+//
+// System Integrity policy has been violated.  Failed to obtain file reputation because an infrastructure issue occurred. Try again later.
+//
+#define STATUS_SYSTEM_INTEGRITY_REPUTATION_UNATTAINABLE ((NTSTATUS)0xC0E9000CL)
+
+//
 // Clip modern app and windows licensing error messages.
 //
 //
@@ -25622,6 +25864,15 @@ Notes:
 #define STATUS_SPACES_CACHE_FULL         ((NTSTATUS)0xC0E70026L)
 
 //
+// MessageId: STATUS_SPACES_REPAIR_IN_PROGRESS
+//
+// MessageText:
+//
+// Repair is in progress.
+//
+#define STATUS_SPACES_REPAIR_IN_PROGRESS ((NTSTATUS)0xC0E70027L)
+
+//
 // Volsnap status codes (volsnap.sys)
 //
 //
@@ -25830,6 +26081,15 @@ Notes:
 // Failed to negotiate a signing hash function.
 //
 #define STATUS_SMB_NO_SIGNING_ALGORITHM_OVERLAP ((NTSTATUS)0xC05D0003L)
+
+//
+// MessageId: STATUS_NETWORK_AUTHENTICATION_PROMPT_CANCELED
+//
+// MessageText:
+//
+// The user canceled the authentication prompt to a remote server. 
+//
+#define STATUS_NETWORK_AUTHENTICATION_PROMPT_CANCELED ((NTSTATUS)0xC05D0004L)
 
 //
 // Embedded Security Core
@@ -26131,6 +26391,15 @@ Notes:
 // The shared ring buffers of the IoRing are corrupt.
 //
 #define STATUS_IORING_CORRUPT            ((NTSTATUS)0xC0460007L)
+
+//
+// MessageId: STATUS_IORING_COMPLETION_QUEUE_TOO_FULL
+//
+// MessageText:
+//
+// The completion queue does not have enough free space, to post completions, for all entries being submitted.
+//
+#define STATUS_IORING_COMPLETION_QUEUE_TOO_FULL ((NTSTATUS)0xC0460008L)
 
 //
 // Map a WIN32 error value into an NTSTATUS

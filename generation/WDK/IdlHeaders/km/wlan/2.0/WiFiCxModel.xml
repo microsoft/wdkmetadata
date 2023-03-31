@@ -169,7 +169,8 @@
     <message commandId="WDI_SET_PRIVACY_EXEMPTION_LIST" type="WDI_SET_PRIVACY_EXEMPTION_LIST_RESULTS" description="No TLV data needed, header is sufficient" direction="FromIhv" />
 
     <message commandId="WDI_SET_ADD_CIPHER_KEYS" type="WDI_SET_ADD_CIPHER_KEYS_PARAMETERS" description="Parameters for WDI_SET_ADD_CIPHER_KEYS." direction="ToIhv">
-      <containerRef id="WDI_TLV_SET_CIPHER_KEY_INFO" name="SetCipherKey" type="SetCipherKeyContainer" optional="false" multiContainer ="true"/>
+      <containerRef id="WDI_TLV_SET_CIPHER_KEY_INFO" name="SetCipherKey" type="SetCipherKeyContainer" optional="false" multiContainer ="true"  versionAdded="WDI_VERSION_2_0_3"/>
+      <containerRef id="WDI_TLV_SET_CIPHER_KEY_INFO" name="SetCipherKey" type="SetCipherKeyContainerV1" optional="false" multiContainer ="true" versionRemoved="WDI_VERSION_2_0_3"/>
     </message>
     <message commandId="WDI_SET_ADD_CIPHER_KEYS" type="WDI_SET_ADD_CIPHER_KEYS_RESULTS" description="No TLV data needed, header is sufficient" direction="FromIhv" />
 
@@ -248,8 +249,10 @@
     </message>
 
     <message commandId="WDI_INDICATION_LINK_STATE_CHANGE" type="WDI_INDICATION_LINK_STATE_CHANGE_PARAMETERS" description="Parameters for WDI_INDICATION_LINK_STATE_CHANGE." direction="FromIhv">
-      <containerRef id="WDI_TLV_LINK_STATE_CHANGE_PARAMETERS" name="LinkStateChangeParameters" type="LinkStateChangeParametersContainer" optional="false" />
-      <containerRef id="WDI_TLV_BSS_ENTRY_CHANNEL_INFO" name="APChannel" type="ChannelInfoContainer" optional="true" versionAdded="WDI_VERSION_2_0_2" />
+      <containerRef id="WDI_TLV_LINK_STATE_CHANGE_PARAMETERS" name="LinkStateChangeParameters" type="LinkStateChangeParametersContainer" optional="false" versionAdded="WDI_VERSION_2_0_3" />
+      <containerRef id="WDI_TLV_LINK_STATE_CHANGE_PARAMETERS" name="LinkStateChangeParameters" type="LinkStateChangeParametersContainer_V1" optional="false"  versionRemoved="WDI_VERSION_2_0_3" />
+      <containerRef id="WDI_TLV_LINK_INFO" name="LinkInfo" type="LinkInfoContainer" optional="false" multiContainer="true" versionAdded="WDI_VERSION_2_0_3" />
+      <containerRef id="WDI_TLV_BSS_ENTRY_CHANNEL_INFO" name="APChannel" type="ChannelInfoContainer" optional="true" versionAdded="WDI_VERSION_2_0_2" versionRemoved="WDI_VERSION_2_0_3" />
     </message>
 
     <message commandId="WDI_INDICATION_P2P_ACTION_FRAME_RECEIVED" type="WDI_INDICATION_P2P_ACTION_FRAME_RECEIVED_PARAMETERS" description="Parameters for a P2P action frame received indication." direction="FromIhv">
@@ -610,7 +613,7 @@
 
     <message commandId="WDI_INDICATION_SECONDARY_STA_CONNECTIVITY" type="WDI_INDICATION_SECONDARY_STA_CONNECTIVITY_PARAMETERS" description="Parameters for Secondary Sta Connectivity state" direction="FromIhv">
       <containerRef id="WDI_TLV_LIMITED_CONNECTIVITY" name="LimitedConnectivity" type="UINT8Container" />
-      <containerRef id="WDI_TLV_SECONDARY_STA_BAND_CHANNEL" name="AvaiableBandChannelList" type="BandChannelListContainer" multiContainer="true" optional="true" />
+      <containerRef id="WDI_TLV_SECONDARY_STA_BAND_CHANNEL" name="AvailableBandChannelList" type="BandChannelListContainer" multiContainer="true" optional="true" />
     </message>
     
     <message commandId="WDI_SET_LOCATION_PRIVACY" type="WDI_SET_LOCATION_PRIVACY_PARAMETERS" description="Location Privacy Setting" direction="ToIhv" >
@@ -1601,7 +1604,7 @@
       type="WDI_ASSOCIATION_RESULT_PARAMETERS_CONTAINERV1_1_10">
       <groupRef name="AssociationResultParameters" ref="AssociationResultParametersStructV1_1_10" description="Association result parameters"/>
     </container>
-    
+
     <container name="EtherTypeEncapContainer" description="Container for ethertype encapsulation entries" type="WDI_ETHERTYPE_ENCAPSULATION_LIST_CONTAINER" isCollection="true">
       <namedType name="EtherTypeEncapsulations" type="WDI_ETHERTYPE_ENCAPSULATION_ENTRY" description="Ethertype Encapsulations parameters."/>
     </container>
@@ -1681,7 +1684,7 @@
       <containerRef id="WDI_TLV_ASSOCIATION_RESULT_PARAMETERS" name="AssociationResultParameters" type="AssociationResultParametersContainerV1_1_10" versionRemoved="WDI_VERSION_1_1_11"/>
       <containerRef id="WDI_TLV_ASSOCIATION_REQUEST_FRAME" name="AssociationRequestFrame" type="ByteBlob" optional="true" />
       <containerRef id="WDI_TLV_ASSOCIATION_RESPONSE_FRAME" name="AssociationResponseFrame" type="ByteBlob" optional="true" />      
-      <containerRef id="WDI_TLV_AUTHENTICATION_RESPONSE_FRAME" name="AuthenticationResponseFrame" type="ByteBlob" optional="true" />      
+      <containerRef id="WDI_TLV_AUTHENTICATION_RESPONSE_FRAME" name="AuthenticationResponseFrame" type="ByteBlob" optional="true" />
       <containerRef id="WDI_TLV_BEACON_PROBE_RESPONSE" name="BeaconProbeResponse" type="ByteBlob" optional="true" />
       <containerRef id="WDI_TLV_ETHERTYPE_ENCAP_TABLE" name="EthertypeEncapTable" type="EtherTypeEncapContainer" optional="true" />
       <containerRef id="WDI_TLV_PHY_TYPE_LIST" name="ActivePhyTypeList" type="PhyTypeListContainer" versionAdded="WDI_VERSION_1_1_4" />
@@ -1741,6 +1744,20 @@
       <groupRef name="LinkStateChangeParameters" ref="LinkStateChangeParametersStruct" description="Link state change parameters struct"/>
     </container>
 
+    <container
+      name="LinkStateChangeParametersContainer_V1"
+      description="Container for Link state change parameters"
+      type="WDI_LINK_STATE_CHANGE_PARAMETERS_CONTAINER_V1">
+      <groupRef name="LinkStateChangeParameters" ref="LinkStateChangeParametersStruct_V1" description="Link state change parameters struct"/>
+    </container>
+
+    <container
+      name="LinkInfoContainer"
+      description="Container for Link information parameters"
+      type="WDI_LINK_INFO_CONTAINER">
+      <groupRef name="LinkInfoParameters" ref="LinkInfoParametersStruct" description="Link information parameters struct"/>
+    </container>
+
     <aggregateContainer
       name="TKIPInfoContainer"
       description="Container for TKIP Info"
@@ -1781,6 +1798,22 @@
     </aggregateContainer>
 
     <aggregateContainer name="SetCipherKeyContainer" type="WDI_SET_ADD_CIPHER_KEYS_CONTAINER" description="Container for Specifying a Cipher Key Mapping Key entry.">
+      <containerRef id="WDI_TLV_PEER_MAC_ADDRESS" name="PeerMacAddress" type="MacAddressContainer" optional="true"/>
+      <containerRef id="WDI_TLV_CIPHER_KEY_ID" name="CipherKeyID" type="CipherKeyIDContainer" optional="true"/>
+      <containerRef id="WDI_TLV_CIPHER_KEY_TYPE_INFO" name="CipherKeyTypeInfo" type="CipherKeyTypeInfoContainer" />
+      <containerRef id="WDI_TLV_CIPHER_KEY_RECEIVE_SEQUENCE_COUNT" name="ReceiveSequenceCount" type="ReceiveSequenceCountContainer" optional="true"/>
+      <containerRef id="WDI_TLV_CIPHER_KEY_CCMP_KEY" name="CCMPKey" type="PrivateByteBlob" optional="true"/>
+      <containerRef id="WDI_TLV_CIPHER_KEY_GCMP_KEY" name="GCMPKey" type="PrivateByteBlob" optional="true" versionAdded="WDI_VERSION_1_0_20" />
+      <containerRef id="WDI_TLV_CIPHER_KEY_TKIP_INFO" name="TKIPInfo" type="TKIPInfoContainer" optional="true"/>
+      <containerRef id="WDI_TLV_CIPHER_KEY_BIP_KEY" name="BIPKey" type="PrivateByteBlob" optional="true"/>
+      <containerRef id="WDI_TLV_CIPHER_KEY_WEP_KEY" name="WEPKey" type="PrivateByteBlob" optional="true"/>
+      <containerRef id="WDI_TLV_CIPHER_KEY_IHV_KEY" name="IHVKey" type="PrivateByteBlob" optional="true"/>
+      <containerRef id="WDI_TLV_CIPHER_KEY_GCMP_256_KEY" name="GCMP_256Key" type="PrivateByteBlob" optional="true" versionAdded="WDI_VERSION_1_1_9" />
+      <containerRef id="WDI_TLV_CIPHER_KEY_BIP_GMAC_256_KEY" name="BIP_GMAC_256Key" type="PrivateByteBlob" optional="true" versionAdded="WDI_VERSION_1_1_9" />
+      <containerRef id="WDI_TLV_LINK_ID" name="LinkId" type="UINT32Container" optional="true" />
+    </aggregateContainer>
+
+    <aggregateContainer name="SetCipherKeyContainerV1" type="WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1" description="Container for Specifying a Cipher Key Mapping Key entry.">
       <containerRef id="WDI_TLV_PEER_MAC_ADDRESS" name="PeerMacAddress" type="MacAddressContainer" optional="true"/>
       <containerRef id="WDI_TLV_CIPHER_KEY_ID" name="CipherKeyID" type="CipherKeyIDContainer" optional="true"/>
       <containerRef id="WDI_TLV_CIPHER_KEY_TYPE_INFO" name="CipherKeyTypeInfo" type="CipherKeyTypeInfoContainer" />
@@ -1980,10 +2013,29 @@
     </propertyGroup>
 
     <propertyGroup name="LinkStateChangeParametersStruct" type="WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT" description="Structure definition for link state change parameters.">
+      <namedType name="PeerMACAddress" type="WDI_MAC_ADDRESS" description="MAC address (or MLD address) of remote peer"/>
+      <uint32 name="TxLinkSpeed" description="Current Tx Link Speed"/>
+      <uint32 name="RxLinkSpeed" description="Current Rx Link Speed"/>
+      <uint8 name="LinkQuality" description="Current Link Quality"/>
+    </propertyGroup>
+
+    <propertyGroup name="LinkStateChangeParametersStruct_V1" type="WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT_V1" description="Structure definition for link state change parameters.">
       <namedType name="PeerMACAddress" type="WDI_MAC_ADDRESS" description="MAC address of remote peer"/>
       <uint32 name="TxLinkSpeed" description="Current Tx Link Speed"/>
       <uint32 name="RxLinkSpeed" description="Current Rx Link Speed"/>
       <uint8 name="LinkQuality" description="Current Link Quality"/>
+    </propertyGroup>
+
+    <propertyGroup name="LinkInfoParametersStruct" type="WDI_LINK_INFO_PARAMETERS_STRUCT" description="Structure definition for link information parameters.">
+      <uint32 name="LocalLinkID" description="Current Link Id"/>
+      <uint32 name="PeerLinkID" description="Current Link Id"/>
+      <namedType name="LocalLinkMACAddress" type="WDI_MAC_ADDRESS" description="MAC address of remote peer"/>
+      <namedType name="PeerLinkMACAddress" type="WDI_MAC_ADDRESS" description="MAC address of remote peer"/>
+      <namedType type="WDI_CHANNEL_NUMBER" name="ChannelNumber" description="The logical channel number on which the peer was discovered" />
+      <namedType type="WDI_BAND_ID" name="BandId" description="Band ID for the given BSS entry." />
+      <int32 name="RSSI" description="The received signal strength indicator (RSSI) value of the beacon or probe response from the peer. This is in units of decibels referenced to 1.0 milliwatts (dBm)."/>
+      <uint32 name="Bandwidth" description="Current Bandwidth in MHz"/>
+      <uint32 name="MCS" description="Current MCS"/>
     </propertyGroup>
 
     <propertyGroup name="WFDChannelStruct" type="WDI_P2P_CHANNEL" description="Structure definition for a Wi-Fi Direct Channel.">

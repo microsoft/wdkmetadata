@@ -546,6 +546,43 @@ typedef struct _WHEA_PLUGIN_CTL_INTERFACE_OUT
 } WHEA_PLUGIN_CTL_INTERFACE_OUT, *PWHEA_PLUGIN_CTL_INTERFACE_OUT;
 
 
+// WHEAPageOfflineMethods - WHEAPageOfflineMethods
+#define WHEAPageOfflineMethodsGuid \
+    { 0x8a13d6df,0xa461,0x4882, { 0xb4,0x59,0x5e,0x68,0xb7,0x14,0x6c,0x3d } }
+
+#if ! (defined(MIDL_PASS))
+DEFINE_GUID(WHEAPageOfflineMethods_GUID, \
+            0x8a13d6df,0xa461,0x4882,0xb4,0x59,0x5e,0x68,0xb7,0x14,0x6c,0x3d);
+#endif
+
+//
+// Method id definitions for WHEAPageOfflineMethods
+#define WheaPageOfflineInterfaceRtn     1
+typedef struct _WHEA_PAGE_OFFLINING_INTERFACE_IN
+{
+    // 
+    ULONG InputLength;
+    #define WHEA_PAGE_OFFLINING_INTERFACE_IN_InputLength_SIZE sizeof(ULONG)
+    #define WHEA_PAGE_OFFLINING_INTERFACE_IN_InputLength_ID 1
+
+    // 
+    UCHAR InputBuffer[1];
+    #define WHEA_PAGE_OFFLINING_INTERFACE_IN_InputBuffer_ID 2
+
+} WHEA_PAGE_OFFLINING_INTERFACE_IN, *PWHEA_PAGE_OFFLINING_INTERFACE_IN;
+
+typedef struct _WHEA_PAGE_OFFLINING_INTERFACE_OUT
+{
+    // 
+    ULONG Status;
+    #define WHEA_PAGE_OFFLINING_INTERFACE_OUT_Status_SIZE sizeof(ULONG)
+    #define WHEA_PAGE_OFFLINING_INTERFACE_OUT_Status_ID 3
+
+} WHEA_PAGE_OFFLINING_INTERFACE_OUT, *PWHEA_PAGE_OFFLINING_INTERFACE_OUT;
+
+#define WHEA_PAGE_OFFLINING_INTERFACE_OUT_SIZE (FIELD_OFFSET(WHEA_PAGE_OFFLINING_INTERFACE_OUT, Status) + WHEA_PAGE_OFFLINING_INTERFACE_OUT_Status_SIZE)
+
+
 // MSSmBios_RawSMBiosTables - MSSmBios_RawSMBiosTables
 #define MSSmBios_RawSMBiosTablesGuid \
     { 0x8f680850,0xa584,0x11d1, { 0xbf,0x38,0x00,0xa0,0xc9,0x06,0x29,0x10 } }

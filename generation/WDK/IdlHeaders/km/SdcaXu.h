@@ -113,6 +113,12 @@ typedef enum _SDCAXU_NOTIFICATION_TYPE
     // Class driver will perform necessary initialization before sending.
     SdcaXuNotificationTypeHardwareReset,
 
+    // Notification when the Commit Group Handle has either been set or cleared.
+    // This Commit Group Handle should be used to ensure any operations that
+    // require synchronization especially for aggregation are properly
+    // synchronized
+    SdcaXuNotificationTypeCommitGroup,
+
     SdcaXuNotificationTypeCount
 } SDCAXU_NOTIFICATION_TYPE;
 
@@ -153,6 +159,13 @@ typedef struct _SDCAXU_NOTIFICATION_JACK_DETECT
     // SDCA Jack event type (plugged/unplugged)
     SDCAXU_JACK_EVENT       JackEvent;
 } SDCAXU_NOTIFICATION_JACK_DETECT, *PSDCAXU_NOTIFICATION_JACK_DETECT;
+
+typedef struct _SDCAXU_NOTIFICATION_COMMIT_GROUP
+{
+    // Commit group handle to be used for synchronization
+    // (or 0 if the commit group has been destroyed)
+    ULONG                   CommitGroupHandle;
+} SDCAXU_NOTIFICATION_COMMIT_GROUP, *PSDCAXU_NOTIFICATION_COMMIT_GROUP;
 
 //
 // EvtChangeNotification

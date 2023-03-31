@@ -267,7 +267,6 @@ typedef struct _UART_HARDWARE_ACCESS {
 extern UART_HARDWARE_DRIVER Legacy16550HardwareDriver;
 extern UART_HARDWARE_DRIVER Uart16550HardwareDriver;
 extern UART_HARDWARE_DRIVER SpiMax311HardwareDriver;
-extern UART_HARDWARE_DRIVER UsifHardwareDriver;
 extern UART_HARDWARE_DRIVER MM16550HardwareDriver;
 extern UART_HARDWARE_DRIVER IaLpssHardwareDriver;
 

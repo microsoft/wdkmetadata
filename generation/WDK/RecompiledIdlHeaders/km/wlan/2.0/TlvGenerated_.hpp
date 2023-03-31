@@ -145,7 +145,7 @@ typedef struct _WDI_PRIVACY_EXEMPTION_PARAMETERS_STRUCT
 //
 typedef struct _WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT
 {
-    WDI_MAC_ADDRESS PeerMACAddress; // MAC address of remote peer
+    WDI_MAC_ADDRESS PeerMACAddress; // MAC address (or MLD address) of remote peer
     UINT32 TxLinkSpeed; // Current Tx Link Speed
     UINT32 RxLinkSpeed; // Current Rx Link Speed
     UINT8 LinkQuality; // Current Link Quality
@@ -156,6 +156,47 @@ typedef struct _WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT
     };
 #endif // __cplusplus
 } WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT, *PWDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT;
+
+
+//
+// Structure definition for link state change parameters.
+//
+typedef struct _WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT_V1
+{
+    WDI_MAC_ADDRESS PeerMACAddress; // MAC address of remote peer
+    UINT32 TxLinkSpeed; // Current Tx Link Speed
+    UINT32 RxLinkSpeed; // Current Rx Link Speed
+    UINT8 LinkQuality; // Current Link Quality
+#ifdef __cplusplus
+    _WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT_V1()
+    {
+        memset( this, 0, sizeof( _WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT_V1 ) );
+    };
+#endif // __cplusplus
+} WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT_V1, *PWDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT_V1;
+
+
+//
+// Structure definition for link information parameters.
+//
+typedef struct _WDI_LINK_INFO_PARAMETERS_STRUCT
+{
+    UINT32 LocalLinkID; // Current Link Id
+    UINT32 PeerLinkID; // Current Link Id
+    WDI_MAC_ADDRESS LocalLinkMACAddress; // MAC address of remote peer
+    WDI_MAC_ADDRESS PeerLinkMACAddress; // MAC address of remote peer
+    WDI_CHANNEL_NUMBER ChannelNumber; // The logical channel number on which the peer was discovered
+    WDI_BAND_ID BandId; // Band ID for the given BSS entry.
+    INT32 RSSI; // The received signal strength indicator (RSSI) value of the beacon or probe response from the peer. This is in units of decibels referenced to 1.0 milliwatts (dBm).
+    UINT32 Bandwidth; // Current Bandwidth in MHz
+    UINT32 MCS; // Current MCS
+#ifdef __cplusplus
+    _WDI_LINK_INFO_PARAMETERS_STRUCT()
+    {
+        memset( this, 0, sizeof( _WDI_LINK_INFO_PARAMETERS_STRUCT ) );
+    };
+#endif // __cplusplus
+} WDI_LINK_INFO_PARAMETERS_STRUCT, *PWDI_LINK_INFO_PARAMETERS_STRUCT;
 
 
 //
@@ -3869,6 +3910,10 @@ typedef WDI_RECEIVE_SEQUENCE_COUNT_STRUCT WDI_RECEIVE_SEQUENCE_COUNT_CONTAINER;
 
 typedef WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT WDI_LINK_STATE_CHANGE_PARAMETERS_CONTAINER;
 
+typedef WDI_LINK_STATE_CHANGE_PARAMETERS_STRUCT_V1 WDI_LINK_STATE_CHANGE_PARAMETERS_CONTAINER_V1;
+
+typedef WDI_LINK_INFO_PARAMETERS_STRUCT WDI_LINK_INFO_CONTAINER;
+
 
 //
 // Container for TKIP Info
@@ -4023,8 +4068,64 @@ typedef struct _WDI_SET_ADD_CIPHER_KEYS_CONTAINER
         UINT32 IHVKey_IsPresent : 1;
         UINT32 GCMP_256Key_IsPresent : 1;
         UINT32 BIP_GMAC_256Key_IsPresent : 1;
+        UINT32 LinkId_IsPresent : 1;
 #ifdef __cplusplus
-        _WDI_SET_ADD_CIPHER_KEYS_CONTAINER_Optional() : PeerMacAddress_IsPresent( FALSE ), CipherKeyID_IsPresent( FALSE ), ReceiveSequenceCount_IsPresent( FALSE ), CCMPKey_IsPresent( FALSE ), GCMPKey_IsPresent( FALSE ), TKIPInfo_IsPresent( FALSE ), BIPKey_IsPresent( FALSE ), WEPKey_IsPresent( FALSE ), IHVKey_IsPresent( FALSE ), GCMP_256Key_IsPresent( FALSE ), BIP_GMAC_256Key_IsPresent( FALSE )
+        _WDI_SET_ADD_CIPHER_KEYS_CONTAINER_Optional() : PeerMacAddress_IsPresent( FALSE ), CipherKeyID_IsPresent( FALSE ), ReceiveSequenceCount_IsPresent( FALSE ), CCMPKey_IsPresent( FALSE ), GCMPKey_IsPresent( FALSE ), TKIPInfo_IsPresent( FALSE ), BIPKey_IsPresent( FALSE ), WEPKey_IsPresent( FALSE ), IHVKey_IsPresent( FALSE ), GCMP_256Key_IsPresent( FALSE ), BIP_GMAC_256Key_IsPresent( FALSE ), LinkId_IsPresent( FALSE )
+        {
+        };
+#endif // __cplusplus
+    } Optional;
+
+    WDI_MAC_ADDRESS_CONTAINER PeerMacAddress;
+    WDI_CIPHER_KEY_ID_CONTAINER CipherKeyID;
+    WDI_CIPHER_KEY_TYPE_INFO_CONTAINER CipherKeyTypeInfo;
+    WDI_RECEIVE_SEQUENCE_COUNT_CONTAINER ReceiveSequenceCount;
+    WDI_PRIVATE_BYTE_BLOB CCMPKey;
+    WDI_PRIVATE_BYTE_BLOB GCMPKey;
+    WDI_CIPHER_KEY_TKIP_INFO_CONTAINER TKIPInfo;
+    WDI_PRIVATE_BYTE_BLOB BIPKey;
+    WDI_PRIVATE_BYTE_BLOB WEPKey;
+    WDI_PRIVATE_BYTE_BLOB IHVKey;
+    WDI_PRIVATE_BYTE_BLOB GCMP_256Key;
+    WDI_PRIVATE_BYTE_BLOB BIP_GMAC_256Key;
+    UINT32_CONTAINER LinkId;
+#ifdef __cplusplus
+    _WDI_SET_ADD_CIPHER_KEYS_CONTAINER() : LinkId( (UINT32_CONTAINER)0 )
+    {
+        memset( &PeerMacAddress, 0, sizeof( PeerMacAddress ) );
+    };
+#endif // __cplusplus
+} WDI_SET_ADD_CIPHER_KEYS_CONTAINER, *PWDI_SET_ADD_CIPHER_KEYS_CONTAINER;
+#ifdef __cplusplus
+namespace WDI_TLV
+{
+    namespace PARSER
+    {
+        void MarkArrayOfElementFieldsAsCopied( _Inout_ WDI_SET_ADD_CIPHER_KEYS_CONTAINER * pField );
+    }
+}
+#endif // __cplusplus
+
+//
+// Container for Specifying a Cipher Key Mapping Key entry.
+//
+typedef struct _WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1
+{
+    struct _WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1_Optional
+    {
+        UINT32 PeerMacAddress_IsPresent : 1;
+        UINT32 CipherKeyID_IsPresent : 1;
+        UINT32 ReceiveSequenceCount_IsPresent : 1;
+        UINT32 CCMPKey_IsPresent : 1;
+        UINT32 GCMPKey_IsPresent : 1;
+        UINT32 TKIPInfo_IsPresent : 1;
+        UINT32 BIPKey_IsPresent : 1;
+        UINT32 WEPKey_IsPresent : 1;
+        UINT32 IHVKey_IsPresent : 1;
+        UINT32 GCMP_256Key_IsPresent : 1;
+        UINT32 BIP_GMAC_256Key_IsPresent : 1;
+#ifdef __cplusplus
+        _WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1_Optional() : PeerMacAddress_IsPresent( FALSE ), CipherKeyID_IsPresent( FALSE ), ReceiveSequenceCount_IsPresent( FALSE ), CCMPKey_IsPresent( FALSE ), GCMPKey_IsPresent( FALSE ), TKIPInfo_IsPresent( FALSE ), BIPKey_IsPresent( FALSE ), WEPKey_IsPresent( FALSE ), IHVKey_IsPresent( FALSE ), GCMP_256Key_IsPresent( FALSE ), BIP_GMAC_256Key_IsPresent( FALSE )
         {
         };
 #endif // __cplusplus
@@ -4043,18 +4144,18 @@ typedef struct _WDI_SET_ADD_CIPHER_KEYS_CONTAINER
     WDI_PRIVATE_BYTE_BLOB GCMP_256Key;
     WDI_PRIVATE_BYTE_BLOB BIP_GMAC_256Key;
 #ifdef __cplusplus
-    _WDI_SET_ADD_CIPHER_KEYS_CONTAINER()
+    _WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1()
     {
         memset( &PeerMacAddress, 0, sizeof( PeerMacAddress ) );
     };
 #endif // __cplusplus
-} WDI_SET_ADD_CIPHER_KEYS_CONTAINER, *PWDI_SET_ADD_CIPHER_KEYS_CONTAINER;
+} WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1, *PWDI_SET_ADD_CIPHER_KEYS_CONTAINERV1;
 #ifdef __cplusplus
 namespace WDI_TLV
 {
     namespace PARSER
     {
-        void MarkArrayOfElementFieldsAsCopied( _Inout_ WDI_SET_ADD_CIPHER_KEYS_CONTAINER * pField );
+        void MarkArrayOfElementFieldsAsCopied( _Inout_ WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1 * pField );
     }
 }
 #endif // __cplusplus
@@ -5165,6 +5266,15 @@ struct ArrayOfElementsOfWDI_SET_ADD_CIPHER_KEYS_CONTAINER
 #ifdef __cplusplus
 C_ASSERT( sizeof( ArrayOfElements<WDI_SET_ADD_CIPHER_KEYS_CONTAINER> ) == sizeof( struct ArrayOfElementsOfWDI_SET_ADD_CIPHER_KEYS_CONTAINER ) );
 #endif // __cplusplus
+struct ArrayOfElementsOfWDI_SET_ADD_CIPHER_KEYS_CONTAINERV1
+{
+    UINT32 ElementCount;
+    WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1* pElements;
+    BOOLEAN MemoryInternallyAllocated;
+};
+#ifdef __cplusplus
+C_ASSERT( sizeof( ArrayOfElements<WDI_SET_ADD_CIPHER_KEYS_CONTAINERV1> ) == sizeof( struct ArrayOfElementsOfWDI_SET_ADD_CIPHER_KEYS_CONTAINERV1 ) );
+#endif // __cplusplus
 
 //
 // Parameters for WDI_SET_ADD_CIPHER_KEYS.
@@ -5498,24 +5608,27 @@ typedef struct _WDI_INDICATION_ROAMING_NEEDED_PARAMETERS
 #endif // __cplusplus
 } WDI_INDICATION_ROAMING_NEEDED_PARAMETERS, *PWDI_INDICATION_ROAMING_NEEDED_PARAMETERS;
 
+struct ArrayOfElementsOfWDI_LINK_INFO_CONTAINER
+{
+    UINT32 ElementCount;
+    WDI_LINK_INFO_CONTAINER* pElements;
+    BOOLEAN MemoryInternallyAllocated;
+};
+#ifdef __cplusplus
+C_ASSERT( sizeof( ArrayOfElements<WDI_LINK_INFO_CONTAINER> ) == sizeof( struct ArrayOfElementsOfWDI_LINK_INFO_CONTAINER ) );
+#endif // __cplusplus
 
 //
 // Parameters for WDI_INDICATION_LINK_STATE_CHANGE.
 //
 typedef struct _WDI_INDICATION_LINK_STATE_CHANGE_PARAMETERS
 {
-    struct _WDI_INDICATION_LINK_STATE_CHANGE_PARAMETERS_Optional
-    {
-        UINT32 APChannel_IsPresent : 1;
-#ifdef __cplusplus
-        _WDI_INDICATION_LINK_STATE_CHANGE_PARAMETERS_Optional() : APChannel_IsPresent( FALSE )
-        {
-        };
-#endif // __cplusplus
-    } Optional;
-
     WDI_LINK_STATE_CHANGE_PARAMETERS_CONTAINER LinkStateChangeParameters;
-    WDI_CHANNEL_INFO_CONTAINER APChannel;
+#ifdef __cplusplus
+    ArrayOfElements<WDI_LINK_INFO_CONTAINER> LinkInfo;
+#else // __cplusplus
+    struct ArrayOfElementsOfWDI_LINK_INFO_CONTAINER LinkInfo;
+#endif // __cplusplus
 } WDI_INDICATION_LINK_STATE_CHANGE_PARAMETERS, *PWDI_INDICATION_LINK_STATE_CHANGE_PARAMETERS;
 
 
@@ -6867,9 +6980,9 @@ typedef struct _WDI_INDICATION_SECONDARY_STA_CONNECTIVITY_PARAMETERS
 {
     struct _WDI_INDICATION_SECONDARY_STA_CONNECTIVITY_PARAMETERS_Optional
     {
-        UINT32 AvaiableBandChannelList_IsPresent : 1;
+        UINT32 AvailableBandChannelList_IsPresent : 1;
 #ifdef __cplusplus
-        _WDI_INDICATION_SECONDARY_STA_CONNECTIVITY_PARAMETERS_Optional() : AvaiableBandChannelList_IsPresent( FALSE )
+        _WDI_INDICATION_SECONDARY_STA_CONNECTIVITY_PARAMETERS_Optional() : AvailableBandChannelList_IsPresent( FALSE )
         {
         };
 #endif // __cplusplus
@@ -6877,9 +6990,9 @@ typedef struct _WDI_INDICATION_SECONDARY_STA_CONNECTIVITY_PARAMETERS
 
     UINT8_CONTAINER LimitedConnectivity;
 #ifdef __cplusplus
-    ArrayOfElements<WDI_BAND_CHANNEL_LIST_CONTAINER> AvaiableBandChannelList;
+    ArrayOfElements<WDI_BAND_CHANNEL_LIST_CONTAINER> AvailableBandChannelList;
 #else // __cplusplus
-    struct ArrayOfElementsOfWDI_BAND_CHANNEL_LIST_CONTAINER AvaiableBandChannelList;
+    struct ArrayOfElementsOfWDI_BAND_CHANNEL_LIST_CONTAINER AvailableBandChannelList;
 #endif // __cplusplus
 #ifdef __cplusplus
     _WDI_INDICATION_SECONDARY_STA_CONNECTIVITY_PARAMETERS() : LimitedConnectivity( (UINT8_CONTAINER)0 )

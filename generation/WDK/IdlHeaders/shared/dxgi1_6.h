@@ -1629,6 +1629,9 @@ EXTERN_C const IID IID_IDXGIFactory7;
 /* interface __MIDL_itf_dxgi1_6_0000_0004 */
 /* [local] */ 
 
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI)
+HRESULT WINAPI DXGIDisableVBlankVirtualization();
+#endif
 #endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
 #pragma endregion
 DEFINE_GUID(IID_IDXGIAdapter4,0x3c8d99d1,0x4fbf,0x4181,0xa8,0x2c,0xaf,0x66,0xbf,0x7b,0xd2,0x4e);

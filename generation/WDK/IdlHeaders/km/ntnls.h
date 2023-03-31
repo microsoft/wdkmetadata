@@ -33,6 +33,10 @@ extern "C" {
 
 #define MAXIMUM_LEADBYTES   12
 
+// This structure is the data from the raw codepage files.  Note that we set the "Codepage" field
+// last, so any threads accessing this pointers in this structure should check to see if that is
+// CP_UTF8 (65001) first.  If so, they should not use the pointers.
+// MemoryBarrier might be warranted before checking CodePage to protect out-of-order reads of the pointers.
 typedef struct _CPTABLEINFO {
     USHORT CodePage;                    // code page number (For UTF-8 the rest of the structure is unused)
     USHORT MaximumCharacterSize;        // max length (bytes) of a char

@@ -37,6 +37,12 @@ extern "C" {
 // WppRecorder API
 //
 
+typedef enum _WPP_RECORDER_TRI_STATE {
+    WppRecorderFalse      = FALSE,
+    WppRecorderTrue       = TRUE,
+    WppRecorderUseDefault = 2,
+} WPP_RECORDER_TRI_STATE, *PWPP_RECORDER_TRI_STATE;
+
 DECLARE_HANDLE(RECORDER_LOG);
 DECLARE_HANDLE(WPP_RECORDER_COUNTER);
 
@@ -99,7 +105,27 @@ typedef struct _RECORDER_CONFIGURE_PARAMS {
     //
     BOOLEAN CreateDefaultLog;
 
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI) || defined (__WPP_RECORDER_DOWNLEVEL__)
+    //
+    // WppRecorderTrue - save timestamp for each log record
+    // WppRecorderFalse - do not save timestamp
+    // WppRecorderUseDefault - The same meaning as WppRecorderFalse, unless overridden by registry settings
+    //
+    WPP_RECORDER_TRI_STATE   UseTimeStamp;
+
+    //
+    // Use precise timestamp. Valid only if UseTimeStamp is in effect TRUE
+    //
+    WPP_RECORDER_TRI_STATE   PreciseTimeStamp;
+#endif
+
 } RECORDER_CONFIGURE_PARAMS, *PRECORDER_CONFIGURE_PARAMS;
+
+typedef struct _RECORDER_CONFIGURE_PARAMS_V1 {
+    ULONG Size;
+    BOOLEAN CreateDefaultLog;
+} RECORDER_CONFIGURE_PARAMS_V1, *PRECORDER_CONFIGURE_PARAMS_V1;
+
 
 FORCEINLINE
 VOID
@@ -110,6 +136,11 @@ RECORDER_CONFIGURE_PARAMS_INIT(
 {
     Params->Size = sizeof(*Params);
     Params->CreateDefaultLog = TRUE;
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI) || defined (__WPP_RECORDER_DOWNLEVEL__)
+    Params->UseTimeStamp     = WppRecorderUseDefault;
+    Params->PreciseTimeStamp = WppRecorderUseDefault;
+#endif
 }
 
 //
@@ -180,7 +211,33 @@ typedef struct _RECORDER_LOG_CREATE_PARAMS {
     _Field_size_(LogIdentifierSize)
     CHAR        LogIdentifier[RECORDER_LOG_IDENTIFIER_MAX_CHARS];
 
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI) || defined (__WPP_RECORDER_DOWNLEVEL__)
+    //
+    // WppRecorderTrue - save timestamp for each log record
+    // WppRecorderFalse - do not save timestamp
+    // WppRecorderUseDefault - The same meaning as WppRecorderFalse, unless overridden by registry settings
+    //
+    WPP_RECORDER_TRI_STATE   UseTimeStamp;
+
+    //
+    // Use precise timestamp. Valid only if UseTimeStamp is in effect TRUE
+    //
+    WPP_RECORDER_TRI_STATE   PreciseTimeStamp;
+#endif
+
 } RECORDER_LOG_CREATE_PARAMS, *PRECORDER_LOG_CREATE_PARAMS;
+
+typedef struct _RECORDER_LOG_CREATE_PARAMS_V1 {
+    ULONG       Size;
+    ULONG       LogTag;
+    ULONG       TotalBufferSize;
+    ULONG       ErrorPartitionSize;
+    ULONG_PTR   LogIdentifierAppendValue;
+    BOOLEAN     LogIdentifierAppendValueSet;
+    ULONG       LogIdentifierSize;
+    _Field_size_(LogIdentifierSize)
+    CHAR        LogIdentifier[RECORDER_LOG_IDENTIFIER_MAX_CHARS];
+} RECORDER_LOG_CREATE_PARAMS_V1, *PRECORDER_LOG_CREATE_PARAMS_V1;
 
 FORCEINLINE
 VOID
@@ -206,6 +263,11 @@ RECORDER_LOG_CREATE_PARAMS_INIT(
                           ARRAYSIZE(Params->LogIdentifier),
                           LogIdentifier);
     }
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI) || defined (__WPP_RECORDER_DOWNLEVEL__)
+    Params->UseTimeStamp     = WppRecorderUseDefault;
+    Params->PreciseTimeStamp = WppRecorderUseDefault;
+#endif
 }
 
 FORCEINLINE

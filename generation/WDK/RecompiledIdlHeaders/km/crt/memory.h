@@ -28,6 +28,11 @@ extern "C" {
 /* Function prototypes */
 #ifndef _CRT_MEMORY_DEFINED
 #define _CRT_MEMORY_DEFINED
+
+#if defined(_KERNEL_MODE) && defined(__SANITIZE_ADDRESS__)
+#define memcmp          AsanWrapperMemcmp
+#endif
+
 _CRTIMP void *  __cdecl _memccpy( _Out_writes_bytes_opt_(_MaxCount) void * _Dst, _In_ const void * _Src, _In_ int _Val, _In_ size_t _MaxCount);
 _Check_return_ _CRTIMP _CONST_RETURN void *  __cdecl memchr( _In_reads_bytes_opt_(_MaxCount) const void * _Buf , _In_ int _Val, _In_ size_t _MaxCount);
 _Check_return_ _CRTIMP int     __cdecl _memicmp(_In_reads_bytes_opt_(_Size) const void * _Buf1, _In_reads_bytes_opt_(_Size) const void * _Buf2, _In_ size_t _Size);

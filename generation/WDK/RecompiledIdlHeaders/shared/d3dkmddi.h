@@ -723,8 +723,13 @@ typedef enum _DXGK_INTERRUPT_TYPE
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_4)
 
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_9)
-    DXGK_INTERRUPT_CRTC_VSYNC_WITH_MULTIPLANE_OVERLAY3 = 18
+    DXGK_INTERRUPT_CRTC_VSYNC_WITH_MULTIPLANE_OVERLAY3 = 18,
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_9)
+
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+    DXGK_INTERRUPT_NATIVE_FENCE_SIGNALED = 19,
+    DXGK_INTERRUPT_GPU_ENGINE_STATE_CHANGE = 20
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
 
 } DXGK_INTERRUPT_TYPE;
 
@@ -985,6 +990,15 @@ DXGKDDI_DESTROYCPUEVENT (
 
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_0)
 
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+typedef enum _DXGK_ENGINE_STATE
+{
+    DXGK_ENGINE_STATE_ACTIVE = 0,
+    DXGK_ENGINE_STATE_IDLE = 1,
+    DXGK_ENGINE_STATE_HUNG = 2
+}DXGK_ENGINE_STATE;
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+
 typedef struct _DXGKARGCB_NOTIFY_INTERRUPT_DATA
 {
     DXGK_INTERRUPT_TYPE  InterruptType;        // in: interrupt type
@@ -1154,6 +1168,27 @@ typedef struct _DXGKARGCB_NOTIFY_INTERRUPT_DATA
             ULONGLONG                                     GpuClockCounter;
         } CrtcVsyncWithMultiPlaneOverlay3;
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_9)
+
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+        struct
+        {
+            UINT    NodeOrdinal;                // in: Node ordinal of engine generating the notification.
+            UINT    EngineOrdinal;              // in: Engine ordinal of engine generating the notification.
+
+                                                // Signaled native fence array specifies all fences that were signaled and require waiters to be unblocked.
+                                                // If this array is empty, the OS will re-scan all pending native fence waiters instead of the subset specified by the signaled native fence array.
+            UINT    SignaledNativeFenceCount;   // in: size of the signaled native fence array.
+            _Field_size_(SignaledNativeFenceCount)
+            HANDLE* pSignaledNativeFenceArray;  // in: OS kernel mode handles of objects in the signaled native fence array.
+        } NativeFenceSignaled;
+
+        struct
+        {
+            UINT              NodeOrdinal;   // in: Node ordinal of engine whose state changed
+            UINT              EngineOrdinal; // in: Engine ordinal of engine whose state changed
+            DXGK_ENGINE_STATE NewState;
+        } EngineStateChange;
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
 
         struct
         {
@@ -1805,6 +1840,11 @@ typedef enum _DXGK_QUERYADAPTERINFOTYPE
     DXGKQAITYPE_PHYSICAL_MEMORY_CAPS   = 34,
     DXGKQAITYPE_IOMMU_CAPS             = 35,
 #endif // DXGKDDI_INTERFACE_VERSION_WDDM2_9
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+    DXGKQAITYPE_HARDWARERESERVEDRANGES2 = 36,
+    DXGKQAITYPE_NATIVE_FENCE_CAPS       = 37,
+    DXGKQAITYPE_USERMODESUBMISSION_CAPS = 38,
+#endif // DXGKDDI_INTERFACE_VERSION_WDDM3_1
 
 } DXGK_QUERYADAPTERINFOTYPE;
 
@@ -1951,7 +1991,17 @@ typedef struct _DXGK_VIDSCHCAPS
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_3)
 
             UINT    HwQueuePacketCap       :4;  // maximum number of DMA packets allowed to be queued to a node
+
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+
+            UINT    NativeGpuFence         :1;  // Specifies whether the GPU supports native GPU fence
+            UINT    Reserved               :20;
+
+#else
+
             UINT    Reserved               :21;
+
+#endif // !(DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
 
 #else
 
@@ -2009,7 +2059,14 @@ typedef struct _DXGK_UPDATEPAGETABLEFLAGS
    UINT    InitialUpdate   : 1;
    UINT    NotifyEviction  : 1;
    UINT    Use64KBPages    : 1;
+
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+   UINT    NativeFence     : 1;     // When set, specifies that DXGK_BUILDPAGINGBUFFER_UPDATEPAGETABLE::hAllocation is a native GPU fence handle.
+   UINT    Reserved        : 27;
+#else
    UINT    Reserved        : 28;
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+
 } DXGK_UPDATEPAGETABLEFLAGS;
 
 typedef struct _DXGK_QUERYGPUMMUCAPSIN
@@ -2049,7 +2106,12 @@ typedef struct _DXGK_GPUMMUCAPS
             UINT InvalidTlbEntriesNotCached             : 1;
 #if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_9)
             UINT SysMemLargePageSupported               : 1;
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+            UINT CachedPageTables                       : 1;
+            UINT Reserved                               : 19;
+#else
             UINT Reserved                               : 20;
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
 #else
             UINT Reserved                               : 21;
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_9)
@@ -2188,7 +2250,12 @@ typedef struct _DXGK_VIDMMCAPS
             UINT    MapAperture2Supported       : 1;
             UINT    CrossAdapterResourceTexture : 1;
             UINT    CrossAdapterResourceScanout : 1;
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+            UINT    AlwaysPoweredVRAM           : 1;
+            UINT    Reserved                    : 14;
+#else  // ! DXGKDDI_INTERFACE_VERSION_WDDM2_9
             UINT    Reserved                    : 15;
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1
 #else  // ! DXGKDDI_INTERFACE_VERSION_WDDM2_7
             UINT    Reserved                    : 18;
 #endif // DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM2_9
@@ -2299,7 +2366,8 @@ typedef enum _DXGK_WDDMVERSION // _ADVSCH_
      DXGKDDI_WDDMv2_8    = 0x2800,
      DXGKDDI_WDDMv2_9    = 0x2900,
      DXGKDDI_WDDMv3_0    = 0x3000,
-     DXGKDDI_WDDM_LATEST = DXGKDDI_WDDMv3_0
+     DXGKDDI_WDDMv3_1    = 0x3100,
+     DXGKDDI_WDDM_LATEST = DXGKDDI_WDDMv3_1
 } DXGK_WDDMVERSION;
 #endif // DXGKDDI_INTERFACE_VERSION
 
@@ -3003,6 +3071,97 @@ typedef struct _DXGK_ADL
 } DXGK_ADL;
 
 #endif // DXGKDDI_INTERFACE_VERSION_WDDM2_9
+
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+
+typedef struct _DXGK_NATIVE_FENCE_CAPS
+{
+    DXGK_SEGMENTPREFERENCE  PreferredSegmentForCurrentValue;    // Segment set for native fence current values in GPU local memory.
+    DXGK_SEGMENTPREFERENCE  PreferredSegmentForMonitoredValue;  // Segment set for native fence monitored values in GPU local memory.
+    UINT                    CurrentValueStride;                 // Stride for current values of native fences that are packed in the same page.
+    UINT                    MonitoredValueStride;               // Stride for monitored values of native fences that are packed in the same page.
+    BOOLEAN                 MapToCmpAddressSpace;               // Specifies whether native fence current and monitored values should be mapped to
+                                                                // a separate kernel only GPU VA address space for use by the context management processor.
+} DXGK_NATIVE_FENCE_CAPS;
+
+typedef struct _DXGKARG_CREATENATIVEFENCE
+{
+    HANDLE                      hNativeFence;                           // in: Runtime handle/out: Driver handle
+    D3DDDI_NATIVEFENCEMAPPING   NativeFenceMapping;                     // in: current process mapping information for this fence
+    D3DGPU_VIRTUAL_ADDRESS      CurrentValueGpuVaInCmpAddressSpace;     // in: Read/write mapping of the current value for the GPU in the context management processor address space
+    D3DGPU_VIRTUAL_ADDRESS      MonitoredValueGpuVaInCmpAddressSpace;   // in: Read/write mapping of the monitored value for the GPU in the context management processor address space
+
+    _Field_size_bytes_(PrivateDriverDataSize)
+    VOID*                       pPrivateDriverData;                     // in: Private driver data from the user mode CreateNativeFence call
+    UINT                        PrivateDriverDataSize;                  // in: size of pPrivateDriverData array in bytes
+} DXGKARG_CREATENATIVEFENCE;
+
+typedef _Inout_ DXGKARG_CREATENATIVEFENCE*   INOUT_PDXGKARG_CREATENATIVEFENCE;
+
+typedef
+    _Check_return_
+    _Function_class_DXGK_(DXGKDDI_CREATENATIVEFENCE)
+    _IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_CREATENATIVEFENCE(
+    IN_CONST_HANDLE                     hAdapter,
+    INOUT_PDXGKARG_CREATENATIVEFENCE    pCreateNativeFence
+    );
+
+typedef
+    _Check_return_
+    _Function_class_DXGK_(DXGKDDI_DESTROYNATIVEFENCE)
+    _IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_DESTROYNATIVEFENCE(
+    IN_CONST_HANDLE     hNativeFence
+    );
+
+
+typedef struct _DXGKARG_UPDATEMONITOREDVALUES
+{
+    _Field_size_(UpdatedValueCount)
+    HANDLE* NativeFenceArray;   // in: Native fence handles.
+    _Field_size_(UpdatedValueCount)
+    UINT64* UpdatedValueArray;  // in: New monitored values.
+    UINT    UpdatedValueCount;  // in: Number of native fences that OS updates monitored values of.
+} DXGKARG_UPDATEMONITOREDVALUES;
+
+typedef _In_ CONST DXGKARG_UPDATEMONITOREDVALUES*   IN_CONST_PDXGKARG_UPDATEMONITOREDVALUES;
+
+typedef
+    _Check_return_
+    _Function_class_DXGK_(DXGKDDI_UPDATEMONITOREDVALUES)
+    _IRQL_requires_(DISPATCH_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_UPDATEMONITOREDVALUES(
+    IN_CONST_PDXGKARG_UPDATEMONITOREDVALUES pUpdateMonitoredValues
+    );
+
+
+typedef struct _DXGKARG_NOTIFYCURRENTVALUEUPDATES
+{
+    _Field_size_(UpdatedValueCount)
+    HANDLE* NativeFenceArray;   // in: Native fence handles.
+    UINT    UpdatedValueCount;  // in: Number of native fences that OS updates current values of.
+} DXGKARG_NOTIFYCURRENTVALUEUPDATES;
+
+typedef _In_ CONST DXGKARG_NOTIFYCURRENTVALUEUPDATES*   IN_CONST_PDXGKARG_NOTIFYCURRENTVALUEUPDATES;
+
+typedef
+    _Check_return_
+    _Function_class_DXGK_(DXGKDDI_NOTIFYCURRENTVALUEUPDATES)
+    _IRQL_requires_(DISPATCH_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_NOTIFYCURRENTVALUEUPDATES(
+    IN_CONST_PDXGKARG_NOTIFYCURRENTVALUEUPDATES pNotifyCurrentValueUpdates
+    );
+
+#endif // DXGKDDI_INTERFACE_VERSION_WDDM3_1
 
 //
 // Defines for runtime power management
@@ -5003,6 +5162,7 @@ typedef struct _DXGK_VIRTUALMACHINEDATAFLAGS
         struct
         {
             UINT    SecureVirtualMachine    : 1;
+            UINT    LinuxVirtualMachine     : 1;
         };
         UINT Value;
     };
@@ -9221,6 +9381,13 @@ typedef enum _DXGK_FEATURE_ID
 
 #endif
 
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+
+    DXGK_FEATURE_USER_MODE_SUBMISSION = 4,
+    DXGK_FEATURE_SHARE_BACKING_STORE_WITH_KMD = 5,
+
+#endif
+
 } DXGK_FEATURE_ID;
 
 typedef struct _DXGKARGCB_ISFEATUREENABLED
@@ -9631,6 +9798,239 @@ NTSTATUS
 
 #endif // DXGKDDI_INTERFACE_VERSION_WDDM2_9
 
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+
+#define DXGK_MAX_DOORBELL_SIZE_BYTES 16384 // 4 * PAGE_SIZE
+
+typedef struct _DXGK_USERMODESUBMISSION_CAPS
+{
+    union
+    {
+        struct
+        {
+            UINT SecondaryDoorbellSupported : 1;
+            UINT Reserved : 31;
+        };
+        UINT Value;
+    } Flags;
+
+    UINT DoorbellSizeInBytes;
+    UINT SecondaryDoorbellSizeInBytes;
+    UCHAR Reserved[16];
+} DXGK_USERMODESUBMISSION_CAPS;
+
+typedef struct _DXGKARG_CREATEDOORBELL_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT ResizeRingBufferOperation : 1;
+            UINT Reserved : 31;
+        };
+        UINT Value;
+    };
+}DXGKARG_CREATEDOORBELL_FLAGS;
+
+typedef struct _DXGKARG_CREATEDOORBELL
+{
+    HANDLE hHwQueue;                     // in: KMD handle of the HWQueue for which doorbell needs to be created
+    HANDLE hDoorbell;                    // in: Runtime handle/out: KMD handle
+    _Field_range_(0, D3DDDI_DOORBELL_PRIVATEDATA_MAX_BYTES_WDDM3_1)
+    UINT PrivateDriverDataSize;          // in: Size of private driver data
+    _Field_size_(PrivateDriverDataSize)
+    void* PrivateDriverData;             // in/out: Private driver data
+    HANDLE hRingBuffer;                  // in: KMD Handle of Ring buffer allocation
+    HANDLE hRingBufferControl;           // in: KMD Handle of Ring buffer control allocation
+    DXGKARG_CREATEDOORBELL_FLAGS Flags;  // in: flags
+}DXGKARG_CREATEDOORBELL;
+
+typedef _Inout_ DXGKARG_CREATEDOORBELL* INOUT_PDXGKARG_CREATEDOORBELL;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_CREATEDOORBELL)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_CREATEDOORBELL(
+    INOUT_PDXGKARG_CREATEDOORBELL pArgs
+);
+
+typedef struct _DXGKARG_CONNECTDOORBELL_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT RequireSecondaryAddress : 1;
+            UINT Reserved: 31;
+        };
+        UINT Value;
+    };
+}DXGKARG_CONNECTDOORBELL_FLAGS;
+
+typedef struct _DXGKARG_CONNECTDOORBELL
+{
+    HANDLE hDoorbell;                       // in: KMD handle of the doorbell which needs to be connected
+    DXGKARG_CONNECTDOORBELL_FLAGS Flags;    // in: flags
+    void* KernelCpuVirtualAddress;          // out: kernel CPU VA of the doorbell
+    void* SecondaryKernelCpuVirtualAddress; // out opt: secondary kernel CPU VA of the doorbell
+    D3DDDI_DOORBELLSTATUS Status;           // out:
+}DXGKARG_CONNECTDOORBELL;
+
+typedef _Inout_ DXGKARG_CONNECTDOORBELL* INOUT_PDXGKARG_CONNECTDOORBELL;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_CONNECTDOORBELL)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_CONNECTDOORBELL(
+    INOUT_PDXGKARG_CONNECTDOORBELL pArgs
+    );
+
+typedef struct _DXGKARG_DISCONNECTDOORBELL_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+}DXGKARG_DISCONNECTDOORBELL_FLAGS;
+
+typedef struct _DXGKARG_DISCONNECTDOORBELL
+{
+    HANDLE hDoorbell;                       // in: KMD handle of the doorbell to be disconnected
+    DXGKARG_DISCONNECTDOORBELL_FLAGS Flags; // in: flags
+}DXGKARG_DISCONNECTDOORBELL;
+
+typedef _Inout_ DXGKARG_DISCONNECTDOORBELL* INOUT_PDXGKARG_DISCONNECTDOORBELL;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_DISCONNECTDOORBELL)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_DISCONNECTDOORBELL(
+    INOUT_PDXGKARG_DISCONNECTDOORBELL pArgs
+);
+
+typedef struct _DXGKARG_DESTROYDOORBELL
+{
+    HANDLE hDoorbell; // in: KMD handle of the doorbell to be destroyed
+}DXGKARG_DESTROYDOORBELL;
+
+typedef _Inout_ DXGKARG_DESTROYDOORBELL* INOUT_PDXGKARG_DESTROYDOORBELL;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_DESTROYDOORBELL)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_DESTROYDOORBELL(
+    INOUT_PDXGKARG_DESTROYDOORBELL pArgs
+);
+
+typedef struct _DXGKARG_NOTIFYWORKSUBMISSION_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+}DXGKARG_NOTIFYWORKSUBMISSION_FLAGS;
+
+typedef struct _DXGKARG_NOTIFYWORKSUBMISSION
+{
+    HANDLE hHwQueue;                          // in: KMD handle of the HWQueue
+    DXGKARG_NOTIFYWORKSUBMISSION_FLAGS Flags;
+}DXGKARG_NOTIFYWORKSUBMISSION;
+
+typedef _Inout_ DXGKARG_NOTIFYWORKSUBMISSION* INOUT_PDXGKARG_NOTIFYWORKSUBMISSION;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_NOTIFYWORKSUBMISSION)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_NOTIFYWORKSUBMISSION(
+    INOUT_PDXGKARG_NOTIFYWORKSUBMISSION pArgs
+);
+
+typedef struct _DXGKARGCB_DISCONNECTDOORBELL_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+} DXGKARGCB_DISCONNECTDOORBELL_FLAGS;
+
+typedef struct _DXGKARGCB_DISCONNECTDOORBELL
+{
+    HANDLE hHwQueue;                          // in: DXG assigned handle of the HWQueue whose doorbell
+                                              //     must be disconnected
+    DXGKARGCB_DISCONNECTDOORBELL_FLAGS Flags; // in:
+    D3DDDI_DOORBELLSTATUS DisconnectReason;   // in:
+} DXGKARGCB_DISCONNECTDOORBELL;
+
+typedef _Inout_ DXGKARGCB_DISCONNECTDOORBELL* INOUT_PDXGKARGCB_DISCONNECTDOORBELL;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKCB_DISCONNECTDOORBELL)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+(APIENTRY CALLBACK* DXGKCB_DISCONNECTDOORBELL)(
+    INOUT_PDXGKARGCB_DISCONNECTDOORBELL pArgs
+    );
+
+typedef struct _DXGKARG_FLUSHHWQUEUE_FLAGS
+{
+    union
+    {
+        struct
+        {
+            UINT Reserved : 32;
+        };
+        UINT Value;
+    };
+} DXGKARG_FLUSHHWQUEUE_FLAGS;
+
+typedef struct _DXGKARG_FLUSHHWQUEUE
+{
+    HANDLE hHwQueue; // in: KMD handle of the HWQueue to flush
+    HANDLE Event;   // event to signal after flush complete
+    DXGKARG_FLUSHHWQUEUE_FLAGS Flags;
+}DXGKARG_FLUSHHWQUEUE;
+
+typedef _Inout_ DXGKARG_FLUSHHWQUEUE* INOUT_PDXGKARG_FLUSHHWQUEUE;
+
+typedef
+_Check_return_
+_Function_class_DXGK_(DXGKDDI_FLUSHHWQUEUE)
+_IRQL_requires_(PASSIVE_LEVEL)
+NTSTATUS
+APIENTRY
+DXGKDDI_FLUSHHWQUEUE(
+    INOUT_PDXGKARG_FLUSHHWQUEUE pArgs
+);
+#endif
+
 //
 //     Function pointer typedefs
 //
@@ -9839,6 +10239,23 @@ typedef struct _DXGK_WDDM3_ON_VB_INTERFACE
 #define DXGK_WDDM3_ON_VB_INTERFACE_VERSION_1 1
 
 #endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_0)
+
+#if (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+
+typedef DXGKDDI_CREATENATIVEFENCE           *PDXGKDDI_CREATENATIVEFENCE;
+typedef DXGKDDI_DESTROYNATIVEFENCE          *PDXGKDDI_DESTROYNATIVEFENCE;
+typedef DXGKDDI_UPDATEMONITOREDVALUES       *PDXGKDDI_UPDATEMONITOREDVALUES;
+typedef DXGKDDI_NOTIFYCURRENTVALUEUPDATES   *PDXGKDDI_NOTIFYCURRENTVALUEUPDATES;
+
+typedef DXGKDDI_CREATEDOORBELL       *PDXGKDDI_CREATEDOORBELL;
+typedef DXGKDDI_CONNECTDOORBELL      *PDXGKDDI_CONNECTDOORBELL;
+typedef DXGKDDI_DISCONNECTDOORBELL   *PDXGKDDI_DISCONNECTDOORBELL;
+typedef DXGKDDI_DESTROYDOORBELL      *PDXGKDDI_DESTROYDOORBELL;
+typedef DXGKDDI_NOTIFYWORKSUBMISSION *PDXGKDDI_NOTIFYWORKSUBMISSION;
+typedef DXGKDDI_FLUSHHWQUEUE         *PDXGKDDI_FLUSHHWQUEUE;
+
+#endif // (DXGKDDI_INTERFACE_VERSION >= DXGKDDI_INTERFACE_VERSION_WDDM3_1)
+
 
 #pragma warning(pop)
 

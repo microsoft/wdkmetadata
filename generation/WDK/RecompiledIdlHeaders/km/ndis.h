@@ -40,8 +40,9 @@ Notes:
 
         Version     First available in
         ------------------------------------------------------------------
-        686         Windows 10, cobalt release
-        685         Windows 10, iron release
+        687         Windows 11, nickel release
+        686         Windows 11, cobalt release
+        685         Windows 10, iron release / Windows Server 2022
         684         Windows 10, vibranium release
         683         Windows 10, version 1903
         682         Windows 10, version 1809
@@ -152,6 +153,7 @@ EXTERN_C_START
 #ifdef NETCX_ADAPTER_2
 
 #if ( \
+    defined(NDIS687_MINIPORT) || \
     defined(NDIS686_MINIPORT) || \
     defined(NDIS685_MINIPORT) || \
     defined(NDIS684_MINIPORT) || \
@@ -297,7 +299,10 @@ __drv_Mode_impl(NDIS_INCLUDED)
 // for Miniports versions 5.0 and up, provide a consistent way to match
 // Ndis version in their characteristics with their makefile defines
 //
-#if (defined(NDIS686_MINIPORT))
+#if (defined(NDIS687_MINIPORT))
+#define NDIS_MINIPORT_MAJOR_VERSION 6
+#define NDIS_MINIPORT_MINOR_VERSION 87
+#elif (defined(NDIS686_MINIPORT))
 #define NDIS_MINIPORT_MAJOR_VERSION 6
 #define NDIS_MINIPORT_MINOR_VERSION 86
 #elif (defined(NDIS685_MINIPORT))
@@ -421,12 +426,16 @@ __drv_Mode_impl(NDIS_INCLUDED)
 #elif (defined(NDIS686_MINIPORT))
 #define NDIS_MINIPORT_MINIMUM_MAJOR_VERSION 6
 #define NDIS_MINIPORT_MINIMUM_MINOR_VERSION 86
+#elif (defined(NDIS687_MINIPORT))
+#define NDIS_MINIPORT_MINIMUM_MAJOR_VERSION 6
+#define NDIS_MINIPORT_MINIMUM_MINOR_VERSION 87
 #endif
 
 //
 // Disallow invalid major/minor combination
 //
 #if ((NDIS_MINIPORT_MAJOR_VERSION == 6) && \
+       (NDIS_MINIPORT_MINOR_VERSION != 87) && \
        (NDIS_MINIPORT_MINOR_VERSION != 86) && \
        (NDIS_MINIPORT_MINOR_VERSION != 85) && \
        (NDIS_MINIPORT_MINOR_VERSION != 84) && \
@@ -454,12 +463,13 @@ __drv_Mode_impl(NDIS_INCLUDED)
 //
 // Make sure the target platform is consistent with miniport version
 //
-#ifndef NTDDI_WIN10_CO
-#define DEFINED_NTDDI_WIN10_CO
-#define NTDDI_WIN10_CO WDK_NTDDI_VERSION
-#endif // NTDDI_WIN10_CO
+#ifndef NTDDI_WIN10_NI
+#define DEFINED_NTDDI_WIN10_NI
+#define NTDDI_WIN10_NI WDK_NTDDI_VERSION
+#endif // NTDDI_WIN10_NI
 
 #if  (NDIS_MINIPORT_MINIMUM_MAJOR_VERSION == 6) && (\
+      (NDIS_MINIPORT_MINIMUM_MINOR_VERSION == 87 && NTDDI_VERSION < NTDDI_WIN10_NI) || \
       (NDIS_MINIPORT_MINIMUM_MINOR_VERSION == 86 && NTDDI_VERSION < NTDDI_WIN10_CO) || \
       (NDIS_MINIPORT_MINIMUM_MINOR_VERSION == 85 && NTDDI_VERSION < NTDDI_WIN10_FE) || \
       (NDIS_MINIPORT_MINIMUM_MINOR_VERSION == 84 && NTDDI_VERSION < NTDDI_WIN10_VB) || \
@@ -483,10 +493,10 @@ __drv_Mode_impl(NDIS_INCLUDED)
 #error NDIS: Wrong NDIS or DDI version specified
 #endif
 
-#ifdef DEFINED_NTDDI_WIN10_CO
-#undef DEFINED_NTDDI_WIN10_CO
-#undef NTDDI_WIN10_CO
-#endif // DEFINED_NTDDI_WIN10_CO
+#ifdef DEFINED_NTDDI_WIN10_NI
+#undef DEFINED_NTDDI_WIN10_NI
+#undef NTDDI_WIN10_NI
+#endif // DEFINED_NTDDI_WIN10_NI
 
 #endif // NDIS_MINIPORT_DRIVER
 
@@ -504,7 +514,12 @@ __drv_Mode_impl(NDIS_INCLUDED)
 // a protocol only or filter driver
 //
 
-#if (defined(NDIS686))
+#if (defined(NDIS687))
+#define NDIS_PROTOCOL_MAJOR_VERSION 6
+#define NDIS_PROTOCOL_MINOR_VERSION 87
+#define NDIS_FILTER_MAJOR_VERSION 6
+#define NDIS_FILTER_MINOR_VERSION 87
+#elif (defined(NDIS686))
 #define NDIS_PROTOCOL_MAJOR_VERSION 6
 #define NDIS_PROTOCOL_MINOR_VERSION 86
 #define NDIS_FILTER_MAJOR_VERSION 6
@@ -692,6 +707,11 @@ __drv_Mode_impl(NDIS_INCLUDED)
 #define NDIS_PROTOCOL_MINIMUM_MINOR_VERSION 86
 #define NDIS_FILTER_MINIMUM_MAJOR_VERSION 6
 #define NDIS_FILTER_MINIMUM_MINOR_VERSION 86
+#elif (defined(NDIS687))
+#define NDIS_PROTOCOL_MINIMUM_MAJOR_VERSION 6
+#define NDIS_PROTOCOL_MINIMUM_MINOR_VERSION 87
+#define NDIS_FILTER_MINIMUM_MAJOR_VERSION 6
+#define NDIS_FILTER_MINIMUM_MINOR_VERSION 87
 #endif
 
 
@@ -723,6 +743,7 @@ __drv_Mode_impl(NDIS_INCLUDED)
 // disallow invalid major/minor combination
 //
 #if ((NDIS_FILTER_MAJOR_VERSION == 6) && \
+     (NDIS_FILTER_MINOR_VERSION != 87) && \
      (NDIS_FILTER_MINOR_VERSION != 86) && \
      (NDIS_FILTER_MINOR_VERSION != 85) && \
      (NDIS_FILTER_MINOR_VERSION != 84) && \
@@ -754,6 +775,7 @@ __drv_Mode_impl(NDIS_INCLUDED)
 // disallow invalid major/minor combination
 //
 #if ((NDIS_PROTOCOL_MAJOR_VERSION == 6) && \
+     (NDIS_PROTOCOL_MINOR_VERSION != 87) && \
      (NDIS_PROTOCOL_MINOR_VERSION != 86) && \
      (NDIS_PROTOCOL_MINOR_VERSION != 85) && \
      (NDIS_PROTOCOL_MINOR_VERSION != 84) && \
@@ -786,12 +808,13 @@ __drv_Mode_impl(NDIS_INCLUDED)
 //
 // Make sure the target platform is consistent with miniport version
 //
-#ifndef NTDDI_WIN10_CO
-#define DEFINED_NTDDI_WIN10_CO
-#define NTDDI_WIN10_CO WDK_NTDDI_VERSION
-#endif // NTDDI_WIN10_CO
+#ifndef NTDDI_WIN10_NI
+#define DEFINED_NTDDI_WIN10_NI
+#define NTDDI_WIN10_NI WDK_NTDDI_VERSION
+#endif // NTDDI_WIN10_NI
 
 #if  (NDIS_PROTOCOL_MINIMUM_MAJOR_VERSION == 6) && ( \
+      (NDIS_PROTOCOL_MINIMUM_MINOR_VERSION == 87 && NTDDI_VERSION < NTDDI_WIN10_NI) || \
       (NDIS_PROTOCOL_MINIMUM_MINOR_VERSION == 86 && NTDDI_VERSION < NTDDI_WIN10_CO) || \
       (NDIS_PROTOCOL_MINIMUM_MINOR_VERSION == 85 && NTDDI_VERSION < NTDDI_WIN10_FE) || \
       (NDIS_PROTOCOL_MINIMUM_MINOR_VERSION == 84 && NTDDI_VERSION < NTDDI_WIN10_VB) || \
@@ -815,10 +838,10 @@ __drv_Mode_impl(NDIS_INCLUDED)
 #error NDIS: Wrong NDIS or DDI version specified
 #endif
 
-#ifdef DEFINED_NTDDI_WIN10_CO
-#undef DEFINED_NTDDI_WIN10_CO
-#undef NTDDI_WIN10_CO
-#endif // DEFINED_NTDDI_WIN10_CO
+#ifdef DEFINED_NTDDI_WIN10_NI
+#undef DEFINED_NTDDI_WIN10_NI
+#undef NTDDI_WIN10_NI
+#endif // DEFINED_NTDDI_WIN10_NI
 
 #endif // defined (NDIS_PROTOCOL_MAJOR_VERSION)
 
@@ -911,6 +934,7 @@ __drv_Mode_impl(NDIS_INCLUDED)
 #define NDIS_RUNTIME_VERSION_684    ((6 << 16) | 84)
 #define NDIS_RUNTIME_VERSION_685    ((6 << 16) | 85)
 #define NDIS_RUNTIME_VERSION_686    ((6 << 16) | 86)
+#define NDIS_RUNTIME_VERSION_687    ((6 << 16) | 87)
 
 
 #define NDIS_DECLARE_CONTEXT_INNER(datatype,purpose) \
@@ -2016,6 +2040,7 @@ typedef struct _REFERENCE
 #define NDIS_STATUS_DOT11_WDI_RESERVED_9                                ((NDIS_STATUS)0x40030032L)
 #define NDIS_STATUS_DOT11_WDI_RESERVED_10                               ((NDIS_STATUS)0x40030033L)
 #define NDIS_STATUS_DOT11_WDI_RESERVED_11                               ((NDIS_STATUS)0x40030034L)
+#define NDIS_STATUS_DOT11_WDI_RESERVED_12                               ((NDIS_STATUS)0x40030035L)
 
 
 //
@@ -2123,9 +2148,10 @@ typedef struct _REFERENCE
 #endif
 
 #if (NDIS_SUPPORT_NDIS685)
-//NDIS_STATUS_WWAN_IO_PAUSE is only used by ndisuio to PAUSE or resume OID dispatch. It will not by delivered to wwansvc
+//NDIS_STATUS_WWAN_IO_PAUSE is only used by ndisuio to PAUSE or resume OID dispatch. It will not be delivered to wwansvc
 #define NDIS_STATUS_WWAN_IO_PAUSE                           ((NDIS_STATUS)0x4004104dL)
-#define NDIS_STATUS_WWAN_IO_RESUME                          ((NDIS_STATUS)0x4004105eL)
+#define NDIS_STATUS_WWAN_IO_RESUME                          ((NDIS_STATUS)0x4004104eL)
+#define NDIS_STATUS_WWAN_UE_POLICY_STATE                    ((NDIS_STATUS)0x4004104fL)
 #endif
 
 //
@@ -6326,9 +6352,6 @@ typedef struct DECLSPEC_ALIGN(8) _NDIS_PD_CLOSE_PROVIDER_PARAMETERS {
 #include <ndis/nbl.h>
 #include <ndis/nblinfo.h>
 #include <ndis/nblaccessors.h>
-
-#define NET_BUFFER_LIST_CONTEXT_DATA_START(_NBL)    ((PUCHAR)(((_NBL)->Context)+1)+(_NBL)->Context->Offset)
-#define NET_BUFFER_LIST_CONTEXT_DATA_SIZE(_NBL)     (((_NBL)->Context)->Size)
 
 #define NDIS_GET_NET_BUFFER_LIST_CANCEL_ID(_NBL)     (NET_BUFFER_LIST_INFO(_NBL, NetBufferListCancelId))
 #define NDIS_SET_NET_BUFFER_LIST_CANCEL_ID(_NBL, _CancelId)            \
@@ -15129,6 +15152,8 @@ NdisIfDeleteIfStackEntry(
     );
 
 #endif // NDIS_SUPPORT_NDIS6
+
+#include <ndis/monitor.h>
 
 EXTERN_C_END
 

@@ -24,14 +24,17 @@ Environment:
 #define SOUNDWIRE_INTERRUPTS_VER_1      (1)
 #define SOUNDWIRE_NOTIFICATIONS_VER_1   (1)
 
+#define SOUNDWIRE_CONTROLLER_VER_1      (1)
+#define SOUNDWIRE_CONTROLLER_VER_2      (2)                 // Support for Commit Groups Added
+
 #define MAX_NUM_DATAPORTS (15)
 
 typedef enum _SOUNDWIRE_COMMAND_PRIORITY
 {
-    SoundWireCommandPriorityInvalid = 0,                    // Invalid priority
-    SoundWireCommandPriorityNormal = 1,                     // Normal priority
-    SoundWireCommandPriorityHigh = 2,                       // High priority
-    SoundWireCommandPriorityCritical = 3,                   // Critical priority
+    SoundWireCommandPriorityInvalid     = 0,                // Invalid priority
+    SoundWireCommandPriorityNormal      = 1,                // Normal priority
+    SoundWireCommandPriorityHigh        = 2,                // High priority
+    SoundWireCommandPriorityCritical    = 3,                // Critical priority
 } SOUNDWIRE_COMMAND_PRIORITY;
 
 typedef enum _SOUNDWIRE_DUAL_RANK_ATTRIBUTE
@@ -68,6 +71,16 @@ typedef struct _SDCA_AUDIO_CONTROLS
     SDCA_AUDIO_CONTROL          Control[ANYSIZE_ARRAY];     // Array of Sdca Controls
 } SDCA_AUDIO_CONTROLS, *PSDCA_AUDIO_CONTROLS;
 
+typedef struct _SDCA_AUDIO_CONTROLS_2
+{
+    ULONG                       Size;                       // Size of this struct including size of Control array
+    ULONG                       CommitGroupHandle;          // Commit Group Handle (optional)
+    SOUNDWIRE_COMMAND_PRIORITY  Priority;                   // Priority
+    ULONG                       ControlCount;               // Count of Sdca Controls in Control array 
+    _Field_size_(ControlCount)
+    SDCA_AUDIO_CONTROL          Control[ANYSIZE_ARRAY];     // Array of Sdca Controls
+} SDCA_AUDIO_CONTROLS_2, *PSDCA_AUDIO_CONTROLS_2;
+
 typedef struct _SOUNDWIRE_MEMORY
 {
     ULONG                       Size;                       // Size of this struct including size of Buffer array
@@ -77,6 +90,17 @@ typedef struct _SOUNDWIRE_MEMORY
     _Field_size_(BufferSize)
     BYTE                        Buffer[ANYSIZE_ARRAY];      // Buffer containing 8-bit values
 } SOUNDWIRE_MEMORY, *PSOUNDWIRE_MEMORY;
+
+typedef struct _SOUNDWIRE_MEMORY_2
+{
+    ULONG                       Size;                       // Size of this struct including size of Buffer array
+    ULONG                       CommitGroupHandle;          // Commit Group Handle (optional)
+    SOUNDWIRE_COMMAND_PRIORITY  Priority;                   // Priority
+    ULONG                       Address;                    // 32-bit Register Address
+    ULONG                       BufferSize;                 // Size (number of Bytes) of Buffer
+    _Field_size_(BufferSize)
+    BYTE                        Buffer[ANYSIZE_ARRAY];      // Buffer containing 8-bit values
+} SOUNDWIRE_MEMORY_2, *PSOUNDWIRE_MEMORY_2;
 
 typedef struct _SOUNDWIRE_REGISTER
 {
@@ -96,6 +120,16 @@ typedef struct _SOUNDWIRE_REGISTERS
     _Field_size_(RegisterCount)
     SOUNDWIRE_REGISTER          Register[ANYSIZE_ARRAY];    // Array of SoundWire registers
 } SOUNDWIRE_REGISTERS, *PSOUNDWIRE_REGISTERS;
+
+typedef struct _SOUNDWIRE_REGISTERS_2
+{
+    ULONG                       Size;                       // Size of this struct including size of Register array
+    ULONG                       CommitGroupHandle;          // Commit Group Handle (optional)
+    SOUNDWIRE_COMMAND_PRIORITY  Priority;                   // Priority
+    ULONG                       RegisterCount;              // Count of registers in Register array
+    _Field_size_(RegisterCount)
+    SOUNDWIRE_REGISTER          Register[ANYSIZE_ARRAY];    // Array of SoundWire registers
+} SOUNDWIRE_REGISTERS_2, *PSOUNDWIRE_REGISTERS_2;
 
 typedef struct _SOUNDWIRE_INTERRUPTS
 {
@@ -194,17 +228,17 @@ typedef struct _SOUNDWIRE_PERIPHERAL_INFORMATION
 
 typedef enum _SOUNDWIRE_DATAPORT_TYPE
 {
-    SoundWireDataPortTypeInvalid = 0,                       // Invalid DataPort type
-    SoundWireDataPortTypeFull = 1,                          // Full DataPort
+    SoundWireDataPortTypeInvalid    = 0,                    // Invalid DataPort type
+    SoundWireDataPortTypeFull       = 1,                    // Full DataPort
     SoundWireDataPortTypeSimplified = 2,                    // Simplified DataPort 
-    SoundWireDataPortTypeReduced = 3,                       // Reduced DataPort
+    SoundWireDataPortTypeReduced    = 3,                    // Reduced DataPort
 } SOUNDWIRE_DATAPORT_TYPE;
 
 typedef enum _SOUNDWIRE_CHANNEL_PREPARE_TYPE
 {
-    SoundWireChannelPrepareTypeInvalid = 0,                 // Invalid Channel Prepare type
-    SoundWireChannelPrepareTypeCpSm = 1,                    // Full Channel Prepare
-    SoundWireChannelPrepareTypeSimplifiedCpSm = 2,          // Simplified Channel Prepare
+    SoundWireChannelPrepareTypeInvalid          = 0,        // Invalid Channel Prepare type
+    SoundWireChannelPrepareTypeCpSm             = 1,        // Full Channel Prepare
+    SoundWireChannelPrepareTypeSimplifiedCpSm   = 2,        // Simplified Channel Prepare
 } SOUNDWIRE_CHANNEL_PREPARE_TYPE;
 
 typedef enum _SOUNDWIRE_DATAPORT_MODE
@@ -218,9 +252,9 @@ typedef enum _SOUNDWIRE_DATAPORT_MODE
 
 typedef enum _SOUNDWIRE_DATAPORT_DIRECTION
 {
-    SoundWireDataPortDirectionInvalid = 0,                  // Invalid direction
-    SoundWireDataPortDirectionSink = 1,                     // Sink DataPort
-    SoundWireDataPortDirectionSource = 2,                   // Source DataPort
+    SoundWireDataPortDirectionInvalid   = 0,                // Invalid direction
+    SoundWireDataPortDirectionSink      = 1,                // Sink DataPort
+    SoundWireDataPortDirectionSource    = 2,                // Source DataPort
 } SOUNDWIRE_DATAPORT_DIRECTION;
 
 typedef struct _SOUNDWIRE_DATAPORT_CONFIGURATION
@@ -242,6 +276,29 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
     SOUNDWIRE_DATAPORT_DIRECTION     Direction;             // DataPort direction
 } SOUNDWIRE_DATAPORT_CAPABILITIES, *PSOUNDWIRE_DATAPORT_CAPABILITIES;
 
+typedef enum _SOUNDWIRE_TRIGGER_PURPOSE
+{
+    SoundWireTriggerPurposeInvalid      = 0,                // invalid purpose
+    SoundWireTriggerPurposeUltrasound   = 1,                // ultrasound trigger
+    SoundWireTriggerPurposeSpeech       = 2,                // speech onset trigger
+    SoundWireTriggerPurposeVoice        = 3,                // voice detection trigger
+} SOUNDWIRE_TRIGGER_PURPOSE;
+
+typedef struct _SOUNDWIRE_TRIGGER_CONFIGURATION
+{
+    ULONG                           Size;                   // Size of this struct
+    ULONG                           DataPortNumber;         // DataPort number
+    ULONG                           EndpointId;             // Endpoint Id
+    SOUNDWIRE_TRIGGER_PURPOSE       Purpose;                // voice, speech, ultrasound
+} SOUNDWIRE_TRIGGER_CONFIGURATION, *PSOUNDWIRE_TRIGGER_CONFIGURATION;
+
+typedef struct _SOUNDWIRE_DATAPORT_STARTSTOP
+{
+    ULONG Size;
+    ULONG CommitGroupHandle;
+    ULONG DataPortNumber;
+} SOUNDWIRE_DATAPORT_STARTSTOP, *PSOUNDWIRE_DATAPORT_STARTSTOP;
+
 //
 // Control codes
 //
@@ -250,7 +307,21 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
     CTL_CODE (FILE_DEVICE_SOUNDWIRE, _index_, METHOD_NEITHER, FILE_ANY_ACCESS)
 
 //
+// Retrieve the SoundWire Controller Interface Version
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_2 (Failure indicates VER_1)
+//
+// InputBuffer - NULL
+// OutputBuffer - ULONG
+//
+#define IOCTL_SOUNDWIRE_GET_CONTROLLER_VERSION                               SOUNDWIRE_IOCTL (0)
+
+//
 // Returns information about peripheral
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - NULL
 // OutputBuffer - SOUNDWIRE_PERIPHERAL_INFORMATION
 //
@@ -258,6 +329,10 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Provides data port capabilities details.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_DATAPORT_CAPABILITIES
 // OutputBuffer - NULL
 //
@@ -265,6 +340,11 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Writes variable-length value to the SDCA register address.
+// Equivalent to calling IOCTL_SDCA_WRITE_AUDIO_CONTROLS_2 with CommitGroupHandle 0
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SDCA_AUDIO_CONTROLS
 // OutputBuffer - NULL
 //
@@ -272,6 +352,10 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Reads variable-length value from the SDCA register address.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SDCA_AUDIO_CONTROLS
 // OutputBuffer - NULL
 //
@@ -279,6 +363,11 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Writes single byte to one or more registers.
+// Equivalent to calling IOCTL_SDCA_WRITE_REGISTERS_2 with CommitGroupHandle 0
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_REGISTERS
 // OutputBuffer - NULL
 //
@@ -286,6 +375,10 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Reads single byte from one or more registers.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_REGISTERS
 // OutputBuffer - NULL
 //
@@ -294,6 +387,11 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 //
 // Writes one or more bytes to the registers starting from given address.
 // Controller will use Bulk Register Access for applicable sizes when supported.
+// Equivalent to calling IOCTL_SDCA_WRITE_MEMORY_2 with CommitGroupHandle 0
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_MEMORY
 // OutputBuffer - NULL
 //
@@ -302,6 +400,10 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 //
 // Reads one or more bytes from the registers starting from given address.
 // Controller will use Bulk Register Access for applicable sizes when supported.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_MEMORY
 // OutputBuffer - NULL
 //
@@ -309,13 +411,21 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Enables or disables notifications.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_NOTIFICATIONS
 // OutputBuffer - NULL
-// 
+//
 #define IOCTL_SOUNDWIRE_MASK_NOTIFICATIONS                                   SOUNDWIRE_IOCTL (9)
 
 //
 // Registers notification callback routine.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_NOTIFICATION_CALLBACK
 // OutputBuffer - NULL
 //
@@ -323,6 +433,10 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Unregisters notification callback routine.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_NOTIFICATION_CALLBACK
 // OutputBuffer - NULL
 //
@@ -330,13 +444,21 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Enables or disables interrupts.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_INTERRUPTS
 // OutputBuffer - NULL
-// 
+//
 #define IOCTL_SOUNDWIRE_MASK_INTERRUPTS                                      SOUNDWIRE_IOCTL (12)
 
 //
 // Registers interrupt callback routine.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_INTERRUPT_CALLBACK
 // OutputBuffer - NULL
 //
@@ -344,13 +466,21 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Unregisters interrupt callback routine.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_INTERRUPT_CALLBACK
 // OutputBuffer - NULL
 //
 #define IOCTL_SOUNDWIRE_UNREGISTER_INTERRUPT_CALLBACK                        SOUNDWIRE_IOCTL (14)
 
-
+//
 // Configures data port for streaming.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_DATAPORT_CONFIGURATION
 // OutputBuffer - NULL
 //
@@ -358,6 +488,10 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Deconfigures data port for streaming.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - SOUNDWIRE_DATAPORT_CONFIGURATION
 // OutputBuffer - NULL
 //
@@ -365,6 +499,11 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Starts data port for streaming.
+// Equivalent to calling IOCTL_SOUNDWIRE_START_DATAPORT_2 with CommitGroupHandle 0
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - ULONG
 // OutputBuffer - NULL
 //
@@ -372,9 +511,78 @@ typedef struct SOUNDWIRE_DATAPORT_CAPABILITIES
 
 //
 // Stops data port for streaming.
+// Equivalent to calling IOCTL_SOUNDWIRE_STOP_DATAPORT_2 with CommitGroupHandle 0
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_1
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
 // InputBuffer - ULONG
 // OutputBuffer - NULL
 //
 #define IOCTL_SOUNDWIRE_STOP_DATAPORT                                        SOUNDWIRE_IOCTL (18)
+
+// Writes variable-length value to the SDCA register address.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
+// InputBuffer - SDCA_AUDIO_CONTROLS_2
+// OutputBuffer - NULL
+//
+#define IOCTL_SDCA_WRITE_AUDIO_CONTROLS_2                                    SOUNDWIRE_IOCTL (19)
+
+//
+// Writes single byte to one or more registers.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
+// InputBuffer - SOUNDWIRE_REGISTERS_2
+// OutputBuffer - NULL
+//
+#define IOCTL_SOUNDWIRE_WRITE_REGISTERS_2                                    SOUNDWIRE_IOCTL (20)
+
+//
+// Writes one or more bytes to the registers starting from given address.
+// Controller will use Bulk Register Access for applicable sizes when supported.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
+// InputBuffer - SOUNDWIRE_MEMORY_2
+// OutputBuffer - NULL
+//
+#define IOCTL_SOUNDWIRE_WRITE_MEMORY_2                                       SOUNDWIRE_IOCTL (21)
+
+//
+// Starts data port for streaming.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
+// InputBuffer - SOUNDWIRE_DATAPORT_STARTSTOP
+// OutputBuffer - NULL
+//
+#define IOCTL_SOUNDWIRE_START_DATAPORT_2                                     SOUNDWIRE_IOCTL (22)
+
+//
+// Stops data port for streaming.
+//
+// Required for SOUNDWIRE_CONTROLLER_VER_2
+//
+// InputBuffer - SOUNDWIRE_DATAPORT_STARTSTOP
+// OutputBuffer - NULL
+//
+#define IOCTL_SOUNDWIRE_STOP_DATAPORT_2                                      SOUNDWIRE_IOCTL (23)
+
+//
+// Communicates trigger configuration for the data port
+// InputBuffer - SOUNDWIRE_TRIGGER_CONFIGURATION
+// OutputBuffer - NULL
+//
+#define IOCTL_SOUNDWIRE_PREPARE_TRIGGER                                      SOUNDWIRE_IOCTL (24)
+
+//
+// Communicates trigger configuration for the data port
+// InputBuffer - SOUNDWIRE_TRIGGER_CONFIGURATION
+// OutputBuffer - NULL
+//
+#define IOCTL_SOUNDWIRE_DEPREPARE_TRIGGER                                    SOUNDWIRE_IOCTL (25)
 
 #endif // _SOUNDWIRECONTROLLER_H_

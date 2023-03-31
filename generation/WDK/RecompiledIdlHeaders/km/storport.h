@@ -2103,6 +2103,20 @@ typedef union _CDB {
 
     } SET_TIMESTAMP;
 
+    struct _REPORT_SUPPORTED_OPERATION_CODES {
+        UCHAR OperationCode;                            // 0xA3 SCSIOP_MAINTENANCE_IN
+        UCHAR ServiceAction                     : 5;    // 0x0C SERVICE_ACTION_REPORT_SUPPORTED_OPERATION_CODES
+        UCHAR Reserved0                         : 3;
+        UCHAR ReportOptions                     : 3;
+        UCHAR Reserved1                         : 4;
+        UCHAR ReturnCommandTimeoutsDescriptor   : 1;
+        UCHAR RequestedOperationCode;
+        UCHAR RequestedServiceAction[2];
+        UCHAR AllocationLength[4];
+        UCHAR Reserved2;
+        UCHAR Control;
+    } REPORT_SUPPORTED_OPERATION_CODES;
+
     //
     // MMC / SFF-8090 commands
     //
@@ -2189,27 +2203,32 @@ typedef union _CDB {
 
     struct _READ16 {
         UCHAR OperationCode;      // 0x88 - SCSIOP_READ16
-        UCHAR Reserved1         : 3;
-        UCHAR ForceUnitAccess   : 1;
-        UCHAR DisablePageOut    : 1;
-        UCHAR ReadProtect       : 3;
+        UCHAR DurationLimitDescriptor2      : 1;
+        UCHAR Reserved1                     : 1;
+        UCHAR RebuildAssistRecoveryControl  : 1;
+        UCHAR ForceUnitAccess               : 1;
+        UCHAR DisablePageOut                : 1;
+        UCHAR ReadProtect                   : 3;
         UCHAR LogicalBlock[8];
         UCHAR TransferLength[4];
-        UCHAR Reserved2         : 7;
-        UCHAR Streaming         : 1;
+        UCHAR Group                         : 6;
+        UCHAR DurationLimitDescriptor0      : 1;
+        UCHAR DurationLimitDescriptor1      : 1;
         UCHAR Control;
     } READ16;
 
     struct _WRITE16 {
         UCHAR OperationCode;      // 0x8A - SCSIOP_WRITE16
-        UCHAR Reserved1         : 3;
-        UCHAR ForceUnitAccess   : 1;
-        UCHAR DisablePageOut    : 1;
-        UCHAR WriteProtect      : 3;
+        UCHAR DurationLimitDescriptor2      : 1;
+        UCHAR Reserved1                     : 2;
+        UCHAR ForceUnitAccess               : 1;
+        UCHAR DisablePageOut                : 1;
+        UCHAR WriteProtect                  : 3;
         UCHAR LogicalBlock[8];
         UCHAR TransferLength[4];
-        UCHAR Reserved2         : 7;
-        UCHAR Streaming         : 1;
+        UCHAR Group                         : 6;
+        UCHAR DurationLimitDescriptor0      : 1;
+        UCHAR DurationLimitDescriptor1      : 1;
         UCHAR Control;
     } WRITE16;
 
@@ -2417,11 +2436,35 @@ typedef union _CDB32 {
         UCHAR Reserved2        : 3;
         UCHAR AdditionalCDBLength;
         UCHAR ServiceAction[2];
-        UCHAR Reserved3[2];
+        UCHAR Reserved3;
+        UCHAR DurationLimitDescriptor0  : 1;
+        UCHAR DurationLimitDescriptor1  : 1;
+        UCHAR DurationLimitDescriptor2  : 1;
+        UCHAR Reserved4                 : 5;
         UCHAR LogicalBlock[8];
-        UCHAR Reserved4[8];
+        UCHAR Reserved5[8];
         UCHAR TransferLength[4];
     } CDB32GENERIC;
+
+    struct _XDWRITEREAD32 {
+        UCHAR OperationCode;        // 0x7F - SCSIOP_OPERATION32
+        UCHAR Control;
+        UCHAR Reserved1[4];
+        UCHAR Group            : 5;
+        UCHAR Reserved2        : 3;
+        UCHAR AdditionalCDBLength;  // 0x18
+        UCHAR ServiceAction[2];     // 0x0007 - SERVICE_ACTION_XDWRITEREAD
+        UCHAR XorProtectionInfo : 1;
+        UCHAR Reservede         : 1;
+        UCHAR DisableWrite      : 1;
+        UCHAR ForceUnitAccess   : 1;
+        UCHAR DisablePageOut    : 1;
+        UCHAR WriteProtect      : 1;
+        UCHAR Reserved4;
+        UCHAR LogicalBlock[8];
+        UCHAR Reserved5[8];
+        UCHAR TransferLength[4];
+    } XDWRITEREAD32;
 
     ULONG AsUlong[8];
     UCHAR AsByte[32];
@@ -3124,6 +3167,18 @@ typedef struct _PERFORMANCE_DESCRIPTOR {
 #define MODE_SENSE_DEFAULT_VAULES       0x80
 #define MODE_SENSE_SAVED_VALUES         0xc0
 
+//
+// Page Control for MODE_SENSE/MODE_SENSE10
+//
+#define MODE_SENSE_CURRENT_VALUES_PAGE_CONTROL      0
+#define MODE_SENSE_CHANGEABLE_VALUES_PAGE_CONTROL   1
+#define MODE_SENSE_DEFAULT_VALUES_PAGE_CONTROL      2
+#define MODE_SENSE_SAVED_VALUES_PAGE_CONTROL        3
+
+#define MODE_SUBPAGE_COMMAND_DURATION_LIMIT_A_MODE      0x03
+#define MODE_SUBPAGE_COMMAND_DURATION_LIMIT_B_MODE      0x04
+#define MODE_SUBPAGE_COMMAND_DURATION_LIMIT_T2A_MODE    0x07
+#define MODE_SUBPAGE_COMMAND_DURATION_LIMIT_T2B_MODE    0x08
 
 //
 // SCSI CDB operation codes
@@ -3402,6 +3457,7 @@ typedef struct _PERFORMANCE_DESCRIPTOR {
 //
 
 #define SERVICE_ACTION_REPORT_TIMESTAMP                                         0x0F
+#define SERVICE_ACTION_REPORT_SUPPORTED_OPERATION_CODES                         0x0C
 
 //
 // SCSIOP_MAINTENANCE_OUT - 0xA4
@@ -4088,6 +4144,7 @@ typedef struct _VPD_SUPPORTED_PAGES_PAGE {
 #define LOG_PAGE_CODE_SELFTEST_RESULTS              0x10
 #define LOG_PAGE_CODE_SOLID_STATE_MEDIA             0x11
 #define LOG_PAGE_CODE_BACKGROUND_SCAN_RESULTS       0x15
+#define LOG_PAGE_CODE_PERFORMANCE_AND_STATISTICS    0x19
 #define LOG_PAGE_CODE_INFORMATIONAL_EXCEPTIONS      0x2F
 
 #define LOG_SUBPAGE_CODE_WRITE_ERROR_COUNTERS       0x00
@@ -4101,7 +4158,8 @@ typedef struct _VPD_SUPPORTED_PAGES_PAGE {
 #define LOG_SUBPAGE_CODE_SOLID_STATE_MEDIA          0x00
 #define LOG_SUBPAGE_CODE_BACKGROUND_SCAN_RESULTS    0x00
 #define LOG_SUBPAGE_CODE_INFORMATIONAL_EXCEPTIONS   0x00
-
+#define LOG_SUBPAGE_CODE_COMMAND_DURATION_LIMIT_STATISTICS  0x21
+#define LOG_SUBPAGE_CODE_SUPPORTED_SUBPAGES         0xFF
 
 #pragma pack(push, log_page, 1)
 
@@ -4465,6 +4523,77 @@ typedef struct {
 
 } ST_PARAMETER_DATA, *PST_PARAMETER_DATA;
 #pragma pack(pop, set_timestamp_stuff)
+
+//
+// Report supported operation codes Definitions.
+//
+
+#define REPORT_SUPPORTED_OPERATION_CODES_REPORTING_OPTIONS_ALL              0x0
+#define REPORT_SUPPORTED_OPERATION_CODES_REPORTING_OPTIONS_OP               0x1
+#define REPORT_SUPPORTED_OPERATION_CODES_REPORTING_OPTIONS_OP_SA            0x2
+#define REPORT_SUPPORTED_OPERATION_CODES_REPORTING_OPTIONS_OP_SA_OVERWRITE  0x3
+
+#define REPORT_SUPPORTED_OPERATION_CODES_SUPPORT_NOT_AVAILABLE      0x0
+#define REPORT_SUPPORTED_OPERATION_CODES_SUPPORT_NONE               0x1
+#define REPORT_SUPPORTED_OPERATION_CODES_SUPPORT_SUPPORT_STANDARD   0x3
+#define REPORT_SUPPORTED_OPERATION_CODES_SUPPORT_SUPPORT_VENDOR     0x5
+
+//
+// Structure for report supported operation codes.
+//
+
+#pragma pack(push, report_supported_operation_codes, 1)
+typedef struct {
+
+    UCHAR DescriptorLength[2];      // 0x0A
+    UCHAR Reserved;
+    UCHAR CommandSpecific;
+    UCHAR NominalCommandProcessingTimeoutInSec[4];
+    UCHAR RecommendedCommandTimeoutInSec[4];
+
+} RS_COMMAND_TIMEOUTS_DESCRIPTOR, *PRS_COMMAND_TIMEOUTS_DESCRIPTOR;
+
+typedef struct {
+
+    UCHAR ReadWriteCommandDurationLimitsPage    : 1;
+    UCHAR Reserved                              : 7;
+    UCHAR Support                               : 3;
+    UCHAR CommandDurationLimitPage              : 2;
+    UCHAR MultipleLogicalUnits                  : 2;
+    UCHAR CommandTimeoutsDescriptorPresent      : 1;
+    UCHAR CdbSize[2];
+    UCHAR CdbUsageData[ANYSIZE_ARRAY];
+//#if !defined(__midl)
+//    RS_COMMAND_TIMEOUTS_DESCRIPTOR CommandTimeoutsDescriptor[0];
+//#endif
+
+} RS_ONE_COMMAND_PARAMETER_DATA, *PRS_ONE_COMMAND_PARAMETER_DATA;
+
+typedef struct {
+
+    UCHAR OperationCode;
+    UCHAR Reserved;
+    UCHAR ServiceAction[2];
+    UCHAR Reserved1;
+    UCHAR ServiceActionValid                    : 1;
+    UCHAR CommandTimeoutsDescriptorPresent      : 1;
+    UCHAR CommandDurationLimitPage              : 2;
+    UCHAR MultipleLogicalUnits                  : 2;
+    UCHAR ReadWriteCommandDurationLimitsPage    : 1;
+    UCHAR Reserved2 : 1;
+    UCHAR CdbLength[2];
+//#if !defined(__midl)
+//    RS_COMMAND_TIMEOUTS_DESCRIPTOR CommandTimeoutsDescriptor[0];
+//#endif
+} RS_COMMAND_DESCRIPTOR, *PRS_COMMAND_DESCRIPTOR;
+
+typedef struct {
+
+    UCHAR CommandDataLength[4];
+    RS_COMMAND_DESCRIPTOR CommandDescriptor[ANYSIZE_ARRAY];
+
+} RS_ALL_COMMANDS_PARAMETER_DATA, *PRS_ALL_COMMANDS_PARAMETER_DATA;
+#pragma pack(pop, report_supported_operation_codes)
 
 #if (NTDDI_VERSION >= NTDDI_WIN8)
 
@@ -6007,6 +6136,87 @@ typedef struct _LUN_LIST {
 
 //
 // end C/DVD 0.9 mode page definitions
+
+//
+// Define Mode Subpage header.
+//
+#pragma pack(push, mode_page_subpage_header, 1)
+typedef struct _MODE_PAGE_SUBPAGE_HEADER {
+    UCHAR PageCode      : 6;
+    UCHAR SubPageFormat : 1;
+    UCHAR PageSavable   : 1;
+    UCHAR SubPageCode;
+    UCHAR PageLength[2];
+} MODE_PAGE_SUBPAGE_HEADER, *PMODE_PAGE_SUBPAGE_HEADER;
+#pragma pack(pop, mode_page_subpage_header)
+
+//
+// Define Command Duration Limit Mode Subpages.
+//
+
+#define COMMAND_DURATION_LIMIT_T2_UNIT_NONE     0
+#define COMMAND_DURATION_LIMIT_T2_UNIT_500NS    0x06
+#define COMMAND_DURATION_LIMIT_T2_UNIT_1US      0x08
+#define COMMAND_DURATION_LIMIT_T2_UNIT_10MS     0x0A
+#define COMMAND_DURATION_LIMIT_T2_UNIT_500MS    0x0E
+
+#define DURATION_LIMIT_T2_DESCRIPTOR_COUNT      7
+
+#define COMMAND_DURATION_LIMIT_T2_POLICY_DO_NOTHING                     0
+#define COMMAND_DURATION_LIMIT_T2_POLICY_CONTINUE_WITH_NEXT             0x01
+#define COMMAND_DURATION_LIMIT_T2_POLICY_CONTINUE                       0x02
+#define COMMAND_DURATION_LIMIT_T2_POLICY_COMPLETE_DATA_UNAVAILABLE      0x0D
+#define COMMAND_DURATION_LIMIT_T2_POLICY_ABORT_TIMEOUT_PARTIAL_TRANSFER 0x0E
+#define COMMAND_DURATION_LIMIT_T2_POLICY_AOBRT_TIMEOUT                  0x0F
+
+#pragma pack(push, mode_page_command_duration_limit_subpages, 1)
+typedef struct _T2_COMMAND_DURATION_LIMIT_DESCRIPTOR {
+    UCHAR T2CDLUNITS    : 4;
+    UCHAR Reserved      : 4;
+    UCHAR Reserved1;
+    UCHAR MAX_INACTIVE_TIME[2];
+    UCHAR MAX_ACTIVE_TIME[2];
+    UCHAR MAX_ACTIVE_TIME_POLICY    : 4;
+    UCHAR MAX_INACTIVE_TIME_POLICY  : 4;
+    UCHAR Reserved2[3];
+    UCHAR COMMAND_DURATION_GUIDELINE[2];
+    UCHAR Reserved3[2];
+    UCHAR COMMAND_DURATION_GUIDELINE_POLICY : 4;
+    UCHAR Reserved4                         : 4;
+    UCHAR BypassSequestration   : 1;
+    UCHAR Reserved5             : 7;
+    UCHAR Reserved6[16];
+} T2_COMMAND_DURATION_LIMIT_DESCRIPTOR, *PT2_COMMAND_DURATION_LIMIT_DESCRIPTOR;
+
+typedef struct _MODE_COMMAND_DURATION_LIMIT_PAGE_T2A_SUBPAGE {
+    UCHAR PageCode      : 6;    // 0x0A
+    UCHAR SubPageFormat : 1;
+    UCHAR PageSavable   : 1;
+    UCHAR SubPageCode;          // 0x07
+    UCHAR PageLength[2];        // Page length is 0x00E4 for T2A subpage
+    UCHAR Reserved[3];
+    UCHAR Reserved1                         : 4;
+    UCHAR PerfvsComandDurationGuidelines    : 4;
+    T2_COMMAND_DURATION_LIMIT_DESCRIPTOR T2CommandDurationLimitDescriptors[DURATION_LIMIT_T2_DESCRIPTOR_COUNT];
+} MODE_COMMAND_DURATION_LIMIT_PAGE_T2A_SUBPAGE, *PMODE_COMMAND_DURATION_LIMIT_PAGE_T2A_SUBPAGE;
+
+C_ASSERT(sizeof(MODE_COMMAND_DURATION_LIMIT_PAGE_T2A_SUBPAGE) == (0xE4 + sizeof(MODE_PAGE_SUBPAGE_HEADER)));
+
+typedef struct _MODE_COMMAND_DURATION_LIMIT_PAGE_T2B_SUBPAGE {
+    UCHAR PageCode      : 6;    // 0x0A
+    UCHAR SubPageFormat : 1;
+    UCHAR PageSavable   : 1;
+    UCHAR SubPageCode;          // 0x08
+    UCHAR PageLength[2];        // Page length is 0x00E4 for T2B subpage
+    UCHAR Reserved[3];
+    UCHAR Reserved1             : 4;
+    UCHAR PerfvsLatencyControls : 4;
+    T2_COMMAND_DURATION_LIMIT_DESCRIPTOR T2CommandDurationLimitDescriptors[DURATION_LIMIT_T2_DESCRIPTOR_COUNT];
+} MODE_COMMAND_DURATION_LIMIT_PAGE_T2B_SUBPAGE, *PMODE_COMMAND_DURATION_LIMIT_PAGE_T2B_SUBPAGE;
+
+C_ASSERT(sizeof(MODE_COMMAND_DURATION_LIMIT_PAGE_T2B_SUBPAGE) == (0xE4 + sizeof(MODE_PAGE_SUBPAGE_HEADER)));
+
+#pragma pack(pop, mode_page_command_duration_limit_subpages)
 
 //
 // Mode parameter list block descriptor -
@@ -8349,10 +8559,10 @@ typedef struct _PORT_CONFIGURATION_INFORMATION {
 #define STOR_ADAPTER_DMA_ADDRESS_WIDTH_SPECIFIED            0x00000040  // Indicating that miniport driver specified DMA address width for the adapter.
 
 // DumpMode values
-#define DUMP_MODE_CRASH         0x01    // crashdump
-#define DUMP_MODE_HIBER         0x02    // hibernation
-#define DUMP_MODE_MARK_MEMORY   0x03    // memory marking only
-#define DUMP_MODE_RESUME        0x04    // resume from hibernation
+#define DUMP_MODE_CRASH             0x01    // crashdump
+#define DUMP_MODE_HIBER             0x02    // hibernation
+#define DUMP_MODE_MARK_MEMORY       0x03    // memory marking only
+#define DUMP_MODE_RESUME            0x04    // resume from hibernation
 
 //
 // Scatter/gather lists
@@ -8453,6 +8663,9 @@ typedef enum _GETSGSTATUS{
 //
 // Command type (and parameter) definition(s) for AdapterControl requests.
 //
+// NOTE: Update STORPORT_FEATURE_TYPE when adding any new adapter control code.
+// Miniport should also explicitly claim to support any new adapter control code.
+//
 
 typedef enum _SCSI_ADAPTER_CONTROL_TYPE {
     ScsiQuerySupportedControlTypes = 0,
@@ -8477,6 +8690,10 @@ typedef enum _SCSI_ADAPTER_CONTROL_TYPE {
     ScsiAdapterQueryFruId,
     ScsiAdapterSetEventLogging,
     ScsiAdapterReportInternalData,
+    ScsiAdapterResetBusSynchronous,
+    ScsiAdapterPostHwInitialize,
+    ScsiAdapterPrepareEarlyDumpData,
+    ScsiAdapterRestoreEarlyDumpData,
     ScsiAdapterControlMax,
     MakeAdapterControlTypeSizeOfUlong = 0xffffffff
 } SCSI_ADAPTER_CONTROL_TYPE, *PSCSI_ADAPTER_CONTROL_TYPE;
@@ -8499,7 +8716,8 @@ typedef struct _STOR_POWER_CONTROL_HEADER {
 typedef enum _SCSI_ADAPTER_CONTROL_STATUS {
     ScsiAdapterControlSuccess = 0,
     ScsiAdapterControlUnsuccessful,
-    ScsiAdapterControlRetryNeeded
+    ScsiAdapterControlRetryNeeded,
+    ScsiAdapterControlBufferTooSmall
 } SCSI_ADAPTER_CONTROL_STATUS, *PSCSI_ADAPTER_CONTROL_STATUS;
 
 //
@@ -8981,6 +9199,38 @@ typedef struct _STOR_REPORT_INTERNAL_DATA {
 } STOR_REPORT_INTERNAL_DATA, *PSTOR_REPORT_INTERNAL_DATA;
 
 //
+// Parameter to miniport driver for ScsiAdapterResetBusSynchronous.
+// This will only be invoked if the miniport has declared support for
+// StorportFeatureResetBusSynchronous feature.
+// N.B. ScsiAdapterResetBusSynchronous control is invoked in PASSIVE_LEVEL,
+// so miniport is able to do the reset bus synchronously safely.
+//
+
+typedef struct _STOR_RESET_BUS_SYNCHRONOUS_PARAMETER {
+
+    //
+    // Sizeof(STOR_RESET_BUS_SYNCHRONOUS_PARAMETER)
+    //
+    ULONG Version;
+
+    //
+    // Sizeof(STOR_RESET_BUS_SYNCHRONOUS_PARAMETER)
+    //
+    ULONG Size;
+
+    //
+    // SCSI bus to be reset.
+    //
+    ULONG PathId;
+
+    //
+    // Reserved for future use.
+    //
+    ULONG Reserved;
+
+} STOR_RESET_BUS_SYNCHRONOUS_PARAMETER, *PSTOR_RESET_BUS_SYNCHRONOUS_PARAMETER;
+
+//
 // DPC Data Structure
 //
 
@@ -9071,6 +9321,9 @@ typedef struct _STOR_EXT_DELETE_PARAMETERS {
 // Optimizations supported in STOR_PERF_VERSION_6
 #define STOR_PERF_SOFT_NUMA 0x00000080
 
+// Optimizations supported in STOR_PERF_VERSION_7
+#define STOR_PERF_HETEROGENEOUS_CPU 0x00000100
+
 //
 // STOR_PERF_VERSION supported and current STOR_PERF_VERSION
 //
@@ -9079,8 +9332,9 @@ typedef struct _STOR_EXT_DELETE_PARAMETERS {
 #define STOR_PERF_VERSION_4 0x00000004
 #define STOR_PERF_VERSION_5 0x00000005
 #define STOR_PERF_VERSION_6 0x00000006
+#define STOR_PERF_VERSION_7 0x00000007
 
-#define STOR_PERF_VERSION STOR_PERF_VERSION_6
+#define STOR_PERF_VERSION STOR_PERF_VERSION_7
 
 typedef struct _PERF_CONFIGURATION_DATA {
     ULONG Version;
@@ -9501,6 +9755,13 @@ HW_DPC_ROUTINE(
     );
 typedef HW_DPC_ROUTINE *PHW_DPC_ROUTINE;
 
+typedef
+VOID
+HW_REGISTRY_NOTIFICATION_ROUTINE (
+    _In_ PVOID HwDeviceExtension
+    );
+typedef HW_REGISTRY_NOTIFICATION_ROUTINE *PHW_REGISTRY_NOTIFICATION_ROUTINE;
+
 // New Storport miniport functions added in Win8
 
 // Callback for system thread work item
@@ -9779,7 +10040,11 @@ typedef enum _STORPORT_FUNCTION_CODE {
     ExtFunctionSetSystemGroupAffinityThread,
     ExtFunctionRevertToUserGroupAffinityThread,
     ExtFunctionDeviceResetEx,
-    ExtFunctionMiniportReportInternalData
+    ExtFunctionMiniportReportInternalData,
+    ExtFunctionGetMessageInterruptIDFromProcessorIndex,
+    ExtFunctionGetNodeAffinity2,
+    ExtFunctionEnableRegistryKeyNotification,
+    ExtFunctionPoFxRegisterPerfStatesEx
 
 } STORPORT_FUNCTION_CODE, *PSTORPORT_FUNCTION_CODE;
 
@@ -9803,6 +10068,8 @@ typedef enum _STORPORT_FUNCTION_CODE {
 #define STOR_STATUS_UNSUPPORTED_VERSION         (0xC100000BL)
 #define STOR_STATUS_BUSY                        (0xC100000CL)
 #define STOR_STATUS_THROTTLED_REQUEST           (0xC100000DL)
+#define STOR_STATUS_TIMEOUT                     (0xC100000EL)
+#define STOR_STATUS_INVALID_DATA                (0xC100000FL)
 
 //
 // Port driver error codes
@@ -10347,6 +10614,7 @@ typedef struct _HW_INITIALIZATION_DATA {
 #define STOR_FEATURE_DMA_ALLOCATION_NO_BOUNDARY             0x00002000  // Indicating that the miniport driver supports to allocate DMA to physical memory without boundaries.
 #define STOR_FEATURE_NVME                                   0x00004000  // Indicating that the miniport driver supports NVMe SRBEX and NVMe workflow
 #define STOR_FEATURE_REPORT_INTERNAL_DATA                   0x00008000  // Indicating that the miniport driver supports reporting internal data
+#define STOR_FEATURE_EARLY_DUMP                             0x00010000  // Indicating that the miniport driver supports early crash dump generation
 
 
 // Flags for denoting the SRB type(s) supported by miniport
@@ -10516,7 +10784,8 @@ typedef struct _STOR_UNIT_ATTRIBUTES {
     ULONG   DeviceAttentionSupported : 1;
     ULONG   AsyncNotificationSupported: 1;
     ULONG   D3ColdNotSupported : 1;
-    ULONG   Reserved : 29;
+    ULONG   BypassIOSupported: 1;
+    ULONG   Reserved : 28;
 } STOR_UNIT_ATTRIBUTES, *PSTOR_UNIT_ATTRIBUTES;
 
 
@@ -11596,9 +11865,70 @@ StorPortGetNodeAffinity (
     )
 {
      return StorPortExtendedFunction(ExtFunctionGetNodeAffinity,
-                                    HwDeviceExtension,
-                                    NodeNumber,
-                                    NodeAffinityMask);
+                                     HwDeviceExtension,
+                                     NodeNumber,
+                                     NodeAffinityMask);
+}
+
+ULONG
+FORCEINLINE
+StorPortGetNodeAffinity2 (
+    _In_ PVOID HwDeviceExtension,
+    _In_ ULONG NodeNumber,
+    _Out_writes_to_opt_(GroupAffinitiesCount, *GroupAffinitiesCountRequired)
+    PGROUP_AFFINITY GroupAffinities,
+    _In_ USHORT GroupAffinitiesCount,
+    _Out_ PUSHORT GroupAffinitiesCountRequired
+    )
+/*
+Description:
+
+    A miniport can call this function to get the current multi-group processor
+    affinity of the given NUMA node.
+
+Parameters:
+
+    HwDeviceExtension - The miniport's device extension.
+
+    NodeNumber - Specifies the node number of the node to query.
+
+    GroupAffinities - Supplies a pointer to an array of GROUP_AFFINITY structures
+        that upon success receive a group number and the affinity mask of the
+        identified group.
+
+    GroupAffinitiesCount - Specifies the number of elements in the group affinities
+        array.
+
+    GroupAffinitiesCountRequired - A pointer to a value of type USHORT that receives
+        the number of group affinities required to represent the node affinity.
+
+Returns:
+
+    STOR_STATUS_SUCCESS if the node affinity was queried successfully.
+    STOR_STATUS_INVALID_PARAMETER if there is an invalid parameter.
+    STOR_STATUS_BUFFER_TOO_SMALL if the supplied array is too small.
+    STOR_STATUS_UNSUCCESSFUL may also be returned for other, internal reasons.
+
+*/
+{
+    ULONG Status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_FE)
+     Status = StorPortExtendedFunction(ExtFunctionGetNodeAffinity2,
+                                       HwDeviceExtension,
+                                       NodeNumber,
+                                       GroupAffinities,
+                                       GroupAffinitiesCount,
+                                       GroupAffinitiesCountRequired);
+#else
+    UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(NodeNumber);
+    UNREFERENCED_PARAMETER(GroupAffinities);
+    UNREFERENCED_PARAMETER(GroupAffinitiesCount);
+    UNREFERENCED_PARAMETER(GroupAffinitiesCountRequired);
+#endif
+
+    return Status;
 }
 
 ULONG
@@ -12980,6 +13310,8 @@ typedef struct _STOR_POFX_DEVICE_V3 {
 //  like Storport to disable/ enable interrupts on Dx transitions
 // STOR_POFX_DEVICE_FLAG_ADAPTER_D3_WAKE - Indicates that miniport opt-in adapter D3
 //  wake support.
+// STOR_POFX_DEVICE_FLAG_GET_PERF_STATE_FROM_PEP - Indicates the miniport require
+// P-states from the PEP.
 //
 #define STOR_POFX_DEVICE_FLAG_NO_D0                     0x01
 #define STOR_POFX_DEVICE_FLAG_NO_D3                     0x02
@@ -12993,6 +13325,7 @@ typedef struct _STOR_POFX_DEVICE_V3 {
 #define STOR_POFX_DEVICE_FLAG_DUMP_ALWAYS_POWER_ON      0x200
 #define STOR_POFX_DEVICE_FLAG_DISABLE_INTERRUPTS_ON_D3  0x400
 #define STOR_POFX_DEVICE_FLAG_ADAPTER_D3_WAKE           0x800
+#define STOR_POFX_DEVICE_FLAG_GET_PERF_STATE_FROM_PEP   0x1000
 
 
 _IRQL_requires_max_(PASSIVE_LEVEL)
@@ -13334,7 +13667,6 @@ Returns:
     A STOR_STATUS code.
 */
 {
-
     return StorPortExtendedFunction(ExtFunctionPoFxRegisterPerfStates,
                                     HwDeviceExtension,
                                     Address,
@@ -13342,6 +13674,60 @@ Returns:
                                     Flags,
                                     PerfSetCount,
                                     PerfSets);
+}
+
+_IRQL_requires_max_(DISPATCH_LEVEL)
+ULONG
+FORCEINLINE
+StorPortPoFxRegisterPerfStatesEx(
+    _In_ PVOID HwDeviceExtension,
+    _In_opt_ PSTOR_ADDRESS Address,
+    _In_ ULONG Component,
+    _In_ ULONGLONG Flags,
+    _Inout_ PULONG PerfSetCount,
+    _In_opt_ PSTOR_POFX_COMPONENT_PERF_SET PerfSets,
+    _Out_opt_ PSTOR_POFX_COMPONENT_PERF_SET *PerfSetsFromPEP
+)
+/*
+Description:
+    A miniport can call this function to register one or more perf sets.
+
+    This is currently only supported for adapter objects (i.e. Address must be
+    NULL).
+
+    The component must first be registered via StorPortInitializePoFxPower()
+    before registering any perf sets.
+
+    A miniport can only successfully call this function once.  Otherwise this
+    function will return STOR_STATUS_UNSUCCESSFUL.
+
+Parameters:
+    HwDeviceExtension - The miniport's device extension.
+    Address - NULL if the device being registered is an adapter, otherwise the
+        address specifies the unit object.
+    Component - The index of the component.
+    Flags - Optional flags.  Currently only STOR_POFX_DEVICE_FLAG_PERF_STATE_PEP_OPTIONAL
+        and STOR_POFX_DEVICE_FLAG_GET_PERF_STATE_FROM_PEP are valid flags.
+    PerfSetCount - Number of elements in the PerfSets array.
+    PerfSets - An array of perf sets to register. If the driver requires performance state
+        information from the PEP, this parameter must be set to NULL.
+    PerfSetsFromPEP - Output buffer that provides performance state information defined by
+        the PEP. If the driver provides performance state info, this parameter must be set
+        to NULL. The memory allocated for this parameter is managed by storport, and the
+        miniport driver should not free this memory.
+
+Returns:
+    A STOR_STATUS code.
+*/
+{
+    return StorPortExtendedFunction(ExtFunctionPoFxRegisterPerfStatesEx,
+                                    HwDeviceExtension,
+                                    Address,
+                                    Component,
+                                    Flags,
+                                    PerfSetCount,
+                                    PerfSets,
+                                    PerfSetsFromPEP);
 }
 
 _IRQL_requires_max_(DISPATCH_LEVEL)
@@ -13908,7 +14294,7 @@ Parameters:
         the unit object.
     EventId - A miniport-specific event ID to uniquely identify the type of event.
     EventDescription - Required.  A short string describing the event.  Must
-        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters, 
+        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters,
         not including the NULL terminator.
     EventKeywords - Bitmask of STORPORT_ETW_EVENT_KEYWORD_* values to further
         characterize the event.  Can be 0 if no keywords are desired.
@@ -13918,7 +14304,7 @@ Parameters:
         pointer of the associated IRP will be logged.
     Parameter<N>Name - A short string that gives meaning to parameter N's value.
         If NULL or an empty string, parameter N will be ignored.  Must not be
-        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including 
+        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including
         the NULL terminator.
     Parameter<N>Value - Value of parameter N.  If the associated parameter N
         name is NULL or empty, the value will be logged as 0.
@@ -14013,7 +14399,7 @@ Parameters:
         the unit object.
     EventId - A miniport-specific event ID to uniquely identify the type of event.
     EventDescription - Required.  A short string describing the event.  Must
-        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters, 
+        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters,
         not including the NULL terminator.
     EventKeywords - Bitmask of STORPORT_ETW_EVENT_KEYWORD_* values to further
         characterize the event.  Can be 0 if no keywords are desired.
@@ -14023,7 +14409,7 @@ Parameters:
         pointer of the associated IRP will be logged.
     Parameter<N>Name - A short string that gives meaning to parameter N's value.
         If NULL or an empty string, parameter N will be ignored.  Must not be
-        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including 
+        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including
         the NULL terminator.
     Parameter<N>Value - Value of parameter N.  If the associated parameter N
         name is NULL or empty, the value will be logged as 0.
@@ -14138,7 +14524,7 @@ Parameters:
         the unit object.
     EventId - A miniport-specific event ID to uniquely identify the type of event.
     EventDescription - Required.  A short string describing the event.  Must
-        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters, 
+        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters,
         not including the NULL terminator.
     EventKeywords - Bitmask of STORPORT_ETW_EVENT_KEYWORD_* values to further
         characterize the event.  Can be 0 if no keywords are desired.
@@ -14148,7 +14534,7 @@ Parameters:
         pointer of the associated IRP will be logged.
     Parameter<N>Name - A short string that gives meaning to parameter N's value.
         If NULL or an empty string, parameter N will be ignored.  Must not be
-        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including 
+        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including
         the NULL terminator.
     Parameter<N>Value - Value of parameter N.  If the associated parameter N
         name is NULL or empty, the value will be logged as 0.
@@ -14277,7 +14663,7 @@ Parameters:
     EventChannel - ETW channel where event is logged
     EventId - A miniport-specific event ID to uniquely identify the type of event.
     EventDescription - Required.  A short string describing the event.  Must
-        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters, 
+        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters,
         not including the NULL terminator.
     EventKeywords - Bitmask of STORPORT_ETW_EVENT_KEYWORD_* values to further
         characterize the event.  Can be 0 if no keywords are desired.
@@ -14287,7 +14673,7 @@ Parameters:
         pointer of the associated IRP will be logged.
     Parameter<N>Name - A short string that gives meaning to parameter N's value.
         If NULL or an empty string, parameter N will be ignored.  Must not be
-        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including 
+        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including
         the NULL terminator.
     Parameter<N>Value - Value of parameter N.  If the associated parameter N
         name is NULL or empty, the value will be logged as 0.
@@ -14370,7 +14756,7 @@ Parameters:
     EventChannel - ETW channel where event is logged
     EventId - A miniport-specific event ID to uniquely identify the type of event.
     EventDescription - Required.  A short string describing the event.  Must
-        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters, 
+        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters,
         not including the NULL terminator.
     EventKeywords - Bitmask of STORPORT_ETW_EVENT_KEYWORD_* values to further
         characterize the event.  Can be 0 if no keywords are desired.
@@ -14380,7 +14766,7 @@ Parameters:
         pointer of the associated IRP will be logged.
     Parameter<N>Name - A short string that gives meaning to parameter N's value.
         If NULL or an empty string, parameter N will be ignored.  Must not be
-        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including 
+        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including
         the NULL terminator.
     Parameter<N>Value - Value of parameter N.  If the associated parameter N
         name is NULL or empty, the value will be logged as 0.
@@ -14479,7 +14865,7 @@ Parameters:
     EventChannel - ETW channel where event is logged
     EventId - A miniport-specific event ID to uniquely identify the type of event.
     EventDescription - Required.  A short string describing the event.  Must
-        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters, 
+        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters,
         not including the NULL terminator.
     EventKeywords - Bitmask of STORPORT_ETW_EVENT_KEYWORD_* values to further
         characterize the event.  Can be 0 if no keywords are desired.
@@ -14489,7 +14875,7 @@ Parameters:
         pointer of the associated IRP will be logged.
     Parameter<N>Name - A short string that gives meaning to parameter N's value.
         If NULL or an empty string, parameter N will be ignored.  Must not be
-        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including 
+        longer than STORPORT_ETW_MAX_PARAM_NAME_LENGTH characters, not including
         the NULL terminator.
     Parameter<N>Value - Value of parameter N.  If the associated parameter N
         name is NULL or empty, the value will be logged as 0.
@@ -15326,7 +15712,7 @@ typedef struct _STOR_EVENT {
 } STOR_EVENT, *PSTOR_EVENT, *PRSTOR_EVENT;
 
 typedef enum _STOR_EVENT_TYPE {
-    StorNotificationEvent = 0, 
+    StorNotificationEvent = 0,
     StorSynchronizationEvent = 1
 } STOR_EVENT_TYPE, *PSTOR_EVENT_TYPE;
 
@@ -15341,7 +15727,7 @@ StorPortInitializeEvent(
 /*
 Description:
 
-    A miniport can call this function to initialize an event object as a synchronization or 
+    A miniport can call this function to initialize an event object as a synchronization or
     notification type event and sets it in a signaled or not-signaled state
 
 Parameters:
@@ -15484,6 +15870,7 @@ typedef enum _STOR_DEVICE_RESET_TYPE {
     StorBusSpecificReset
 } STOR_DEVICE_RESET_TYPE;
 
+_IRQL_requires_max_(PASSIVE_LEVEL)
 ULONG
 FORCEINLINE
 StorPortHardwareReset(
@@ -15525,6 +15912,7 @@ Returns:
     return status;
 }
 
+_IRQL_requires_max_(PASSIVE_LEVEL)
 ULONG
 FORCEINLINE
 StorPortHardwareResetEx(
@@ -15612,6 +16000,26 @@ typedef enum _STORPORT_FEATURE_TYPE
     // Whether ScsiAdapterReportInternalData control is supported
     //
     StorportFeatureReportInternalDataAdapterControl,
+
+    //
+    // Whether ScsiAdapterResetBusSynchronous control is supported
+    //
+    StorportFeatureResetBusSynchronous,
+
+    //
+    // Whether ScsiAdapterPostHwInitialize control is supported
+    //
+    StorportFeaturePostHwInitialize,
+
+    //
+    // Wheter ScsiAdapterPrepareEarlyDumpData is supported
+    //
+    StorportFeaturePrepareEarlyDumpData,
+
+    //
+    // Wheter ScsiAdapterRestoreEarlyDumpData is supported
+    //
+    StorportFeatureRestoreEarlyDumpData,
 
     StorportFeatureMax
 
@@ -15876,7 +16284,7 @@ Parameters:
     EventId - A miniport-specific event ID to uniquely identify the type of event.
 
     EventDescription - Required.  A short string describing the event.  Must
-        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters, 
+        not be longer than STORPORT_ETW_MAX_DESCRIPTION_LENGTH characters,
         not including the NULL terminator.
 
     EventKeywords - Bitmask of STORPORT_ETW_EVENT_KEYWORD_* values to further
@@ -16606,6 +17014,105 @@ Returns:
     UNREFERENCED_PARAMETER(CallbackContext);
     UNREFERENCED_PARAMETER(DataCount);
     UNREFERENCED_PARAMETER(Data);
+
+#endif
+
+    return status;
+}
+
+ULONG
+FORCEINLINE
+StorPortGetMessageInterruptIDFromProcessorIndex(
+    _In_ PVOID HwDeviceExtension,
+    _In_ ULONG ProcessorIndex,
+    _Out_ PULONG MessageInterruptID
+    )
+/*++
+
+Description:
+
+    This routine gets the message interrupt ID of the specified processor index.
+
+Parameters:
+
+    HwDeviceExtension - The miniport's device extension.
+
+    ProcessorIndex - Query the message interrupt ID of the specified processor index.
+
+    MessageInterruptID - Output the message interrupt ID.
+
+Returns:
+
+    STOR_STATUS_SUCCESS if miniport data is successfully reported.
+    STOR_STATUS_INVALID_PARAMETER if there is an invalid parameter.
+    STOR_STATUS_UNSUCCESSFUL may also be returned for other, internal reasons.
+
+--*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+
+    status = StorPortExtendedFunction(ExtFunctionGetMessageInterruptIDFromProcessorIndex,
+                                      HwDeviceExtension,
+                                      ProcessorIndex,
+                                      MessageInterruptID);
+#else
+
+    UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(ProcessorIndex);
+    UNREFERENCED_PARAMETER(MessageInterruptID);
+
+#endif
+
+    return status;
+}
+
+ULONG
+FORCEINLINE
+StorPortEnableRegistryKeyNotification(
+    _In_ PVOID HwDeviceExtension,
+    _In_ PHW_REGISTRY_NOTIFICATION_ROUTINE NotificationCallback
+    )
+/*++
+
+Routine Description:
+
+    This routine is used by a miniport to enable registry change notifications
+    for a device under the path
+    HKLM\System\CurrentControlSet\Services\<serviceName>\Parameters\Device.
+    When a change occurs under that registry key, the notification callback
+    routine is called with the device extension and the miniport should call
+    StorPortRegistryRead for each value name with 'Global' parameter as '1'.
+
+    Note: The registry change notification functionality is not
+          always enabled. Hence the miniport should read all registry
+          keys before calling StorPortEnableRegistryKeyNotification.
+          If the functionality is disabled, the API will fail with
+          STOR_STATUS_NOT_IMPLEMENTED.
+
+Arguments:
+
+    HwDeviceExtension - The miniport's Device Extension.
+    NotificationCallback - Registry change notification callback routine.
+
+Return Value:
+
+    A STOR_STATUS code.
+
+--*/
+{
+    ULONG status = STOR_STATUS_NOT_IMPLEMENTED;
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_NI)
+
+    status = StorPortExtendedFunction(ExtFunctionEnableRegistryKeyNotification,
+                                      HwDeviceExtension,
+                                      NotificationCallback);
+#else
+
+    UNREFERENCED_PARAMETER(HwDeviceExtension);
+    UNREFERENCED_PARAMETER(NotificationCallback);
 
 #endif
 

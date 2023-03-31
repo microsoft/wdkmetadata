@@ -72,6 +72,12 @@ typedef ULONG WWAN_STATUS;
 #if (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
 #define WWAN_STATUS_SESSION_ALREADY_EXISTS 0xC0040022
 #endif
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+#define WWAN_STATUS_DISSOCIATION_NEEDED_FOR_APPLICATION 0xC0040023
+#define WWAN_STATUS_ERROR_INVALID_SLOT 0xC0040024
+#define WWAN_STATUS_NO_DEFAULT_URSP_RULE 0xC0040025
+#define WWAN_STATUS_NO_MATCHING_URSP_RULE 0xC0040026
+#endif
 
 // SMS specific error codes
 #define WWAN_STATUS_SMS_OPERATION_NOT_ALLOWED 0xC0040100
@@ -108,6 +114,14 @@ typedef ULONG WWAN_STATUS;
 #define WWAN_STATUS_NO_LTE_ATTACH_CONFIG 0xC0040402
 #endif
 
+// A special cause code used in the NwErr field of unsolicited context state notification.
+// It indicates dissociation of an application from a connected connection.
+#define WWAN_ERR_NWERR_DISSOCIATION_NEEDED_FOR_APPLICATION 0xFFFFFFFE
+
+// Default MBIM protocol defines data alignment by 4-byte DWORD, so defines that constant
+// to formalize it.
+#define WWAN_DATA_ALIGNMENT_IN_BYTES_MBIM_PROTOCOL  4
+
 typedef enum _WWAN_STRUCT_TYPE
 {
     WwanStructTN = 0,
@@ -136,7 +150,10 @@ typedef enum _WWAN_STRUCT_TYPE
     WwanStructMPDPChildInterface,
     WwanStructSNSSAI,               // element type: WWAN_SINGLE_NSSAI
     WwanStructRejectedSNSSAI,       // element type: WWAN_REJECTED_SNSSAI
-    WwanStructTAI,                  // element type: WWAN_SINGLE_TAI
+    WwanStructProvisionedContextV2, // element type: WWAN_PROVISIONED_CONTEXT_V2
+    WwanStructTaiSinglePlmnNonConsecutive,
+    WwanStructTaiSinglePlmnConsecutive,
+    WwanStructTaiMultiPlmn,
     WwanStructMax
 } WWAN_STRUCT_TYPE,
     *PWWAN_STRUCT_TYPE;
@@ -146,6 +163,12 @@ typedef struct _WWAN_LIST_HEADER
     WWAN_STRUCT_TYPE ElementType;
     ULONG ElementCount;
 } WWAN_LIST_HEADER, *PWWAN_LIST_HEADER;
+
+typedef struct _WWAN_OFFSET_SIZE_ELEMENT 
+{
+    ULONG Offset;
+    ULONG Size;
+} WWAN_OFFSET_SIZE_ELEMENT, *PWWAN_OFFSET_SIZE_ELEMENT;
 
 #define WWAN_MANUFACTURER_LEN 32
 #define WWAN_MODEL_LEN 32
@@ -336,6 +359,7 @@ typedef enum _WWAN_ASYNC_GETSET_TYPE
     WwanAsyncGetRegisterParams,
     WwanAsyncSetRegisterParams,
     WwanAsyncGetNetworkParams,
+    WwanAsyncGetUePolicy,
     WWAN_ASYNC_GETSET_TYPE_MAX
 } WWAN_ASYNC_GETSET_TYPE,
     *PWWAN_ASYNC_GETSET_TYPE;
@@ -365,6 +389,7 @@ typedef ULONG WWAN_VERSION; /* A value specifies the version. */
 #define WWAN_MINOR_VERSION_1 1
 #define WWAN_MINOR_VERSION_159 159
 #define WWAN_MINOR_VERSION_160 160
+#define WWAN_MINOR_VERSION_169 169
 #define WWAN_MINOR_VERSION_170 170
 #define WWAN_MINOR_VERSION_180 180
 #define WWAN_MINOR_VERSION_181 181
@@ -398,6 +423,11 @@ typedef ULONG WWAN_VERSION; /* A value specifies the version. */
 // Major = 2, Minor = 160
 #define WWAN_VERSION_2_160 WWAN_FORM_VERSION(WWAN_MAJOR_VERSION_2, WWAN_MINOR_VERSION_160)
 
+// Major = 2, Minor = 169
+#define WWAN_VERSION_2_169 WWAN_FORM_VERSION(WWAN_MAJOR_VERSION_2, WWAN_MINOR_VERSION_169)
+
+// All non-MBBCX-based MBB driver MUST have a driver version number below 2.170
+// Only MBBCX-based MBB driver may have a driver version number 2.170 or above.
 // Major = 2, Minor = 170 -- added in NTDDI_WIN10_VB,  suppoting NDIS interface for 5G SA corresponding to MBIMExt 3.0
 #define WWAN_VERSION_2_170 WWAN_FORM_VERSION(WWAN_MAJOR_VERSION_2, WWAN_MINOR_VERSION_170)
 
@@ -485,7 +515,8 @@ typedef enum _WWAN_SIM_CLASS
 #define WWAN_DATA_CLASS_HSUPA 0x00000010
 #define WWAN_DATA_CLASS_LTE 0x00000020
 #define WWAN_DATA_CLASS_5G 0x00000040
-#define WWAN_DATA_CLASS_UNUSED 0x00000080 /* Unused during transition period to retire WWAN_DATA_CLASS_5G_SA/WWAN_DATA_CLASS_5G_5GC */
+#define WWAN_DATA_CLASS_UNUSED \
+    0x00000080 /* Unused during transition period to retire WWAN_DATA_CLASS_5G_SA/WWAN_DATA_CLASS_5G_5GC */
 #define WWAN_DATA_CLASS_TDSCDMA 0x00001000
 #define WWAN_DATA_CLASS_1XRTT 0x00010000
 #define WWAN_DATA_CLASS_1XEVDO 0x00020000
@@ -502,16 +533,19 @@ typedef enum _WWAN_SIM_CLASS
 // A number of places still refers to 19H1-styled WWAN_DATA_CLASS_5G_NSA
 // Bugs are being filed for them to use new method of identifying NSA 5G Option 3.
 // The following ensures that any code still using WWAN_DATA_CLASS_5G_NSA will break in terms of identifying NSA Option 3.
-// 
+//
 #define WWAN_DATA_CLASS_5G_NSA 0
 
 // Bit masks for data subclass. Each mask is valid only under the noted data class
-#define WWAN_DATA_SUBCLASS_NONE 0x00000000          // No subclass under the accompnaying data class
-#define WWAN_DATA_SUBCLASS_5G_ENDC 0x00000001       // EUTRAN and NR dual connectivity as in 5G Option 3; valid under WWAN_DATA_CLASS_5G only
-#define WWAN_DATA_SUBCLASS_5G_NR 0x00000002         // Standalone NR as in 5G Option 2; valid under WWAN_DATA_CLASS_5G only
-#define WWAN_DATA_SUBCLASS_5G_NEDC 0x00000004       // NR and EUTRAN dual connectivity as in 5G Option 4; valid under WWAN_DATA_CLASS_5G only
-#define WWAN_DATA_SUBCLASS_5G_ELTE 0x00000008       // Standalone eLTE as in 5G option 5; valid under WWAN_DATA_CLASS_5G only
-#define WWAN_DATA_SUBCLASS_5G_NGENDC 0x00000010     // Next-gen eLTE and NR dual connectivity as in 5G option 7; valid under WWAN_DATA_CLASS_5G only
+#define WWAN_DATA_SUBCLASS_NONE 0x00000000 // No subclass under the accompnaying data class
+#define WWAN_DATA_SUBCLASS_5G_ENDC \
+    0x00000001 // EUTRAN and NR dual connectivity as in 5G Option 3; valid under WWAN_DATA_CLASS_5G only
+#define WWAN_DATA_SUBCLASS_5G_NR 0x00000002 // Standalone NR as in 5G Option 2; valid under WWAN_DATA_CLASS_5G only
+#define WWAN_DATA_SUBCLASS_5G_NEDC \
+    0x00000004 // NR and EUTRAN dual connectivity as in 5G Option 4; valid under WWAN_DATA_CLASS_5G only
+#define WWAN_DATA_SUBCLASS_5G_ELTE 0x00000008 // Standalone eLTE as in 5G option 5; valid under WWAN_DATA_CLASS_5G only
+#define WWAN_DATA_SUBCLASS_5G_NGENDC \
+    0x00000010 // Next-gen eLTE and NR dual connectivity as in 5G option 7; valid under WWAN_DATA_CLASS_5G only
 
 #define WWAN_DATA_SUBCLASS_MASKS_5G_5GC \
     (WWAN_DATA_SUBCLASS_5G_NR | WWAN_DATA_SUBCLASS_5G_NEDC | WWAN_DATA_SUBCLASS_5G_ELTE | WWAN_DATA_SUBCLASS_5G_NGENDC)
@@ -557,6 +591,10 @@ typedef enum _WWAN_SIM_CLASS
 #define WWAN_CTRL_CAPS_ETHERNET_PDU_SESSION 0x00000800
 #define WWAN_CTRL_CAPS_UNSTRUCTURED_PDU_SESSION 0x00001000
 #define WWAN_CTRL_CAPS_REFLECTIVE_QOS 0x00002000
+#endif
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+#define WWAN_CTRL_CAPS_USE_URSP_RULE_ON_EPC 0x00004000
 #endif
 
 #define WWAN_SMS_CAPS_NONE 0x00000000
@@ -619,13 +657,45 @@ typedef struct _WWAN_DEVICE_CAPS
 #if (_WIN32_WINNT >= _WIN32_WINNT_WIN10_RS6 || NTDDI_VERSION >= NTDDI_WIN10_19H1 || NDIS_SUPPORT_NDIS683)
 #define WWAN_OPTIONAL_SERVICE_CAPS_MODEM_LOGGING_CONFIG 0x00000400
 #endif // ( _WIN32_WINNT >= _WIN32_WINNT_WIN10_RS6 || NTDDI_VERSION >= NTDDI_WIN10_19H1 || NDIS_SUPPORT_NDIS683 )
-#if (NTDDI_VERSION >= NTDDI_WIN10_MN || NDIS_SUPPORT_NDIS684)
-// This bit mask is only valid when 5GS with 5G Core is supported per device caps.
-// If this bit is set, the device can report 5GC NETWORK PARAMETERS.
-#define WWAN_OPTIONAL_SERVICE_CAPS_NETWORK_PARAMETERS_REPORT 0x00000800
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+#define WWAN_OPTIONAL_SERVICE_CAPS_INACTIVE_SLOT_OPERATIONS_ALLOWED 0x00000800
 #endif
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
+// This bitmask in the field Bitmasks below indicates whether a valid value in SliceServiceType is present
+#define WWAN_SNSSAI_SST_VALID 0x00000001
+// This bitmask in the field Bitmasks below indicates whether a valid value in MappedSliceServiceType is present
+#define WWAN_SNSSAI_MAPPED_SST_VALID 0x00000002
+
+// named standardized SST
+#define WWAN_SNSSAI_SST_eMBB 1
+#define WWAN_SNSSAI_SST_URLLC 2
+#define WWAN_SNSSAI_SST_MassiveIOT 3
+
+// A special slice differentiator value that indicates no specific slice differentiator associated with a given valid slice service type.
+#define WWAN_SNSSAI_NO_SD_VALUE_ASSOCIATED_WITH_SST 0x00FFFFFF
+
+// Rejected S-NSSAI cause values
+#define WWAN_REJECTED_SNSSAI_CAUSE_NA_PLMN 0 // not available in the current PLMN
+#define WWAN_REJECTED_SNSSAI_CAUSE_NA_RA 1   // not available in the current registration area
+
+typedef struct _WWAN_REJECTED_SNSSAI
+{
+    UINT16 CauseCode;
+    UINT16 SliceServiceType;
+    UINT32 SliceDifferentiator; // If not specified this will be WWAN_SNSSAI_NO_SD_VALUE_ASSOCIATED_WITH_SST
+} WWAN_REJECTED_SNSSAI, *PWWAN_REJECTED_SNSSAI;
+
+// structure for WwanStructSNSSAI and other SNSSAI related usage
+typedef struct _WWAN_SINGLE_NSSAI
+{
+    UINT32 Bitmasks;               // 0 means no Snssai is given
+    UINT16 SliceServiceType;       // only valid if Bitmasks contains WWAN_SNSSAI_SST_VALID
+    UINT16 MappedSliceServiceType; // only valid if Bitmasks contains WWAN_SNSSAI_MAPPED_SST_VALID
+    UINT32 SliceDifferentiator;    // only valid if SliceServiceType is valid. May be WWAN_SNSSAI_NO_SD_VALUE_ASSOCIATED_WITH_SST
+    UINT32 MappedSliceDifferentiator; // only valid if MappedSliceServiceType and SliceDifferentiator are valid. May be WWAN_SNSSAI_NO_SD_VALUE_ASSOCIATED_WITH_SST
+} WWAN_SINGLE_NSSAI, *PWWAN_SINGLE_NSSAI;
+
 // WWAN_DEVICE_CAPS_EX for NDIS_WWAN_DEVICE_CAPS_EX_REVISION_1 has a variable-sized field at the end,
 // and can't not be extended with appending new fix-sized fields.
 // The structure for NDIS_WWAN_DEVICE_CAPS_EX_REVISION_2 adds some new fields in the middle.
@@ -704,9 +774,9 @@ typedef struct _WWAN_DEVICE_CAPS_EX
     USHORT WwanNRBandClass[WWAN_MAX_NUM_NR_BAND];   // Non-0 elements in the array from the beginning represent band numbers.
                                                     // First 0 in the array indicates the end of the bands
 #if (NTDDI_VERSION >= NTDDI_WIN10_MN)
-    ULONGLONG WwanDataSubClass;                     // bitmap of the masks of WWAN_DATA_SUBCLASS_xxx
+    ULONGLONG WwanDataSubClass; // bitmap of the masks of WWAN_DATA_SUBCLASS_xxx
 #else
-    ULONGLONG WwanMiscCaps;                         // bitmap of the masks of WWAN_DEVICE_MISC_CAPS_xxx
+    ULONGLONG WwanMiscCaps; // bitmap of the masks of WWAN_DEVICE_MISC_CAPS_xxx
 #endif
 #endif
     WWAN_LIST_HEADER CellularClassListHeader;
@@ -762,9 +832,27 @@ typedef struct _WWAN_READY_INFO_REV1
 // Valid only when the ReadyState is MBIMSubscriberReadyStateInitialized, MBIMSubscriberReadyStateNoEsimProfile, or
 // MBIMSubscriberReadyStateDeviceLocked.
 #define WWAN_READY_STATUS_MASK_SIM_FORMFACTOR 0x00000004
-// The following mask indicates whether other status bits are invalid.
+// For following bit in the field StatusFlags: 0 -- the indication came from the currently inactive slot; 1 -- the indication came from the currently active slot
+// This bit may be set independent of WWAN_READY_STATUS_MASK_MASKS_IS_VALID bit
+#define WWAN_READY_STATUS_MASK_SIM_SLOT_ACTIVE 0x00000008
+// The following mask indicates whether other status bits (except for WWAN_READY_STATUS_MASK_SIM_SLOT_ACTIVE) are invalid.
 // If the bit is 1, other status bits are valid. If it is 0, other bits are invalid and should be ignored.
 #define WWAN_READY_STATUS_MASK_MASKS_IS_VALID 0x80000000
+
+// The old structure before SlotId is added in CO is renamed to WWAN_READY_INFO_REV2_PRE2170
+// for the purpose of specifically processing NDIS_STATUS_WWAN_READY_INFO of Rev 2 from Driver version 2.169 or earlier.
+// Only MBBCX-based MBB driver may have a driver version number 2.170 or above.
+// MBBCx always sends NDIS_STATUS_WWAN_READY_INFO of the latest data structure.
+typedef struct _WWAN_READY_INFO_REV2_PRE2170
+{
+    WWAN_READY_STATE ReadyState;
+    WWAN_EMERGENCY_MODE EmergencyMode;
+    WCHAR SubscriberId[WWAN_SUBSCRIBERID_LEN];
+    WCHAR SimIccId[WWAN_SIMICCID_LEN];
+    BYTE CdmaShortMsgSize;
+    ULONG StatusFlags;
+    WWAN_LIST_HEADER TNListHeader;
+} WWAN_READY_INFO_REV2_PRE2170, * PWWAN_READY_INFO_PRE2170;
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
 
 typedef struct _WWAN_READY_INFO
@@ -777,8 +865,14 @@ typedef struct _WWAN_READY_INFO
 #if (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
     ULONG StatusFlags;
 #endif // (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    ULONG SlotId;
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_CO)
     WWAN_LIST_HEADER TNListHeader;
 } WWAN_READY_INFO, *PWWAN_READY_INFO;
+
+// Special slot ID for active SIM slot - DIM/mbbcx can set this value as SlotId for ready_info responses/notifications
+#define WWAN_SPECIAL_VALUE_FOR_ACTIVE_SLOT_ID 0xFFFFFFFF
 
 typedef struct _WWAN_SERVICE_ACTIVATION
 {
@@ -866,6 +960,7 @@ typedef struct _WWAN_PIN_ACTION
     WWAN_PIN_OPERATION PinOperation;
     WCHAR Pin[WWAN_PIN_LEN];
     WCHAR NewPin[WWAN_PIN_LEN];
+    // This field will be removed once client dependency is removed
     BOOLEAN RequestPinOperationPrompt;
 } WWAN_PIN_ACTION, *PWWAN_PIN_ACTION;
 
@@ -1091,6 +1186,7 @@ typedef struct _WWAN_SINGLE_TAI
     UINT32 Tac;
 } WWAN_SINGLE_TAI, *PWWAN_SINGLE_TAI;
 
+#define WWAN_UNKNOWN_REL_3GPP_VER 0xFFFFFFFF
 typedef struct _WWAN_PACKET_SERVICE
 {
     ULONG uNwError;
@@ -1105,6 +1201,13 @@ typedef struct _WWAN_PACKET_SERVICE
     // For NDIS_WWAN_PACKET_SERVICE_STATE_REVISION_2 or earlier, they are ignored and not used.
     ULONG CurrentDataSubClass;
     WWAN_SINGLE_TAI CurrentTai;
+#endif
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    // 0xFFFFFFFF will be used if it is unknown.
+    // unknown means either MBIM_TLV_TYPE_3GPP_REL_VERSION is not contained in MBIM_PACKET_SERVICE_INFO_V3,
+    // or device directly returns 0xFFFFFFFF
+    // or device is using MBIM 3.0 or older version
+    ULONG Rel3GppVer;
 #endif
 } WWAN_PACKET_SERVICE, *PWWAN_PACKET_SERVICE;
 
@@ -1253,6 +1356,18 @@ typedef enum _WWAN_CONFIGURATION_SOURCE
 } WWAN_CONFIGURATION_SOURCE,
     *PWWAN_CONFIGURATION_SOURCE;
 
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+typedef enum _WWAN_ACTIVATION_OPTION
+{
+    WwanActivationOptionDefault = 0,            // All PDU session attributes for activation are provided
+    WwanActivationOptionPerNonDefaultURSPRules, // Use matching non-default URSP rules to activate
+    WwanActivationOptionPerDefaultURSPRule,     // Use default URSP rule to activate
+    WwanActivationOptionPerURSPRules,           // Use matching non-default URSPs and default URSP rule to activate
+    WwanActivationOptionMax
+} WWAN_ACTIVATION_OPTION,
+    *PWWAN_ACTIVATION_OPTION;
+#endif
+
 typedef struct _WWAN_SET_CONTEXT_STATE
 {
     ULONG ConnectionId;
@@ -1269,6 +1384,13 @@ typedef struct _WWAN_SET_CONTEXT_STATE
     WWAN_PSMEDIA_PREFERENCE MediaPreference;
     WWAN_CONFIGURATION_SOURCE ConnectionMediaSource;
 #endif
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    WWAN_ACTIVATION_OPTION ActivationOption;
+    WWAN_SINGLE_NSSAI Snssai;
+    // The first 4 bytes are offset to the DataBuffer containing the raw data of MBIM_TLV_TYPE_TRAFFIC_PARAMETERS data field, in bytes, calculated from the beginning of WWAN_SET_CONTEXT_STATE.
+    // The second 4 bytes are size of the raw data of MBIM_TLV_TYPE_TRAFFIC_PARAMETERS data field, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT TrafficParameters;
+#endif 
 } WWAN_SET_CONTEXT_STATE, *PWWAN_SET_CONTEXT_STATE;
 
 typedef enum _WWAN_ACTIVATION_STATE
@@ -1305,40 +1427,6 @@ typedef enum _WWAN_CONNECTION_MEDIA
     *PWWAN_CONNECTION_MEDIA;
 
 #if (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
-// This bitmask in the field Bitmasks below indicates whether a valid value in SliceServiceType is present
-#define WWAN_SNSSAI_SST_VALID 0x00000001
-// This bitmask in the field Bitmasks below indicates whether a valid value in MappedSliceServiceType is present
-#define WWAN_SNSSAI_MAPPED_SST_VALID 0x00000002
-
-// named standardized SST
-#define WWAN_SNSSAI_SST_eMBB 1
-#define WWAN_SNSSAI_SST_URLLC 2
-#define WWAN_SNSSAI_SST_MassiveIOT 3
-
-// A special slice differentiator value that indicates no specific slice differentiator associated with a given valid slice service type.
-#define WWAN_SNSSAI_NO_SD_VALUE_ASSOCIATED_WITH_SST 0x00FFFFFF
-
-// Rejected S-NSSAI cause values
-#define WWAN_REJECTED_SNSSAI_CAUSE_NA_PLMN 0 // not available in the current PLMN
-#define WWAN_REJECTED_SNSSAI_CAUSE_NA_RA 1   // not available in the current registration area
-
-// structure for WwanStructSNSSAI and other SNSSAI related usage
-typedef struct _WWAN_SINGLE_NSSAI
-{
-    UINT32 Bitmasks;
-    UINT16 SliceServiceType;       // only valid if Bitmasks contains WWAN_SNSSAI_SST_VALID
-    UINT16 MappedSliceServiceType; // only valid if Bitmasks contains WWAN_SNSSAI_MAPPED_SST_VALID
-    UINT32 SliceDifferentiator;    // only valid if SliceServiceType is valid. May be WWAN_SNSSAI_NO_SD_VALUE_ASSOCIATED_WITH_SST
-    UINT32 MappedSliceDifferentiator; // only valid if MappedSliceServiceType is valid. May be WWAN_SNSSAI_NO_SD_VALUE_ASSOCIATED_WITH_SST
-} WWAN_SINGLE_NSSAI, *PWWAN_SINGLE_NSSAI;
-
-typedef struct _WWAN_REJECTED_SNSSAI
-{
-    UINT16 CauseCode;
-    UINT16 SliceServiceType;
-    UINT32 SliceDifferentiator; // If not specified this will be WWAN_SNSSAI_NO_SD_VALUE_ASSOCIATED_WITH_SST
-} WWAN_REJECTED_SNSSAI, *PWWAN_REJECTED_SNSSAI;
-
 typedef enum
 {
     WwanSSCModeNone = 0,
@@ -1403,7 +1491,17 @@ typedef struct _WWAN_CONTEXT_STATE
 #endif
 #if (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
     // the following 1 field 1 only valid in NDIS_WWAN_CONTEXT_STATE_REVISION_4
+    // Be careful AccessString is not DWORD aligned, there are 2 bytes padding
     WCHAR AccessString[WWAN_ACCESSSTRING_LEN]; // the selected APN/DNN for an established context/session
+#endif
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    WWAN_SINGLE_NSSAI Snssai;
+    // Only valid if the status is WWAN_STATUS_SESSION_ALREADY_EXISTS. 
+    ULONG FoundMatchingConnectionId;
+    // Only valid if the status is WWAN_STATUS_DESSOCIATION_NEEDED_FOR_APPLICATION.
+    // The first 4 bytes are offset to the DataBuffer containing the raw data of MBIM_TLV_TYPE_TRAFFIC_PARAMETERS, in bytes, calculated from the beginning of WWAN_SET_CONTEXT_STATE.
+    // The second 4 bytes are size of the raw data of MBIM_TLV_TYPE_TRAFFIC_PARAMETERS, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT TrafficParameters;
 #endif
 } WWAN_CONTEXT_STATE, *PWWAN_CONTEXT_STATE;
 
@@ -1426,6 +1524,7 @@ typedef enum _WWAN_CONTEXT_TYPE
     WwanContextTypeTethering,
     WwanContextTypeEmergencyCall,
     WwanContextTypeLteAttach,
+    WwanContextTypeSupl,
     WwanContextTypeMax
 } WWAN_CONTEXT_TYPE,
     *PWWAN_CONTEXT_TYPE;
@@ -1540,6 +1639,46 @@ typedef struct _WWAN_SET_CONTEXT_V2
     WWAN_CONFIGURATION_SOURCE Source;
     int Reserved; // reserve this field to match the structure size released in RS2, may be used for other purpose in future release
 } WWAN_SET_CONTEXT_V2, *PWWAN_SET_CONTEXT_V2;
+
+// Data structure only for response/set to OID_WWAN_PROVISIONED_CONTEXT which revision is
+// NDIS_WWAN_PROVISIONED_CONTEXTS_REVISION_2/NDIS_WWAN_SET_PROVISIONED_CONTEXTS_REVISION_2 and
+// for MBB driver version 2.170 or above. MBB driver version is reported by MBB driver and used in wwanprotdim.dll to determine the corresponding data structure.
+//
+// Not to be used in other OIDs (such as LTE attach config) nor for a driver below 2.170. A driver below 2.170 is using the field through Reserved,
+// so Dim needs normalize the data for those drivers below 2.170
+//
+// For driver 2.170 or above, underneath driver is MbbCx only, so NDIS revision number doesn't need be updated to differentiate payload anymore
+// since wwansvc and mbbcx are always version aligned
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+// goes with STRUCT_TYPE WwanStructProvisionedContextV2
+typedef struct _WWAN_PROVISIONED_CONTEXT_V2
+{
+    WWAN_CONTEXT basicInfo;
+    WWAN_IP_TYPE IPType;
+    WWAN_CONTEXT_ENABLE Enable;
+    WWAN_CONTEXT_ROAMING_CONTROL Roaming;
+    WWAN_CONTEXT_MEDIA_TYPE MediaType;
+    WWAN_CONFIGURATION_SOURCE Source;
+    int Reserved; // reserve this field to match the structure size released in RS2, may be used for other purpose in future release
+    // Bitmasks of WWAN_SINGLE_NSSAI 0 equals SnssaiLength of MBIM_MS_SNSSAI_INFO is 0, that may occur,
+    // either not SNSSAI is given for this context
+    // or device is using MBIM 3.0 or older version
+    WWAN_SINGLE_NSSAI Snssai;
+} WWAN_PROVISIONED_CONTEXT_V2, *PWWAN_PROVISIONED_CONTEXT_V2;
+
+typedef struct _WWAN_SET_PROVISIONED_CONTEXT_V2
+{
+    WWAN_SET_CONTEXT basicInfo;
+    WWAN_CONTEXT_OPERATIONS Operation;
+    WWAN_IP_TYPE IPType;
+    WWAN_CONTEXT_ENABLE Enable;
+    WWAN_CONTEXT_ROAMING_CONTROL Roaming;
+    WWAN_CONTEXT_MEDIA_TYPE MediaType;
+    WWAN_CONFIGURATION_SOURCE Source;
+    int Reserved; // reserve this field to match the structure size released in RS2, may be used for other purpose in future release
+    WWAN_SINGLE_NSSAI Snssai;
+} WWAN_SET_PROVISIONED_CONTEXT_V2, *PWWAN_SET_PROVISIONED_CONTEXT_V2;
+#endif
 
 #ifndef TotalRoamingConditions
 #define TotalRoamingConditions 3 // counting for home, partner, non-partner
@@ -2027,6 +2166,7 @@ typedef struct _WWAN_SYS_CAPS_INFO
 #define WWAN_MBIM_EXTENDED_1_0 0x0100
 #define WWAN_MBIM_EXTENDED_2_0 0x0200
 #define WWAN_MBIM_EXTENDED_3_0 0x0300
+#define WWAN_MBIM_EXTENDED_4_0 0x0400
 
 typedef struct _WWAN_MBIM_VERSION
 {
@@ -2153,6 +2293,9 @@ typedef struct _WWAN_SET_UICC_OPEN_CHANNEL
     BYTE AppId[WWAN_UICC_APP_ID_MAX_LEN];
     ULONG SelectP2Arg;
     ULONG ChannelGroup;
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    ULONG SlotId;
+#endif
 } WWAN_SET_UICC_OPEN_CHANNEL, *PWWAN_SET_UICC_OPEN_CHANNEL;
 
 typedef struct _WWAN_UICC_OPEN_CHANNEL_INFO
@@ -2167,7 +2310,9 @@ typedef struct _WWAN_SET_UICC_CLOSE_CHANNEL
 {
     ULONG Channel;
     ULONG ChannelGroup;
-    ULONG SelectP2Arg;
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO || NDIS_SUPPORT_NDIS686)
+    ULONG SlotId;
+#endif
 } WWAN_SET_UICC_CLOSE_CHANNEL, *PWWAN_SET_UICC_CLOSE_CHANNEL;
 
 typedef struct _WWAN_UICC_CLOSE_CHANNEL_INFO
@@ -2197,6 +2342,9 @@ typedef struct _WWAN_SET_UICC_APDU
     WWAN_UICC_SECURE_MESSAGING SecureMessaging;
     WWAN_UICC_CLASS_BYTE_TYPE Type;
     ULONG CommandLength;
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    ULONG SlotId;
+#endif
     BYTE Command[ANYSIZE_ARRAY];
 } WWAN_SET_UICC_APDU, *PWWAN_SET_UICC_APDU;
 
@@ -2211,6 +2359,19 @@ typedef struct _WWAN_UICC_TERMINAL_CAPABILITY_TLV
 {
     BYTE Data[3];
 } WWAN_UICC_TERMINAL_CAPABILITY_TLV, *PWWAN_UICC_TERMINAL_CAPABILITY_TLV;
+
+typedef struct _WWAN_SET_UICC_TERMINAL_CAPABILITY
+{
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    ULONG SlotId;
+#endif
+    WWAN_LIST_HEADER CapabilityListHeader;
+} WWAN_SET_UICC_TERMINAL_CAPABILITY, *PWWAN_SET_UICC_TERMINAL_CAPABILITY;
+
+typedef struct _WWAN_UICC_TERMINAL_CAPABILITY_INFO
+{
+    WWAN_LIST_HEADER CapabilityListHeader;
+} WWAN_UICC_TERMINAL_CAPABILITY_INFO, *PWWAN_UICC_TERMINAL_CAPABILITY_INFO;
 
 typedef enum _WWAN_PS_SERVICE_BIT
 {
@@ -2380,7 +2541,8 @@ typedef enum _WWAN_MODEM_CONFIG_STATE
     //  Once activation is completed, the modem will inform OS with unsolicted indication where config state default is set
     WwanModemConfigStateCompleted,
     WwanModemConfigStateMax
-} WWAN_MODEM_CONFIG_STATE, *PWWAN_MODEM_CONFIG_STATE;
+} WWAN_MODEM_CONFIG_STATE,
+    *PWWAN_MODEM_CONFIG_STATE;
 
 #define WWAN_MAX_MODEM_CONFIG_ID_LEN 32
 typedef struct _WWAN_MODEM_CONFIG_ID
@@ -2395,8 +2557,8 @@ typedef struct _WWAN_MODEM_CONFIG_INFO
     WWAN_MODEM_CONFIG_STATE ConfigState;
     WWAN_MODEM_CONFIG_REASON ConfigReason; // unused for NDIS_WWAN_MODEM_CONFIG_INFO_REVISION_2
     WWAN_MODEM_CONFIG_ID PreviousConfigID; // unused for NDIS_WWAN_MODEM_CONFIG_INFO_REVISION_2
-    WWAN_MODEM_CONFIG_ID CurrentConfigID; // unused for NDIS_WWAN_MODEM_CONFIG_INFO_REVISION_2
-    DWORD IsCurrentConfigDefault; // unused for NDIS_WWAN_MODEM_CONFIG_INFO_REVISION_2
+    WWAN_MODEM_CONFIG_ID CurrentConfigID;  // unused for NDIS_WWAN_MODEM_CONFIG_INFO_REVISION_2
+    DWORD IsCurrentConfigDefault;          // unused for NDIS_WWAN_MODEM_CONFIG_INFO_REVISION_2
 #if (NTDDI_VERSION >= NTDDI_WIN10_MN || NDIS_SUPPORT_NDIS684)
     // The follow is used only for NDIS_WWAN_MODEM_CONFIG_INFO_REVISION_2
     WCHAR ConfigName[WWAN_CONFIGNAME_LEN];
@@ -2413,7 +2575,8 @@ typedef enum _WWAN_PCO_TYPE
     WwanPcoTypeComplete = 0, // Specifies that the complete PCO structure will be passed up
     WwanPcoTypePartial, // Specifies that the modem will only be passing up a subset of PCO structures which is received from the network
     WwanPcoTypeMax
-} WWAN_PCO_TYPE, *PWWAN_PCO_TYPE;
+} WWAN_PCO_TYPE,
+    *PWWAN_PCO_TYPE;
 
 typedef struct _WWAN_PCO_VALUE
 {
@@ -2450,6 +2613,9 @@ typedef enum _WWAN_MULTIVARIANT_RUNNING_STATE
 typedef struct _WWAN_SET_UICC_RESET
 {
     WWAN_UICC_PASSTHROUGH_ACTION PassThroughAction;
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    ULONG SlotId;
+#endif
 } WWAN_SET_UICC_RESET, *PWWAN_SET_UICC_RESET;
 
 typedef struct _WWAN_UICC_RESET_INFO
@@ -2943,27 +3109,135 @@ typedef struct _WWAN_REGISTRATION_PARAMS_INFO
     WWAN_LADN_IND_REQUEST LADNInfo;
     WWAN_DEFAULT_PDU_SESSION_HINT DefaultPDUSessionHint;
     UINT32 ReRegisterIfNeeded; // 1 -- forced registration when necessary is requested; 0 -- forced re-regitration is not requested; otherwise -- reserved
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+    GUID OSId; // Zero GUID means MBIM_TLV_TYPE_OSID is not contained in MBIM_CID_MS_REGISTRATION_PARAMS payload
+#endif
     WWAN_LIST_HEADER PreConfiguredNSSAIListHeader;
 } WWAN_REGISTRATION_PARAMS_INFO, *PWWAN_REGISTRATION_PARAMS_INFO;
 
-// data structure for OID_WWAN_NETWORK_PARAMS query requests
-typedef struct _WWAN_QUERY_NETWORK_PARAMS
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
+
+#if (NTDDI_VERSION >= NTDDI_WIN10_CO)
+
+typedef struct _WWAN_QUERY_UICC_TERMINAL_CAPABILITY
 {
-    UINT16 NetworkConfigurationsNeeded; // 0 -- network configuration not needed; 1 -- network configuration needed; other - invalid
-    UINT16 UEPoliciesNeeded;            // 0 -- UE policies not needed; 1 -- UE policies needed; other - invalid
-} WWAN_QUERY_NETWORK_PARAMS, *PWWAN_QUERY_NETWORK_PARAMS;
+    ULONG SlotId;
+} WWAN_QUERY_UICC_TERMINAL_CAPABILITY, *PWWAN_QUERY_UICC_TERMINAL_CAPABILITY;
+
+// data structure for NDIS_WWAN_UE_POLICY_INFO notifications
+typedef struct _WWAN_PLMN
+{
+    //Mobile Country Code of 3 decimal digits; The least significant 12 bits contains BCD-encoded 3 decimal digits sequentially for the MCC,
+    // with the last digit of the MCC in the least significant 4 bits. The unused bits in the UINT16 integer must be zeros.
+    UINT16 Mcc;
+    // Mobile Network Code of either 3 or 2 decimal digits; The most significant bit indicates whether the MNC has 2 decimal digits
+    // or 3 decimal digits. If this bit has 1, the MNC has 2 decimal digits and the least significant 8 bits contains them in BCD-encoded
+    // form sequentially, with the last digit of the MNC in the least significant 4 bits. If the most significant bit has 0, the MNC has 3
+    // decimal digits and the least significant 12 bits contains them in BCD-encoded form sequentially, with the last digit of the MNC in
+    // the least significant 4 bits. The unused bits in the UINT16 integer must be zeros. For example, mnc 23 is 0x3 0x2 0x0 0x0 in in memory,
+    // and mnc 023 is 0x3 0x2 0x0 0x8
+    UINT16 Mnc;
+} WWAN_PLMN, *PWWAN_PLMN;
+
+typedef struct _WWAN_TAI_LIST_SINGLE_PLMN
+{
+    WWAN_PLMN Plmn;
+    UINT32 ElementCount;
+    UINT32 Tacs[ANYSIZE_ARRAY];
+} WWAN_TAI_LIST_SINGLE_PLMN, *PWWAN_TAI_LIST_SINGLE_PLMN;
+
+typedef struct _WWAN_TAI_LIST_MULTI_PLMN
+{
+    UINT32 ElementCount;
+    WWAN_SINGLE_TAI Tais[ANYSIZE_ARRAY];
+} WWAN_TAI_LIST_MULTI_PLMN, *PWWAN_TAI_LIST_MULTI_PLMN;
+
+typedef struct _WWAN_TAI_LIST
+{
+    WWAN_STRUCT_TYPE TaiListType;
+    // DataBuffer contains WWAN_TAI_LIST_SINGLE_PLMN or WWAN_TAI_LIST_MULTI_PLMN
+    BYTE DataBuffer[ANYSIZE_ARRAY];
+} WWAN_TAI_LIST, *PWWAN_TAI_LIST;
+
+typedef struct _WWAN_SNSSAI_LIST
+{
+    UINT32 ElementCount;
+    WWAN_SINGLE_NSSAI Snssais[ANYSIZE_ARRAY];
+} WWAN_SNSSAI_LIST, *PWWAN_SNSSAI_LIST;
+
+typedef struct _WWAN_REJECTED_SNSSAI_LIST
+{
+    UINT32 ElementCount;
+    WWAN_REJECTED_SNSSAI Snssais[ANYSIZE_ARRAY];
+} WWAN_REJECTED_SNSSAI_LIST, *PWWAN_REJECTED_SNSSAI_LIST;
+
+typedef struct _WWAN_LADN
+{
+    WCHAR AccessString[WWAN_ACCESSSTRING_LEN];
+    WWAN_TAI_LIST TaiList;
+} WWAN_LADN, *PWWAN_LADN;
+
+typedef struct _WWAN_LADN_LIST
+{
+    UINT32 ElementCount;
+    WWAN_LADN Ladns[ANYSIZE_ARRAY];
+} WWAN_LADN_LIST, *PWWAN_LADN_LIST;
 
 // data structure for NDIS_STATUS_WWAN_NETWORK_PARAMS_STATE notifications
 typedef struct _WWAN_NETWORK_PARAMS_INFO
 {
-    WWAN_MICO_IND CurrentMicoIndication; // valid only if NetworkConfigurationsNeeded is 1 in the query request
-    WWAN_DRX_PARAMS CurrentDRXParams;    // valid only if NetworkConfigurationsNeeded is 1 in the query request
-
-    // Various TLVs can be present immediately following the previous filed.
-    // Generaic rules for construction and interpretation of TLVs in payload apply.
+    WWAN_MICO_IND CurrentMicoIndication;
+    WWAN_DRX_PARAMS CurrentDRXParams;
+    // The first 4 bytes are offset to the DataBuffer containing a list of WWAN_TAI_LIST, in bytes, calculated from the beginning of
+    // WWAN_NETWORK_PARAMS_INFO. The second 4 bytes are size of a list of WWAN_TAI_LIST, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT TaiList;
+    // The first 4 bytes are offset to the DataBuffer containing a WWAN_SNSSAI_LIST, in bytes, calculated from the beginning of
+    // WWAN_NETWORK_PARAMS_INFO.
+    // The second 4 bytes are size of WWAN_SNSSAI_LIST, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT AllowedNssaiList;
+    // The first 4 bytes are offset to the DataBuffer containing a WWAN_SNSSAI_LIST, in bytes, calculated from the beginning of
+    // WWAN_NETWORK_PARAMS_INFO. The second 4 bytes are size of WWAN_SNSSAI_LIST, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT ConfiguredNssaiList;
+    // The first 4 bytes are offset to the DataBuffer containing a WWAN_REJECTED_SNSSAI_LIST, in bytes, calculated from the
+    // beginning of WWAN_NETWORK_PARAMS_INFO. The second 4 bytes are size of WWAN_REJECTED_SNSSAI_LIST, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT RejectedNssaiList;
+    // The first 4 bytes are offset to the DataBuffer containing a WWAN_SNSSAI_LIST, in bytes, calculated from the beginning of
+    // WWAN_NETWORK_PARAMS_INFO. The second 4 bytes are size of WWAN_SNSSAI_LIST, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT DefaultConfiguredNssaiList;
+    // The first 4 bytes are offset to the DataBuffer containing a WWAN_LADN_LIST, in bytes, calculated from the beginning of
+    // WWAN_NETWORK_PARAMS_INFO. The second 4 bytes are size of WWAN_LADN_LIST, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT LadnList;
+    // DataBuffer containing TaiList, AllowedNssaiList, ConfiguredNssaiList, RejectedNssaiList, DefaultConfiguredNssaiList,
+    // and LadnList are immediately following the last named field of WWAN_NETWORK_PARAMS_INFO (LadnList), in that order, without
+    // any gap (unused space) in between
+    BYTE DataBuffer[ANYSIZE_ARRAY];
 } WWAN_NETWORK_PARAMS_INFO, *PWWAN_NETWORK_PARAMS_INFO;
 
-#endif // (NTDDI_VERSION >= NTDDI_WIN10_VB || NDIS_SUPPORT_NDIS684)
+typedef struct _WWAN_QUERY_UICC_RESET
+{
+    ULONG SlotId;
+} WWAN_QUERY_UICC_RESET, *PWWAN_QUERY_UICC_RESET;
+
+typedef struct _WWAN_QUERY_ATR_INFO
+{
+    ULONG SlotId;
+} WWAN_QUERY_ATR_INFO, *PWWAN_QUERY_ATR_INFO;
+
+typedef struct _WWAN_QUERY_READY_INFO
+{
+    ULONG SlotId;
+} WWAN_QUERY_READY_INFO, *PWWAN_QUERY_READY_INFO;
+
+// data structure for NDIS_STATUS_WWAN_UE_POLICY_STATE notifications
+typedef struct _WWAN_UE_POLICY_INFO
+{
+    // The first 4 bytes are offset to the DataBuffer containing the raw data of MBIM_TLV_TYPE_URSP_RULES_TD_ONLY, in bytes, calculated from the beginning of WWAN_UE_POLICY_INFO.
+    // The second 4 bytes are size of the raw data of MBIM_TLV_TYPE_URSP_RULES_TD_ONLY, in bytes.
+    WWAN_OFFSET_SIZE_ELEMENT RawTdOnlyData; 
+    // DataBuffer
+} WWAN_UE_POLICY_INFO, *PWWAN_UE_POLICY_INFO;
+
+#endif // (NTDDI_VERSION >= NTDDI_WIN10_CO)
 
 #if _MSC_VER >= 1200
 #pragma warning(pop)

@@ -673,6 +673,7 @@ EXTERN_C __declspec(selectany) const GUID POP_PEP_ETW_PROVIDER = {0x5412704e, 0x
 // Channel
 //
 #define POP_PEP_ETW_PROVIDER_CHANNEL_chidPepPower 0x10
+#define POP_PEP_ETW_PROVIDER_CHANNEL_chidPepPower_KEYWORD 0x8000000000000000
 
 //
 // Tasks

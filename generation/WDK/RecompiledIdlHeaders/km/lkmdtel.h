@@ -22,6 +22,16 @@ extern "C" {
 #if (NTDDI_VERSION >= NTDDI_WINBLUE)
 
 //
+// Note: The driver should call ExInitializeDriverRuntime during driver
+// initialization, before calling APIs in this library. While it is safe
+// to call on any platform, if compiling for Windows 10 version 2004 and later,
+// the call will prevent double zeroing of the allocations since the OS returns
+// a zeroed allocation already and ExAllocatePoolZero will also zero it.
+//
+
+#define POOL_ZERO_DOWN_LEVEL_SUPPORT
+
+//
 // Prototypes
 //
 

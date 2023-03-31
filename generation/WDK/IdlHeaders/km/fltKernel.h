@@ -121,6 +121,11 @@ extern "C" {
 
 #define FLT_MGR_WIN10_CO (NTDDI_VERSION >= NTDDI_WIN10_CO)
 
+//
+//  This defines items that only exist in Windows Nickel or later.
+//
+
+#define FLT_MGR_WIN10_NI (NTDDI_VERSION >= NTDDI_WIN10_NI)
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -6086,6 +6091,24 @@ FltPropagateIrpExtension (
     _In_ PFLT_CALLBACK_DATA SourceData,
     _Inout_ PFLT_CALLBACK_DATA TargetData,
     _In_ ULONG Flags
+    );
+
+#endif
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//  Routine for getting the copy information from the callback data
+//
+///////////////////////////////////////////////////////////////////////////////
+
+#if FLT_MGR_WIN10_NI
+
+_IRQL_requires_max_(DISPATCH_LEVEL)
+NTSTATUS
+FLTAPI
+FltGetCopyInformationFromCallbackData (
+    _In_ PFLT_CALLBACK_DATA Data,
+    _Out_ PCOPY_INFORMATION CopyInformation
     );
 
 #endif

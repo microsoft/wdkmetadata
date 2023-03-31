@@ -373,6 +373,7 @@ typedef struct _SecBufferDesc {
 #define SECBUFFER_SUBSCRIBE_GENERIC_TLS_EXTENSION 26 // Buffer for subscribing to generic TLS extensions.
 #define SECBUFFER_FLAGS                         27  // ISC/ASC REQ Flags
 #define SECBUFFER_TRAFFIC_SECRETS               28  // Message sequence lengths and corresponding traffic secrets.
+#define SECBUFFER_CERTIFICATE_REQUEST_CONTEXT   29  // TLS 1.3 certificate request context.
 
 #define SECBUFFER_ATTRMASK                      0xF0000000
 #define SECBUFFER_READONLY                      0x80000000  // Buffer is read-only, no checksum
@@ -453,6 +454,12 @@ typedef struct _SEC_DTLS_MTU {
 typedef struct _SEC_FLAGS {
     unsigned long long Flags; // The caller sets ISC/ASC REQ flags; the lower 32 bits are reserved, must be set to 0.
 } SEC_FLAGS, *PSEC_FLAGS;
+
+typedef struct _SEC_CERTIFICATE_REQUEST_CONTEXT {
+    unsigned char cbCertificateRequestContext; // Size in bytes of the rgCertificateRequestContext array.
+    unsigned char rgCertificateRequestContext[ANYSIZE_ARRAY]; // The TLS 1.3 certificate request context.
+} SEC_CERTIFICATE_REQUEST_CONTEXT, *PSEC_CERTIFICATE_REQUEST_CONTEXT;
+
 
 //
 //  Traffic secret types:
@@ -3427,7 +3434,7 @@ SECURITY_STATUS
 SEC_ENTRY
 SspiCopyAuthIdentity(
     _In_ PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData,
-    _Outptr_ PSEC_WINNT_AUTH_IDENTITY_OPAQUE* AuthDataCopy
+    _Outptr_ _When_(return != 0, __drv_allocatesMem(Mem)) PSEC_WINNT_AUTH_IDENTITY_OPAQUE* AuthDataCopy
     );
 
 //
@@ -3438,7 +3445,7 @@ SspiCopyAuthIdentity(
 VOID
 SEC_ENTRY
 SspiFreeAuthIdentity(
-    _In_opt_ PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData
+    _In_opt_ __drv_freesMem(Mem) PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData
     );
 
 VOID
@@ -3464,7 +3471,7 @@ SspiEncodeStringsAsAuthIdentity(
     _In_opt_ PCWSTR pszUserName,
     _In_opt_ PCWSTR pszDomainName,
     _In_opt_ PCWSTR pszPackedCredentialsString,
-    _Outptr_ PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity
+    _Outptr_ _When_(return != 0, __drv_allocatesMem(Mem)) PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity
     );
 
 SECURITY_STATUS
@@ -3498,7 +3505,7 @@ SEC_ENTRY
 SspiUnmarshalAuthIdentity(
     _In_ unsigned long AuthIdentityLength,
     _In_reads_bytes_(AuthIdentityLength) char* AuthIdentityByteArray,
-    _Outptr_ PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity
+    _Outptr_ _When_(return != 0, __drv_allocatesMem(Mem)) PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity
     );
 
 #endif // NTDDI_VERSION

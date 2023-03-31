@@ -10,7 +10,7 @@
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 500
+#define __REQUIRED_RPCNDR_H_VERSION__ 501
 #endif
 
 /* verify that the <rpcsal.h> version is high enough to compile this file*/
@@ -258,6 +258,15 @@ typedef struct FWP_CONDITION_VALUE0_
         /* [case()][unique] */ FWP_RANGE0 *rangeValue;
         } 	;
     } 	FWP_CONDITION_VALUE0;
+
+typedef /* [v1_enum] */ 
+enum FWP_NETWORK_CONNECTION_POLICY_SETTING_TYPE_
+    {
+        FWP_NETWORK_CONNECTION_POLICY_SOURCE_ADDRESS	= 0,
+        FWP_NETWORK_CONNECTION_POLICY_NEXT_HOP_INTERFACE	= ( FWP_NETWORK_CONNECTION_POLICY_SOURCE_ADDRESS + 1 ) ,
+        FWP_NETWORK_CONNECTION_POLICY_NEXT_HOP	= ( FWP_NETWORK_CONNECTION_POLICY_NEXT_HOP_INTERFACE + 1 ) ,
+        FWP_NETWORK_CONNECTION_POLICY_MAX	= ( FWP_NETWORK_CONNECTION_POLICY_NEXT_HOP + 1 ) 
+    } 	FWP_NETWORK_CONNECTION_POLICY_SETTING_TYPE;
 
 typedef /* [v1_enum] */ 
 enum FWP_CLASSIFY_OPTION_TYPE_
