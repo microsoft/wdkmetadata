@@ -1,4 +1,5 @@
 --exclude
+_SID
 FsRtlIsTotalDeviceFailure
 IoGetAttachedDeviceReference
 IoGetConfigurationInformation
@@ -52,7 +53,6 @@ SeLockSubjectContext
 SeReleaseSubjectContext
 SeUnlockSubjectContext
 ZwDeviceIoControlFile
-ZwQueryVolumeInformationFile
 --traverse
 <IncludeRoot>/km/ntifs.h
 <IncludeRoot>/km/ntnls.h

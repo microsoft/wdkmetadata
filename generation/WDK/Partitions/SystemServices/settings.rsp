@@ -1,5 +1,6 @@
 --exclude
 _ARM64EC_NT_CONTEXT
+ZwQueryVolumeInformationFile
 --traverse
 <IncludeRoot>/km/mce.h
 <IncludeRoot>/km/ntddk.h
