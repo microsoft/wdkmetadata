@@ -1,0 +1,35 @@
+# Fixed #26.
+Windows.Wdk.Foundation.ECP_LIST added
+Windows.Wdk.Graphics.Direct3D.D3DDDI_ALLOCATIONINFO.pSystemMem...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DDDI_ALLOCATIONINFO2._Anonymous1_e__Union.pSystemMem...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DDDI_OPENALLOCATIONINFO.pPrivateDriverData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DDDI_OPENALLOCATIONINFO2.pPrivateDriverData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DDDI_SURFACEINFO.pSysMem...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_CREATEALLOCATION._Anonymous1_e__Union.pPrivateDriverData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_CREATEALLOCATION.pPrivateRuntimeData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_CREATEPROTECTEDSESSION.pPrivateDriverData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_CREATEPROTECTEDSESSION.pPrivateRuntimeData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_PRESENT_MULTIPLANE_OVERLAY3.pHDRMetaData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_QUERYPROTECTEDSESSIONINFOFROMNTHANDLE.pPrivateDriverData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_QUERYPROTECTEDSESSIONINFOFROMNTHANDLE.pPrivateRuntimeData...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlAllocateExtraCreateParameterList : EcpList...Void** => ECP_LIST**
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlFindExtraCreateParameter : EcpList...Void* => ECP_LIST*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlFreeExtraCreateParameterList : EcpList...Void* => ECP_LIST*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlGetEcpListFromIrp : EcpList...Void** => ECP_LIST**
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlGetNextExtraCreateParameter : EcpList...Void* => ECP_LIST*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlInitializeExtraCreateParameterList : EcpList...Void* => ECP_LIST*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlInsertExtraCreateParameter : EcpList...Void* => ECP_LIST*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlRemoveExtraCreateParameter : EcpList...Void* => ECP_LIST*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlSetEcpListIntoIrp : EcpList...Void* => ECP_LIST*
+Windows.Wdk.Storage.FileSystem.Apis.RtlIsPartialPlaceholderFileInfo : InfoBuffer...@void* => Void*
+Windows.Wdk.Storage.FileSystem.QUERY_PATH_REQUEST_EX.EcpList...System.Void* => Windows.Wdk.Foundation.ECP_LIST*
+Windows.Wdk.System.SystemServices.Apis.IoGetIrpExtraCreateParameter : ExtraCreateParameter...Void** => ECP_LIST**
+Windows.Wdk.System.SystemServices.Apis.IoSetIrpExtraCreateParameter : ExtraCreateParameter...Void* => ECP_LIST*
+Windows.Wdk.System.SystemServices.Apis.RtlCompareMemory : Source1...@void* => Void*
+Windows.Wdk.System.SystemServices.Apis.RtlCompareMemory : Source2...@void* => Void*
+Windows.Wdk.System.SystemServices.Apis.RtlCrc32 : Buffer...@void* => Void*
+Windows.Wdk.System.SystemServices.Apis.RtlCrc64 : Buffer...@void* => Void*
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY._u_e__Union.None...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT.ExtraCreateParameter...System.Void* => Windows.Wdk.Foundation.ECP_LIST*
+Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT.void removed
+Windows.Wdk.System.SystemServices.PCW_DATA.Data...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*

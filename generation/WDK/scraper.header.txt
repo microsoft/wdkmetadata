@@ -1,1 +1,2 @@
-using Windows.Wdk.System.SystemServices
+using Windows.Wdk.Foundation;
+using Windows.Wdk.System.SystemServices;
