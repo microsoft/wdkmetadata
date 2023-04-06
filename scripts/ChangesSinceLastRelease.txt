@@ -33,3 +33,20 @@ Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY._u_e__Union.None...Windows.
 Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT.ExtraCreateParameter...System.Void* => Windows.Wdk.Foundation.ECP_LIST*
 Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT.void removed
 Windows.Wdk.System.SystemServices.PCW_DATA.Data...Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT+@void* => System.Void*
+# Fixed #27.
+Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION_EX added
+Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION_EX_FLAGS added
+Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION_EX_FLAGS.FILE_DISPOSITION_DELETE added
+Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION_EX_FLAGS.FILE_DISPOSITION_DO_NOT_DELETE added
+Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION_EX_FLAGS.FILE_DISPOSITION_FORCE_IMAGE_SECTION_CHECK added
+Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION_EX_FLAGS.FILE_DISPOSITION_IGNORE_READONLY_ATTRIBUTE added
+Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION_EX_FLAGS.FILE_DISPOSITION_ON_CLOSE added
+Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION_EX_FLAGS.FILE_DISPOSITION_POSIX_SEMANTICS added
+Windows.Wdk.System.SystemServices.Apis.FILE_DISPOSITION_DELETE removed
+Windows.Wdk.System.SystemServices.Apis.FILE_DISPOSITION_DO_NOT_DELETE removed
+Windows.Wdk.System.SystemServices.Apis.FILE_DISPOSITION_FORCE_IMAGE_SECTION_CHECK removed
+Windows.Wdk.System.SystemServices.Apis.FILE_DISPOSITION_IGNORE_READONLY_ATTRIBUTE removed
+Windows.Wdk.System.SystemServices.Apis.FILE_DISPOSITION_ON_CLOSE removed
+Windows.Wdk.System.SystemServices.Apis.FILE_DISPOSITION_POSIX_SEMANTICS removed
+Windows.Wdk.System.SystemServices.FILE_DISPOSITION_INFORMATION => Windows.Wdk.Storage.FileSystem.FILE_DISPOSITION_INFORMATION
+Windows.Wdk.System.SystemServices.FILE_DISPOSITION_INFORMATION_EX removed

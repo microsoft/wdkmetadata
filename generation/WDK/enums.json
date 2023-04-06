@@ -111,6 +111,19 @@
         "parameter": "CreateDisposition"
       }
     ]
+  },
+  {
+    "name": "FILE_DISPOSITION_INFORMATION_EX_FLAGS",
+    "autoPopulate": {
+      "header": "ntddk.h",
+      "filter": "FILE_DISPOSITION_"
+    },
+    "uses": [
+      {
+        "struct": "FILE_DISPOSITION_INFORMATION_EX",
+        "field": "Flags"
+      }
+    ]
   }
 ]
 }

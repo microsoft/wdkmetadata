@@ -1,6 +1,8 @@
 --requiredNamespaceForName
 # region ntddk.h
 DUAL_OPLOCK_KEY_CONTEXT=Windows.Wdk.Storage.FileSystem
+FILE_DISPOSITION_INFORMATION=Windows.Wdk.Storage.FileSystem
+FILE_DISPOSITION_INFORMATION_EX=Windows.Wdk.Storage.FileSystem
 IoGetOplockKeyContext=Windows.Wdk.Storage.FileSystem
 IoGetOplockKeyContextEx=Windows.Wdk.Storage.FileSystem
 OPLOCK_KEY_CONTEXT=Windows.Wdk.Storage.FileSystem
