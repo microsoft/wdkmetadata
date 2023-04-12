@@ -1,6 +1,6 @@
 using System;
 using Windows.Wdk.Foundation;
-using Windows.Win32.Interop;
+using Windows.Win32.Foundation.Metadata;
 
 namespace Windows.Wdk.System.SystemServices;
 

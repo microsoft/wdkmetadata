@@ -1,5 +1,4 @@
 using System;
-using Windows.Win32.Interop;
 
 namespace Windows.Wdk.Foundation;
 
