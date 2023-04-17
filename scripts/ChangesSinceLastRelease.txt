@@ -1,0 +1,15 @@
+# Fixed #32.
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_AMD64 removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_ARM removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_ARM64 removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_ARM64_RET_TO_GUEST removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_ARM64_UNWOUND_TO_CALL removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_EXCEPTION_ACTIVE removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_EXCEPTION_REPORTING removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_EXCEPTION_REQUEST removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_i386 removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_i486 removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_KERNEL_DEBUGGER removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_RET_TO_GUEST removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_SERVICE_ACTIVE removed
+Windows.Wdk.System.SystemServices.Apis.CONTEXT_UNWOUND_TO_CALL removed
