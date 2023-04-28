@@ -13,3 +13,568 @@ Windows.Wdk.System.SystemServices.Apis.CONTEXT_KERNEL_DEBUGGER removed
 Windows.Wdk.System.SystemServices.Apis.CONTEXT_RET_TO_GUEST removed
 Windows.Wdk.System.SystemServices.Apis.CONTEXT_SERVICE_ACTIVE removed
 Windows.Wdk.System.SystemServices.Apis.CONTEXT_UNWOUND_TO_CALL removed
+# Updated WinmdGenerator to 0.50.71-preview. Fixed #31.
+Windows.Wdk.Foundation._DEVICE_OBJECT_POWER_EXTENSION added
+Windows.Wdk.Foundation._IORING_OBJECT added
+Windows.Wdk.Foundation._SCSI_REQUEST_BLOCK added
+Windows.Wdk.Foundation.DEVICE_OBJECT_POWER_EXTENSION removed
+Windows.Wdk.Foundation.DEVICE_OBJECT.Timer...Windows.Wdk.Foundation.IO_TIMER* => Windows.Wdk.Foundation.PIO_TIMER
+Windows.Wdk.Foundation.DEVOBJ_EXTENSION.Dope...Windows.Wdk.Foundation.DEVICE_OBJECT_POWER_EXTENSION* => Windows.Wdk.Foundation._DEVICE_OBJECT_POWER_EXTENSION*
+Windows.Wdk.Foundation.DMA_COMMON_BUFFER_VECTOR added
+Windows.Wdk.Foundation.ECP_HEADER added
+Windows.Wdk.Foundation.ECP_LIST :  => [NativeTypedef]
+Windows.Wdk.Foundation.ECP_LIST.Value added
+Windows.Wdk.Foundation.EJOB removed
+Windows.Wdk.Foundation.IO_STACK_LOCATION._Parameters_e__Union._Scsi_e__Struct.Srb...Windows.Wdk.System.SystemServices._SCSI_REQUEST_BLOCK* => Windows.Wdk.Foundation._SCSI_REQUEST_BLOCK*
+Windows.Wdk.Foundation.IO_TIMER removed
+Windows.Wdk.Foundation.IOMMU_DMA_DEVICE added
+Windows.Wdk.Foundation.IOMMU_DMA_DOMAIN added
+Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous2_e__Union._IORING_OBJECT removed
+Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous2_e__Union.IoRing...Windows.Wdk.Foundation.IRP+_Overlay_e__Union+_AsynchronousParameters_e__Struct+_Anonymous2_e__Union+_IORING_OBJECT* => Windows.Wdk.Foundation._IORING_OBJECT*
+Windows.Wdk.Foundation.IRP._Tail_e__Union._Overlay_e__Struct.Thread...Windows.Wdk.System.SystemServices._ETHREAD* => Windows.Wdk.Foundation.PETHREAD
+Windows.Wdk.Foundation.KENLISTMENT added
+Windows.Wdk.Foundation.KGDT added
+Windows.Wdk.Foundation.KIDT added
+Windows.Wdk.Foundation.KMUTANT.OwnerThread...Windows.Wdk.Foundation.KTHREAD* => System.IntPtr*
+Windows.Wdk.Foundation.KPCR added
+Windows.Wdk.Foundation.KPRCB added
+Windows.Wdk.Foundation.KPROCESS removed
+Windows.Wdk.Foundation.KRESOURCEMANAGER added
+Windows.Wdk.Foundation.KTHREAD removed
+Windows.Wdk.Foundation.KTM added
+Windows.Wdk.Foundation.KTRANSACTION added
+Windows.Wdk.Foundation.KTSS added
+Windows.Wdk.Foundation.KWAIT_BLOCK._Anonymous_e__Union.Thread...Windows.Wdk.Foundation.KTHREAD* => System.IntPtr*
+Windows.Wdk.Foundation.LOADER_PARAMETER_BLOCK added
+Windows.Wdk.Foundation.OBJECT_TYPE removed
+Windows.Wdk.Foundation.PAFFINITY_TOKEN added
+Windows.Wdk.Foundation.PBUS_HANDLER added
+Windows.Wdk.Foundation.PCALLBACK_OBJECT added
+Windows.Wdk.Foundation.PDEVICE_HANDLER_OBJECT added
+Windows.Wdk.Foundation.PEJOB added
+Windows.Wdk.Foundation.PEPROCESS added
+Windows.Wdk.Foundation.PESILO added
+Windows.Wdk.Foundation.PETHREAD added
+Windows.Wdk.Foundation.PEX_RUNDOWN_REF_CACHE_AWARE added
+Windows.Wdk.Foundation.PEX_TIMER added
+Windows.Wdk.Foundation.PIO_REMOVE_LOCK_TRACKING_BLOCK added
+Windows.Wdk.Foundation.PIO_TIMER added
+Windows.Wdk.Foundation.PIO_WORKITEM added
+Windows.Wdk.Foundation.PKINTERRUPT added
+Windows.Wdk.Foundation.PKPROCESS added
+Windows.Wdk.Foundation.PKTHREAD added
+Windows.Wdk.Foundation.PNOTIFY_SYNC added
+Windows.Wdk.Foundation.POBJECT_TYPE added
+Windows.Wdk.Foundation.POHANDLE added
+Windows.Wdk.Foundation.PPCW_BUFFER added
+Windows.Wdk.Foundation.PPCW_INSTANCE added
+Windows.Wdk.Foundation.PPCW_REGISTRATION added
+Windows.Wdk.Foundation.PRKPROCESS added
+Windows.Wdk.Foundation.PRKTHREAD added
+Windows.Wdk.Foundation.PSILO_MONITOR added
+Windows.Wdk.Foundation.SspiAsyncContext added
+Windows.Wdk.Foundation.TARGET_DEVICE_CUSTOM_NOTIFICATION.CustomDataBuffer :  => [FlexibleArray]
+Windows.Wdk.Graphics.Direct3D.D3DDDI_QUERYREGISTRY_INFO._Anonymous_e__Union.OutputBinary : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HMONITORDESCRIPTORSET__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HMONITORFREQUENCYRANGESET__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HMONITORSOURCEMODESET__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HVIDEOPRESENTSOURCESET__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HVIDEOPRESENTTARGETSET__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HVIDPN__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HVIDPNSOURCEMODESET__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HVIDPNTARGETMODESET__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMDT_HVIDPNTOPOLOGY__ removed
+Windows.Wdk.Graphics.Direct3D.D3DKMT_BLOCKLIST_INFO.BlockList :  => [FlexibleArray]
+Windows.Wdk.Graphics.Direct3D.D3DKMT_DEBUG_SNAPSHOT_ESCAPE.Buffer :  => [FlexibleArray]
+Windows.Wdk.Graphics.Direct3D.D3DKMT_DISPLAYMODELIST.pModeList :  => [FlexibleArray]
+Windows.Wdk.Graphics.Direct3D.D3DKMT_DMM_ESCAPE.Data :  => [FlexibleArray]
+Windows.Wdk.Graphics.Direct3D.D3DKMT_MIRACAST_CHUNK_DATA.PrivateDriverData :  => [FlexibleArray]
+Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENNTHANDLEFROMNAME.pObjAttrib...Windows.Wdk.Graphics.Direct3D.OBJECT_ATTRIBUTES* => Windows.Win32.System.WindowsProgramming.OBJECT_ATTRIBUTES*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENSYNCOBJECTNTHANDLEFROMNAME.pObjAttrib...Windows.Wdk.Graphics.Direct3D.OBJECT_ATTRIBUTES* => Windows.Win32.System.WindowsProgramming.OBJECT_ATTRIBUTES*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_OUTPUTDUPL_SNAPSHOT.OutputDuplDebugInfos :  => [FlexibleArray]
+Windows.Wdk.Graphics.Direct3D.OBJECT_ATTRIBUTES removed
+Windows.Wdk.Storage.FileSystem._REAL_NOTIFY_SYNC removed
+Windows.Wdk.Storage.FileSystem.Apis.CcAsyncCopyRead : IoIssuerThread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.CcCopyReadEx : IoIssuerThread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.CcCopyWriteEx : IoIssuerThread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.CcScheduleReadAheadEx : IoIssuerThread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlFastUnlockAll : ProcessId...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlFastUnlockAllByKey : ProcessId...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlFastUnlockSingle : ProcessId...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlIs32BitProcess : Process...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlNotifyCleanup : NotifySync..._REAL_NOTIFY_SYNC* => PNOTIFY_SYNC
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlNotifyCleanupAll : NotifySync..._REAL_NOTIFY_SYNC* => PNOTIFY_SYNC
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlNotifyFilterChangeDirectory : NotifySync..._REAL_NOTIFY_SYNC* => PNOTIFY_SYNC
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlNotifyFilterReportChange : NotifySync..._REAL_NOTIFY_SYNC* => PNOTIFY_SYNC
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlNotifyFullChangeDirectory : NotifySync..._REAL_NOTIFY_SYNC* => PNOTIFY_SYNC
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlNotifyFullReportChange : NotifySync..._REAL_NOTIFY_SYNC* => PNOTIFY_SYNC
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlNotifyInitializeSync : NotifySync..._REAL_NOTIFY_SYNC** => PNOTIFY_SYNC*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlNotifyUninitializeSync : NotifySync..._REAL_NOTIFY_SYNC** => PNOTIFY_SYNC*
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlOplockGetAnyBreakOwnerProcess : return...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.FsRtlPrivateLock : ProcessId...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.IoApplyPriorityInfoThread : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.IoGetDeviceToVerify : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.IoGetRequestorProcess : return...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.IoIsSystemThread : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.IoRetrievePriorityInfo : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.IoSetDeviceToVerify : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.IoThreadToProcess : return...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.IoThreadToProcess : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.KeAttachProcess : Process : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.KeAttachProcess : Process...KPROCESS* => PRKPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.KeSetIdealProcessorThread : Thread : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.KeSetIdealProcessorThread : Thread...KTHREAD* => PKTHREAD
+Windows.Wdk.Storage.FileSystem.Apis.KeStackAttachProcess : PROCESS : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.KeStackAttachProcess : PROCESS...KPROCESS* => PRKPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.ObOpenObjectByPointer : ObjectType...OBJECT_TYPE* => POBJECT_TYPE
+Windows.Wdk.Storage.FileSystem.Apis.ObOpenObjectByPointerWithTag : ObjectType...OBJECT_TYPE* => POBJECT_TYPE
+Windows.Wdk.Storage.FileSystem.Apis.PsAssignImpersonationToken : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.PsChargePoolQuota : Process...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.PsChargeProcessPoolQuota : Process...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.PsDisableImpersonation : Thread : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.PsDisableImpersonation : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.PsGetThreadProcess : return...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.PsGetThreadProcess : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.PsImpersonateClient : Thread : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.PsImpersonateClient : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.PsIsSystemThread : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.PsIsThreadTerminating : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.PsLookupProcessByProcessId : Process...KPROCESS** => PEPROCESS*
+Windows.Wdk.Storage.FileSystem.Apis.PsLookupThreadByThreadId : Thread...KTHREAD** => PETHREAD*
+Windows.Wdk.Storage.FileSystem.Apis.PsReferenceImpersonationToken : Thread : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.PsReferenceImpersonationToken : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.PsReferencePrimaryToken : Process : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.PsReferencePrimaryToken : Process...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.PsRestoreImpersonation : Thread : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.PsRestoreImpersonation : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.PsReturnPoolQuota : Process...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.PsUpdateDiskCounters : Process : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.PsUpdateDiskCounters : Process...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.SeCaptureSubjectContextEx : Process...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.SeCaptureSubjectContextEx : Thread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.SeCreateClientSecurity : ClientThread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.SeImpersonateClient : ServerThread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.SeImpersonateClientEx : ServerThread...KTHREAD* => PETHREAD
+Windows.Wdk.Storage.FileSystem.Apis.SeLocateProcessImageName : Process : [In,Out] => [In]
+Windows.Wdk.Storage.FileSystem.Apis.SeLocateProcessImageName : Process...KPROCESS* => PEPROCESS
+Windows.Wdk.Storage.FileSystem.Apis.SeMarkLogonSessionForTerminationNotificationEx : pServerSilo...EJOB* => PESILO
+Windows.Wdk.Storage.FileSystem.Apis.SeQueryServerSiloToken : pServerSilo...EJOB** => PESILO*
+Windows.Wdk.Storage.FileSystem.BULK_SECURITY_TEST_DATA.SecurityIds :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1._Values_e__Union.pOctetString : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
+Windows.Wdk.Storage.FileSystem.COMPRESSED_DATA_INFO.CompressedChunkSizes :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.CONTAINER_ROOT_INFO_OUTPUT.ContainerRootId :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_MDS_PATH.Path :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.ECP_HEADER removed
+Windows.Wdk.Storage.FileSystem.ENCRYPTED_DATA_INFO.DataBlockSize :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.ENCRYPTION_BUFFER.Private :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_BOTH_DIR_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_DIRECTORY_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_FS_ATTRIBUTE_INFORMATION.FileSystemName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_FS_DRIVER_PATH_INFORMATION.DriverName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_FULL_DIR_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_FULL_EA_INFORMATION.EaName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_GET_EA_INFORMATION.EaName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_ID_BOTH_DIR_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_ID_EXTD_BOTH_DIR_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_ID_EXTD_DIR_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_ID_FULL_DIR_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_ID_GLOBAL_TX_DIR_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_LAYOUT_NAME_ENTRY.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_LEVEL_TRIM.Ranges :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_LINK_ENTRY_FULL_ID_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_LINK_ENTRY_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_LINK_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_MOVE_CLUSTER_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_NAME_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_NAMES_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_NETWORK_PHYSICAL_NAME_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_EXTENDED_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_FULL_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_PIPE_PEEK_BUFFER.Data :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_PIPE_WAIT_FOR_BUFFER.Name :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_PREFETCH_EX.Prefetch :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_PREFETCH.Prefetch :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_REGION_OUTPUT.Region :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_RENAME_INFORMATION.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_STREAM_INFORMATION.StreamName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_TRACKING_INFORMATION.ObjectInformation :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_TYPE_NOTIFICATION_INPUT.FileTypeID :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FILE_VOLUME_NAME_INFORMATION.DeviceName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FIND_BY_SID_OUTPUT.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FSCTL_GHOST_FILE_EXTENTS_INPUT_BUFFER.RecallMetadataBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_GHOSTED_FILE_EXTENTS_OUTPUT.Extents :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_REGION_INFO_INPUT.TierIds :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_REGION_INFO_OUTPUT.Regions :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_STORAGE_CLASSES_OUTPUT.Tiers :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.GET_FILTER_FILE_IDENTIFIER_INPUT.Altitude :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.GET_FILTER_FILE_IDENTIFIER_OUTPUT.FilterFileIdentifier :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.GHOSTED_FILE_EXTENT.RecallMetadataBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.KAPC_STATE.Process...Windows.Wdk.Foundation.KPROCESS* => System.IntPtr*
+Windows.Wdk.Storage.FileSystem.LOOKUP_STREAM_FROM_CLUSTER_ENTRY.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.LOOKUP_STREAM_FROM_CLUSTER_INPUT.Cluster :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.MSV1_0_IUM_SUPPLEMENTAL_CREDENTIAL.EncryptedCreds :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.MSV1_0_NTLM3_RESPONSE.Buffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.MSV1_0_REMOTE_SUPPLEMENTAL_CREDENTIAL.EncryptedCreds :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.NFS_OPEN_ECP_CONTEXT.ClientSocketAddress...Windows.Wdk.Storage.FileSystem.SOCKADDR_STORAGE* => Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE*
+Windows.Wdk.Storage.FileSystem.NTFS_FILE_RECORD_OUTPUT_BUFFER.FileRecordBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.PATHNAME_BUFFER.Name :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.PHYSICAL_EXTENTS_DESCRIPTOR.Run :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.PHYSICAL_MEMORY_DESCRIPTOR.Run :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_INPUT.Ranges :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_OUTPUT.BadRanges :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_INPUT._Filter_e__Union.StorageReserveIds : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
+Windows.Wdk.Storage.FileSystem.QUERY_PATH_REQUEST_EX.Silo...Windows.Wdk.Foundation.EJOB* => Windows.Wdk.Foundation.PESILO
+Windows.Wdk.Storage.FileSystem.QUERY_PATH_REQUEST.FilePathName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.READ_LIST.List :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REFS_DEALLOCATE_RANGES_INPUT_BUFFER.Ranges :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REFS_REMOVE_HARDLINK_BACKPOINTER.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REFS_STREAM_SNAPSHOT_LIST_OUTPUT_BUFFER_ENTRY.SnapshotName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REFS_STREAM_SNAPSHOT_LIST_OUTPUT_BUFFER.Entries :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REFS_STREAM_SNAPSHOT_MANAGEMENT_INPUT_BUFFER.NameAndInputBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REFS_STREAM_SNAPSHOT_QUERY_DELTAS_OUTPUT_BUFFER.Extents :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REMOTE_LINK_TRACKING_INFORMATION.TargetLinkTrackingInformationBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REPAIR_COPIES_INPUT.RepairCopies :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REPARSE_DATA_BUFFER._Anonymous_e__Union._GenericReparseBuffer_e__Struct.DataBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REPARSE_DATA_BUFFER._Anonymous_e__Union._MountPointReparseBuffer_e__Struct.PathBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REPARSE_DATA_BUFFER._Anonymous_e__Union._SymbolicLinkReparseBuffer_e__Struct.PathBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.REPARSE_GUID_DATA_BUFFER._GenericReparseBuffer_e__Struct.DataBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.RETRIEVAL_POINTERS_AND_REFCOUNT_BUFFER.Extents :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.RETRIEVAL_POINTERS_BUFFER.Extents :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SCRUB_PARITY_EXTENT_DATA.ParityExtents :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SD_ENUM_SDS_ENTRY.Descriptor :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SD_ENUM_SDS_OUTPUT.SDEntry :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SE_LOGON_SESSION_TERMINATED_ROUTINE_EX.Invoke : pServerSilo...EJOB* => PESILO
+Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOL_LIST.ProtocolList :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOLS.ProtocolLists :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SEC_CERTIFICATE_REQUEST_CONTEXT.rgCertificateRequestContext :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SEC_PRESHAREDKEY_IDENTITY.KeyIdentity :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SEC_PRESHAREDKEY.Key :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SEC_SRTP_MASTER_KEY_IDENTIFIER.MasterKeyIdentifier :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SEC_SRTP_PROTECTION_PROFILES.ProfilesList :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SEC_TOKEN_BINDING.KeyParameters :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SEC_TRAFFIC_SECRETS.TrafficSecret :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SI_COPYFILE.FileNameBuffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.SOCKADDR_STORAGE removed
+Windows.Wdk.Storage.FileSystem.SRV_OPEN_ECP_CONTEXT.SocketAddress...Windows.Wdk.Storage.FileSystem.SOCKADDR_STORAGE* => Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE*
+Windows.Wdk.Storage.FileSystem.SspiAsyncContext removed
+Windows.Wdk.Storage.FileSystem.STREAM_LAYOUT_ENTRY.StreamIdentifier :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.TOKEN_GROUPS.Groups :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.TOKEN_PRIVILEGES.Privileges :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.TXFS_LIST_TRANSACTION_LOCKED_FILES_ENTRY.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.TXFS_READ_BACKUP_INFORMATION_OUT._Anonymous_e__Union.Buffer : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
+Windows.Wdk.Storage.FileSystem.TXFS_START_RM_INFORMATION.LogPath :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.TXFS_WRITE_BACKUP_INFORMATION.Buffer :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.USN_RECORD_V3.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.USN_RECORD_V4.Extents :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.USN_RECORD.FileName :  => [FlexibleArray]
+Windows.Wdk.Storage.FileSystem.VOLUME_BITMAP_BUFFER.Buffer :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices._ADAPTER_OBJECT removed
+Windows.Wdk.System.SystemServices._AFFINITY_TOKEN removed
+Windows.Wdk.System.SystemServices._BUS_HANDLER removed
+Windows.Wdk.System.SystemServices._CALLBACK_OBJECT removed
+Windows.Wdk.System.SystemServices._DEVICE_HANDLER_OBJECT removed
+Windows.Wdk.System.SystemServices._DISK_PARTITION removed
+Windows.Wdk.System.SystemServices._EPROCESS removed
+Windows.Wdk.System.SystemServices._ETHREAD removed
+Windows.Wdk.System.SystemServices._EX_RUNDOWN_REF_CACHE_AWARE removed
+Windows.Wdk.System.SystemServices._EX_TIMER removed
+Windows.Wdk.System.SystemServices._IO_REMOVE_LOCK_TRACKING_BLOCK removed
+Windows.Wdk.System.SystemServices._IO_WORKITEM removed
+Windows.Wdk.System.SystemServices._KINTERRUPT removed
+Windows.Wdk.System.SystemServices._LOADER_PARAMETER_BLOCK removed
+Windows.Wdk.System.SystemServices._PCW_BUFFER removed
+Windows.Wdk.System.SystemServices._PCW_INSTANCE removed
+Windows.Wdk.System.SystemServices._PCW_REGISTRATION removed
+Windows.Wdk.System.SystemServices._SCSI_REQUEST_BLOCK removed
+Windows.Wdk.System.SystemServices._SILO_MONITOR removed
+Windows.Wdk.System.SystemServices.ACPI_DEBUGGING_DEVICE_IN_USE.NameSpacePath :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.Apis.ExAcquireRundownProtectionCacheAware : RunRefCacheAware : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExAcquireRundownProtectionCacheAware : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExAcquireRundownProtectionCacheAwareEx : RunRefCacheAware : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExAcquireRundownProtectionCacheAwareEx : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExAllocateCacheAwareRundownProtection : return..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExAllocateTimer : return..._EX_TIMER* => PEX_TIMER
+Windows.Wdk.System.SystemServices.Apis.ExCancelTimer : Timer : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExCancelTimer : Timer..._EX_TIMER* => PEX_TIMER
+Windows.Wdk.System.SystemServices.Apis.ExCleanupRundownProtectionCacheAware : RunRefCacheAware : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExCleanupRundownProtectionCacheAware : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExCreateCallback : CallbackObject..._CALLBACK_OBJECT** => PCALLBACK_OBJECT*
+Windows.Wdk.System.SystemServices.Apis.ExDeleteTimer : Timer..._EX_TIMER* => PEX_TIMER
+Windows.Wdk.System.SystemServices.Apis.ExFreeCacheAwareRundownProtection : RunRefCacheAware : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExFreeCacheAwareRundownProtection : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExInitializeRundownProtectionCacheAware : RunRefCacheAware : [Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExInitializeRundownProtectionCacheAware : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExInitializeRundownProtectionCacheAwareEx : RunRefCacheAware : [Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExInitializeRundownProtectionCacheAwareEx : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExRegisterCallback : CallbackObject : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExRegisterCallback : CallbackObject..._CALLBACK_OBJECT* => PCALLBACK_OBJECT
+Windows.Wdk.System.SystemServices.Apis.ExReInitializeRundownProtectionCacheAware : RunRefCacheAware : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExReInitializeRundownProtectionCacheAware : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExReleaseRundownProtectionCacheAware : RunRefCacheAware : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExReleaseRundownProtectionCacheAware : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExReleaseRundownProtectionCacheAwareEx : RunRef : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExReleaseRundownProtectionCacheAwareEx : RunRef..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExRundownCompletedCacheAware : RunRefCacheAware : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExRundownCompletedCacheAware : RunRefCacheAware..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.ExSetTimer : Timer..._EX_TIMER* => PEX_TIMER
+Windows.Wdk.System.SystemServices.Apis.ExWaitForRundownProtectionReleaseCacheAware : RunRef : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.ExWaitForRundownProtectionReleaseCacheAware : RunRef..._EX_RUNDOWN_REF_CACHE_AWARE* => PEX_RUNDOWN_REF_CACHE_AWARE
+Windows.Wdk.System.SystemServices.Apis.IoAllocateWorkItem : return..._IO_WORKITEM* => PIO_WORKITEM
+Windows.Wdk.System.SystemServices.Apis.IoConnectInterrupt : InterruptObject..._KINTERRUPT** => PKINTERRUPT*
+Windows.Wdk.System.SystemServices.Apis.IoDecrementKeepAliveCount : Process : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.IoDecrementKeepAliveCount : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.IoDisconnectInterrupt : InterruptObject..._KINTERRUPT* => PKINTERRUPT
+Windows.Wdk.System.SystemServices.Apis.IoFreeWorkItem : IoWorkItem..._IO_WORKITEM* => PIO_WORKITEM
+Windows.Wdk.System.SystemServices.Apis.IoGetAffinityInterrupt : InterruptObject..._KINTERRUPT* => PKINTERRUPT
+Windows.Wdk.System.SystemServices.Apis.IoGetCurrentProcess : return..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.IoGetInitiatorProcess : return..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.IoGetIrpExtraCreateParameter : ExtraCreateParameter...ECP_LIST** => IntPtr**
+Windows.Wdk.System.SystemServices.Apis.IoGetSilo : return...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.IoIncrementKeepAliveCount : Process : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.IoIncrementKeepAliveCount : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.IoInitializeWorkItem : IoWorkItem : [Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.IoInitializeWorkItem : IoWorkItem..._IO_WORKITEM* => PIO_WORKITEM
+Windows.Wdk.System.SystemServices.Apis.IoQueueWorkItem : IoWorkItem : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.IoQueueWorkItem : IoWorkItem..._IO_WORKITEM* => PIO_WORKITEM
+Windows.Wdk.System.SystemServices.Apis.IoQueueWorkItemEx : IoWorkItem : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.IoQueueWorkItemEx : IoWorkItem..._IO_WORKITEM* => PIO_WORKITEM
+Windows.Wdk.System.SystemServices.Apis.IoRaiseInformationalHardError : Thread...KTHREAD* => PKTHREAD
+Windows.Wdk.System.SystemServices.Apis.IoSetIrpExtraCreateParameter : ExtraCreateParameter...ECP_LIST* => IntPtr*
+Windows.Wdk.System.SystemServices.Apis.IoTryQueueWorkItem : IoWorkItem : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.IoTryQueueWorkItem : IoWorkItem..._IO_WORKITEM* => PIO_WORKITEM
+Windows.Wdk.System.SystemServices.Apis.IoUninitializeWorkItem : IoWorkItem : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.IoUninitializeWorkItem : IoWorkItem..._IO_WORKITEM* => PIO_WORKITEM
+Windows.Wdk.System.SystemServices.Apis.KeAcquireInterruptSpinLock : Interrupt : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.KeAcquireInterruptSpinLock : Interrupt..._KINTERRUPT* => PKINTERRUPT
+Windows.Wdk.System.SystemServices.Apis.KeQueryPriorityThread : Thread...KTHREAD* => PKTHREAD
+Windows.Wdk.System.SystemServices.Apis.KeQueryRuntimeThread : Thread...KTHREAD* => PKTHREAD
+Windows.Wdk.System.SystemServices.Apis.KeQueryTotalCycleTimeThread : Thread : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.KeQueryTotalCycleTimeThread : Thread...KTHREAD* => PKTHREAD
+Windows.Wdk.System.SystemServices.Apis.KeReleaseInterruptSpinLock : Interrupt : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.KeReleaseInterruptSpinLock : Interrupt..._KINTERRUPT* => PKINTERRUPT
+Windows.Wdk.System.SystemServices.Apis.KeSetBasePriorityThread : Thread : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.KeSetBasePriorityThread : Thread...KTHREAD* => PKTHREAD
+Windows.Wdk.System.SystemServices.Apis.KeSetPriorityThread : Thread : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.KeSetPriorityThread : Thread...KTHREAD* => PKTHREAD
+Windows.Wdk.System.SystemServices.Apis.KeSynchronizeExecution : Interrupt : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.KeSynchronizeExecution : Interrupt..._KINTERRUPT* => PKINTERRUPT
+Windows.Wdk.System.SystemServices.Apis.MmProbeAndLockProcessPages : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.ObReferenceObjectByHandle : ObjectType...OBJECT_TYPE* => POBJECT_TYPE
+Windows.Wdk.System.SystemServices.Apis.ObReferenceObjectByHandleWithTag : ObjectType...OBJECT_TYPE* => POBJECT_TYPE
+Windows.Wdk.System.SystemServices.Apis.ObReferenceObjectByPointer : ObjectType...OBJECT_TYPE* => POBJECT_TYPE
+Windows.Wdk.System.SystemServices.Apis.ObReferenceObjectByPointerWithTag : ObjectType...OBJECT_TYPE* => POBJECT_TYPE
+Windows.Wdk.System.SystemServices.Apis.PcwAddInstance : Buffer..._PCW_BUFFER* => PPCW_BUFFER
+Windows.Wdk.System.SystemServices.Apis.PcwCloseInstance : Instance..._PCW_INSTANCE* => PPCW_INSTANCE
+Windows.Wdk.System.SystemServices.Apis.PcwCreateInstance : Instance..._PCW_INSTANCE** => PPCW_INSTANCE*
+Windows.Wdk.System.SystemServices.Apis.PcwCreateInstance : Registration..._PCW_REGISTRATION* => PPCW_REGISTRATION
+Windows.Wdk.System.SystemServices.Apis.PcwRegister : Registration..._PCW_REGISTRATION** => PPCW_REGISTRATION*
+Windows.Wdk.System.SystemServices.Apis.PcwUnregister : Registration..._PCW_REGISTRATION* => PPCW_REGISTRATION
+Windows.Wdk.System.SystemServices.Apis.PoFxActivateComponent : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxCompleteDevicePowerNotRequired : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxCompleteDirectedPowerDown : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxCompleteIdleCondition : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxCompleteIdleState : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxIdleComponent : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxIssueComponentPerfStateChange : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxIssueComponentPerfStateChangeMultiple : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxPowerControl : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxPowerOnCrashdumpDevice : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxQueryCurrentComponentPerfState : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxRegisterComponentPerfStates : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxRegisterCrashdumpDevice : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxRegisterDevice : Handle...POHANDLE__** => POHANDLE*
+Windows.Wdk.System.SystemServices.Apis.PoFxRegisterDripsWatchdogCallback : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxReportDevicePoweredOn : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxSetComponentLatency : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxSetComponentResidency : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxSetComponentWake : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxSetDeviceIdleTimeout : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxSetTargetDripsDevicePowerState : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxStartDevicePowerManagement : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PoFxUnregisterDevice : Handle...POHANDLE__* => POHANDLE
+Windows.Wdk.System.SystemServices.Apis.PsAcquireSiloHardReference : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsAllocateAffinityToken : AffinityToken..._AFFINITY_TOKEN** => PAFFINITY_TOKEN*
+Windows.Wdk.System.SystemServices.Apis.PsAttachSiloToCurrentThread : return...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsAttachSiloToCurrentThread : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsCreateSiloContext : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsDetachSiloFromCurrentThread : PreviousSilo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsFreeAffinityToken : AffinityToken : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.PsFreeAffinityToken : AffinityToken..._AFFINITY_TOKEN* => PAFFINITY_TOKEN
+Windows.Wdk.System.SystemServices.Apis.PsGetCurrentServerSilo : return...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetCurrentSilo : return...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetEffectiveServerSilo : return...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetEffectiveServerSilo : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetHostSilo : return...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetJobServerSilo : Job...EJOB* => PEJOB
+Windows.Wdk.System.SystemServices.Apis.PsGetJobServerSilo : ServerSilo...EJOB** => PESILO*
+Windows.Wdk.System.SystemServices.Apis.PsGetJobSilo : Job...EJOB* => PEJOB
+Windows.Wdk.System.SystemServices.Apis.PsGetJobSilo : Silo...EJOB** => PESILO*
+Windows.Wdk.System.SystemServices.Apis.PsGetParentSilo : Job...EJOB* => PEJOB
+Windows.Wdk.System.SystemServices.Apis.PsGetParentSilo : return...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetPermanentSiloContext : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetProcessCreateTimeQuadPart : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.PsGetProcessExitStatus : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.PsGetProcessId : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.PsGetProcessStartKey : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.PsGetServerSiloServiceSessionId : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetSiloContainerId : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetSiloContext : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetSiloMonitorContextSlot : Monitor..._SILO_MONITOR* => PSILO_MONITOR
+Windows.Wdk.System.SystemServices.Apis.PsGetThreadCreateTime : Thread..._ETHREAD* => PETHREAD
+Windows.Wdk.System.SystemServices.Apis.PsGetThreadExitStatus : Thread..._ETHREAD* => PETHREAD
+Windows.Wdk.System.SystemServices.Apis.PsGetThreadId : Thread..._ETHREAD* => PETHREAD
+Windows.Wdk.System.SystemServices.Apis.PsGetThreadProcessId : Thread..._ETHREAD* => PETHREAD
+Windows.Wdk.System.SystemServices.Apis.PsGetThreadProperty : Thread..._ETHREAD* => PETHREAD
+Windows.Wdk.System.SystemServices.Apis.PsGetThreadServerSilo : return...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsGetThreadServerSilo : Thread..._ETHREAD* => PETHREAD
+Windows.Wdk.System.SystemServices.Apis.PsInsertPermanentSiloContext : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsInsertSiloContext : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsIsHostSilo : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsMakeSiloContextPermanent : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsQueryTotalCycleTimeProcess : Process : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.PsQueryTotalCycleTimeProcess : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.Apis.PsRegisterSiloMonitor : ReturnedMonitor..._SILO_MONITOR** => PSILO_MONITOR*
+Windows.Wdk.System.SystemServices.Apis.PsReleaseSiloHardReference : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsRemoveSiloContext : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsReplaceSiloContext : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsRevertToUserMultipleGroupAffinityThread : AffinityToken..._AFFINITY_TOKEN* => PAFFINITY_TOKEN
+Windows.Wdk.System.SystemServices.Apis.PsSetSystemMultipleGroupAffinityThread : AffinityToken : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.Apis.PsSetSystemMultipleGroupAffinityThread : AffinityToken..._AFFINITY_TOKEN* => PAFFINITY_TOKEN
+Windows.Wdk.System.SystemServices.Apis.PsStartSiloMonitor : Monitor..._SILO_MONITOR* => PSILO_MONITOR
+Windows.Wdk.System.SystemServices.Apis.PsTerminateServerSilo : ServerSilo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.Apis.PsUnregisterSiloMonitor : Monitor..._SILO_MONITOR* => PSILO_MONITOR
+Windows.Wdk.System.SystemServices.Apis.RtlRunOnceBeginInitialize : RunOnce...RTL_RUN_ONCE* => INIT_ONCE*
+Windows.Wdk.System.SystemServices.Apis.RtlRunOnceComplete : RunOnce...RTL_RUN_ONCE* => INIT_ONCE*
+Windows.Wdk.System.SystemServices.Apis.RtlRunOnceExecuteOnce : RunOnce...RTL_RUN_ONCE* => INIT_ONCE*
+Windows.Wdk.System.SystemServices.Apis.RtlRunOnceInitialize : RunOnce...RTL_RUN_ONCE* => INIT_ONCE*
+Windows.Wdk.System.SystemServices.Apis.TmCreateEnlistment : ResourceManager...KRESOURCEMANAGER* => IntPtr*
+Windows.Wdk.System.SystemServices.Apis.TmInitializeTransactionManager : TransactionManager...KTM* => IntPtr*
+Windows.Wdk.System.SystemServices.Apis.VslCreateSecureSection : TargetProcess..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.BOOTDISK_INFORMATION_LITE.Entries :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.CACHE_RELATIONSHIP._Anonymous_e__Union.GroupMasks : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
+Windows.Wdk.System.SystemServices.CLFS_LOG_NAME_INFORMATION.Name :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY._PolicyParameters_e__Union._NewContainerExtension_e__Struct.ExtensionString :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY._PolicyParameters_e__Union._NewContainerPrefix_e__Struct.PrefixString :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.CM_PARTIAL_RESOURCE_LIST.PartialDescriptors :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.CM_RESOURCE_LIST.List :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.CREATE_DISK removed
+Windows.Wdk.System.SystemServices.DEBUGGING_DEVICE_IN_USE_INFORMATION.Device :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.DEVICE_RELATIONS.Objects :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.DMA_COMMON_BUFFER_VECTOR removed
+Windows.Wdk.System.SystemServices.DRIVE_LAYOUT_INFORMATION removed
+Windows.Wdk.System.SystemServices.DRIVE_LAYOUT_INFORMATION_EX removed
+Windows.Wdk.System.SystemServices.EFI_ACPI_RAS_SIGNAL_TABLE.Entries :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.EXT_CALLBACK.Invoke : Timer..._EX_TIMER* => PEX_TIMER
+Windows.Wdk.System.SystemServices.FAST_IO_LOCK.Invoke : ProcessId..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.FAST_IO_UNLOCK_ALL.Invoke : ProcessId..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.FAST_IO_UNLOCK_SINGLE.Invoke : ProcessId..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.FILE_FS_LABEL_INFORMATION.VolumeLabel :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.FILE_FS_VOLUME_INFORMATION.VolumeLabel :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.FILE_PROCESS_IDS_USING_FILE_INFORMATION.ProcessIdList :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.GROUP_RELATIONSHIP.GroupInfo :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.HAL_CALLBACKS.BusCheck...Windows.Wdk.System.SystemServices._CALLBACK_OBJECT* => Windows.Wdk.Foundation.PCALLBACK_OBJECT
+Windows.Wdk.System.SystemServices.HAL_CALLBACKS.SetSystemInformation...Windows.Wdk.System.SystemServices._CALLBACK_OBJECT* => Windows.Wdk.Foundation.PCALLBACK_OBJECT
+Windows.Wdk.System.SystemServices.IMAGE_NT_HEADERS32 removed
+Windows.Wdk.System.SystemServices.IMAGE_NT_HEADERS64 removed
+Windows.Wdk.System.SystemServices.INIT_ONCE added
+Windows.Wdk.System.SystemServices.IO_CONNECT_INTERRUPT_FULLY_SPECIFIED_PARAMETERS.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT** => Windows.Wdk.Foundation.PKINTERRUPT*
+Windows.Wdk.System.SystemServices.IO_CONNECT_INTERRUPT_LINE_BASED_PARAMETERS.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT** => Windows.Wdk.Foundation.PKINTERRUPT*
+Windows.Wdk.System.SystemServices.IO_CONNECT_INTERRUPT_MESSAGE_BASED_PARAMETERS._ConnectionContext_e__Union.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT** => Windows.Wdk.Foundation.PKINTERRUPT*
+Windows.Wdk.System.SystemServices.IO_DISCONNECT_INTERRUPT_PARAMETERS._ConnectionContext_e__Union.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT* => Windows.Wdk.Foundation.PKINTERRUPT
+Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT.ExtraCreateParameter...Windows.Wdk.Foundation.ECP_LIST* => System.IntPtr*
+Windows.Wdk.System.SystemServices.IO_DRIVER_CREATE_CONTEXT.SiloContext...Windows.Wdk.Foundation.EJOB* => Windows.Wdk.Foundation.PESILO
+Windows.Wdk.System.SystemServices.IO_ERROR_LOG_PACKET.DumpData :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.IO_FOEXT_SILO_PARAMETERS.SiloContext...Windows.Wdk.Foundation.EJOB* => Windows.Wdk.Foundation.PESILO
+Windows.Wdk.System.SystemServices.IO_INTERRUPT_MESSAGE_INFO_ENTRY.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT* => Windows.Wdk.Foundation.PKINTERRUPT
+Windows.Wdk.System.SystemServices.IO_INTERRUPT_MESSAGE_INFO.MessageInfo :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.IO_REMOVE_LOCK_DBG_BLOCK.Blocks...Windows.Wdk.System.SystemServices._IO_REMOVE_LOCK_TRACKING_BLOCK* => Windows.Wdk.Foundation.PIO_REMOVE_LOCK_TRACKING_BLOCK
+Windows.Wdk.System.SystemServices.IO_REPORT_INTERRUPT_ACTIVE_STATE_PARAMETERS._ConnectionContext_e__Union.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT* => Windows.Wdk.Foundation.PKINTERRUPT
+Windows.Wdk.System.SystemServices.IO_RESOURCE_LIST.Descriptors :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.IO_RESOURCE_REQUIREMENTS_LIST.List :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.IO_WORKITEM_ROUTINE_EX.Invoke : IoWorkItem..._IO_WORKITEM* => PIO_WORKITEM
+Windows.Wdk.System.SystemServices.IOMMU_DMA_DEVICE removed
+Windows.Wdk.System.SystemServices.IOMMU_DMA_DOMAIN removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KAPC.Thread...Windows.Wdk.Foundation.KTHREAD* => System.IntPtr*
+Windows.Wdk.System.SystemServices.KENLISTMENT removed
+Windows.Wdk.System.SystemServices.KEY_BASIC_INFORMATION.Name :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KEY_FULL_INFORMATION.Class :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KEY_NAME_INFORMATION.Name :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KEY_NODE_INFORMATION.Name :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KEY_VALUE_BASIC_INFORMATION.Name :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KEY_VALUE_FULL_INFORMATION.Name :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KEY_VALUE_PARTIAL_INFORMATION_ALIGN64.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KEY_VALUE_PARTIAL_INFORMATION.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KMESSAGE_SERVICE_ROUTINE.Invoke : Interrupt..._KINTERRUPT* => IntPtr*
+Windows.Wdk.System.SystemServices.KPCR removed
+Windows.Wdk.System.SystemServices.KRESOURCEMANAGER removed
+Windows.Wdk.System.SystemServices.KSERVICE_ROUTINE.Invoke : Interrupt..._KINTERRUPT* => IntPtr*
+Windows.Wdk.System.SystemServices.KTM removed
+Windows.Wdk.System.SystemServices.KTMOBJECT_CURSOR.ObjectIds :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KTRANSACTION removed
+Windows.Wdk.System.SystemServices.KTRIAGE_DUMP_DATA_ARRAY.Blocks :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.KUSER_SHARED_DATA._Anonymous4_e__Union._Anonymous_e__Struct.TickCountPad :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.NUMA_NODE_RELATIONSHIP._Anonymous_e__Union.GroupMasks : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
+Windows.Wdk.System.SystemServices.OB_OPERATION_REGISTRATION.ObjectType...Windows.Wdk.Foundation.OBJECT_TYPE** => Windows.Wdk.Foundation.POBJECT_TYPE*
+Windows.Wdk.System.SystemServices.OB_POST_OPERATION_INFORMATION.ObjectType...Windows.Wdk.Foundation.OBJECT_TYPE* => Windows.Wdk.Foundation.POBJECT_TYPE
+Windows.Wdk.System.SystemServices.OB_PRE_OPERATION_INFORMATION.ObjectType...Windows.Wdk.Foundation.OBJECT_TYPE* => Windows.Wdk.Foundation.POBJECT_TYPE
+Windows.Wdk.System.SystemServices.PCI_EXPRESS_ACS_CAPABILITY.EgressControl :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PCI_EXPRESS_DESIGNATED_VENDOR_SPECIFIC_CAPABILITY.DvsecRegisters :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PciLine2Pin.Invoke : BusHandler..._BUS_HANDLER* => IntPtr*
+Windows.Wdk.System.SystemServices.PciLine2Pin.Invoke : RootHandler..._BUS_HANDLER* => IntPtr*
+Windows.Wdk.System.SystemServices.PciPin2Line.Invoke : BusHandler..._BUS_HANDLER* => IntPtr*
+Windows.Wdk.System.SystemServices.PciPin2Line.Invoke : RootHandler..._BUS_HANDLER* => IntPtr*
+Windows.Wdk.System.SystemServices.PciReadWriteConfig.Invoke : BusHandler..._BUS_HANDLER* => IntPtr*
+Windows.Wdk.System.SystemServices.PCREATE_PROCESS_NOTIFY_ROUTINE_EX.Invoke : Process : [In,Out] => [In]
+Windows.Wdk.System.SystemServices.PCREATE_PROCESS_NOTIFY_ROUTINE_EX.Invoke : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.PCW_MASK_INFORMATION.Buffer...Windows.Wdk.System.SystemServices._PCW_BUFFER* => Windows.Wdk.Foundation.PPCW_BUFFER
+Windows.Wdk.System.SystemServices.PEB removed
+Windows.Wdk.System.SystemServices.pHalHandlerForBus.Invoke : return..._BUS_HANDLER* => PBUS_HANDLER
+Windows.Wdk.System.SystemServices.pHalQueryBusSlots.Invoke : BusHandler..._BUS_HANDLER* => PBUS_HANDLER
+Windows.Wdk.System.SystemServices.pHalReferenceBusHandler.Invoke : BusHandler..._BUS_HANDLER* => PBUS_HANDLER
+Windows.Wdk.System.SystemServices.PHYSICAL_COUNTER_RESOURCE_LIST.Descriptors :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.pKdGetAcpiTablePhase0.Invoke : LoaderBlock..._LOADER_PARAMETER_BLOCK* => IntPtr*
+Windows.Wdk.System.SystemServices.PM_DISPATCH_TABLE.Function :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PNP_REPLACE_MEMORY_LIST.Ranges :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PNP_REPLACE_PROCESSOR_LIST_V1.ApicIds :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PNP_REPLACE_PROCESSOR_LIST.ApicIds :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PO_FX_COMPONENT_PERF_INFO.PerfStateSets :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PO_FX_DEVICE_V1.Components :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PO_FX_DEVICE_V2.Components :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PO_FX_DEVICE_V3.Components :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.POHANDLE__ removed
+Windows.Wdk.System.SystemServices.PROCESS_BASIC_INFORMATION.PebBaseAddress...Windows.Wdk.System.SystemServices.PEB* => Windows.Win32.System.Threading.PEB*
+Windows.Wdk.System.SystemServices.PROCESS_HANDLE_TRACING_QUERY.HandleTrace :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PROCESSOR_RELATIONSHIP.GroupMask :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.PSECURE_DRIVER_PROCESS_REFERENCE.Invoke : return..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.RESOURCEMANAGER_BASIC_INFORMATION.Description :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.RTL_RUN_ONCE removed
+Windows.Wdk.System.SystemServices.RTL_RUN_ONCE_INIT_FN.Invoke : RunOnce...RTL_RUN_ONCE* => INIT_ONCE*
+Windows.Wdk.System.SystemServices.SECURE_DRIVER_PROCESS_DEREFERENCE.Invoke : Process..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.SECURE_DRIVER_PROCESS_REFERENCE.Invoke : return..._EPROCESS* => PEPROCESS
+Windows.Wdk.System.SystemServices.SET_PARTITION_INFORMATION_EX removed
+Windows.Wdk.System.SystemServices.SET_POWER_SETTING_VALUE.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.SILO_MONITOR_CREATE_CALLBACK.Invoke : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.SILO_MONITOR_TERMINATE_CALLBACK.Invoke : Silo...EJOB* => PESILO
+Windows.Wdk.System.SystemServices.SOC_SUBSYSTEM_FAILURE_DETAILS.UnifiedFailureRegion :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.SYSTEM_FIRMWARE_TABLE_INFORMATION.TableBuffer :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.TRANSACTION_ENLISTMENTS_INFORMATION.EnlistmentPair :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.TRANSACTION_LIST_INFORMATION.TransactionInformation :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.TRANSACTION_PROPERTIES_INFORMATION.Description :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_LOGPATH_INFORMATION.LogPath :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_ARM_PROCESSOR_ERROR_CONTEXT_INFORMATION_HEADER.RegisterArray :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_ARM_PROCESSOR_ERROR_SECTION.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_ERROR_PACKET_V1.RawData :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_ERROR_RECORD.SectionDescriptor :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_GENERIC_ERROR_DATA_ENTRY_V1.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_GENERIC_ERROR_DATA_ENTRY_V2.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_GENERIC_ERROR.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_MEMORY_CORRECTABLE_ERROR_SECTION.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_MSR_DUMP_SECTION.MsrDumpData :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_PCIE_CORRECTABLE_ERROR_SECTION.Devices :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_PCIXDEVICE_ERROR_SECTION.RegisterDataPairs :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_PMEM_ERROR_SECTION.PageRange :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_SRAS_TABLE_ENTRIES_EVENT.Data :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.WHEA_XPF_PROCESSOR_ERROR_SECTION.VariableInfo :  => [FlexibleArray]
+Windows.Wdk.System.SystemServices.XSTATE_SAVE._Anonymous_e__Union._Anonymous_e__Struct.Thread...Windows.Wdk.Foundation.KTHREAD* => System.IntPtr*

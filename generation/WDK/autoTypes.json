@@ -2,12 +2,278 @@
   {
     "Namespace": "Windows.Wdk.System.SystemServices",
     "Name": "SECURITY_CONTEXT_TRACKING_MODE",
-    "ValueType": "byte"
+    "ValueType": "byte",
+    "NativeTypedef": true
   },
   {
     "Name": "ORHKEY",
     "ValueType": "DECLARE_HANDLE",
     "CloseApi": "ORCloseKey",
-    "InvalidHandleValues": [ -1, 0 ]
+    "InvalidHandleValues": [ -1, 0 ],
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "ECP_LIST",
+    "ValueType": "typedef struct _ECP_LIST",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "ECP_HEADER",
+    "ValueType": "typedef struct _ECP_HEADER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PEPROCESS",
+    "ValueType": "typedef struct _KPROCESS",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PETHREAD",
+    "ValueType": "typedef struct _KTHREAD",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PBUS_HANDLER",
+    "ValueType": "typedef struct _BUS_HANDLER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PCALLBACK_OBJECT",
+    "ValueType": "typedef struct _CALLBACK_OBJECT",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PDEVICE_HANDLER_OBJECT",
+    "ValueType": "typedef struct _DEVICE_HANDLER_OBJECT",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PEJOB",
+    "ValueType": "typedef struct _EJOB",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PESILO",
+    "ValueType": "typedef struct _EJOB",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PSILO_MONITOR",
+    "ValueType": "typedef struct _SILO_MONITOR",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PIO_TIMER",
+    "ValueType": "typedef struct _IO_TIMER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PKINTERRUPT",
+    "ValueType": "typedef struct _KINTERRUPT",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PKTHREAD",
+    "ValueType": "typedef struct _KTHREAD",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PRKTHREAD",
+    "ValueType": "typedef struct _KTHREAD",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PKPROCESS",
+    "ValueType": "typedef struct _KPROCESS",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PRKPROCESS",
+    "ValueType": "typedef struct _KPROCESS",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "POBJECT_TYPE",
+    "ValueType": "typedef struct _OBJECT_TYPE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "POHANDLE",
+    "ValueType": "DECLARE_HANDLE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KIDT",
+    "ValueType": "typedef struct _KIDTENTRY",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KGDT",
+    "ValueType": "typedef struct _KGDTENTRY",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KTSS",
+    "ValueType": "typedef struct _KTSS",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KPCR",
+    "ValueType": "typedef struct _KPCR",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KPRCB",
+    "ValueType": "typedef struct _KPRCB",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "IOMMU_DMA_DEVICE",
+    "ValueType": "typedef struct _IOMMU_DMA_DEVICE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "IOMMU_DMA_DOMAIN",
+    "ValueType": "typedef struct _IOMMU_DMA_DOMAIN",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PPCW_REGISTRATION",
+    "ValueType": "typedef struct _PCW_REGISTRATION",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PPCW_BUFFER",
+    "ValueType": "typedef struct _PCW_BUFFER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "LOADER_PARAMETER_BLOCK",
+    "ValueType": "typedef struct _LOADER_PARAMETER_BLOCK",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "DMA_COMMON_BUFFER_VECTOR",
+    "ValueType": "typedef struct _DMA_COMMON_BUFFER_VECTOR",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PIO_WORKITEM",
+    "ValueType": "typedef struct _IO_WORKITEM",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KTRANSACTION",
+    "ValueType": "typedef struct _KTRANSACTION",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KENLISTMENT",
+    "ValueType": "typedef struct _KENLISTMENT",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KRESOURCEMANAGER",
+    "ValueType": "typedef struct _KRESOURCEMANAGER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "KTM",
+    "ValueType": "typedef struct _KTM",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "SspiAsyncContext",
+    "ValueType": "typedef struct _SspiAsyncContext",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PNOTIFY_SYNC",
+    "ValueType": "typedef struct _REAL_NOTIFY_SYNC",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PEX_RUNDOWN_REF_CACHE_AWARE",
+    "ValueType": "typedef struct _EX_RUNDOWN_REF_CACHE_AWARE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PAFFINITY_TOKEN",
+    "ValueType": "typedef struct _AFFINITY_TOKEN",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PPCW_INSTANCE",
+    "ValueType": "typedef struct _PCW_INSTANCE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PEX_TIMER",
+    "ValueType": "typedef struct _EX_TIMER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "_DEVICE_OBJECT_POWER_EXTENSION",
+    "ValueType": "typedef struct _DEVICE_OBJECT_POWER_EXTENSION",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "PIO_REMOVE_LOCK_TRACKING_BLOCK",
+    "ValueType": "typedef struct _IO_REMOVE_LOCK_TRACKING_BLOCK",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "_IORING_OBJECT",
+    "ValueType": "typedef struct _IORING_OBJECT",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Foundation",
+    "Name": "_SCSI_REQUEST_BLOCK",
+    "ValueType": "typedef struct _SCSI_REQUEST_BLOCK",
+    "NativeTypedef": true
   }
 ]
