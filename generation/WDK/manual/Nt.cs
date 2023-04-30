@@ -7,6 +7,16 @@ using Windows.Win32.System.IO;
 
 // Manually define Nt APIs from winternl.h in the SDK since that file is not included here.
 
+namespace Windows.Wdk.Storage.FileSystem
+{
+    public static unsafe partial class Apis
+    {
+        [DllImport("ntdll.dll", CallingConvention = CallingConvention.StdCall, ExactSpelling = true)]
+        [return: NativeTypeName("NTSTATUS")]
+        public static extern int NtCancelIoFileEx([NativeTypeName("HANDLE")] [CppAttributeList("Name=SAL_name; p1=\"_In_\"; p2=\"\"; p3=\"2\"^Name=SAL_begin^Name=SAL_pre^Name=SAL_notref^Name=SAL_null; p1=__no^Name=SAL_pre^Name=SAL_valid^Name=SAL_pre^Name=SAL_notref^Name=SAL_deref^Name=SAL_notref^Name=SAL_access; p1=0x1^Name=SAL_end")] IntPtr FileHandle, [NativeTypeName("PIO_STATUS_BLOCK")] [CppAttributeList("Name=SAL_name; p1=\"_In_opt_\"; p2=\"\"; p3=\"2\"^Name=SAL_begin^Name=SAL_pre^Name=SAL_notref^Name=SAL_null; p1=__maybe^Name=SAL_pre^Name=SAL_valid^Name=SAL_name; p1=\"_Deref_pre_readonly_\"; p2=\"\"; p3=\"1.1\"^Name=SAL_begin^Name=SAL_pre^Name=SAL_notref^Name=SAL_deref^Name=SAL_notref^Name=SAL_access; p1=0x1^Name=SAL_end^Name=SAL_end")] IO_STATUS_BLOCK* IoRequestToCancel, [NativeTypeName("PIO_STATUS_BLOCK")] [CppAttributeList("Name=SAL_name; p1=\"_Out_\"; p2=\"\"; p3=\"2\"^Name=SAL_begin^Name=SAL_pre^Name=SAL_notref^Name=SAL_null; p1=__no^Name=SAL_pre^Name=SAL_notref^Name=SAL_writableTo; p1=elementCount(1)^Name=SAL_post^Name=SAL_valid^Name=SAL_end")] IO_STATUS_BLOCK* IoStatusBlock);
+    }
+}
+
 namespace Windows.Wdk.System.Registry
 {
     public static unsafe partial class Apis

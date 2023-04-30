@@ -3143,3 +3143,5 @@ Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadTimes added
 Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadUmsInformation added
 Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadWow64Context added
 Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadZeroTlsCell added
+# Fixed #9.
+Windows.Wdk.Storage.FileSystem.Apis.NtCancelIoFileEx added
