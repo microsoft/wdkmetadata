@@ -36,7 +36,6 @@ FILE_FS_SECTOR_SIZE_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_FULL_EA_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_NAME_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_NETWORK_OPEN_INFORMATION=Windows.Wdk.Storage.FileSystem
-FILE_NETWORK_OPEN_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_OBJECT=Windows.Wdk.Foundation
 FILE_POSITION_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_STANDARD_INFORMATION=Windows.Wdk.Storage.FileSystem

@@ -3145,3 +3145,46 @@ Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadWow64Context added
 Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadZeroTlsCell added
 # Fixed #9.
 Windows.Wdk.Storage.FileSystem.Apis.NtCancelIoFileEx added
+# Updated WinmdGenerator to 0.51.33-preview.
+Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous1_e__Union.UserApcRoutine...Windows.Wdk.Foundation.PIO_APC_ROUTINE => Windows.Win32.System.IO.PIO_APC_ROUTINE
+Windows.Wdk.Foundation.PIO_APC_ROUTINE removed
+Windows.Wdk.Graphics.Direct3D.D3DDDIFORMAT.D3DDDIFMT_FORCE_UINT removed
+Windows.Wdk.Graphics.Direct3D.D3DDDIMULTISAMPLE_TYPE.D3DDDIMULTISAMPLE_FORCE_UINT removed
+Windows.Wdk.Graphics.Direct3D.DXGKDT_OPM_DVI_CHARACTERISTICS.DXGKMDT_OPM_DVI_CHARACTERISTICS_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_CERTIFICATE_TYPE.DXGKMDT_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_ACP_PROTECTION_LEVEL.DXGKMDT_OPM_ACP_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_DPCP_PROTECTION_LEVEL.DXGKMDT_OPM_DPCP_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_HDCP_PROTECTION_LEVEL.DXGKMDT_OPM_HDCP_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_IMAGE_ASPECT_RATIO_EN300294.DXGKMDT_OPM_ASPECT_RATIO_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_INTERLEAVE_FORMAT.DXGKMDT_OPM_INTERLEAVE_FORMAT_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_TYPE_ENFORCEMENT_HDCP_PROTECTION_LEVEL.DXGKMDT_OPM_TYPE_ENFORCEMENT_HDCP_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.OUTPUTDUPL_CONTEXT_DEBUG_STATUS.OUTPUTDUPL_CONTEXT_DEBUG_STATUS_FORCE_UINT32 removed
+Windows.Wdk.Storage.FileSystem.ACCEPT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.ACQUIRE_CREDENTIALS_HANDLE_FN_W removed
+Windows.Wdk.Storage.FileSystem.ADD_CREDENTIALS_FN_W removed
+Windows.Wdk.Storage.FileSystem.APPLY_CONTROL_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.COMPLETE_AUTH_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.DECRYPT_MESSAGE_FN removed
+Windows.Wdk.Storage.FileSystem.DELETE_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.ENCRYPT_MESSAGE_FN removed
+Windows.Wdk.Storage.FileSystem.ENUMERATE_SECURITY_PACKAGES_FN_W removed
+Windows.Wdk.Storage.FileSystem.EXPORT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.FREE_CONTEXT_BUFFER_FN removed
+Windows.Wdk.Storage.FileSystem.FREE_CREDENTIALS_HANDLE_FN removed
+Windows.Wdk.Storage.FileSystem.IMPERSONATE_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.IMPORT_SECURITY_CONTEXT_FN_W removed
+Windows.Wdk.Storage.FileSystem.INITIALIZE_SECURITY_CONTEXT_FN_W removed
+Windows.Wdk.Storage.FileSystem.IO_IRP_EXT_TRACK_OFFSET_HEADER.TrackedOffsetCallback...Windows.Wdk.Storage.FileSystem.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK => Windows.Win32.System.Ioctl.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK
+Windows.Wdk.Storage.FileSystem.MAKE_SIGNATURE_FN removed
+Windows.Wdk.Storage.FileSystem.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK removed
+Windows.Wdk.Storage.FileSystem.QUERY_CONTEXT_ATTRIBUTES_EX_FN_W removed
+Windows.Wdk.Storage.FileSystem.QUERY_CONTEXT_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.QUERY_CREDENTIALS_ATTRIBUTES_EX_FN_W removed
+Windows.Wdk.Storage.FileSystem.QUERY_CREDENTIALS_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.QUERY_SECURITY_CONTEXT_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.QUERY_SECURITY_PACKAGE_INFO_FN_W removed
+Windows.Wdk.Storage.FileSystem.REVERT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.SecurityFunctionTableW removed
+Windows.Wdk.Storage.FileSystem.SET_CONTEXT_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.SET_CREDENTIALS_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.VERIFY_SIGNATURE_FN removed
