@@ -89,8 +89,6 @@ Windows.Wdk.Graphics.Direct3D.D3DKMT_DEBUG_SNAPSHOT_ESCAPE.Buffer :  => [Flexibl
 Windows.Wdk.Graphics.Direct3D.D3DKMT_DISPLAYMODELIST.pModeList :  => [FlexibleArray]
 Windows.Wdk.Graphics.Direct3D.D3DKMT_DMM_ESCAPE.Data :  => [FlexibleArray]
 Windows.Wdk.Graphics.Direct3D.D3DKMT_MIRACAST_CHUNK_DATA.PrivateDriverData :  => [FlexibleArray]
-Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENNTHANDLEFROMNAME.pObjAttrib...Windows.Wdk.Graphics.Direct3D.OBJECT_ATTRIBUTES* => Windows.Win32.System.WindowsProgramming.OBJECT_ATTRIBUTES*
-Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENSYNCOBJECTNTHANDLEFROMNAME.pObjAttrib...Windows.Wdk.Graphics.Direct3D.OBJECT_ATTRIBUTES* => Windows.Win32.System.WindowsProgramming.OBJECT_ATTRIBUTES*
 Windows.Wdk.Graphics.Direct3D.D3DKMT_OUTPUTDUPL_SNAPSHOT.OutputDuplDebugInfos :  => [FlexibleArray]
 Windows.Wdk.Graphics.Direct3D.OBJECT_ATTRIBUTES removed
 Windows.Wdk.Storage.FileSystem._REAL_NOTIFY_SYNC removed
@@ -2894,8 +2892,219 @@ Windows.Wdk.System.SystemServices.Apis.XSTATE_MPX_BNDCSR removed
 Windows.Wdk.System.SystemServices.Apis.XSTATE_MPX_BNDREGS removed
 Windows.Wdk.System.SystemServices.Apis.XSTATE_PASID removed
 Windows.Wdk.System.SystemServices.Apis.XSTATE_XFD_BIT removed
+# Fixed #36.
+Windows.Wdk.Foundation.IRP._Anonymous_e__Union.UserIosb...Windows.Win32.System.WindowsProgramming.IO_STATUS_BLOCK* => Windows.Win32.System.IO.IO_STATUS_BLOCK*
+Windows.Wdk.Foundation.IRP.IoStatus...Windows.Win32.System.WindowsProgramming.IO_STATUS_BLOCK => Windows.Win32.System.IO.IO_STATUS_BLOCK
+Windows.Wdk.Foundation.OBJECT_INFORMATION_CLASS added
+Windows.Wdk.Foundation.OBJECT_INFORMATION_CLASS.ObjectBasicInformation added
+Windows.Wdk.Foundation.OBJECT_INFORMATION_CLASS.ObjectTypeInformation added
+Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENNTHANDLEFROMNAME.pObjAttrib...Windows.Wdk.Graphics.Direct3D.OBJECT_ATTRIBUTES* => Windows.Win32.Foundation.OBJECT_ATTRIBUTES*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENSYNCOBJECTNTHANDLEFROMNAME.pObjAttrib...Windows.Wdk.Graphics.Direct3D.OBJECT_ATTRIBUTES* => Windows.Win32.Foundation.OBJECT_ATTRIBUTES*
+Windows.Wdk.Storage.FileSystem.Apis.NtClose => Windows.Wdk.Foundation.Apis.NtClose
+Windows.Wdk.Storage.FileSystem.Apis.NtDeviceIoControlFile => Windows.Wdk.System.IO.Apis.NtDeviceIoControlFile
+Windows.Wdk.Storage.FileSystem.Apis.NtQueryObject => Windows.Wdk.Foundation.Apis.NtQueryObject
+Windows.Wdk.Storage.FileSystem.Apis.NtSetInformationThread removed
+Windows.Wdk.Storage.FileSystem.OBJECT_INFORMATION_CLASS removed
+Windows.Wdk.Storage.FileSystem.OBJECT_INFORMATION_CLASS.ObjectBasicInformation removed
+Windows.Wdk.Storage.FileSystem.OBJECT_INFORMATION_CLASS.ObjectTypeInformation removed
+Windows.Wdk.System.Registry.Apis.NtNotifyChangeMultipleKeys added
+Windows.Wdk.System.Registry.Apis.NtQueryMultipleValueKey added
+Windows.Wdk.System.Registry.Apis.NtRenameKey added
+Windows.Wdk.System.Registry.Apis.NtSetInformationKey added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS.KeyControlFlagsInformation added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS.KeySetDebugInformation added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS.KeySetHandleTagsInformation added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS.KeySetLayerInformation added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS.KeySetVirtualizationInformation added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS.KeyWow64FlagsInformation added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS.KeyWriteTimeInformation added
+Windows.Wdk.System.Registry.KEY_SET_INFORMATION_CLASS.MaxKeySetInfoClass added
+Windows.Wdk.System.Registry.REG_QUERY_MULTIPLE_VALUE_KEY_INFORMATION added
+Windows.Wdk.System.Registry.REG_SET_INFORMATION_KEY_INFORMATION added
+Windows.Wdk.System.SystemInformation.Apis.NtQuerySystemInformation added
+Windows.Wdk.System.SystemInformation.Apis.NtQuerySystemTime added
+Windows.Wdk.System.SystemInformation.Apis.NtQueryTimerResolution added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemBasicInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemCodeIntegrityInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemExceptionInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemInterruptInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemLookasideInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemPerformanceInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemPolicyInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemProcessInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemProcessorPerformanceInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemRegistryQuotaInformation added
+Windows.Wdk.System.SystemInformation.SYSTEM_INFORMATION_CLASS.SystemTimeOfDayInformation added
+Windows.Wdk.System.SystemServices.Apis.ZwSetInformationKey => Windows.Wdk.System.Registry.Apis.ZwSetInformationKey
+Windows.Wdk.System.SystemServices.Apis.ZwSetInformationThread => Windows.Wdk.System.Threading.Apis.ZwSetInformationThread
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyControlFlagsInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetDebugInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetHandleTagsInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetLayerInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetVirtualizationInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyWow64FlagsInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyWriteTimeInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.MaxKeySetInfoClass removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_ENTRY => Windows.Wdk.System.Registry.KEY_VALUE_ENTRY
+Windows.Wdk.System.SystemServices.REG_QUERY_MULTIPLE_VALUE_KEY_INFORMATION removed
+Windows.Wdk.System.SystemServices.REG_SET_INFORMATION_KEY_INFORMATION removed
+Windows.Wdk.System.Threading.Apis.NtQueryInformationProcess added
+Windows.Wdk.System.Threading.Apis.NtQueryInformationThread added
+Windows.Wdk.System.Threading.Apis.NtSetInformationThread added
+Windows.Wdk.System.Threading.Apis.NtWaitForSingleObject added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.MaxProcessInfoClass added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessAccessToken added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessAffinityMask added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessAffinityUpdateMode added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessBasePriority added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessBasicInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessBreakOnTermination added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessCheckStackExtentsMode added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessCommandLineInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessCommitReleaseInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessCookie added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessCycleTime added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessDebugFlags added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessDebugObjectHandle added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessDebugPort added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessDefaultHardErrorMode added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessDeviceMap added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessDynamicFunctionTableInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessEnableAlignmentFaultFixup added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessEnergyTrackingState added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessExceptionPort added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessExecuteFlags added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessFaultInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessForegroundInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessGroupInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessHandleCheckingMode added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessHandleCount added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessHandleInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessHandleTable added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessHandleTracing added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessImageFileMapping added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessImageFileName added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessImageFileNameWin32 added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessImageInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessInPrivate added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessInstrumentationCallback added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessIoCounters added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessIoPortHandlers added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessIoPriority added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessKeepAliveCount added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessLdtInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessLdtSize added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessLUIDDeviceMapsEnabled added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessMemoryAllocationMode added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessMemoryExhaustion added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessMitigationPolicy added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessOwnerInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessPagePriority added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessPooledUsageAndLimits added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessPriorityBoost added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessPriorityClass added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessProtectionInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessQuotaLimits added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessRaisePriority added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessRaiseUMExceptionOnInvalidHandleClose added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessReserved1Information added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessReserved2Information added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessRevokeFileHandles added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessSessionInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessSubsystemInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessSubsystemProcess added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessTelemetryIdInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessThreadStackAllocation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessTimes added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessTlsInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessTokenVirtualizationEnabled added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessUserModeIOPL added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessVmCounters added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessWin32kSyscallFilterInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessWindowInformation added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessWorkingSetControl added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessWorkingSetWatch added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessWorkingSetWatchEx added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessWow64Information added
+Windows.Wdk.System.Threading.PROCESSINFOCLASS.ProcessWx86Information added
+Windows.Wdk.System.Threading.THREADINFOCLASS added
+Windows.Wdk.System.Threading.THREADINFOCLASS.MaxThreadInfoClass added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadActualBasePriority added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadActualGroupAffinity added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadAffinityMask added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadAmILastThread added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadBasePriority added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadBasicInformation added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadBreakOnTermination added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadCounterProfiling added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadCpuAccountingInformation added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadCSwitchMon added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadCSwitchPmu added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadCycleTime added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadDescriptorTableEntry added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadDynamicCodePolicyInfo added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadEnableAlignmentFaultFixup added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadEventPair_Reusable added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadGroupInformation added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadHideFromDebugger added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadIdealProcessor added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadIdealProcessorEx added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadImpersonationToken added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadIoPriority added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadIsIoPending added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadIsTerminated added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadLastSystemCall added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadPagePriority added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadPerformanceCount added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadPriority added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadPriorityBoost added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadQuerySetWin32StartAddress added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadSetTlsArrayAddress added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadSubsystemInformation added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadSuspendCount added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadSwitchLegacyState added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadTebInformation added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadTimes added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadUmsInformation added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadWow64Context added
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadZeroTlsCell added
+# Fixed #9.
+Windows.Wdk.Storage.FileSystem.Apis.NtCancelIoFileEx added
+# Updated WinmdGenerator to 0.51.33-preview.
+Windows.Wdk.Foundation.PIO_APC_ROUTINE removed
+Windows.Wdk.Graphics.Direct3D.D3DDDIFORMAT.D3DDDIFMT_FORCE_UINT removed
+Windows.Wdk.Graphics.Direct3D.D3DDDIMULTISAMPLE_TYPE.D3DDDIMULTISAMPLE_FORCE_UINT removed
+Windows.Wdk.Graphics.Direct3D.DXGKDT_OPM_DVI_CHARACTERISTICS.DXGKMDT_OPM_DVI_CHARACTERISTICS_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_CERTIFICATE_TYPE.DXGKMDT_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_ACP_PROTECTION_LEVEL.DXGKMDT_OPM_ACP_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_DPCP_PROTECTION_LEVEL.DXGKMDT_OPM_DPCP_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_HDCP_PROTECTION_LEVEL.DXGKMDT_OPM_HDCP_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_IMAGE_ASPECT_RATIO_EN300294.DXGKMDT_OPM_ASPECT_RATIO_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_INTERLEAVE_FORMAT.DXGKMDT_OPM_INTERLEAVE_FORMAT_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.DXGKMDT_OPM_TYPE_ENFORCEMENT_HDCP_PROTECTION_LEVEL.DXGKMDT_OPM_TYPE_ENFORCEMENT_HDCP_FORCE_ULONG removed
+Windows.Wdk.Graphics.Direct3D.OUTPUTDUPL_CONTEXT_DEBUG_STATUS.OUTPUTDUPL_CONTEXT_DEBUG_STATUS_FORCE_UINT32 removed
+Windows.Wdk.Storage.FileSystem.ACCEPT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.ACQUIRE_CREDENTIALS_HANDLE_FN_W removed
+Windows.Wdk.Storage.FileSystem.ADD_CREDENTIALS_FN_W removed
+Windows.Wdk.Storage.FileSystem.APPLY_CONTROL_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.COMPLETE_AUTH_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.DECRYPT_MESSAGE_FN removed
+Windows.Wdk.Storage.FileSystem.DELETE_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.ENCRYPT_MESSAGE_FN removed
+Windows.Wdk.Storage.FileSystem.ENUMERATE_SECURITY_PACKAGES_FN_W removed
+Windows.Wdk.Storage.FileSystem.EXPORT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.FREE_CONTEXT_BUFFER_FN removed
+Windows.Wdk.Storage.FileSystem.FREE_CREDENTIALS_HANDLE_FN removed
+Windows.Wdk.Storage.FileSystem.IMPERSONATE_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.IMPORT_SECURITY_CONTEXT_FN_W removed
+Windows.Wdk.Storage.FileSystem.INITIALIZE_SECURITY_CONTEXT_FN_W removed
+Windows.Wdk.Storage.FileSystem.MAKE_SIGNATURE_FN removed
+Windows.Wdk.Storage.FileSystem.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK removed
 # Corrected function and enum exclusions for #33.
-Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous1_e__Union.UserApcRoutine...Windows.Wdk.Foundation.PIO_APC_ROUTINE => System.IntPtr
 Windows.Wdk.Foundation.PIO_APC_ROUTINE removed
 Windows.Wdk.Storage.FileSystem.ACCEPT_SECURITY_CONTEXT_FN removed
 Windows.Wdk.Storage.FileSystem.ACQUIRE_CREDENTIALS_HANDLE_FN_W removed
@@ -2917,16 +3126,7 @@ Windows.Wdk.Storage.FileSystem.Apis.InitializeSecurityContextW removed
 Windows.Wdk.Storage.FileSystem.Apis.InitSecurityInterfaceW removed
 Windows.Wdk.Storage.FileSystem.Apis.LsaLogonUser removed
 Windows.Wdk.Storage.FileSystem.Apis.LsaRegisterLogonProcess removed
-Windows.Wdk.Storage.FileSystem.Apis.NtDeviceIoControlFile removed
-Windows.Wdk.Storage.FileSystem.Apis.NtFsControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.NtLockFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.NtOpenFile removed
-Windows.Wdk.Storage.FileSystem.Apis.NtQueryDirectoryFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.NtQueryDirectoryFileEx : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.NtQueryObject removed
-Windows.Wdk.Storage.FileSystem.Apis.NtReadFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
 Windows.Wdk.Storage.FileSystem.Apis.NtSetInformationThread removed
-Windows.Wdk.Storage.FileSystem.Apis.NtWriteFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
 Windows.Wdk.Storage.FileSystem.Apis.QueryContextAttributesExW removed
 Windows.Wdk.Storage.FileSystem.Apis.QueryContextAttributesW removed
 Windows.Wdk.Storage.FileSystem.Apis.QueryCredentialsAttributesExW removed
@@ -2941,7 +3141,6 @@ Windows.Wdk.Storage.FileSystem.Apis.RtlTimeToSecondsSince1970 removed
 Windows.Wdk.Storage.FileSystem.Apis.RtlUnicodeStringToOemString removed
 Windows.Wdk.Storage.FileSystem.Apis.RtlUnicodeToMultiByteSize removed
 Windows.Wdk.Storage.FileSystem.Apis.SetCredentialsAttributesW removed
-Windows.Wdk.Storage.FileSystem.Apis.SspiAcquireCredentialsHandleAsyncW : pGetKeyFn...SEC_GET_KEY_FN => IntPtr
 Windows.Wdk.Storage.FileSystem.Apis.SspiCompareAuthIdentities removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiCopyAuthIdentity removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiEncodeAuthIdentityAsStrings removed
@@ -2955,11 +3154,6 @@ Windows.Wdk.Storage.FileSystem.Apis.SspiMarshalAuthIdentity removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiUnmarshalAuthIdentity removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiValidateAuthIdentity removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiZeroAuthIdentity removed
-Windows.Wdk.Storage.FileSystem.Apis.ZwFsControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.ZwLockFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.ZwNotifyChangeKey : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.ZwQueryDirectoryFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.ZwQueryDirectoryFileEx : ApcRoutine...PIO_APC_ROUTINE => IntPtr
 Windows.Wdk.Storage.FileSystem.APPLY_CONTROL_TOKEN_FN removed
 Windows.Wdk.Storage.FileSystem.AUDIT_EVENT_TYPE.AuditEventDirectoryServiceAccess removed
 Windows.Wdk.Storage.FileSystem.AUDIT_EVENT_TYPE.AuditEventObjectAccess removed
@@ -2993,6 +3187,13 @@ Windows.Wdk.Storage.FileSystem.QUERY_CONTEXT_ATTRIBUTES_EX_FN_W removed
 Windows.Wdk.Storage.FileSystem.QUERY_CONTEXT_ATTRIBUTES_FN_W removed
 Windows.Wdk.Storage.FileSystem.QUERY_CREDENTIALS_ATTRIBUTES_EX_FN_W removed
 Windows.Wdk.Storage.FileSystem.QUERY_CREDENTIALS_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.QUERY_SECURITY_CONTEXT_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.QUERY_SECURITY_PACKAGE_INFO_FN_W removed
+Windows.Wdk.Storage.FileSystem.REVERT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.SecurityFunctionTableW removed
+Windows.Wdk.Storage.FileSystem.SET_CONTEXT_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.SET_CREDENTIALS_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.VERIFY_SIGNATURE_FN removed
 Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_FILTER_TYPE.QUERY_FILE_LAYOUT_NUM_FILTER_TYPES removed
 Windows.Wdk.Storage.FileSystem.QUERY_SECURITY_CONTEXT_TOKEN_FN removed
 Windows.Wdk.Storage.FileSystem.QUERY_SECURITY_PACKAGE_INFO_FN_W removed
@@ -3041,9 +3242,6 @@ Windows.Wdk.System.SystemServices.Apis.RtlRaiseCustomSystemEventTrigger removed
 Windows.Wdk.System.SystemServices.Apis.RtlUnicodeStringToAnsiString removed
 Windows.Wdk.System.SystemServices.Apis.RtlValidateCorrelationVector removed
 Windows.Wdk.System.SystemServices.Apis.VerSetConditionMask removed
-Windows.Wdk.System.SystemServices.Apis.ZwDeviceIoControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.System.SystemServices.Apis.ZwReadFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.System.SystemServices.Apis.ZwWriteFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
 Windows.Wdk.System.SystemServices.BATTERY_REPORTING_SCALE removed
 Windows.Wdk.System.SystemServices.CALLBACK_FUNCTION removed
 Windows.Wdk.System.SystemServices.CLFS_BLOCK_ALLOCATION removed
@@ -3867,7 +4065,6 @@ Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetVirtualization
 Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyWow64FlagsInformation removed
 Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyWriteTimeInformation removed
 Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.MaxKeySetInfoClass removed
-Windows.Wdk.System.SystemServices.KEY_VALUE_ENTRY removed
 Windows.Wdk.System.SystemServices.KTMOBJECT_CURSOR removed
 Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE removed
 Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE.KTMOBJECT_ENLISTMENT removed
@@ -3962,8 +4159,6 @@ Windows.Wdk.System.SystemServices.PROCESSOR_RELATIONSHIP removed
 Windows.Wdk.System.SystemServices.PS_CREATE_NOTIFY_INFO.CreatingThreadId...Windows.Wdk.System.SystemServices.CLIENT_ID => Windows.Win32.System.WindowsProgramming.CLIENT_ID
 Windows.Wdk.System.SystemServices.QUOTA_LIMITS_EX removed
 Windows.Wdk.System.SystemServices.RATE_QUOTA_LIMIT removed
-Windows.Wdk.System.SystemServices.REG_QUERY_MULTIPLE_VALUE_KEY_INFORMATION.ValueEntries...Windows.Wdk.System.SystemServices.KEY_VALUE_ENTRY* => Windows.Win32.System.WindowsProgramming.KEY_VALUE_ENTRY*
-Windows.Wdk.System.SystemServices.REG_SET_INFORMATION_KEY_INFORMATION.KeySetInformationClass...Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS => Windows.Win32.System.WindowsProgramming.KEY_SET_INFORMATION_CLASS
 Windows.Wdk.System.SystemServices.RESOURCEMANAGER_BASIC_INFORMATION removed
 Windows.Wdk.System.SystemServices.RESOURCEMANAGER_COMPLETION_INFORMATION removed
 Windows.Wdk.System.SystemServices.RESOURCEMANAGER_INFORMATION_CLASS removed
@@ -4168,3 +4363,5 @@ Windows.Wdk.System.SystemServices.XSTATE_CONFIGURATION removed
 Windows.Wdk.System.SystemServices.XSTATE_CONTEXT.Area...Windows.Wdk.System.SystemServices.XSAVE_AREA* => Windows.Win32.System.Diagnostics.Debug.XSAVE_AREA*
 Windows.Wdk.System.SystemServices.XSTATE_FEATURE removed
 Windows.Wdk.System.SystemServices.XSTATE_SAVE._Anonymous_e__Union._Anonymous_e__Struct.Reserved3...Windows.Wdk.System.SystemServices.XSAVE_AREA* => Windows.Win32.System.Diagnostics.Debug.XSAVE_AREA*
+# Updated WinmdGenerator to 0.51.33-preview.
+Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous1_e__Union.UserApcRoutine...Windows.Wdk.Foundation.PIO_APC_ROUTINE => Windows.Win32.System.IO.PIO_APC_ROUTINE
