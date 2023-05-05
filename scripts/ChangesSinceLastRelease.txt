@@ -157,14 +157,9 @@ Windows.Wdk.Storage.FileSystem.Apis.SeLocateProcessImageName : Process : [In,Out
 Windows.Wdk.Storage.FileSystem.Apis.SeLocateProcessImageName : Process...KPROCESS* => PEPROCESS
 Windows.Wdk.Storage.FileSystem.Apis.SeMarkLogonSessionForTerminationNotificationEx : pServerSilo...EJOB* => PESILO
 Windows.Wdk.Storage.FileSystem.Apis.SeQueryServerSiloToken : pServerSilo...EJOB** => PESILO*
-Windows.Wdk.Storage.FileSystem.BULK_SECURITY_TEST_DATA.SecurityIds :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1._Values_e__Union.pOctetString : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
 Windows.Wdk.Storage.FileSystem.COMPRESSED_DATA_INFO.CompressedChunkSizes :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.CONTAINER_ROOT_INFO_OUTPUT.ContainerRootId :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.CSV_QUERY_MDS_PATH.Path :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.ECP_HEADER removed
-Windows.Wdk.Storage.FileSystem.ENCRYPTED_DATA_INFO.DataBlockSize :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.ENCRYPTION_BUFFER.Private :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_BOTH_DIR_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_DIRECTORY_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_FS_ATTRIBUTE_INFORMATION.FileSystemName :  => [FlexibleArray]
@@ -177,8 +172,6 @@ Windows.Wdk.Storage.FileSystem.FILE_ID_EXTD_BOTH_DIR_INFORMATION.FileName :  => 
 Windows.Wdk.Storage.FileSystem.FILE_ID_EXTD_DIR_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_ID_FULL_DIR_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_ID_GLOBAL_TX_DIR_INFORMATION.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_LAYOUT_NAME_ENTRY.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_LEVEL_TRIM.Ranges :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_LINK_ENTRY_FULL_ID_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_LINK_ENTRY_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_LINK_INFORMATION.FileName :  => [FlexibleArray]
@@ -186,42 +179,20 @@ Windows.Wdk.Storage.FileSystem.FILE_MOVE_CLUSTER_INFORMATION.FileName :  => [Fle
 Windows.Wdk.Storage.FileSystem.FILE_NAME_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_NAMES_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_NETWORK_PHYSICAL_NAME_INFORMATION.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_EXTENDED_INFORMATION.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_FULL_INFORMATION.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_PIPE_PEEK_BUFFER.Data :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_PIPE_WAIT_FOR_BUFFER.Name :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_PREFETCH_EX.Prefetch :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_PREFETCH.Prefetch :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_REGION_OUTPUT.Region :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_RENAME_INFORMATION.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_STREAM_INFORMATION.StreamName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_TRACKING_INFORMATION.ObjectInformation :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FILE_TYPE_NOTIFICATION_INPUT.FileTypeID :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FILE_VOLUME_NAME_INFORMATION.DeviceName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FIND_BY_SID_OUTPUT.FileName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FSCTL_GHOST_FILE_EXTENTS_INPUT_BUFFER.RecallMetadataBuffer :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_GHOSTED_FILE_EXTENTS_OUTPUT.Extents :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_REGION_INFO_INPUT.TierIds :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_REGION_INFO_OUTPUT.Regions :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_STORAGE_CLASSES_OUTPUT.Tiers :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.GET_FILTER_FILE_IDENTIFIER_INPUT.Altitude :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.GET_FILTER_FILE_IDENTIFIER_OUTPUT.FilterFileIdentifier :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.GHOSTED_FILE_EXTENT.RecallMetadataBuffer :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.KAPC_STATE.Process...Windows.Wdk.Foundation.KPROCESS* => System.IntPtr*
-Windows.Wdk.Storage.FileSystem.LOOKUP_STREAM_FROM_CLUSTER_ENTRY.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.LOOKUP_STREAM_FROM_CLUSTER_INPUT.Cluster :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.MSV1_0_IUM_SUPPLEMENTAL_CREDENTIAL.EncryptedCreds :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.MSV1_0_NTLM3_RESPONSE.Buffer :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.MSV1_0_REMOTE_SUPPLEMENTAL_CREDENTIAL.EncryptedCreds :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.NFS_OPEN_ECP_CONTEXT.ClientSocketAddress...Windows.Wdk.Storage.FileSystem.SOCKADDR_STORAGE* => Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE*
-Windows.Wdk.Storage.FileSystem.NTFS_FILE_RECORD_OUTPUT_BUFFER.FileRecordBuffer :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.PATHNAME_BUFFER.Name :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.PHYSICAL_EXTENTS_DESCRIPTOR.Run :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.PHYSICAL_MEMORY_DESCRIPTOR.Run :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_INPUT.Ranges :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_OUTPUT.BadRanges :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_INPUT._Filter_e__Union.StorageReserveIds : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
 Windows.Wdk.Storage.FileSystem.QUERY_PATH_REQUEST_EX.Silo...Windows.Wdk.Foundation.EJOB* => Windows.Wdk.Foundation.PESILO
 Windows.Wdk.Storage.FileSystem.QUERY_PATH_REQUEST.FilePathName :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.READ_LIST.List :  => [FlexibleArray]
@@ -232,41 +203,18 @@ Windows.Wdk.Storage.FileSystem.REFS_STREAM_SNAPSHOT_LIST_OUTPUT_BUFFER.Entries :
 Windows.Wdk.Storage.FileSystem.REFS_STREAM_SNAPSHOT_MANAGEMENT_INPUT_BUFFER.NameAndInputBuffer :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.REFS_STREAM_SNAPSHOT_QUERY_DELTAS_OUTPUT_BUFFER.Extents :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.REMOTE_LINK_TRACKING_INFORMATION.TargetLinkTrackingInformationBuffer :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.REPAIR_COPIES_INPUT.RepairCopies :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.REPARSE_DATA_BUFFER._Anonymous_e__Union._GenericReparseBuffer_e__Struct.DataBuffer :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.REPARSE_DATA_BUFFER._Anonymous_e__Union._MountPointReparseBuffer_e__Struct.PathBuffer :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.REPARSE_DATA_BUFFER._Anonymous_e__Union._SymbolicLinkReparseBuffer_e__Struct.PathBuffer :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.REPARSE_GUID_DATA_BUFFER._GenericReparseBuffer_e__Struct.DataBuffer :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.RETRIEVAL_POINTERS_AND_REFCOUNT_BUFFER.Extents :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.RETRIEVAL_POINTERS_BUFFER.Extents :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SCRUB_PARITY_EXTENT_DATA.ParityExtents :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SD_ENUM_SDS_ENTRY.Descriptor :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SD_ENUM_SDS_OUTPUT.SDEntry :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.SE_LOGON_SESSION_TERMINATED_ROUTINE_EX.Invoke : pServerSilo...EJOB* => PESILO
-Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOL_LIST.ProtocolList :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOLS.ProtocolLists :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SEC_CERTIFICATE_REQUEST_CONTEXT.rgCertificateRequestContext :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SEC_PRESHAREDKEY_IDENTITY.KeyIdentity :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.SEC_PRESHAREDKEY.Key :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.SEC_SRTP_MASTER_KEY_IDENTIFIER.MasterKeyIdentifier :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SEC_SRTP_PROTECTION_PROFILES.ProfilesList :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SEC_TOKEN_BINDING.KeyParameters :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SEC_TRAFFIC_SECRETS.TrafficSecret :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.SI_COPYFILE.FileNameBuffer :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.SOCKADDR_STORAGE removed
 Windows.Wdk.Storage.FileSystem.SRV_OPEN_ECP_CONTEXT.SocketAddress...Windows.Wdk.Storage.FileSystem.SOCKADDR_STORAGE* => Windows.Win32.Networking.WinSock.SOCKADDR_STORAGE*
 Windows.Wdk.Storage.FileSystem.SspiAsyncContext removed
-Windows.Wdk.Storage.FileSystem.STREAM_LAYOUT_ENTRY.StreamIdentifier :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.TOKEN_GROUPS.Groups :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.TOKEN_PRIVILEGES.Privileges :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.TXFS_LIST_TRANSACTION_LOCKED_FILES_ENTRY.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.TXFS_READ_BACKUP_INFORMATION_OUT._Anonymous_e__Union.Buffer : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
-Windows.Wdk.Storage.FileSystem.TXFS_START_RM_INFORMATION.LogPath :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.TXFS_WRITE_BACKUP_INFORMATION.Buffer :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.USN_RECORD_V3.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.USN_RECORD_V4.Extents :  => [FlexibleArray]
 Windows.Wdk.Storage.FileSystem.USN_RECORD.FileName :  => [FlexibleArray]
-Windows.Wdk.Storage.FileSystem.VOLUME_BITMAP_BUFFER.Buffer :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices._ADAPTER_OBJECT removed
 Windows.Wdk.System.SystemServices._AFFINITY_TOKEN removed
 Windows.Wdk.System.SystemServices._BUS_HANDLER removed
@@ -450,10 +398,6 @@ Windows.Wdk.System.SystemServices.Apis.TmCreateEnlistment : ResourceManager...KR
 Windows.Wdk.System.SystemServices.Apis.TmInitializeTransactionManager : TransactionManager...KTM* => IntPtr*
 Windows.Wdk.System.SystemServices.Apis.VslCreateSecureSection : TargetProcess..._EPROCESS* => PEPROCESS
 Windows.Wdk.System.SystemServices.BOOTDISK_INFORMATION_LITE.Entries :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.CACHE_RELATIONSHIP._Anonymous_e__Union.GroupMasks : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
-Windows.Wdk.System.SystemServices.CLFS_LOG_NAME_INFORMATION.Name :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY._PolicyParameters_e__Union._NewContainerExtension_e__Struct.ExtensionString :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY._PolicyParameters_e__Union._NewContainerPrefix_e__Struct.PrefixString :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.CM_PARTIAL_RESOURCE_LIST.PartialDescriptors :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.CM_RESOURCE_LIST.List :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.CREATE_DISK removed
@@ -470,12 +414,10 @@ Windows.Wdk.System.SystemServices.FAST_IO_UNLOCK_SINGLE.Invoke : ProcessId..._EP
 Windows.Wdk.System.SystemServices.FILE_FS_LABEL_INFORMATION.VolumeLabel :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.FILE_FS_VOLUME_INFORMATION.VolumeLabel :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.FILE_PROCESS_IDS_USING_FILE_INFORMATION.ProcessIdList :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.GROUP_RELATIONSHIP.GroupInfo :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.HAL_CALLBACKS.BusCheck...Windows.Wdk.System.SystemServices._CALLBACK_OBJECT* => Windows.Wdk.Foundation.PCALLBACK_OBJECT
 Windows.Wdk.System.SystemServices.HAL_CALLBACKS.SetSystemInformation...Windows.Wdk.System.SystemServices._CALLBACK_OBJECT* => Windows.Wdk.Foundation.PCALLBACK_OBJECT
 Windows.Wdk.System.SystemServices.IMAGE_NT_HEADERS32 removed
 Windows.Wdk.System.SystemServices.IMAGE_NT_HEADERS64 removed
-Windows.Wdk.System.SystemServices.INIT_ONCE added
 Windows.Wdk.System.SystemServices.IO_CONNECT_INTERRUPT_FULLY_SPECIFIED_PARAMETERS.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT** => Windows.Wdk.Foundation.PKINTERRUPT*
 Windows.Wdk.System.SystemServices.IO_CONNECT_INTERRUPT_LINE_BASED_PARAMETERS.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT** => Windows.Wdk.Foundation.PKINTERRUPT*
 Windows.Wdk.System.SystemServices.IO_CONNECT_INTERRUPT_MESSAGE_BASED_PARAMETERS._ConnectionContext_e__Union.InterruptObject...Windows.Wdk.System.SystemServices._KINTERRUPT** => Windows.Wdk.Foundation.PKINTERRUPT*
@@ -493,7 +435,6 @@ Windows.Wdk.System.SystemServices.IO_RESOURCE_REQUIREMENTS_LIST.List :  => [Flex
 Windows.Wdk.System.SystemServices.IO_WORKITEM_ROUTINE_EX.Invoke : IoWorkItem..._IO_WORKITEM* => PIO_WORKITEM
 Windows.Wdk.System.SystemServices.IOMMU_DMA_DEVICE removed
 Windows.Wdk.System.SystemServices.IOMMU_DMA_DOMAIN removed
-Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD.Data :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.KAPC.Thread...Windows.Wdk.Foundation.KTHREAD* => System.IntPtr*
 Windows.Wdk.System.SystemServices.KENLISTMENT removed
 Windows.Wdk.System.SystemServices.KEY_BASIC_INFORMATION.Name :  => [FlexibleArray]
@@ -509,11 +450,9 @@ Windows.Wdk.System.SystemServices.KPCR removed
 Windows.Wdk.System.SystemServices.KRESOURCEMANAGER removed
 Windows.Wdk.System.SystemServices.KSERVICE_ROUTINE.Invoke : Interrupt..._KINTERRUPT* => IntPtr*
 Windows.Wdk.System.SystemServices.KTM removed
-Windows.Wdk.System.SystemServices.KTMOBJECT_CURSOR.ObjectIds :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.KTRANSACTION removed
 Windows.Wdk.System.SystemServices.KTRIAGE_DUMP_DATA_ARRAY.Blocks :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.KUSER_SHARED_DATA._Anonymous4_e__Union._Anonymous_e__Struct.TickCountPad :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.NUMA_NODE_RELATIONSHIP._Anonymous_e__Union.GroupMasks : [FieldOffset(0)] => [FieldOffset(0),FlexibleArray]
 Windows.Wdk.System.SystemServices.OB_OPERATION_REGISTRATION.ObjectType...Windows.Wdk.Foundation.OBJECT_TYPE** => Windows.Wdk.Foundation.POBJECT_TYPE*
 Windows.Wdk.System.SystemServices.OB_POST_OPERATION_INFORMATION.ObjectType...Windows.Wdk.Foundation.OBJECT_TYPE* => Windows.Wdk.Foundation.POBJECT_TYPE
 Windows.Wdk.System.SystemServices.OB_PRE_OPERATION_INFORMATION.ObjectType...Windows.Wdk.Foundation.OBJECT_TYPE* => Windows.Wdk.Foundation.POBJECT_TYPE
@@ -542,25 +481,17 @@ Windows.Wdk.System.SystemServices.PO_FX_DEVICE_V1.Components :  => [FlexibleArra
 Windows.Wdk.System.SystemServices.PO_FX_DEVICE_V2.Components :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.PO_FX_DEVICE_V3.Components :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.POHANDLE__ removed
-Windows.Wdk.System.SystemServices.PROCESS_BASIC_INFORMATION.PebBaseAddress...Windows.Wdk.System.SystemServices.PEB* => Windows.Win32.System.Threading.PEB*
 Windows.Wdk.System.SystemServices.PROCESS_HANDLE_TRACING_QUERY.HandleTrace :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.PROCESSOR_RELATIONSHIP.GroupMask :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.PSECURE_DRIVER_PROCESS_REFERENCE.Invoke : return..._EPROCESS* => PEPROCESS
-Windows.Wdk.System.SystemServices.RESOURCEMANAGER_BASIC_INFORMATION.Description :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.RTL_RUN_ONCE removed
 Windows.Wdk.System.SystemServices.RTL_RUN_ONCE_INIT_FN.Invoke : RunOnce...RTL_RUN_ONCE* => INIT_ONCE*
 Windows.Wdk.System.SystemServices.SECURE_DRIVER_PROCESS_DEREFERENCE.Invoke : Process..._EPROCESS* => PEPROCESS
 Windows.Wdk.System.SystemServices.SECURE_DRIVER_PROCESS_REFERENCE.Invoke : return..._EPROCESS* => PEPROCESS
 Windows.Wdk.System.SystemServices.SET_PARTITION_INFORMATION_EX removed
-Windows.Wdk.System.SystemServices.SET_POWER_SETTING_VALUE.Data :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.SILO_MONITOR_CREATE_CALLBACK.Invoke : Silo...EJOB* => PESILO
 Windows.Wdk.System.SystemServices.SILO_MONITOR_TERMINATE_CALLBACK.Invoke : Silo...EJOB* => PESILO
 Windows.Wdk.System.SystemServices.SOC_SUBSYSTEM_FAILURE_DETAILS.UnifiedFailureRegion :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.SYSTEM_FIRMWARE_TABLE_INFORMATION.TableBuffer :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.TRANSACTION_ENLISTMENTS_INFORMATION.EnlistmentPair :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.TRANSACTION_LIST_INFORMATION.TransactionInformation :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.TRANSACTION_PROPERTIES_INFORMATION.Description :  => [FlexibleArray]
-Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_LOGPATH_INFORMATION.LogPath :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.WHEA_ARM_PROCESSOR_ERROR_CONTEXT_INFORMATION_HEADER.RegisterArray :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.WHEA_ARM_PROCESSOR_ERROR_SECTION.Data :  => [FlexibleArray]
 Windows.Wdk.System.SystemServices.WHEA_ERROR_PACKET_V1.RawData :  => [FlexibleArray]
@@ -2061,8 +1992,6 @@ Windows.Wdk.Storage.FileSystem.Apis.WOF_CURRENT_VERSION removed
 Windows.Wdk.Storage.FileSystem.Apis.WOF_PROVIDER_CLOUD removed
 Windows.Wdk.Storage.FileSystem.Apis.WOF_PROVIDER_FILE removed
 Windows.Wdk.Storage.FileSystem.Apis.WOF_PROVIDER_WIM removed
-Windows.Wdk.Storage.FileSystem.NTCREATEFILE_CREATE_OPTIONS.FILE_NO_COMPRESSION removed
-Windows.Wdk.Storage.FileSystem.NTCREATEFILE_CREATE_OPTIONS.FILE_OPEN_NO_RECALL removed
 Windows.Wdk.System.SystemServices.Apis._MM_HINT_NTA removed
 Windows.Wdk.System.SystemServices.Apis._MM_HINT_T0 removed
 Windows.Wdk.System.SystemServices.Apis._MM_HINT_T1 removed
@@ -3177,6 +3106,101 @@ Windows.Wdk.Storage.FileSystem.INITIALIZE_SECURITY_CONTEXT_FN_W removed
 Windows.Wdk.Storage.FileSystem.IO_IRP_EXT_TRACK_OFFSET_HEADER.TrackedOffsetCallback...Windows.Wdk.Storage.FileSystem.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK => Windows.Win32.System.Ioctl.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK
 Windows.Wdk.Storage.FileSystem.MAKE_SIGNATURE_FN removed
 Windows.Wdk.Storage.FileSystem.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK removed
+# Corrected function and enum exclusions for #33.
+Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous1_e__Union.UserApcRoutine...Windows.Wdk.Foundation.PIO_APC_ROUTINE => System.IntPtr
+Windows.Wdk.Foundation.PIO_APC_ROUTINE removed
+Windows.Wdk.Storage.FileSystem.ACCEPT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.ACQUIRE_CREDENTIALS_HANDLE_FN_W removed
+Windows.Wdk.Storage.FileSystem.ADD_CREDENTIALS_FN_A removed
+Windows.Wdk.Storage.FileSystem.ADD_CREDENTIALS_FN_W removed
+Windows.Wdk.Storage.FileSystem.Apis.AcceptSecurityContext removed
+Windows.Wdk.Storage.FileSystem.Apis.AcquireCredentialsHandleW removed
+Windows.Wdk.Storage.FileSystem.Apis.AddCredentialsA removed
+Windows.Wdk.Storage.FileSystem.Apis.AddCredentialsW removed
+Windows.Wdk.Storage.FileSystem.Apis.DecryptMessage removed
+Windows.Wdk.Storage.FileSystem.Apis.DeleteSecurityContext removed
+Windows.Wdk.Storage.FileSystem.Apis.EncryptMessage removed
+Windows.Wdk.Storage.FileSystem.Apis.EnumerateSecurityPackagesW removed
+Windows.Wdk.Storage.FileSystem.Apis.FreeContextBuffer removed
+Windows.Wdk.Storage.FileSystem.Apis.FreeCredentialsHandle removed
+Windows.Wdk.Storage.FileSystem.Apis.ImpersonateSecurityContext removed
+Windows.Wdk.Storage.FileSystem.Apis.ImportSecurityContextW removed
+Windows.Wdk.Storage.FileSystem.Apis.InitializeSecurityContextW removed
+Windows.Wdk.Storage.FileSystem.Apis.InitSecurityInterfaceW removed
+Windows.Wdk.Storage.FileSystem.Apis.LsaLogonUser removed
+Windows.Wdk.Storage.FileSystem.Apis.LsaRegisterLogonProcess removed
+Windows.Wdk.Storage.FileSystem.Apis.NtDeviceIoControlFile removed
+Windows.Wdk.Storage.FileSystem.Apis.NtFsControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.NtLockFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.NtOpenFile removed
+Windows.Wdk.Storage.FileSystem.Apis.NtQueryDirectoryFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.NtQueryDirectoryFileEx : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.NtQueryObject removed
+Windows.Wdk.Storage.FileSystem.Apis.NtReadFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.NtSetInformationThread removed
+Windows.Wdk.Storage.FileSystem.Apis.NtWriteFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.QueryContextAttributesExW removed
+Windows.Wdk.Storage.FileSystem.Apis.QueryContextAttributesW removed
+Windows.Wdk.Storage.FileSystem.Apis.QueryCredentialsAttributesExW removed
+Windows.Wdk.Storage.FileSystem.Apis.QueryCredentialsAttributesW removed
+Windows.Wdk.Storage.FileSystem.Apis.QuerySecurityPackageInfoW removed
+Windows.Wdk.Storage.FileSystem.Apis.RevertSecurityContext removed
+Windows.Wdk.Storage.FileSystem.Apis.RtlCaptureStackBackTrace removed
+Windows.Wdk.Storage.FileSystem.Apis.RtlFreeOemString removed
+Windows.Wdk.Storage.FileSystem.Apis.RtlIsNameLegalDOS8Dot3 removed
+Windows.Wdk.Storage.FileSystem.Apis.RtlNtStatusToDosError removed
+Windows.Wdk.Storage.FileSystem.Apis.RtlTimeToSecondsSince1970 removed
+Windows.Wdk.Storage.FileSystem.Apis.RtlUnicodeStringToOemString removed
+Windows.Wdk.Storage.FileSystem.Apis.RtlUnicodeToMultiByteSize removed
+Windows.Wdk.Storage.FileSystem.Apis.SetCredentialsAttributesW removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiAcquireCredentialsHandleAsyncW : pGetKeyFn...SEC_GET_KEY_FN => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.SspiCompareAuthIdentities removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiCopyAuthIdentity removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiEncodeAuthIdentityAsStrings removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiEncodeStringsAsAuthIdentity removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiExcludePackage removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiFreeAuthIdentity removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiGetTargetHostName removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiIsPromptingNeeded removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiLocalFree removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiMarshalAuthIdentity removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiUnmarshalAuthIdentity removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiValidateAuthIdentity removed
+Windows.Wdk.Storage.FileSystem.Apis.SspiZeroAuthIdentity removed
+Windows.Wdk.Storage.FileSystem.Apis.ZwFsControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.ZwLockFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.ZwNotifyChangeKey : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.ZwQueryDirectoryFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.Apis.ZwQueryDirectoryFileEx : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.Storage.FileSystem.APPLY_CONTROL_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.AUDIT_EVENT_TYPE.AuditEventDirectoryServiceAccess removed
+Windows.Wdk.Storage.FileSystem.AUDIT_EVENT_TYPE.AuditEventObjectAccess removed
+Windows.Wdk.Storage.FileSystem.BULK_SECURITY_TEST_DATA removed
+Windows.Wdk.Storage.FileSystem.COMPLETE_AUTH_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.DECRYPT_MESSAGE_FN removed
+Windows.Wdk.Storage.FileSystem.DELETE_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.DELETE_USN_JOURNAL_DATA removed
+Windows.Wdk.Storage.FileSystem.ENCRYPT_MESSAGE_FN removed
+Windows.Wdk.Storage.FileSystem.ENUMERATE_SECURITY_PACKAGES_FN_W removed
+Windows.Wdk.Storage.FileSystem.EXPORT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.FIND_BY_SID_DATA removed
+Windows.Wdk.Storage.FileSystem.FIND_BY_SID_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.FREE_CONTEXT_BUFFER_FN removed
+Windows.Wdk.Storage.FileSystem.FREE_CREDENTIALS_HANDLE_FN removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_INFLAGS.FSBPIO_INFL_None removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_INFLAGS.FSBPIO_INFL_SKIP_STORAGE_STACK_QUERY removed
+Windows.Wdk.Storage.FileSystem.IMPERSONATE_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.IMPORT_SECURITY_CONTEXT_FN_W removed
+Windows.Wdk.Storage.FileSystem.INIT_SECURITY_INTERFACE_W removed
+Windows.Wdk.Storage.FileSystem.INITIALIZE_SECURITY_CONTEXT_FN_W removed
+Windows.Wdk.Storage.FileSystem.MAKE_SIGNATURE_FN removed
+Windows.Wdk.Storage.FileSystem.MFT_ENUM_DATA_V0 removed
+Windows.Wdk.Storage.FileSystem.MOVE_FILE_DATA removed
+Windows.Wdk.Storage.FileSystem.MOVE_FILE_RECORD_DATA removed
+Windows.Wdk.Storage.FileSystem.NTFS_EXTENDED_VOLUME_DATA removed
+Windows.Wdk.Storage.FileSystem.NTFS_FILE_RECORD_INPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.NTFS_FILE_RECORD_OUTPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.NTFS_VOLUME_DATA_BUFFER removed
 Windows.Wdk.Storage.FileSystem.QUERY_CONTEXT_ATTRIBUTES_EX_FN_W removed
 Windows.Wdk.Storage.FileSystem.QUERY_CONTEXT_ATTRIBUTES_FN_W removed
 Windows.Wdk.Storage.FileSystem.QUERY_CREDENTIALS_ATTRIBUTES_EX_FN_W removed
@@ -3188,3 +3212,1178 @@ Windows.Wdk.Storage.FileSystem.SecurityFunctionTableW removed
 Windows.Wdk.Storage.FileSystem.SET_CONTEXT_ATTRIBUTES_FN_W removed
 Windows.Wdk.Storage.FileSystem.SET_CREDENTIALS_ATTRIBUTES_FN_W removed
 Windows.Wdk.Storage.FileSystem.VERIFY_SIGNATURE_FN removed
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_FILTER_TYPE.QUERY_FILE_LAYOUT_NUM_FILTER_TYPES removed
+Windows.Wdk.Storage.FileSystem.QUERY_SECURITY_CONTEXT_TOKEN_FN removed
+Windows.Wdk.Storage.FileSystem.QUERY_SECURITY_PACKAGE_INFO_FN_W removed
+Windows.Wdk.Storage.FileSystem.READ_FILE_USN_DATA removed
+Windows.Wdk.Storage.FileSystem.READ_USN_JOURNAL_DATA_V0 removed
+Windows.Wdk.Storage.FileSystem.RETRIEVAL_POINTER_COUNT removed
+Windows.Wdk.Storage.FileSystem.RETRIEVAL_POINTERS_BUFFER removed
+Windows.Wdk.Storage.FileSystem.REVERT_SECURITY_CONTEXT_FN removed
+Windows.Wdk.Storage.FileSystem.SEC_GET_KEY_FN removed
+Windows.Wdk.Storage.FileSystem.SecurityFunctionTableW removed
+Windows.Wdk.Storage.FileSystem.SET_CONTEXT_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.SET_CREDENTIALS_ATTRIBUTES_FN_W removed
+Windows.Wdk.Storage.FileSystem.STARTING_LCN_INPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.STARTING_LCN_INPUT_BUFFER_EX removed
+Windows.Wdk.Storage.FileSystem.STARTING_VCN_INPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.USN_JOURNAL_DATA_V0 removed
+Windows.Wdk.Storage.FileSystem.USN_JOURNAL_DATA_V2 removed
+Windows.Wdk.Storage.FileSystem.USN_RANGE_TRACK_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.USN_RECORD_COMMON_HEADER removed
+Windows.Wdk.Storage.FileSystem.USN_RECORD_EXTENT removed
+Windows.Wdk.Storage.FileSystem.USN_RECORD_UNION removed
+Windows.Wdk.Storage.FileSystem.USN_RECORD_V3 removed
+Windows.Wdk.Storage.FileSystem.USN_RECORD_V4 removed
+Windows.Wdk.Storage.FileSystem.USN_TRACK_MODIFIED_RANGES removed
+Windows.Wdk.Storage.FileSystem.VERIFY_SIGNATURE_FN removed
+Windows.Wdk.Storage.FileSystem.VOLUME_BITMAP_BUFFER removed
+Windows.Wdk.System.SystemServices.Apis.RtlAnsiStringToUnicodeString removed
+Windows.Wdk.System.SystemServices.Apis.RtlCharToInteger removed
+Windows.Wdk.System.SystemServices.Apis.RtlCompareMemory removed
+Windows.Wdk.System.SystemServices.Apis.RtlCrc32 removed
+Windows.Wdk.System.SystemServices.Apis.RtlExtendCorrelationVector removed
+Windows.Wdk.System.SystemServices.Apis.RtlFreeAnsiString removed
+Windows.Wdk.System.SystemServices.Apis.RtlFreeUnicodeString removed
+Windows.Wdk.System.SystemServices.Apis.RtlGetProductInfo removed
+Windows.Wdk.System.SystemServices.Apis.RtlGetSystemGlobalData removed
+Windows.Wdk.System.SystemServices.Apis.RtlIncrementCorrelationVector removed
+Windows.Wdk.System.SystemServices.Apis.RtlInitAnsiString removed
+Windows.Wdk.System.SystemServices.Apis.RtlInitAnsiStringEx removed
+Windows.Wdk.System.SystemServices.Apis.RtlInitializeCorrelationVector removed
+Windows.Wdk.System.SystemServices.Apis.RtlInitString removed
+Windows.Wdk.System.SystemServices.Apis.RtlInitStringEx removed
+Windows.Wdk.System.SystemServices.Apis.RtlInitUnicodeString removed
+Windows.Wdk.System.SystemServices.Apis.RtlIsZeroMemory removed
+Windows.Wdk.System.SystemServices.Apis.RtlOsDeploymentState removed
+Windows.Wdk.System.SystemServices.Apis.RtlRaiseCustomSystemEventTrigger removed
+Windows.Wdk.System.SystemServices.Apis.RtlUnicodeStringToAnsiString removed
+Windows.Wdk.System.SystemServices.Apis.RtlValidateCorrelationVector removed
+Windows.Wdk.System.SystemServices.Apis.VerSetConditionMask removed
+Windows.Wdk.System.SystemServices.Apis.ZwDeviceIoControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.System.SystemServices.Apis.ZwReadFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.System.SystemServices.Apis.ZwWriteFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
+Windows.Wdk.System.SystemServices.BATTERY_REPORTING_SCALE removed
+Windows.Wdk.System.SystemServices.CALLBACK_FUNCTION removed
+Windows.Wdk.System.SystemServices.CLFS_BLOCK_ALLOCATION removed
+Windows.Wdk.System.SystemServices.CLFS_BLOCK_DEALLOCATION removed
+Windows.Wdk.System.SystemServices.CORRELATION_VECTOR removed
+Windows.Wdk.System.SystemServices.LATENCY_TIME removed
+Windows.Wdk.System.SystemServices.LATENCY_TIME.LT_DONT_CARE removed
+Windows.Wdk.System.SystemServices.LATENCY_TIME.LT_LOWEST_LATENCY removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE.MemExtendedParameterAddressRequirements removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE.MemExtendedParameterAttributeFlags removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE.MemExtendedParameterImageMachine removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE.MemExtendedParameterInvalidType removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE.MemExtendedParameterMax removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE.MemExtendedParameterNumaNode removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE.MemExtendedParameterPartitionHandle removed
+Windows.Wdk.System.SystemServices.MEM_EXTENDED_PARAMETER_TYPE.MemExtendedParameterUserPhysicalHandle removed
+Windows.Wdk.System.SystemServices.NOTIFY_USER_POWER_SETTING removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.AdministratorPowerPolicy removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.BatteryDeviceState removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.BlackBoxRecorderDirectAccessBuffer removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.CsDeviceNotification removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.DisplayBurst removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.EnergyTrackerCreate removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.EnergyTrackerQuery removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ExitLatencySamplingPercentage removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.FirmwareTableInformationRegistered removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.GetPowerRequestList removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.GetPowerSettingValue removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.GroupPark removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.IdleResiliency removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.LastResumePerformance removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.LastSleepTime removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.LastWakeTime removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.LogicalProcessorIdling removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.MonitorCapabilities removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.MonitorInvocation removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.NotifyUserModeLegacyPowerEvent removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.NotifyUserPowerSetting removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PdcInvocation removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PhysicalPowerButtonPress removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PlatformIdleStates removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PlatformIdleVeto removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PlatformInformation removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PlatformRole removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PlmPowerRequestCreate removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PowerInformationInternal removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PowerInformationLevelMaximum removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PowerInformationLevelUnused0 removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PowerRequestAction removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PowerRequestActionInternal removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PowerRequestCreate removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PowerSettingNotificationName removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.PowerShutdownNotification removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorCap removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorIdleDomains removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorIdleStates removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorIdleStatesHv removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorIdleVeto removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorInformation removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorInformationEx removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorLoad removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorPerfCapHv removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorPerfStates removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorPerfStatesHv removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorPowerPolicyAc removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorPowerPolicyCurrent removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorPowerPolicyDc removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorSetIdle removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorStateHandler removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ProcessorStateHandler2 removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.QueryPotentialDripsConstraint removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.RegisterSpmPowerSettings removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ScreenOff removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SendSuspendResumeNotification removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SessionAllowExternalDmaDevices removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SessionConnectNotification removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SessionDisplayState removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SessionLockState removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SessionPowerCleanup removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SessionPowerInit removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SessionRITState removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SetPowerSettingValue removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SetShutdownSelectedTime removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SuspendResumeInvocation removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemBatteryState removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemBatteryStatePrecise removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemExecutionState removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemHiberbootState removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemHiberFileInformation removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemHiberFileSize removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemHiberFileType removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemMonitorHiberBootPowerOff removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerCapabilities removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerInformation removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerLoggingEntry removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerPolicyAc removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerPolicyCurrent removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerPolicyDc removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerStateHandler removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerStateLogging removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemPowerStateNotifyHandler removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemReserveHiberFile removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemVideoState removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.SystemWakeSource removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ThermalEvent removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.ThermalStandby removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.TraceApplicationPowerMessage removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.TraceApplicationPowerMessageEnd removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.TraceServicePowerMessage removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.UpdateBlackBoxRecorder removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.UserPresence removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.VerifyProcessorPowerPolicyAc removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.VerifyProcessorPowerPolicyDc removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.VerifySystemPolicyAc removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.VerifySystemPolicyDc removed
+Windows.Wdk.System.SystemServices.POWER_INFORMATION_LEVEL.WakeTimerList removed
+Windows.Wdk.System.SystemServices.POWER_SETTING_ALTITUDE removed
+Windows.Wdk.System.SystemServices.POWER_SETTING_ALTITUDE.ALTITUDE_GROUP_POLICY removed
+Windows.Wdk.System.SystemServices.POWER_SETTING_ALTITUDE.ALTITUDE_INTERNAL_OVERRIDE removed
+Windows.Wdk.System.SystemServices.POWER_SETTING_ALTITUDE.ALTITUDE_OEM_CUSTOMIZATION removed
+Windows.Wdk.System.SystemServices.POWER_SETTING_ALTITUDE.ALTITUDE_OS_DEFAULT removed
+Windows.Wdk.System.SystemServices.POWER_SETTING_ALTITUDE.ALTITUDE_PROVISIONING removed
+Windows.Wdk.System.SystemServices.POWER_SETTING_ALTITUDE.ALTITUDE_RUNTIME_OVERRIDE removed
+Windows.Wdk.System.SystemServices.POWER_SETTING_ALTITUDE.ALTITUDE_USER removed
+Windows.Wdk.System.SystemServices.SET_POWER_SETTING_VALUE removed
+# Corrected struct exclusions for #33.
+Windows.Wdk.Storage.FileSystem.ACCESS_ALLOWED_ACE removed
+Windows.Wdk.Storage.FileSystem.ACCESS_DENIED_ACE removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonAllowedAce removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonAllowedParentAce removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonDeniedAce removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonDeniedParentAce removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonEmptyDacl removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonFilterAce removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonFromPrivilege removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonIntegrityLevel removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonMissingPrivilege removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonNoGrant removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonNone removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonNoSD removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonNotGrantedByCape removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonNotGrantedByParentCape removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonNotGrantedToAppContainer removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonNullDacl removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonOwnership removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASON_TYPE.AccessReasonTrustLabel removed
+Windows.Wdk.Storage.FileSystem.ACCESS_REASONS removed
+Windows.Wdk.Storage.FileSystem.ASYNC_DUPLICATE_EXTENTS_STATUS removed
+Windows.Wdk.Storage.FileSystem.AUDIT_EVENT_TYPE removed
+Windows.Wdk.Storage.FileSystem.CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE removed
+Windows.Wdk.Storage.FileSystem.CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE removed
+Windows.Wdk.Storage.FileSystem.CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1 removed
+Windows.Wdk.Storage.FileSystem.CLAIM_SECURITY_ATTRIBUTE_V1 removed
+Windows.Wdk.Storage.FileSystem.CLAIM_SECURITY_ATTRIBUTES_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.CLUSTER_RANGE removed
+Windows.Wdk.Storage.FileSystem.CREATE_REDIRECTION_ECP_CONTEXT.FileId...Windows.Wdk.Storage.FileSystem.FILE_ID_128 => Windows.Win32.Storage.FileSystem.FILE_ID_128
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlDisableCaching removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlEnableCaching removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlEnableUSNRangeModificationTracking removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlGetCsvFsMdsPathV2 removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlMarkHandleLocalVolumeMount removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlQueryFileRevision removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlQueryFileRevisionFileId128 removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlQueryMdsPath removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlQueryMdsPathNoPause removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlQueryRedirectState removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlQueryVolumeId removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlQueryVolumeRedirectState removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlSetVolumeId removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlStartForceDFO removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlStartRedirectFile removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlStopForceDFO removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlStopRedirectFile removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_OP.CsvControlUnmarkHandleLocalVolumeMount removed
+Windows.Wdk.Storage.FileSystem.CSV_CONTROL_PARAM removed
+Windows.Wdk.Storage.FileSystem.CSV_IS_OWNED_BY_CSVFS removed
+Windows.Wdk.Storage.FileSystem.CSV_MGMT_LOCK removed
+Windows.Wdk.Storage.FileSystem.CSV_NAMESPACE_INFO removed
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_FILE_REVISION removed
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_FILE_REVISION_ECP_CONTEXT_FILE_ID_128.FileId...Windows.Wdk.Storage.FileSystem.FILE_ID_128 => Windows.Win32.Storage.FileSystem.FILE_ID_128
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_FILE_REVISION_FILE_ID_128 removed
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_MDS_PATH removed
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_MDS_PATH_V2 removed
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_REDIRECT_STATE removed
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_VETO_FILE_DIRECT_IO_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_VOLUME_ID removed
+Windows.Wdk.Storage.FileSystem.CSV_QUERY_VOLUME_REDIRECT_STATE removed
+Windows.Wdk.Storage.FileSystem.CSV_SET_VOLUME_ID removed
+Windows.Wdk.Storage.FileSystem.CSVFS_DISK_CONNECTIVITY removed
+Windows.Wdk.Storage.FileSystem.CSVFS_DISK_CONNECTIVITY.CsvFsDiskConnectivityAllNodes removed
+Windows.Wdk.Storage.FileSystem.CSVFS_DISK_CONNECTIVITY.CsvFsDiskConnectivityMdsNodeOnly removed
+Windows.Wdk.Storage.FileSystem.CSVFS_DISK_CONNECTIVITY.CsvFsDiskConnectivityNone removed
+Windows.Wdk.Storage.FileSystem.CSVFS_DISK_CONNECTIVITY.CsvFsDiskConnectivitySubsetOfNodes removed
+Windows.Wdk.Storage.FileSystem.DECRYPTION_STATUS_BUFFER removed
+Windows.Wdk.Storage.FileSystem.DUPLICATE_EXTENTS_DATA removed
+Windows.Wdk.Storage.FileSystem.DUPLICATE_EXTENTS_DATA_EX removed
+Windows.Wdk.Storage.FileSystem.DUPLICATE_EXTENTS_STATE removed
+Windows.Wdk.Storage.FileSystem.DUPLICATE_EXTENTS_STATE.FileSnapStateInactive removed
+Windows.Wdk.Storage.FileSystem.DUPLICATE_EXTENTS_STATE.FileSnapStateSource removed
+Windows.Wdk.Storage.FileSystem.DUPLICATE_EXTENTS_STATE.FileSnapStateTarget removed
+Windows.Wdk.Storage.FileSystem.ENCRYPTED_DATA_INFO removed
+Windows.Wdk.Storage.FileSystem.ENCRYPTION_BUFFER removed
+Windows.Wdk.Storage.FileSystem.ENCRYPTION_KEY_CTRL_INPUT removed
+Windows.Wdk.Storage.FileSystem.EXFAT_STATISTICS removed
+Windows.Wdk.Storage.FileSystem.EXTENDED_ENCRYPTED_DATA_INFO removed
+Windows.Wdk.Storage.FileSystem.FAT_STATISTICS removed
+Windows.Wdk.Storage.FileSystem.FILE_ALLOCATED_RANGE_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FILE_DESIRED_STORAGE_CLASS_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.FILE_FS_PERSISTENT_VOLUME_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.FILE_ID_128 removed
+Windows.Wdk.Storage.FileSystem.FILE_ID_EXTD_BOTH_DIR_INFORMATION.FileId...Windows.Wdk.Storage.FileSystem.FILE_ID_128 => Windows.Win32.Storage.FileSystem.FILE_ID_128
+Windows.Wdk.Storage.FileSystem.FILE_ID_EXTD_DIR_INFORMATION.FileId...Windows.Wdk.Storage.FileSystem.FILE_ID_128 => Windows.Win32.Storage.FileSystem.FILE_ID_128
+Windows.Wdk.Storage.FileSystem.FILE_ID_INFORMATION.FileId...Windows.Wdk.Storage.FileSystem.FILE_ID_128 => Windows.Win32.Storage.FileSystem.FILE_ID_128
+Windows.Wdk.Storage.FileSystem.FILE_INITIATE_REPAIR_OUTPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FILE_LAYOUT_ENTRY removed
+Windows.Wdk.Storage.FileSystem.FILE_LAYOUT_INFO_ENTRY removed
+Windows.Wdk.Storage.FileSystem.FILE_LAYOUT_NAME_ENTRY removed
+Windows.Wdk.Storage.FileSystem.FILE_LEVEL_TRIM removed
+Windows.Wdk.Storage.FileSystem.FILE_LEVEL_TRIM_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.FILE_LEVEL_TRIM_RANGE removed
+Windows.Wdk.Storage.FileSystem.FILE_LINK_ENTRY_FULL_ID_INFORMATION.ParentFileId...Windows.Wdk.Storage.FileSystem.FILE_ID_128 => Windows.Win32.Storage.FileSystem.FILE_ID_128
+Windows.Wdk.Storage.FileSystem.FILE_MAKE_COMPATIBLE_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_EXTENDED_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_FULL_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.FILE_NOTIFY_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.FILE_OBJECTID_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FILE_PREFETCH removed
+Windows.Wdk.Storage.FileSystem.FILE_PREFETCH_EX removed
+Windows.Wdk.Storage.FileSystem.FILE_PROVIDER_EXTERNAL_INFO_V0 removed
+Windows.Wdk.Storage.FileSystem.FILE_PROVIDER_EXTERNAL_INFO_V1 removed
+Windows.Wdk.Storage.FileSystem.FILE_QUERY_ON_DISK_VOL_INFO_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FILE_QUERY_SPARING_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FILE_REFERENCE_RANGE removed
+Windows.Wdk.Storage.FileSystem.FILE_REGION_INFO removed
+Windows.Wdk.Storage.FileSystem.FILE_REGION_INPUT removed
+Windows.Wdk.Storage.FileSystem.FILE_REGION_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.FILE_SET_DEFECT_MGMT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FILE_SET_SPARSE_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_RESERVE_ID_INFORMATION.StorageReserveId...Windows.Wdk.Storage.FileSystem.STORAGE_RESERVE_ID => Windows.Win32.System.Ioctl.STORAGE_RESERVE_ID
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_CLASS removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_CLASS.FileStorageTierClassCapacity removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_CLASS.FileStorageTierClassMax removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_CLASS.FileStorageTierClassPerformance removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_CLASS.FileStorageTierClassUnspecified removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_MEDIA_TYPE removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_MEDIA_TYPE.FileStorageTierMediaTypeDisk removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_MEDIA_TYPE.FileStorageTierMediaTypeMax removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_MEDIA_TYPE.FileStorageTierMediaTypeScm removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_MEDIA_TYPE.FileStorageTierMediaTypeSsd removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_MEDIA_TYPE.FileStorageTierMediaTypeUnspecified removed
+Windows.Wdk.Storage.FileSystem.FILE_STORAGE_TIER_REGION removed
+Windows.Wdk.Storage.FileSystem.FILE_SYSTEM_RECOGNITION_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.FILE_TYPE_NOTIFICATION_INPUT removed
+Windows.Wdk.Storage.FileSystem.FILE_ZERO_DATA_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.FILE_ZERO_DATA_INFORMATION_EX removed
+Windows.Wdk.Storage.FileSystem.FILESYSTEM_STATISTICS removed
+Windows.Wdk.Storage.FileSystem.FILESYSTEM_STATISTICS_EX removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_INFLAGS removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_INPUT.InFlags...Windows.Wdk.Storage.FileSystem.FS_BPIO_INFLAGS => Windows.Win32.System.Ioctl.FS_BPIO_INFLAGS
+Windows.Wdk.Storage.FileSystem.FS_BPIO_INPUT.Operation...Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS => Windows.Win32.System.Ioctl.FS_BPIO_OPERATIONS
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_DISABLE removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_ENABLE removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_GET_INFO removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_MAX_OPERATION removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_QUERY removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_STREAM_PAUSE removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_STREAM_RESUME removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_VOLUME_STACK_PAUSE removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OPERATIONS.FS_BPIO_OP_VOLUME_STACK_RESUME removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OUTFLAGS removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OUTFLAGS.FSBPIO_OUTFL_COMPATIBLE_STORAGE_DRIVER removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OUTFLAGS.FSBPIO_OUTFL_FILTER_ATTACH_BLOCKED removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OUTFLAGS.FSBPIO_OUTFL_None removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OUTFLAGS.FSBPIO_OUTFL_STREAM_BYPASS_PAUSED removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OUTFLAGS.FSBPIO_OUTFL_VOLUME_STACK_BYPASS_PAUSED removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.FS_BPIO_RESULTS removed
+Windows.Wdk.Storage.FileSystem.FSCTL_GET_INTEGRITY_INFORMATION_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FSCTL_OFFLOAD_READ_INPUT removed
+Windows.Wdk.Storage.FileSystem.FSCTL_OFFLOAD_READ_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.FSCTL_OFFLOAD_WRITE_INPUT removed
+Windows.Wdk.Storage.FileSystem.FSCTL_OFFLOAD_WRITE_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_FAT_BPB_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_REGION_INFO_INPUT removed
+Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_REGION_INFO_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.FSCTL_QUERY_STORAGE_CLASSES_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.FSCTL_SET_INTEGRITY_INFORMATION_BUFFER removed
+Windows.Wdk.Storage.FileSystem.FSCTL_SET_INTEGRITY_INFORMATION_BUFFER_EX removed
+Windows.Wdk.Storage.FileSystem.GET_FILTER_FILE_IDENTIFIER_INPUT removed
+Windows.Wdk.Storage.FileSystem.GET_FILTER_FILE_IDENTIFIER_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.IO_IRP_EXT_TRACK_OFFSET_HEADER removed
+Windows.Wdk.Storage.FileSystem.LMR_QUERY_INFO_CLASS removed
+Windows.Wdk.Storage.FileSystem.LMR_QUERY_INFO_CLASS.LMRQuerySessionInfo removed
+Windows.Wdk.Storage.FileSystem.LMR_QUERY_INFO_PARAM removed
+Windows.Wdk.Storage.FileSystem.LMR_QUERY_SESSION_INFO removed
+Windows.Wdk.Storage.FileSystem.LOOKUP_STREAM_FROM_CLUSTER_ENTRY removed
+Windows.Wdk.Storage.FileSystem.LOOKUP_STREAM_FROM_CLUSTER_INPUT removed
+Windows.Wdk.Storage.FileSystem.LOOKUP_STREAM_FROM_CLUSTER_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.MANDATORY_LEVEL removed
+Windows.Wdk.Storage.FileSystem.MANDATORY_LEVEL.MandatoryLevelCount removed
+Windows.Wdk.Storage.FileSystem.MANDATORY_LEVEL.MandatoryLevelHigh removed
+Windows.Wdk.Storage.FileSystem.MANDATORY_LEVEL.MandatoryLevelLow removed
+Windows.Wdk.Storage.FileSystem.MANDATORY_LEVEL.MandatoryLevelMedium removed
+Windows.Wdk.Storage.FileSystem.MANDATORY_LEVEL.MandatoryLevelSecureProcess removed
+Windows.Wdk.Storage.FileSystem.MANDATORY_LEVEL.MandatoryLevelSystem removed
+Windows.Wdk.Storage.FileSystem.MANDATORY_LEVEL.MandatoryLevelUntrusted removed
+Windows.Wdk.Storage.FileSystem.MARK_HANDLE_INFO removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_AV_PAIR removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_CREDENTIAL_KEY removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_CREDENTIAL_KEY_TYPE removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_CREDENTIAL_KEY_TYPE.DeprecatedIUMCredKey removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_CREDENTIAL_KEY_TYPE.DomainUserCredKey removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_CREDENTIAL_KEY_TYPE.ExternallySuppliedCredKey removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_CREDENTIAL_KEY_TYPE.InvalidCredKey removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_CREDENTIAL_KEY_TYPE.LocalUserCredKey removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_ENUMUSERS_REQUEST.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_ENUMUSERS_RESPONSE.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_GETCHALLENRESP_REQUEST_V1.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_GETCHALLENRESP_REQUEST.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_GETCHALLENRESP_RESPONSE.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_GETUSERINFO_REQUEST.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_GETUSERINFO_RESPONSE.LogonType...Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE => Windows.Win32.Security.Authentication.Identity.SECURITY_LOGON_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_GETUSERINFO_RESPONSE.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_INTERACTIVE_LOGON removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_INTERACTIVE_PROFILE removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_IUM_SUPPLEMENTAL_CREDENTIAL removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LM20_CHALLENGE_REQUEST.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_LM20_CHALLENGE_RESPONSE.MessageType...Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE => Windows.Win32.Security.Authentication.Identity.MSV1_0_PROTOCOL_MESSAGE_TYPE
+Windows.Wdk.Storage.FileSystem.MSV1_0_LM20_LOGON removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LM20_LOGON_PROFILE removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0InteractiveLogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0Lm20Logon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0LuidLogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0NetworkLogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0NoElevationLogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0S4ULogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0SubAuthLogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0VirtualLogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_LOGON_SUBMIT_TYPE.MsV1_0WorkstationUnlockLogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_NTLM3_RESPONSE removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROFILE_BUFFER_TYPE removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROFILE_BUFFER_TYPE.MsV1_0InteractiveProfile removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROFILE_BUFFER_TYPE.MsV1_0Lm20LogonProfile removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROFILE_BUFFER_TYPE.MsV1_0SmartCardProfile removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0CacheLogon removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0CacheLookup removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0CacheLookupEx removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0ChangeCachedPassword removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0ChangePassword removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0ClearCachedCredentials removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0ConfigLocalAliases removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0DecryptDpapiMasterKey removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0DeleteTbalSecrets removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0DeriveCredential removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0EnumerateUsers removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0GenericPassthrough removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0GetCredentialKey removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0GetStrongCredentialKey removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0GetUserInfo removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0Lm20ChallengeRequest removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0Lm20GetChallengeResponse removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0LookupToken removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0ProvisionTbal removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0ReLogonUsers removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0SetProcessOption removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0SetThreadOption removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0SubAuth removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0TransferCred removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_PROTOCOL_MESSAGE_TYPE.MsV1_0ValidateAuth removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_REMOTE_SUPPLEMENTAL_CREDENTIAL removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_S4U_LOGON removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_SUBAUTH_LOGON removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_SUPPLEMENTAL_CREDENTIAL removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_SUPPLEMENTAL_CREDENTIAL_V2 removed
+Windows.Wdk.Storage.FileSystem.MSV1_0_SUPPLEMENTAL_CREDENTIAL_V3 removed
+Windows.Wdk.Storage.FileSystem.NETWORK_APP_INSTANCE_EA removed
+Windows.Wdk.Storage.FileSystem.NTFS_STATISTICS removed
+Windows.Wdk.Storage.FileSystem.NTFS_STATISTICS_EX removed
+Windows.Wdk.Storage.FileSystem.OBJECT_INFORMATION_CLASS removed
+Windows.Wdk.Storage.FileSystem.OBJECT_INFORMATION_CLASS.ObjectBasicInformation removed
+Windows.Wdk.Storage.FileSystem.OBJECT_INFORMATION_CLASS.ObjectTypeInformation removed
+Windows.Wdk.Storage.FileSystem.OBJECT_TYPE_LIST removed
+Windows.Wdk.Storage.FileSystem.PATHNAME_BUFFER removed
+Windows.Wdk.Storage.FileSystem.PLEX_READ_DATA_REQUEST removed
+Windows.Wdk.Storage.FileSystem.PUBLIC_OBJECT_BASIC_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.PUBLIC_OBJECT_TYPE_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_INPUT_RANGE removed
+Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_INPUT.Ranges...Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_INPUT_RANGE[] => Windows.Win32.System.Ioctl.QUERY_BAD_RANGES_INPUT_RANGE[]
+Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.QUERY_BAD_RANGES_OUTPUT_RANGE removed
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_FILTER_TYPE removed
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_FILTER_TYPE.QUERY_FILE_LAYOUT_FILTER_TYPE_CLUSTERS removed
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_FILTER_TYPE.QUERY_FILE_LAYOUT_FILTER_TYPE_FILEID removed
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_FILTER_TYPE.QUERY_FILE_LAYOUT_FILTER_TYPE_NONE removed
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_FILTER_TYPE.QUERY_FILE_LAYOUT_FILTER_TYPE_STORAGE_RESERVE_ID removed
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_INPUT removed
+Windows.Wdk.Storage.FileSystem.QUERY_FILE_LAYOUT_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.REARRANGE_FILE_DATA removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_ACTION removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_ACTION.SmrGcActionPause removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_ACTION.SmrGcActionStart removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_ACTION.SmrGcActionStartFullSpeed removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_ACTION.SmrGcActionStop removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_METHOD removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_METHOD.SmrGcMethodCompaction removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_METHOD.SmrGcMethodCompression removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_METHOD.SmrGcMethodRotation removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_PARAMETERS removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_STATE removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_STATE.SmrGcStateActive removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_STATE.SmrGcStateActiveFullSpeed removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_STATE.SmrGcStateInactive removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_GC_STATE.SmrGcStatePaused removed
+Windows.Wdk.Storage.FileSystem.REFS_SMR_VOLUME_INFO_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.REPAIR_COPIES_INPUT removed
+Windows.Wdk.Storage.FileSystem.REPAIR_COPIES_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.REPARSE_DATA_BUFFER_EX._Anonymous_e__Union.ReparseGuidDataBuffer...Windows.Wdk.Storage.FileSystem.REPARSE_GUID_DATA_BUFFER => Windows.Win32.Storage.FileSystem.REPARSE_GUID_DATA_BUFFER
+Windows.Wdk.Storage.FileSystem.REPARSE_GUID_DATA_BUFFER removed
+Windows.Wdk.Storage.FileSystem.REQUEST_OPLOCK_INPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.REQUEST_OPLOCK_OUTPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.REQUEST_RAW_ENCRYPTED_DATA removed
+Windows.Wdk.Storage.FileSystem.RETRIEVAL_POINTER_BASE removed
+Windows.Wdk.Storage.FileSystem.SCRUB_DATA_INPUT removed
+Windows.Wdk.Storage.FileSystem.SCRUB_DATA_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.SCRUB_PARITY_EXTENT removed
+Windows.Wdk.Storage.FileSystem.SCRUB_PARITY_EXTENT_DATA removed
+Windows.Wdk.Storage.FileSystem.SD_CHANGE_MACHINE_SID_INPUT removed
+Windows.Wdk.Storage.FileSystem.SD_CHANGE_MACHINE_SID_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.SD_ENUM_SDS_ENTRY removed
+Windows.Wdk.Storage.FileSystem.SD_ENUM_SDS_INPUT removed
+Windows.Wdk.Storage.FileSystem.SD_ENUM_SDS_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.SD_GLOBAL_CHANGE_INPUT removed
+Windows.Wdk.Storage.FileSystem.SD_GLOBAL_CHANGE_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.SD_QUERY_STATS_INPUT removed
+Windows.Wdk.Storage.FileSystem.SD_QUERY_STATS_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.SE_ACCESS_REPLY removed
+Windows.Wdk.Storage.FileSystem.SE_ACCESS_REQUEST removed
+Windows.Wdk.Storage.FileSystem.SE_AUDIT_INFO.AuditType...Windows.Wdk.Storage.FileSystem.AUDIT_EVENT_TYPE => Windows.Win32.Security.AUDIT_EVENT_TYPE
+Windows.Wdk.Storage.FileSystem.SE_SECURITY_DESCRIPTOR removed
+Windows.Wdk.Storage.FileSystem.SE_SID removed
+Windows.Wdk.Storage.FileSystem.SE_TOKEN_USER removed
+Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOL_LIST removed
+Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOL_NEGOTIATION_EXT removed
+Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOL_NEGOTIATION_EXT.SecApplicationProtocolNegotiationExt_ALPN removed
+Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOL_NEGOTIATION_EXT.SecApplicationProtocolNegotiationExt_None removed
+Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOL_NEGOTIATION_EXT.SecApplicationProtocolNegotiationExt_NPN removed
+Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOLS.ProtocolLists...Windows.Wdk.Storage.FileSystem.SEC_APPLICATION_PROTOCOL_LIST[] => Windows.Win32.Security.Authentication.Identity.SEC_APPLICATION_PROTOCOL_LIST[]
+Windows.Wdk.Storage.FileSystem.SEC_CERTIFICATE_REQUEST_CONTEXT removed
+Windows.Wdk.Storage.FileSystem.SEC_CHANNEL_BINDINGS removed
+Windows.Wdk.Storage.FileSystem.SEC_PRESHAREDKEY_IDENTITY removed
+Windows.Wdk.Storage.FileSystem.SEC_SRTP_PROTECTION_PROFILES removed
+Windows.Wdk.Storage.FileSystem.SEC_TOKEN_BINDING removed
+Windows.Wdk.Storage.FileSystem.SEC_TRAFFIC_SECRET_TYPE removed
+Windows.Wdk.Storage.FileSystem.SEC_TRAFFIC_SECRET_TYPE.SecTrafficSecret_Client removed
+Windows.Wdk.Storage.FileSystem.SEC_TRAFFIC_SECRET_TYPE.SecTrafficSecret_None removed
+Windows.Wdk.Storage.FileSystem.SEC_TRAFFIC_SECRET_TYPE.SecTrafficSecret_Server removed
+Windows.Wdk.Storage.FileSystem.SEC_TRAFFIC_SECRETS removed
+Windows.Wdk.Storage.FileSystem.SEC_WINNT_AUTH_IDENTITY_EX2 removed
+Windows.Wdk.Storage.FileSystem.SEC_WINNT_AUTH_IDENTITY_EXW removed
+Windows.Wdk.Storage.FileSystem.SEC_WINNT_AUTH_IDENTITY_W removed
+Windows.Wdk.Storage.FileSystem.SECPKG_CRED_CLASS removed
+Windows.Wdk.Storage.FileSystem.SECPKG_CRED_CLASS.SecPkgCredClass_Ephemeral removed
+Windows.Wdk.Storage.FileSystem.SECPKG_CRED_CLASS.SecPkgCredClass_Explicit removed
+Windows.Wdk.Storage.FileSystem.SECPKG_CRED_CLASS.SecPkgCredClass_None removed
+Windows.Wdk.Storage.FileSystem.SECPKG_CRED_CLASS.SecPkgCredClass_PersistedGeneric removed
+Windows.Wdk.Storage.FileSystem.SECPKG_CRED_CLASS.SecPkgCredClass_PersistedSpecific removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_AuthorityW removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_CredentialNameW removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_CredInfo removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_DceInfo removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_Flags removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_KeyInfoW removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_Lifespan removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_LogoffTime removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_NamesW removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_NegoKeys removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_NegoPackageInfo removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_NegoStatus removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_NegotiationInfoW removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_PackageInfoW removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_PasswordExpiry removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_ProtoInfoW removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_SessionKey removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_Sizes removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_StreamSizes removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_SubjectAttributes removed
+Windows.Wdk.Storage.FileSystem.SecPkgContext_UserFlags removed
+Windows.Wdk.Storage.FileSystem.SecPkgCredentials_Cert removed
+Windows.Wdk.Storage.FileSystem.SecPkgCredentials_KdcProxySettingsW removed
+Windows.Wdk.Storage.FileSystem.SecPkgCredentials_NamesW removed
+Windows.Wdk.Storage.FileSystem.SecPkgCredentials_SSIProviderW removed
+Windows.Wdk.Storage.FileSystem.SecPkgInfoW removed
+Windows.Wdk.Storage.FileSystem.SECURITY_CLIENT_CONTEXT.ClientTokenControl...Windows.Wdk.Storage.FileSystem.TOKEN_CONTROL => Windows.Win32.Security.TOKEN_CONTROL
+Windows.Wdk.Storage.FileSystem.SECURITY_DESCRIPTOR removed
+Windows.Wdk.Storage.FileSystem.SECURITY_DESCRIPTOR_RELATIVE removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.Batch removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.CachedInteractive removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.CachedRemoteInteractive removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.CachedUnlock removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.Interactive removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.Network removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.NetworkCleartext removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.NewCredentials removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.Proxy removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.RemoteInteractive removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.Service removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.UndefinedLogonType removed
+Windows.Wdk.Storage.FileSystem.SECURITY_LOGON_TYPE.Unlock removed
+Windows.Wdk.Storage.FileSystem.SECURITY_OBJECT_AI_PARAMS removed
+Windows.Wdk.Storage.FileSystem.SECURITY_USER_DATA removed
+Windows.Wdk.Storage.FileSystem.SET_DAX_ALLOC_ALIGNMENT_HINT_INPUT removed
+Windows.Wdk.Storage.FileSystem.SET_PURGE_FAILURE_MODE_INPUT removed
+Windows.Wdk.Storage.FileSystem.SHARED_VIRTUAL_DISK_SUPPORT removed
+Windows.Wdk.Storage.FileSystem.SHRINK_VOLUME_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.SHRINK_VOLUME_REQUEST_TYPES removed
+Windows.Wdk.Storage.FileSystem.SHRINK_VOLUME_REQUEST_TYPES.ShrinkAbort removed
+Windows.Wdk.Storage.FileSystem.SHRINK_VOLUME_REQUEST_TYPES.ShrinkCommit removed
+Windows.Wdk.Storage.FileSystem.SHRINK_VOLUME_REQUEST_TYPES.ShrinkPrepare removed
+Windows.Wdk.Storage.FileSystem.SHUFFLE_FILE_DATA removed
+Windows.Wdk.Storage.FileSystem.SI_COPYFILE removed
+Windows.Wdk.Storage.FileSystem.SID_AND_ATTRIBUTES removed
+Windows.Wdk.Storage.FileSystem.SID_AND_ATTRIBUTES_HASH removed
+Windows.Wdk.Storage.FileSystem.SID_IDENTIFIER_AUTHORITY removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeAlias removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeComputer removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeDeletedAccount removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeDomain removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeGroup removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeInvalid removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeLabel removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeLogonSession removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeUnknown removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeUser removed
+Windows.Wdk.Storage.FileSystem.SID_NAME_USE.SidTypeWellKnownGroup removed
+Windows.Wdk.Storage.FileSystem.SMB_SHARE_FLUSH_AND_PURGE_INPUT removed
+Windows.Wdk.Storage.FileSystem.SMB_SHARE_FLUSH_AND_PURGE_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.STORAGE_QUERY_DEPENDENT_VOLUME_LEV1_ENTRY removed
+Windows.Wdk.Storage.FileSystem.STORAGE_QUERY_DEPENDENT_VOLUME_LEV2_ENTRY removed
+Windows.Wdk.Storage.FileSystem.STORAGE_QUERY_DEPENDENT_VOLUME_REQUEST removed
+Windows.Wdk.Storage.FileSystem.STORAGE_QUERY_DEPENDENT_VOLUME_RESPONSE removed
+Windows.Wdk.Storage.FileSystem.STORAGE_RESERVE_ID removed
+Windows.Wdk.Storage.FileSystem.STORAGE_RESERVE_ID.StorageReserveIdHard removed
+Windows.Wdk.Storage.FileSystem.STORAGE_RESERVE_ID.StorageReserveIdMax removed
+Windows.Wdk.Storage.FileSystem.STORAGE_RESERVE_ID.StorageReserveIdNone removed
+Windows.Wdk.Storage.FileSystem.STORAGE_RESERVE_ID.StorageReserveIdSoft removed
+Windows.Wdk.Storage.FileSystem.STORAGE_RESERVE_ID.StorageReserveIdUpdateScratch removed
+Windows.Wdk.Storage.FileSystem.STREAM_EXTENT_ENTRY removed
+Windows.Wdk.Storage.FileSystem.STREAM_INFORMATION_ENTRY removed
+Windows.Wdk.Storage.FileSystem.STREAM_LAYOUT_ENTRY removed
+Windows.Wdk.Storage.FileSystem.STREAMS_ASSOCIATE_ID_INPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.STREAMS_QUERY_ID_OUTPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.STREAMS_QUERY_PARAMETERS_OUTPUT_BUFFER removed
+Windows.Wdk.Storage.FileSystem.SYSTEM_ACCESS_FILTER_ACE removed
+Windows.Wdk.Storage.FileSystem.SYSTEM_ALARM_ACE removed
+Windows.Wdk.Storage.FileSystem.SYSTEM_AUDIT_ACE removed
+Windows.Wdk.Storage.FileSystem.SYSTEM_MANDATORY_LABEL_ACE removed
+Windows.Wdk.Storage.FileSystem.SYSTEM_RESOURCE_ATTRIBUTE_ACE removed
+Windows.Wdk.Storage.FileSystem.SYSTEM_SCOPED_POLICY_ID_ACE removed
+Windows.Wdk.Storage.FileSystem.TOKEN_ACCESS_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.TOKEN_APPCONTAINER_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.TOKEN_AUDIT_POLICY removed
+Windows.Wdk.Storage.FileSystem.TOKEN_BNO_ISOLATION_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.TOKEN_CONTROL removed
+Windows.Wdk.Storage.FileSystem.TOKEN_DEFAULT_DACL removed
+Windows.Wdk.Storage.FileSystem.TOKEN_DEVICE_CLAIMS removed
+Windows.Wdk.Storage.FileSystem.TOKEN_ELEVATION removed
+Windows.Wdk.Storage.FileSystem.TOKEN_ELEVATION_TYPE removed
+Windows.Wdk.Storage.FileSystem.TOKEN_ELEVATION_TYPE.TokenElevationTypeDefault removed
+Windows.Wdk.Storage.FileSystem.TOKEN_ELEVATION_TYPE.TokenElevationTypeFull removed
+Windows.Wdk.Storage.FileSystem.TOKEN_ELEVATION_TYPE.TokenElevationTypeLimited removed
+Windows.Wdk.Storage.FileSystem.TOKEN_GROUPS removed
+Windows.Wdk.Storage.FileSystem.TOKEN_GROUPS_AND_PRIVILEGES removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.MaxTokenInfoClass removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenAccessInformation removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenAppContainerNumber removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenAppContainerSid removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenAuditPolicy removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenBnoIsolation removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenCapabilities removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenChildProcessFlags removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenDefaultDacl removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenDeviceClaimAttributes removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenDeviceGroups removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenElevation removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenElevationType removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenGroups removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenGroupsAndPrivileges removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenHasRestrictions removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenImpersonationLevel removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenIntegrityLevel removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenIsAppContainer removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenIsAppSilo removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenIsLessPrivilegedAppContainer removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenIsRestricted removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenIsSandboxed removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenLinkedToken removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenLogonSid removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenMandatoryPolicy removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenOrigin removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenOwner removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenPrimaryGroup removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenPrivateNameSpace removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenPrivileges removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenProcessTrustLevel removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenRestrictedDeviceClaimAttributes removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenRestrictedDeviceGroups removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenRestrictedSids removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenRestrictedUserClaimAttributes removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenSandBoxInert removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenSecurityAttributes removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenSessionId removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenSessionReference removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenSingletonAttributes removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenSource removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenStatistics removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenType removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenUIAccess removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenUser removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenUserClaimAttributes removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenVirtualizationAllowed removed
+Windows.Wdk.Storage.FileSystem.TOKEN_INFORMATION_CLASS.TokenVirtualizationEnabled removed
+Windows.Wdk.Storage.FileSystem.TOKEN_LINKED_TOKEN removed
+Windows.Wdk.Storage.FileSystem.TOKEN_MANDATORY_LABEL removed
+Windows.Wdk.Storage.FileSystem.TOKEN_MANDATORY_POLICY removed
+Windows.Wdk.Storage.FileSystem.TOKEN_ORIGIN removed
+Windows.Wdk.Storage.FileSystem.TOKEN_OWNER removed
+Windows.Wdk.Storage.FileSystem.TOKEN_PRIMARY_GROUP removed
+Windows.Wdk.Storage.FileSystem.TOKEN_PRIVILEGES removed
+Windows.Wdk.Storage.FileSystem.TOKEN_SID_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.TOKEN_SOURCE removed
+Windows.Wdk.Storage.FileSystem.TOKEN_STATISTICS removed
+Windows.Wdk.Storage.FileSystem.TOKEN_TYPE removed
+Windows.Wdk.Storage.FileSystem.TOKEN_TYPE.TokenImpersonation removed
+Windows.Wdk.Storage.FileSystem.TOKEN_TYPE.TokenPrimary removed
+Windows.Wdk.Storage.FileSystem.TOKEN_USER removed
+Windows.Wdk.Storage.FileSystem.TOKEN_USER_CLAIMS removed
+Windows.Wdk.Storage.FileSystem.TXFS_CREATE_MINIVERSION_INFO removed
+Windows.Wdk.Storage.FileSystem.TXFS_GET_METADATA_INFO_OUT removed
+Windows.Wdk.Storage.FileSystem.TXFS_GET_TRANSACTED_VERSION removed
+Windows.Wdk.Storage.FileSystem.TXFS_LIST_TRANSACTION_LOCKED_FILES removed
+Windows.Wdk.Storage.FileSystem.TXFS_LIST_TRANSACTION_LOCKED_FILES_ENTRY removed
+Windows.Wdk.Storage.FileSystem.TXFS_LIST_TRANSACTIONS removed
+Windows.Wdk.Storage.FileSystem.TXFS_LIST_TRANSACTIONS_ENTRY removed
+Windows.Wdk.Storage.FileSystem.TXFS_MODIFY_RM removed
+Windows.Wdk.Storage.FileSystem.TXFS_QUERY_RM_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.TXFS_READ_BACKUP_INFORMATION_OUT removed
+Windows.Wdk.Storage.FileSystem.TXFS_ROLLFORWARD_REDO_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.TXFS_SAVEPOINT_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.TXFS_START_RM_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.TXFS_TRANSACTION_ACTIVE_INFO removed
+Windows.Wdk.Storage.FileSystem.TXFS_WRITE_BACKUP_INFORMATION removed
+Windows.Wdk.Storage.FileSystem.VIRTUAL_STORAGE_BEHAVIOR_CODE removed
+Windows.Wdk.Storage.FileSystem.VIRTUAL_STORAGE_BEHAVIOR_CODE.VirtualStorageBehaviorCacheWriteBack removed
+Windows.Wdk.Storage.FileSystem.VIRTUAL_STORAGE_BEHAVIOR_CODE.VirtualStorageBehaviorCacheWriteThrough removed
+Windows.Wdk.Storage.FileSystem.VIRTUAL_STORAGE_BEHAVIOR_CODE.VirtualStorageBehaviorRestartIoProcessing removed
+Windows.Wdk.Storage.FileSystem.VIRTUAL_STORAGE_BEHAVIOR_CODE.VirtualStorageBehaviorStopIoProcessing removed
+Windows.Wdk.Storage.FileSystem.VIRTUAL_STORAGE_BEHAVIOR_CODE.VirtualStorageBehaviorUndefined removed
+Windows.Wdk.Storage.FileSystem.VIRTUAL_STORAGE_SET_BEHAVIOR_INPUT removed
+Windows.Wdk.Storage.FileSystem.VIRTUAL_STORAGE_TYPE removed
+Windows.Wdk.Storage.FileSystem.VIRTUALIZATION_INSTANCE_INFO_INPUT removed
+Windows.Wdk.Storage.FileSystem.VIRTUALIZATION_INSTANCE_INFO_INPUT_EX removed
+Windows.Wdk.Storage.FileSystem.VIRTUALIZATION_INSTANCE_INFO_OUTPUT removed
+Windows.Wdk.Storage.FileSystem.WIM_PROVIDER_ADD_OVERLAY_INPUT removed
+Windows.Wdk.Storage.FileSystem.WIM_PROVIDER_EXTERNAL_INFO removed
+Windows.Wdk.Storage.FileSystem.WIM_PROVIDER_OVERLAY_ENTRY removed
+Windows.Wdk.Storage.FileSystem.WIM_PROVIDER_REMOVE_OVERLAY_INPUT removed
+Windows.Wdk.Storage.FileSystem.WIM_PROVIDER_SUSPEND_OVERLAY_INPUT removed
+Windows.Wdk.Storage.FileSystem.WIM_PROVIDER_UPDATE_OVERLAY_INPUT removed
+Windows.Wdk.Storage.FileSystem.WOF_EXTERNAL_FILE_ID removed
+Windows.Wdk.Storage.FileSystem.WOF_EXTERNAL_INFO removed
+Windows.Wdk.Storage.FileSystem.WOF_VERSION_INFO removed
+Windows.Wdk.Storage.FileSystem.WRITE_USN_REASON_INPUT removed
+Windows.Wdk.System.SystemServices.AER_BRIDGE_DESCRIPTOR_FLAGS removed
+Windows.Wdk.System.SystemServices.AER_ENDPOINT_DESCRIPTOR_FLAGS removed
+Windows.Wdk.System.SystemServices.AER_ROOTPORT_DESCRIPTOR_FLAGS removed
+Windows.Wdk.System.SystemServices.APPLICATIONLAUNCH_SETTING_VALUE removed
+Windows.Wdk.System.SystemServices.ARM64_NT_CONTEXT.V...Windows.Wdk.System.SystemServices.ARM64_NT_NEON128[] => Windows.Win32.System.Diagnostics.Debug.ARM64_NT_NEON128[]
+Windows.Wdk.System.SystemServices.ARM64_NT_NEON128 removed
+Windows.Wdk.System.SystemServices.CACHE_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.CACHE_RELATIONSHIP removed
+Windows.Wdk.System.SystemServices.CLFS_CONTEXT_MODE removed
+Windows.Wdk.System.SystemServices.CLFS_CONTEXT_MODE.ClfsContextForward removed
+Windows.Wdk.System.SystemServices.CLFS_CONTEXT_MODE.ClfsContextNone removed
+Windows.Wdk.System.SystemServices.CLFS_CONTEXT_MODE.ClfsContextPrevious removed
+Windows.Wdk.System.SystemServices.CLFS_CONTEXT_MODE.ClfsContextUndoNext removed
+Windows.Wdk.System.SystemServices.CLFS_IOSTATS_CLASS removed
+Windows.Wdk.System.SystemServices.CLFS_IOSTATS_CLASS.ClfsIoStatsDefault removed
+Windows.Wdk.System.SystemServices.CLFS_IOSTATS_CLASS.ClfsIoStatsMax removed
+Windows.Wdk.System.SystemServices.CLFS_LOG_ARCHIVE_MODE removed
+Windows.Wdk.System.SystemServices.CLFS_LOG_ARCHIVE_MODE.ClfsLogArchiveDisabled removed
+Windows.Wdk.System.SystemServices.CLFS_LOG_ARCHIVE_MODE.ClfsLogArchiveEnabled removed
+Windows.Wdk.System.SystemServices.CLFS_LOG_NAME_INFORMATION removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_NOTIFICATION removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_NOTIFICATION_TYPE removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_NOTIFICATION_TYPE.ClfsMgmtAdvanceTailNotification removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_NOTIFICATION_TYPE.ClfsMgmtLogFullHandlerNotification removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_NOTIFICATION_TYPE.ClfsMgmtLogUnpinnedNotification removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_NOTIFICATION_TYPE.ClfsMgmtLogWriteNotification removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyAutoGrow removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyAutoShrink removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyGrowthRate removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyInvalid removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyLogTail removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyMaximumSize removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyMinimumSize removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyNewContainerExtension removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyNewContainerPrefix removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyNewContainerSize removed
+Windows.Wdk.System.SystemServices.CLFS_MGMT_POLICY_TYPE.ClfsMgmtPolicyNewContainerSuffix removed
+Windows.Wdk.System.SystemServices.CLFS_NODE_ID removed
+Windows.Wdk.System.SystemServices.CLFS_PHYSICAL_LSN_INFORMATION removed
+Windows.Wdk.System.SystemServices.CLFS_STREAM_ID_INFORMATION removed
+Windows.Wdk.System.SystemServices.CLIENT_ID removed
+Windows.Wdk.System.SystemServices.CLS_ARCHIVE_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.CLS_CONTAINER_INFORMATION removed
+Windows.Wdk.System.SystemServices.CLS_CONTEXT_MODE removed
+Windows.Wdk.System.SystemServices.CLS_CONTEXT_MODE.ClsContextForward removed
+Windows.Wdk.System.SystemServices.CLS_CONTEXT_MODE.ClsContextNone removed
+Windows.Wdk.System.SystemServices.CLS_CONTEXT_MODE.ClsContextPrevious removed
+Windows.Wdk.System.SystemServices.CLS_CONTEXT_MODE.ClsContextUndoNext removed
+Windows.Wdk.System.SystemServices.CLS_INFORMATION removed
+Windows.Wdk.System.SystemServices.CLS_IO_STATISTICS removed
+Windows.Wdk.System.SystemServices.CLS_IO_STATISTICS_HEADER removed
+Windows.Wdk.System.SystemServices.CLS_IOSTATS_CLASS removed
+Windows.Wdk.System.SystemServices.CLS_IOSTATS_CLASS.ClsIoStatsDefault removed
+Windows.Wdk.System.SystemServices.CLS_IOSTATS_CLASS.ClsIoStatsMax removed
+Windows.Wdk.System.SystemServices.CLS_LOG_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.CLS_LOG_INFORMATION_CLASS.ClfsLogBasicInformation removed
+Windows.Wdk.System.SystemServices.CLS_LOG_INFORMATION_CLASS.ClfsLogBasicInformationPhysical removed
+Windows.Wdk.System.SystemServices.CLS_LOG_INFORMATION_CLASS.ClfsLogPhysicalLsnInformation removed
+Windows.Wdk.System.SystemServices.CLS_LOG_INFORMATION_CLASS.ClfsLogPhysicalNameInformation removed
+Windows.Wdk.System.SystemServices.CLS_LOG_INFORMATION_CLASS.ClfsLogStreamIdentifierInformation removed
+Windows.Wdk.System.SystemServices.CLS_LOG_INFORMATION_CLASS.ClfsLogSystemMarkingInformation removed
+Windows.Wdk.System.SystemServices.CLS_LSN removed
+Windows.Wdk.System.SystemServices.CLS_SCAN_CONTEXT removed
+Windows.Wdk.System.SystemServices.CLS_WRITE_ENTRY removed
+Windows.Wdk.System.SystemServices.CPU_SET_INFORMATION_TYPE removed
+Windows.Wdk.System.SystemServices.CPU_SET_INFORMATION_TYPE.CpuSetInformation removed
+Windows.Wdk.System.SystemServices.CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG removed
+Windows.Wdk.System.SystemServices.ENLISTMENT_BASIC_INFORMATION removed
+Windows.Wdk.System.SystemServices.ENLISTMENT_CRM_INFORMATION removed
+Windows.Wdk.System.SystemServices.ENLISTMENT_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.ENLISTMENT_INFORMATION_CLASS.EnlistmentBasicInformation removed
+Windows.Wdk.System.SystemServices.ENLISTMENT_INFORMATION_CLASS.EnlistmentCrmInformation removed
+Windows.Wdk.System.SystemServices.ENLISTMENT_INFORMATION_CLASS.EnlistmentRecoveryInformation removed
+Windows.Wdk.System.SystemServices.EXCEPTION_RECORD removed
+Windows.Wdk.System.SystemServices.EXCEPTION_RECORD32 removed
+Windows.Wdk.System.SystemServices.EXCEPTION_RECORD64 removed
+Windows.Wdk.System.SystemServices.EXCEPTION_REGISTRATION_RECORD removed
+Windows.Wdk.System.SystemServices.FIRMWARE_TYPE removed
+Windows.Wdk.System.SystemServices.FIRMWARE_TYPE.FirmwareTypeBios removed
+Windows.Wdk.System.SystemServices.FIRMWARE_TYPE.FirmwareTypeMax removed
+Windows.Wdk.System.SystemServices.FIRMWARE_TYPE.FirmwareTypeUefi removed
+Windows.Wdk.System.SystemServices.FIRMWARE_TYPE.FirmwareTypeUnknown removed
+Windows.Wdk.System.SystemServices.GROUP_RELATIONSHIP removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeAnsiString removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeBool removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeInt16 removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeInt32 removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeInt64 removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeInt8 removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeMaximum removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeNone removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeOverride removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeUInt16 removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeUInt32 removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeUInt64 removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeUInt8 removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ENTRY_TYPE.ImagePolicyEntryTypeUnicodeString removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdCapability removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdCrashDump removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdCrashDumpKey removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdCrashDumpKeyGuid removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdDebug removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdDeviceId removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdEtw removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdMaximum removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdNone removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdParentSd removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdParentSdRev removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdScenarioId removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_ID.ImagePolicyIdSvn removed
+Windows.Wdk.System.SystemServices.IMAGE_POLICY_METADATA removed
+Windows.Wdk.System.SystemServices.IO_COUNTERS removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeBugcheckData removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeBugcheckRecovery removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeDriver removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeMax removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeOther removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeRaw removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeWhea removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeWheaErrorNmi removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeWheaErrorOther removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeWheaErrorPci removed
+Windows.Wdk.System.SystemServices.IPMI_OS_SEL_RECORD_TYPE.IpmiOsSelRecordTypeWheaErrorXpfMca removed
+Windows.Wdk.System.SystemServices.KERNEL_CET_CONTEXT removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyControlFlagsInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetDebugInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetHandleTagsInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetLayerInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetVirtualizationInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyWow64FlagsInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyWriteTimeInformation removed
+Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.MaxKeySetInfoClass removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_ENTRY removed
+Windows.Wdk.System.SystemServices.KTMOBJECT_CURSOR removed
+Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE removed
+Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE.KTMOBJECT_ENLISTMENT removed
+Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE.KTMOBJECT_INVALID removed
+Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE.KTMOBJECT_RESOURCE_MANAGER removed
+Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE.KTMOBJECT_TRANSACTION removed
+Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE.KTMOBJECT_TRANSACTION_MANAGER removed
+Windows.Wdk.System.SystemServices.KUSER_SHARED_DATA.XState...Windows.Wdk.System.SystemServices.XSTATE_CONFIGURATION => Windows.Win32.System.Diagnostics.Debug.XSTATE_CONFIGURATION
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationAll removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationCache removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationGroup removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationNumaNode removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationNumaNodeEx removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationProcessorCore removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationProcessorDie removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationProcessorModule removed
+Windows.Wdk.System.SystemServices.LOGICAL_PROCESSOR_RELATIONSHIP.RelationProcessorPackage removed
+Windows.Wdk.System.SystemServices.M128A removed
+Windows.Wdk.System.SystemServices.MEM_ADDRESS_REQUIREMENTS removed
+Windows.Wdk.System.SystemServices.MONITOR_DISPLAY_STATE removed
+Windows.Wdk.System.SystemServices.MONITOR_DISPLAY_STATE.PowerMonitorDim removed
+Windows.Wdk.System.SystemServices.MONITOR_DISPLAY_STATE.PowerMonitorOff removed
+Windows.Wdk.System.SystemServices.MONITOR_DISPLAY_STATE.PowerMonitorOn removed
+Windows.Wdk.System.SystemServices.NT_TIB removed
+Windows.Wdk.System.SystemServices.NT_TIB64 removed
+Windows.Wdk.System.SystemServices.NUMA_NODE_RELATIONSHIP removed
+Windows.Wdk.System.SystemServices.NV_MEMORY_RANGE removed
+Windows.Wdk.System.SystemServices.OS_DEPLOYEMENT_STATE_VALUES removed
+Windows.Wdk.System.SystemServices.OS_DEPLOYEMENT_STATE_VALUES.OS_DEPLOYMENT_COMPACT removed
+Windows.Wdk.System.SystemServices.OS_DEPLOYEMENT_STATE_VALUES.OS_DEPLOYMENT_STANDARD removed
+Windows.Wdk.System.SystemServices.OSVERSIONINFOA removed
+Windows.Wdk.System.SystemServices.OSVERSIONINFOEXA removed
+Windows.Wdk.System.SystemServices.OSVERSIONINFOEXW removed
+Windows.Wdk.System.SystemServices.OSVERSIONINFOW removed
+Windows.Wdk.System.SystemServices.POWER_IDLE_RESILIENCY removed
+Windows.Wdk.System.SystemServices.POWER_SESSION_ALLOW_EXTERNAL_DMA_DEVICES removed
+Windows.Wdk.System.SystemServices.POWER_USER_PRESENCE removed
+Windows.Wdk.System.SystemServices.PROCESS_BASIC_INFORMATION removed
+Windows.Wdk.System.SystemServices.PROCESS_DYNAMIC_EH_CONTINUATION_TARGET removed
+Windows.Wdk.System.SystemServices.PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION removed
+Windows.Wdk.System.SystemServices.PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE removed
+Windows.Wdk.System.SystemServices.PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION removed
+Windows.Wdk.System.SystemServices.PROCESS_EXTENDED_BASIC_INFORMATION.BasicInfo...Windows.Wdk.System.SystemServices.PROCESS_BASIC_INFORMATION => Windows.Win32.System.Threading.PROCESS_BASIC_INFORMATION
+Windows.Wdk.System.SystemServices.PROCESS_HANDLE_TRACING_ENTRY.ClientId...Windows.Wdk.System.SystemServices.CLIENT_ID => Windows.Win32.System.WindowsProgramming.CLIENT_ID
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_ASLR_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_CHILD_PROCESS_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_DEP_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_DYNAMIC_CODE_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_FONT_DISABLE_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_IMAGE_LOAD_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.MaxProcessMitigationPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessASLRPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessChildProcessPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessControlFlowGuardPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessDEPPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessDynamicCodePolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessExtensionPointDisablePolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessFontDisablePolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessImageLoadPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessMitigationOptionsMask removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessPayloadRestrictionPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessRedirectionTrustPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessSEHOPPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessSideChannelIsolationPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessSignaturePolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessStrictHandleCheckPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessSystemCallDisablePolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessSystemCallFilterPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessUserPointerAuthPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_POLICY.ProcessUserShadowStackPolicy removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_SEHOP_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_USER_POINTER_AUTH_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY removed
+Windows.Wdk.System.SystemServices.PROCESSOR_CACHE_TYPE removed
+Windows.Wdk.System.SystemServices.PROCESSOR_CACHE_TYPE.CacheData removed
+Windows.Wdk.System.SystemServices.PROCESSOR_CACHE_TYPE.CacheInstruction removed
+Windows.Wdk.System.SystemServices.PROCESSOR_CACHE_TYPE.CacheTrace removed
+Windows.Wdk.System.SystemServices.PROCESSOR_CACHE_TYPE.CacheUnified removed
+Windows.Wdk.System.SystemServices.PROCESSOR_GROUP_INFO removed
+Windows.Wdk.System.SystemServices.PROCESSOR_RELATIONSHIP removed
+Windows.Wdk.System.SystemServices.PS_CREATE_NOTIFY_INFO.CreatingThreadId...Windows.Wdk.System.SystemServices.CLIENT_ID => Windows.Win32.System.WindowsProgramming.CLIENT_ID
+Windows.Wdk.System.SystemServices.QUOTA_LIMITS_EX removed
+Windows.Wdk.System.SystemServices.RATE_QUOTA_LIMIT removed
+Windows.Wdk.System.SystemServices.REG_QUERY_MULTIPLE_VALUE_KEY_INFORMATION.ValueEntries...Windows.Wdk.System.SystemServices.KEY_VALUE_ENTRY* => Windows.Win32.System.WindowsProgramming.KEY_VALUE_ENTRY*
+Windows.Wdk.System.SystemServices.REG_SET_INFORMATION_KEY_INFORMATION.KeySetInformationClass...Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS => Windows.Win32.System.WindowsProgramming.KEY_SET_INFORMATION_CLASS
+Windows.Wdk.System.SystemServices.RESOURCEMANAGER_BASIC_INFORMATION removed
+Windows.Wdk.System.SystemServices.RESOURCEMANAGER_COMPLETION_INFORMATION removed
+Windows.Wdk.System.SystemServices.RESOURCEMANAGER_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.RESOURCEMANAGER_INFORMATION_CLASS.ResourceManagerBasicInformation removed
+Windows.Wdk.System.SystemServices.RESOURCEMANAGER_INFORMATION_CLASS.ResourceManagerCompletionInformation removed
+Windows.Wdk.System.SystemServices.RESUME_PERFORMANCE removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdConsoleSharedDataFlags removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdCyclesPerYield removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdImageNumberHigh removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdImageNumberLow removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdInterruptTime removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdKdDebuggerEnabled removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdLastSystemRITEventTickCount removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdNtMajorVersion removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdNtMinorVersion removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdNtSystemRootDrive removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdQpcBias removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdQpcBypassEnabled removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdQpcData removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdQpcShift removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdRngSeedVersion removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdSafeBootMode removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdSystemExpirationDate removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdTimeZoneBias removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdTimeZoneId removed
+Windows.Wdk.System.SystemServices.RTL_SYSTEM_GLOBAL_DATA_ID.GlobalDataIdUnknown removed
+Windows.Wdk.System.SystemServices.SE_ADT_ACCESS_REASON removed
+Windows.Wdk.System.SystemServices.SE_ADT_CLAIMS removed
+Windows.Wdk.System.SystemServices.SE_ADT_OBJECT_TYPE removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_ARRAY_ENTRY removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_ARRAY_EX removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeAccessMask removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeAccessReason removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeClaims removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeDateTime removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeDuration removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeFileSpec removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeGuid removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeHexInt64 removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeHexUlong removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeLogonHours removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeLogonId removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeLogonIdAsSid removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeLogonIdEx removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeLogonIdNoSid removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeLuid removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeMessage removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeMultiSzString removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeNoLogonId removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeNone removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeNoUac removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeObjectTypes removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypePrivs removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypePtr removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeResourceAttribute removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeSD removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeSid removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeSidList removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeSockAddr removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeSockAddrNoPort removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeStagingReason removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeString removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeStringList removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeTime removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeUlong removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeUlongNoConv removed
+Windows.Wdk.System.SystemServices.SE_ADT_PARAMETER_TYPE.SeAdtParmTypeUserAccountControl removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE.SeImageSignatureCache removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE.SeImageSignatureCatalogCached removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE.SeImageSignatureCatalogHint removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE.SeImageSignatureCatalogNotCached removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE.SeImageSignatureEmbedded removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE.SeImageSignatureNone removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE.SeImageSignaturePackageCatalog removed
+Windows.Wdk.System.SystemServices.SE_IMAGE_SIGNATURE_TYPE.SeImageSignaturePplMitigated removed
+Windows.Wdk.System.SystemServices.SERVICE_ERROR_TYPE removed
+Windows.Wdk.System.SystemServices.SERVICE_ERROR_TYPE.CriticalError removed
+Windows.Wdk.System.SystemServices.SERVICE_ERROR_TYPE.IgnoreError removed
+Windows.Wdk.System.SystemServices.SERVICE_ERROR_TYPE.NormalError removed
+Windows.Wdk.System.SystemServices.SERVICE_ERROR_TYPE.SevereError removed
+Windows.Wdk.System.SystemServices.SERVICE_LOAD_TYPE removed
+Windows.Wdk.System.SystemServices.SERVICE_LOAD_TYPE.AutoLoad removed
+Windows.Wdk.System.SystemServices.SERVICE_LOAD_TYPE.BootLoad removed
+Windows.Wdk.System.SystemServices.SERVICE_LOAD_TYPE.DemandLoad removed
+Windows.Wdk.System.SystemServices.SERVICE_LOAD_TYPE.DisableLoad removed
+Windows.Wdk.System.SystemServices.SERVICE_LOAD_TYPE.SystemLoad removed
+Windows.Wdk.System.SystemServices.SERVICE_NODE_TYPE removed
+Windows.Wdk.System.SystemServices.SERVICE_NODE_TYPE.AdapterType removed
+Windows.Wdk.System.SystemServices.SERVICE_NODE_TYPE.DriverType removed
+Windows.Wdk.System.SystemServices.SERVICE_NODE_TYPE.FileSystemType removed
+Windows.Wdk.System.SystemServices.SERVICE_NODE_TYPE.RecognizerType removed
+Windows.Wdk.System.SystemServices.SERVICE_NODE_TYPE.Win32ServiceOwnProcess removed
+Windows.Wdk.System.SystemServices.SERVICE_NODE_TYPE.Win32ServiceShareProcess removed
+Windows.Wdk.System.SystemServices.SYSTEM_CPU_SET_INFORMATION removed
+Windows.Wdk.System.SystemServices.SYSTEM_LOGICAL_PROCESSOR_INFORMATION removed
+Windows.Wdk.System.SystemServices.SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX removed
+Windows.Wdk.System.SystemServices.SYSTEM_POOL_ZEROING_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTION_BASIC_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTION_BIND_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTION_ENLISTMENT_PAIR removed
+Windows.Wdk.System.SystemServices.TRANSACTION_ENLISTMENTS_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTION_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.TRANSACTION_INFORMATION_CLASS.TransactionBasicInformation removed
+Windows.Wdk.System.SystemServices.TRANSACTION_INFORMATION_CLASS.TransactionEnlistmentInformation removed
+Windows.Wdk.System.SystemServices.TRANSACTION_INFORMATION_CLASS.TransactionPropertiesInformation removed
+Windows.Wdk.System.SystemServices.TRANSACTION_INFORMATION_CLASS.TransactionSuperiorEnlistmentInformation removed
+Windows.Wdk.System.SystemServices.TRANSACTION_LIST_ENTRY removed
+Windows.Wdk.System.SystemServices.TRANSACTION_LIST_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTION_OUTCOME removed
+Windows.Wdk.System.SystemServices.TRANSACTION_OUTCOME.TransactionOutcomeAborted removed
+Windows.Wdk.System.SystemServices.TRANSACTION_OUTCOME.TransactionOutcomeCommitted removed
+Windows.Wdk.System.SystemServices.TRANSACTION_OUTCOME.TransactionOutcomeUndetermined removed
+Windows.Wdk.System.SystemServices.TRANSACTION_PROPERTIES_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTION_STATE removed
+Windows.Wdk.System.SystemServices.TRANSACTION_STATE.TransactionStateCommittedNotify removed
+Windows.Wdk.System.SystemServices.TRANSACTION_STATE.TransactionStateIndoubt removed
+Windows.Wdk.System.SystemServices.TRANSACTION_STATE.TransactionStateNormal removed
+Windows.Wdk.System.SystemServices.TRANSACTION_SUPERIOR_ENLISTMENT_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_BASIC_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_INFORMATION_CLASS.TransactionManagerBasicInformation removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_INFORMATION_CLASS.TransactionManagerLogInformation removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_INFORMATION_CLASS.TransactionManagerLogPathInformation removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_INFORMATION_CLASS.TransactionManagerRecoveryInformation removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_LOG_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_LOGPATH_INFORMATION removed
+Windows.Wdk.System.SystemServices.TRANSACTIONMANAGER_RECOVERY_INFORMATION removed
+Windows.Wdk.System.SystemServices.USER_ACTIVITY_PRESENCE removed
+Windows.Wdk.System.SystemServices.USER_ACTIVITY_PRESENCE.PowerUserInactive removed
+Windows.Wdk.System.SystemServices.USER_ACTIVITY_PRESENCE.PowerUserInvalid removed
+Windows.Wdk.System.SystemServices.USER_ACTIVITY_PRESENCE.PowerUserMaximum removed
+Windows.Wdk.System.SystemServices.USER_ACTIVITY_PRESENCE.PowerUserNotPresent removed
+Windows.Wdk.System.SystemServices.USER_ACTIVITY_PRESENCE.PowerUserPresent removed
+Windows.Wdk.System.SystemServices.WHEA_AER_BRIDGE_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_AER_ENDPOINT_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_AER_ROOTPORT_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_DEVICE_DRIVER_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_DRIVER_BUFFER_SET removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_PACKET_V1.ErrorSourceType...Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE => Windows.Win32.System.Diagnostics.Debug.WHEA_ERROR_SOURCE_TYPE
+Windows.Wdk.System.SystemServices.WHEA_ERROR_PACKET_V2.ErrorSourceType...Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE => Windows.Win32.System.Diagnostics.Debug.WHEA_ERROR_SOURCE_TYPE
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_CONFIGURATION_DD removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1 removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_OVERRIDE_SETTINGS.Type...Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE => Windows.Win32.System.Diagnostics.Debug.WHEA_ERROR_SOURCE_TYPE
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_STATE removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_STATE.WheaErrSrcStateRemoved removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_STATE.WheaErrSrcStateRemovePending removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_STATE.WheaErrSrcStateStarted removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_STATE.WheaErrSrcStateStopped removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeBMC removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeBOOT removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeCMC removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeCPE removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeDeviceDriver removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeGeneric removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeGenericV2 removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeINIT removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeIPFCMC removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeIPFCPE removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeIPFMCA removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeMax removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeMCE removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeNMI removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypePCIe removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypePMEM removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeSCIGeneric removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeSCIGenericV2 removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeSea removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE.WheaErrSrcTypeSei removed
+Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER removed
+Windows.Wdk.System.SystemServices.WHEA_GENERIC_ERROR_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_GENERIC_ERROR_DESCRIPTOR_V2 removed
+Windows.Wdk.System.SystemServices.WHEA_IPF_CMC_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_IPF_CPE_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_IPF_MCA_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_NOTIFICATION_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_NOTIFICATION_FLAGS removed
+Windows.Wdk.System.SystemServices.WHEA_PCI_SLOT_NUMBER removed
+Windows.Wdk.System.SystemServices.WHEA_XPF_CMC_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_XPF_MC_BANK_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_XPF_MCE_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEA_XPF_NMI_DESCRIPTOR removed
+Windows.Wdk.System.SystemServices.WHEAP_ADD_REMOVE_ERROR_SOURCE_EVENT.Descriptor...Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_DESCRIPTOR => Windows.Win32.System.Diagnostics.Debug.WHEA_ERROR_SOURCE_DESCRIPTOR
+Windows.Wdk.System.SystemServices.WHEAP_BAD_HEST_NOTIFY_DATA_EVENT.NotifyDesc...Windows.Wdk.System.SystemServices.WHEA_NOTIFICATION_DESCRIPTOR => Windows.Win32.System.Diagnostics.Debug.WHEA_NOTIFICATION_DESCRIPTOR
+Windows.Wdk.System.SystemServices.WHEAP_DROPPED_CORRECTED_ERROR_EVENT.ErrorSourceType...Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_TYPE => Windows.Win32.System.Diagnostics.Debug.WHEA_ERROR_SOURCE_TYPE
+Windows.Wdk.System.SystemServices.WHEAP_ERR_SRC_INVALID_EVENT.ErrDescriptor...Windows.Wdk.System.SystemServices.WHEA_ERROR_SOURCE_DESCRIPTOR => Windows.Win32.System.Diagnostics.Debug.WHEA_ERROR_SOURCE_DESCRIPTOR
+Windows.Wdk.System.SystemServices.XPF_MC_BANK_FLAGS removed
+Windows.Wdk.System.SystemServices.XPF_MCE_FLAGS removed
+Windows.Wdk.System.SystemServices.XSAVE_AREA removed
+Windows.Wdk.System.SystemServices.XSAVE_AREA_HEADER removed
+Windows.Wdk.System.SystemServices.XSAVE_CET_U_FORMAT removed
+Windows.Wdk.System.SystemServices.XSAVE_FORMAT.FloatRegisters...Windows.Wdk.System.SystemServices.M128A[] => Windows.Win32.System.Diagnostics.Debug.M128A[]
+Windows.Wdk.System.SystemServices.XSAVE_FORMAT.XmmRegisters...Windows.Wdk.System.SystemServices.M128A[] => Windows.Win32.System.Diagnostics.Debug.M128A[]
+Windows.Wdk.System.SystemServices.XSTATE_CONFIGURATION removed
+Windows.Wdk.System.SystemServices.XSTATE_CONTEXT.Area...Windows.Wdk.System.SystemServices.XSAVE_AREA* => Windows.Win32.System.Diagnostics.Debug.XSAVE_AREA*
+Windows.Wdk.System.SystemServices.XSTATE_FEATURE removed
+Windows.Wdk.System.SystemServices.XSTATE_SAVE._Anonymous_e__Union._Anonymous_e__Struct.Reserved3...Windows.Wdk.System.SystemServices.XSAVE_AREA* => Windows.Win32.System.Diagnostics.Debug.XSAVE_AREA*
