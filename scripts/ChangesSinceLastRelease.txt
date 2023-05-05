@@ -3075,7 +3075,6 @@ Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadZeroTlsCell added
 # Fixed #9.
 Windows.Wdk.Storage.FileSystem.Apis.NtCancelIoFileEx added
 # Updated WinmdGenerator to 0.51.33-preview.
-Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous1_e__Union.UserApcRoutine...Windows.Wdk.Foundation.PIO_APC_ROUTINE => Windows.Win32.System.IO.PIO_APC_ROUTINE
 Windows.Wdk.Foundation.PIO_APC_ROUTINE removed
 Windows.Wdk.Graphics.Direct3D.D3DDDIFORMAT.D3DDDIFMT_FORCE_UINT removed
 Windows.Wdk.Graphics.Direct3D.D3DDDIMULTISAMPLE_TYPE.D3DDDIMULTISAMPLE_FORCE_UINT removed
@@ -3103,11 +3102,9 @@ Windows.Wdk.Storage.FileSystem.FREE_CREDENTIALS_HANDLE_FN removed
 Windows.Wdk.Storage.FileSystem.IMPERSONATE_SECURITY_CONTEXT_FN removed
 Windows.Wdk.Storage.FileSystem.IMPORT_SECURITY_CONTEXT_FN_W removed
 Windows.Wdk.Storage.FileSystem.INITIALIZE_SECURITY_CONTEXT_FN_W removed
-Windows.Wdk.Storage.FileSystem.IO_IRP_EXT_TRACK_OFFSET_HEADER.TrackedOffsetCallback...Windows.Wdk.Storage.FileSystem.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK => Windows.Win32.System.Ioctl.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK
 Windows.Wdk.Storage.FileSystem.MAKE_SIGNATURE_FN removed
 Windows.Wdk.Storage.FileSystem.PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK removed
 # Corrected function and enum exclusions for #33.
-Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous1_e__Union.UserApcRoutine...Windows.Wdk.Foundation.PIO_APC_ROUTINE => System.IntPtr
 Windows.Wdk.Foundation.PIO_APC_ROUTINE removed
 Windows.Wdk.Storage.FileSystem.ACCEPT_SECURITY_CONTEXT_FN removed
 Windows.Wdk.Storage.FileSystem.ACQUIRE_CREDENTIALS_HANDLE_FN_W removed
@@ -3129,16 +3126,7 @@ Windows.Wdk.Storage.FileSystem.Apis.InitializeSecurityContextW removed
 Windows.Wdk.Storage.FileSystem.Apis.InitSecurityInterfaceW removed
 Windows.Wdk.Storage.FileSystem.Apis.LsaLogonUser removed
 Windows.Wdk.Storage.FileSystem.Apis.LsaRegisterLogonProcess removed
-Windows.Wdk.Storage.FileSystem.Apis.NtDeviceIoControlFile removed
-Windows.Wdk.Storage.FileSystem.Apis.NtFsControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.NtLockFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.NtOpenFile removed
-Windows.Wdk.Storage.FileSystem.Apis.NtQueryDirectoryFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.NtQueryDirectoryFileEx : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.NtQueryObject removed
-Windows.Wdk.Storage.FileSystem.Apis.NtReadFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
 Windows.Wdk.Storage.FileSystem.Apis.NtSetInformationThread removed
-Windows.Wdk.Storage.FileSystem.Apis.NtWriteFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
 Windows.Wdk.Storage.FileSystem.Apis.QueryContextAttributesExW removed
 Windows.Wdk.Storage.FileSystem.Apis.QueryContextAttributesW removed
 Windows.Wdk.Storage.FileSystem.Apis.QueryCredentialsAttributesExW removed
@@ -3153,7 +3141,6 @@ Windows.Wdk.Storage.FileSystem.Apis.RtlTimeToSecondsSince1970 removed
 Windows.Wdk.Storage.FileSystem.Apis.RtlUnicodeStringToOemString removed
 Windows.Wdk.Storage.FileSystem.Apis.RtlUnicodeToMultiByteSize removed
 Windows.Wdk.Storage.FileSystem.Apis.SetCredentialsAttributesW removed
-Windows.Wdk.Storage.FileSystem.Apis.SspiAcquireCredentialsHandleAsyncW : pGetKeyFn...SEC_GET_KEY_FN => IntPtr
 Windows.Wdk.Storage.FileSystem.Apis.SspiCompareAuthIdentities removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiCopyAuthIdentity removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiEncodeAuthIdentityAsStrings removed
@@ -3167,11 +3154,6 @@ Windows.Wdk.Storage.FileSystem.Apis.SspiMarshalAuthIdentity removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiUnmarshalAuthIdentity removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiValidateAuthIdentity removed
 Windows.Wdk.Storage.FileSystem.Apis.SspiZeroAuthIdentity removed
-Windows.Wdk.Storage.FileSystem.Apis.ZwFsControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.ZwLockFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.ZwNotifyChangeKey : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.ZwQueryDirectoryFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.Storage.FileSystem.Apis.ZwQueryDirectoryFileEx : ApcRoutine...PIO_APC_ROUTINE => IntPtr
 Windows.Wdk.Storage.FileSystem.APPLY_CONTROL_TOKEN_FN removed
 Windows.Wdk.Storage.FileSystem.AUDIT_EVENT_TYPE.AuditEventDirectoryServiceAccess removed
 Windows.Wdk.Storage.FileSystem.AUDIT_EVENT_TYPE.AuditEventObjectAccess removed
@@ -3260,9 +3242,6 @@ Windows.Wdk.System.SystemServices.Apis.RtlRaiseCustomSystemEventTrigger removed
 Windows.Wdk.System.SystemServices.Apis.RtlUnicodeStringToAnsiString removed
 Windows.Wdk.System.SystemServices.Apis.RtlValidateCorrelationVector removed
 Windows.Wdk.System.SystemServices.Apis.VerSetConditionMask removed
-Windows.Wdk.System.SystemServices.Apis.ZwDeviceIoControlFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.System.SystemServices.Apis.ZwReadFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
-Windows.Wdk.System.SystemServices.Apis.ZwWriteFile : ApcRoutine...PIO_APC_ROUTINE => IntPtr
 Windows.Wdk.System.SystemServices.BATTERY_REPORTING_SCALE removed
 Windows.Wdk.System.SystemServices.CALLBACK_FUNCTION removed
 Windows.Wdk.System.SystemServices.CLFS_BLOCK_ALLOCATION removed
@@ -4086,7 +4065,6 @@ Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeySetVirtualization
 Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyWow64FlagsInformation removed
 Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.KeyWriteTimeInformation removed
 Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS.MaxKeySetInfoClass removed
-Windows.Wdk.System.SystemServices.KEY_VALUE_ENTRY removed
 Windows.Wdk.System.SystemServices.KTMOBJECT_CURSOR removed
 Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE removed
 Windows.Wdk.System.SystemServices.KTMOBJECT_TYPE.KTMOBJECT_ENLISTMENT removed
@@ -4181,8 +4159,6 @@ Windows.Wdk.System.SystemServices.PROCESSOR_RELATIONSHIP removed
 Windows.Wdk.System.SystemServices.PS_CREATE_NOTIFY_INFO.CreatingThreadId...Windows.Wdk.System.SystemServices.CLIENT_ID => Windows.Win32.System.WindowsProgramming.CLIENT_ID
 Windows.Wdk.System.SystemServices.QUOTA_LIMITS_EX removed
 Windows.Wdk.System.SystemServices.RATE_QUOTA_LIMIT removed
-Windows.Wdk.System.SystemServices.REG_QUERY_MULTIPLE_VALUE_KEY_INFORMATION.ValueEntries...Windows.Wdk.System.SystemServices.KEY_VALUE_ENTRY* => Windows.Win32.System.WindowsProgramming.KEY_VALUE_ENTRY*
-Windows.Wdk.System.SystemServices.REG_SET_INFORMATION_KEY_INFORMATION.KeySetInformationClass...Windows.Wdk.System.SystemServices.KEY_SET_INFORMATION_CLASS => Windows.Win32.System.WindowsProgramming.KEY_SET_INFORMATION_CLASS
 Windows.Wdk.System.SystemServices.RESOURCEMANAGER_BASIC_INFORMATION removed
 Windows.Wdk.System.SystemServices.RESOURCEMANAGER_COMPLETION_INFORMATION removed
 Windows.Wdk.System.SystemServices.RESOURCEMANAGER_INFORMATION_CLASS removed
@@ -4387,3 +4363,5 @@ Windows.Wdk.System.SystemServices.XSTATE_CONFIGURATION removed
 Windows.Wdk.System.SystemServices.XSTATE_CONTEXT.Area...Windows.Wdk.System.SystemServices.XSAVE_AREA* => Windows.Win32.System.Diagnostics.Debug.XSAVE_AREA*
 Windows.Wdk.System.SystemServices.XSTATE_FEATURE removed
 Windows.Wdk.System.SystemServices.XSTATE_SAVE._Anonymous_e__Union._Anonymous_e__Struct.Reserved3...Windows.Wdk.System.SystemServices.XSAVE_AREA* => Windows.Win32.System.Diagnostics.Debug.XSAVE_AREA*
+# Updated WinmdGenerator to 0.51.33-preview.
+Windows.Wdk.Foundation.IRP._Overlay_e__Union._AsynchronousParameters_e__Struct._Anonymous1_e__Union.UserApcRoutine...Windows.Wdk.Foundation.PIO_APC_ROUTINE => Windows.Win32.System.IO.PIO_APC_ROUTINE
