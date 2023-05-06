@@ -1,12 +1,22 @@
 --requiredNamespaceForName
 # region ntddk.h
 DUAL_OPLOCK_KEY_CONTEXT=Windows.Wdk.Storage.FileSystem
-FILE_DISPOSITION_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_DISPOSITION_INFORMATION_EX=Windows.Wdk.Storage.FileSystem
+FILE_DISPOSITION_INFORMATION=Windows.Wdk.Storage.FileSystem
 IoGetOplockKeyContext=Windows.Wdk.Storage.FileSystem
 IoGetOplockKeyContextEx=Windows.Wdk.Storage.FileSystem
 OPLOCK_KEY_CONTEXT=Windows.Wdk.Storage.FileSystem
+PROCESSINFOCLASS=Windows.Wdk.System.Threading
+THREADINFOCLASS=Windows.Wdk.System.Threading
+ZwSetInformationThread=Windows.Wdk.System.Threading
 # endregion ntddk.h
+# region ntifs.h
+NtClose=Windows.Wdk.Foundation
+NtDeviceIoControlFile=Windows.Wdk.System.IO
+NtQueryObject=Windows.Wdk.Foundation
+NtSetInformationThread=Windows.Wdk.System.Threading
+OBJECT_INFORMATION_CLASS=Windows.Wdk.Foundation
+# endregion ntifs.h
 # region wdm.h
 ACCESS_STATE=Windows.Wdk.Foundation
 COMPRESSED_DATA_INFO=Windows.Wdk.Storage.FileSystem
@@ -26,7 +36,6 @@ FILE_FS_SECTOR_SIZE_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_FULL_EA_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_NAME_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_NETWORK_OPEN_INFORMATION=Windows.Wdk.Storage.FileSystem
-FILE_NETWORK_OPEN_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_OBJECT=Windows.Wdk.Foundation
 FILE_POSITION_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_STANDARD_INFORMATION=Windows.Wdk.Storage.FileSystem
@@ -40,6 +49,8 @@ IRP=Windows.Wdk.Foundation
 KDEVICE_QUEUE=Windows.Wdk.Foundation
 KDPC=Windows.Wdk.Foundation
 KEVENT=Windows.Wdk.Foundation
+KEY_SET_INFORMATION_CLASS=Windows.Wdk.System.Registry
+KEY_VALUE_ENTRY=Windows.Wdk.System.Registry
 KMUTANT=Windows.Wdk.Foundation
 KPROCESS=Windows.Wdk.Foundation
 KQUEUE=Windows.Wdk.Foundation
@@ -88,6 +99,8 @@ PIO_COMPLETION_ROUTINE=Windows.Wdk.Foundation
 PKDEFERRED_ROUTINE=Windows.Wdk.Foundation
 POOL_TYPE=Windows.Wdk.Foundation
 PWORKER_THREAD_ROUTINE=Windows.Wdk.Foundation
+REG_QUERY_MULTIPLE_VALUE_KEY_INFORMATION=Windows.Wdk.System.Registry
+REG_SET_INFORMATION_KEY_INFORMATION=Windows.Wdk.System.Registry
 RTL_SPLAY_LINKS=Windows.Wdk.Foundation
 SECTION_OBJECT_POINTERS=Windows.Wdk.Foundation
 SECURITY_SUBJECT_CONTEXT=Windows.Wdk.Foundation
@@ -95,4 +108,5 @@ TARGET_DEVICE_CUSTOM_NOTIFICATION=Windows.Wdk.Foundation
 VPB=Windows.Wdk.Foundation
 WORK_QUEUE_ITEM=Windows.Wdk.Foundation
 ZwQueryFullAttributesFile=Windows.Wdk.Storage.FileSystem
+ZwSetInformationKey=Windows.Wdk.System.Registry
 # endregion
