@@ -1,0 +1,6 @@
+# Added OBJECT_ATTRIBUTES from the SDK.
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES added
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES32 added
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES64 added
+Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENNTHANDLEFROMNAME.pObjAttrib...Windows.Win32.Foundation.OBJECT_ATTRIBUTES* => Windows.Wdk.Foundation.OBJECT_ATTRIBUTES*
+Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENSYNCOBJECTNTHANDLEFROMNAME.pObjAttrib...Windows.Win32.Foundation.OBJECT_ATTRIBUTES* => Windows.Wdk.Foundation.OBJECT_ATTRIBUTES*

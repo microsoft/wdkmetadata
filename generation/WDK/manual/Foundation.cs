@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 
 using Windows.Win32.Foundation;
 using Windows.Win32.Foundation.Metadata;
-using Windows.Win32.System.IO;
 
 namespace Windows.Wdk.Foundation;
 
