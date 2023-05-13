@@ -2,5 +2,7 @@
 <IncludeRoot>/shared/d3dkmdt.h
 <IncludeRoot>/shared/d3dkmthk.h
 <IncludeRoot>/shared/d3dukmdt.h
+<IncludeRoot>/um/d3dhal.h
+<IncludeRoot>/um/d3dnthal.h
 --namespace
 Windows.Wdk.Graphics.Direct3D
