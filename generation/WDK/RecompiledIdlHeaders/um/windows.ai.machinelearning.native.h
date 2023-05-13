@@ -224,7 +224,8 @@ EXTERN_C const IID IID_ITensorStaticsNative;
             ID3D12Resource *value,
             /* [size_is] */ __int64 *shape,
             int shapeCount,
-            /* [out] */ IUnknown **result) = 0;
+            /* [annotation][out] */ 
+            _Out_  IUnknown **result) = 0;
         
     };
     
@@ -257,7 +258,8 @@ EXTERN_C const IID IID_ITensorStaticsNative;
             ID3D12Resource *value,
             /* [size_is] */ __int64 *shape,
             int shapeCount,
-            /* [out] */ IUnknown **result);
+            /* [annotation][out] */ 
+            _Out_  IUnknown **result);
         
         END_INTERFACE
     } ITensorStaticsNativeVtbl;

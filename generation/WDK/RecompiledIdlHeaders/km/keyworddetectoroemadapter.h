@@ -10,7 +10,7 @@
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 501
+#define __REQUIRED_RPCNDR_H_VERSION__ 500
 #endif
 
 /* verify that the <rpcsal.h> version is high enough to compile this file*/
@@ -125,22 +125,28 @@ EXTERN_C const IID IID_IKeywordDetectorOemAdapter;
         
         virtual HRESULT STDMETHODCALLTYPE VerifyUserKeyword( 
             /* [full][in] */ IStream *ModelData,
-            /* [in] */ KEYWORDID KeywordId,
-            /* [in] */ LANGID LangId,
-            /* [in] */ LONG KeywordEndBytePos,
+            /* [annotation][in] */ 
+            _In_  KEYWORDID KeywordId,
+            /* [annotation][in] */ 
+            _In_  LANGID LangId,
+            /* [annotation][in] */ 
+            _In_  LONG KeywordEndBytePos,
             /* [full][in] */ IMFMediaBuffer *UserRecording) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ComputeAndAddUserModelData( 
             /* [full][out][in] */ IStream *ModelData,
-            /* [in] */ KEYWORDSELECTOR KeywordSelector,
+            /* [annotation][in] */ 
+            _In_  KEYWORDSELECTOR KeywordSelector,
             /* [full][in] */ LONG *KeywordEndBytePos,
             /* [full][in] */ IMFMediaBuffer **UserRecordings,
-            /* [in] */ ULONG NumUserRecordings) = 0;
+            /* [annotation][in] */ 
+            _In_  ULONG NumUserRecordings) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE BuildArmingPatternData( 
             /* [full][in] */ IStream *UserModelData,
             /* [full][in] */ KEYWORDSELECTOR *KeywordSelectors,
-            /* [in] */ ULONG NumKeywordSelectors,
+            /* [annotation][in] */ 
+            _In_  ULONG NumKeywordSelectors,
             /* [full][out] */ SOUNDDETECTOR_PATTERNHEADER **ppPatternData) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE ParseDetectionResultData( 
@@ -164,7 +170,8 @@ EXTERN_C const IID IID_IKeywordDetectorOemAdapter;
         DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IKeywordDetectorOemAdapter * This,
-            /* [in] */ REFIID riid,
+            /* [annotation][in] */ 
+            _In_  REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
@@ -190,26 +197,32 @@ EXTERN_C const IID IID_IKeywordDetectorOemAdapter;
         HRESULT ( STDMETHODCALLTYPE *VerifyUserKeyword )( 
             IKeywordDetectorOemAdapter * This,
             /* [full][in] */ IStream *ModelData,
-            /* [in] */ KEYWORDID KeywordId,
-            /* [in] */ LANGID LangId,
-            /* [in] */ LONG KeywordEndBytePos,
+            /* [annotation][in] */ 
+            _In_  KEYWORDID KeywordId,
+            /* [annotation][in] */ 
+            _In_  LANGID LangId,
+            /* [annotation][in] */ 
+            _In_  LONG KeywordEndBytePos,
             /* [full][in] */ IMFMediaBuffer *UserRecording);
         
         DECLSPEC_XFGVIRT(IKeywordDetectorOemAdapter, ComputeAndAddUserModelData)
         HRESULT ( STDMETHODCALLTYPE *ComputeAndAddUserModelData )( 
             IKeywordDetectorOemAdapter * This,
             /* [full][out][in] */ IStream *ModelData,
-            /* [in] */ KEYWORDSELECTOR KeywordSelector,
+            /* [annotation][in] */ 
+            _In_  KEYWORDSELECTOR KeywordSelector,
             /* [full][in] */ LONG *KeywordEndBytePos,
             /* [full][in] */ IMFMediaBuffer **UserRecordings,
-            /* [in] */ ULONG NumUserRecordings);
+            /* [annotation][in] */ 
+            _In_  ULONG NumUserRecordings);
         
         DECLSPEC_XFGVIRT(IKeywordDetectorOemAdapter, BuildArmingPatternData)
         HRESULT ( STDMETHODCALLTYPE *BuildArmingPatternData )( 
             IKeywordDetectorOemAdapter * This,
             /* [full][in] */ IStream *UserModelData,
             /* [full][in] */ KEYWORDSELECTOR *KeywordSelectors,
-            /* [in] */ ULONG NumKeywordSelectors,
+            /* [annotation][in] */ 
+            _In_  ULONG NumKeywordSelectors,
             /* [full][out] */ SOUNDDETECTOR_PATTERNHEADER **ppPatternData);
         
         DECLSPEC_XFGVIRT(IKeywordDetectorOemAdapter, ParseDetectionResultData)

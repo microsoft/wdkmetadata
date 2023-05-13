@@ -2,10 +2,10 @@ $rootDir = [System.IO.Path]::GetFullPath("$PSScriptRoot\..")
 $toolsDir = "$rootDir\tools"
 $binDir = "$rootDir\bin"
 $sourcesDir = "$rootDir\sources"
-$sdkApiPath = "$rootDir\ext\sdk-api"
 $wdkProjectRoot = "$rootDir\generation\WDK"
 $wdkGeneratedSourceDir = "$wdkProjectRoot\obj\generated"
 $recompiledIdlHeadersDir = "$wdkProjectRoot\RecompiledIdlHeaders"
+$recompiledIdlHeadersScratchDir = "$rootDir\obj\RecompiledIdlHeaders"
 
 # [VS 1673159]
 # Temporarily disable strict mode to address bug introduced
@@ -37,11 +37,11 @@ if (!(Test-Path -Path $binDir))
     New-Item -ItemType Directory -Force -Path $binDir | Out-Null
 }
 
-function Create-Directory([string[]] $Path)
+function New-Directory([string[]] $Path)
 {
     if (!(Test-Path -Path $Path))
     {
-        New-Item -Path $Path -Force -ItemType "Directory" | Out-Null
+        New-Item -Path $Path -ItemType "Directory" -Force | Out-Null
     }
 }
 
@@ -51,6 +51,13 @@ function Remove-Directory([string[]] $Path)
     {
         Remove-Item $Path -Recurse
     }
+}
+
+function Reset-Directory([string[]] $Path)
+{
+    Remove-Directory $Path
+
+    New-Directory $Path
 }
 
 function Install-BuildTools
