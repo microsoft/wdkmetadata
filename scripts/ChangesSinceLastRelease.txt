@@ -4,3 +4,13 @@ Windows.Wdk.Foundation.OBJECT_ATTRIBUTES32 added
 Windows.Wdk.Foundation.OBJECT_ATTRIBUTES64 added
 Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENNTHANDLEFROMNAME.pObjAttrib...Windows.Win32.Foundation.OBJECT_ATTRIBUTES* => Windows.Wdk.Foundation.OBJECT_ATTRIBUTES*
 Windows.Wdk.Graphics.Direct3D.D3DKMT_OPENSYNCOBJECTNTHANDLEFROMNAME.pObjAttrib...Windows.Win32.Foundation.OBJECT_ATTRIBUTES* => Windows.Wdk.Foundation.OBJECT_ATTRIBUTES*
+# Resolved MDL type conflict with the WDK.
+Windows.Wdk.Foundation.IRP.MdlAddress...Windows.Win32.Graphics.DirectDraw.MDL* => Windows.Wdk.Foundation.MDL*
+Windows.Wdk.Foundation.MDL added
+Windows.Wdk.Storage.FileSystem.Apis.SspiAcquireCredentialsHandleAsyncA added
+Windows.Wdk.Storage.FileSystem.Apis.SspiAcquireCredentialsHandleAsyncW : [DllImport(ksecdd.sys,ExactSpelling=True,PreserveSig=False)] => [DllImport(ksecdd.sys,ExactSpelling=True,PreserveSig=False),Unicode]
+Windows.Wdk.Storage.FileSystem.Apis.SspiInitializeSecurityContextAsyncA added
+Windows.Wdk.Storage.FileSystem.Apis.SspiInitializeSecurityContextAsyncW : [DllImport(ksecdd.sys,ExactSpelling=True,PreserveSig=False)] => [DllImport(ksecdd.sys,ExactSpelling=True,PreserveSig=False),Unicode]
+Windows.Wdk.Storage.FileSystem.CC_ASYNC_READ_CONTEXT.Mdl...Windows.Win32.Graphics.DirectDraw.MDL* => Windows.Wdk.Foundation.MDL*
+Windows.Wdk.Storage.FileSystem.FSRTL_AUXILIARY_BUFFER.Mdl...Windows.Win32.Graphics.DirectDraw.MDL* => Windows.Wdk.Foundation.MDL*
+Windows.Wdk.System.SystemServices.IOMMU_MAP_PHYSICAL_ADDRESS._Anonymous_e__Union._Mdl_e__Struct.Mdl...Windows.Win32.Graphics.DirectDraw.MDL* => Windows.Wdk.Foundation.MDL*

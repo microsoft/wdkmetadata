@@ -57,6 +57,7 @@ KQUEUE=Windows.Wdk.Foundation
 KSPIN_LOCK_QUEUE_NUMBER=Windows.Wdk.Foundation
 KTHREAD=Windows.Wdk.Foundation
 KWAIT_BLOCK=Windows.Wdk.Foundation
+MDL=Windows.Wdk.Foundation
 OBJECT_NAME_INFORMATION=Windows.Wdk.Foundation
 OBJECT_TYPE=Windows.Wdk.Foundation
 OWNER_ENTRY=Windows.Wdk.Foundation
