@@ -1,0 +1,5 @@
+--traverse
+<IncludeRoot>/km/fltKernel.h
+<IncludeRoot>/km/fltUserStructures.h
+--namespace
+Windows.Wdk.Storage.FileSystem.Minifilters

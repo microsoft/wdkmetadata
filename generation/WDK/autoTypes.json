@@ -275,5 +275,47 @@
     "Name": "_SCSI_REQUEST_BLOCK",
     "ValueType": "typedef struct _SCSI_REQUEST_BLOCK",
     "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Storage.FileSystem.Minifilters",
+    "Name": "PFLT_FILTER",
+    "ValueType": "typedef struct _FLT_FILTER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Storage.FileSystem.Minifilters",
+    "Name": "PFLT_VOLUME",
+    "ValueType": "typedef struct _FLT_VOLUME",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Storage.FileSystem.Minifilters",
+    "Name": "PFLT_INSTANCE",
+    "ValueType": "typedef struct _FLT_INSTANCE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Storage.FileSystem.Minifilters",
+    "Name": "PFLT_PORT",
+    "ValueType": "typedef struct _FLT_PORT",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Storage.FileSystem.Minifilters",
+    "Name": "PFLT_CONTEXT",
+    "ValueType": "void*",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Storage.FileSystem.Minifilters",
+    "Name": "PFLT_DEFERRED_IO_WORKITEM",
+    "ValueType": "typedef struct _FLT_DEFERRED_IO_WORKITEM",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.Storage.FileSystem.Minifilters",
+    "Name": "PFLT_GENERIC_WORKITEM",
+    "ValueType": "typedef struct _FLT_GENERIC_WORKITEM",
+    "NativeTypedef": true
   }
 ]
