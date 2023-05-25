@@ -1,0 +1,5 @@
+<Project>
+  <ItemGroup>
+    <ProjectionMetadataWinmd Include="$(MSBuildThisFileDirectory)..\Windows.Wdk.winmd" />
+  </ItemGroup>
+</Project>
