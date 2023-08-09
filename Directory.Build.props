@@ -26,7 +26,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>images/windows.png</PackageIcon>
     <WinmdGeneratorVersion>0.54.44-preview</WinmdGeneratorVersion>
-    <LastWDKMetadataReleaseVersion>0.7.3-experimental</LastWDKMetadataReleaseVersion>
+    <LastWDKMetadataReleaseVersion>0.8.2-experimental</LastWDKMetadataReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
