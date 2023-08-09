@@ -25,7 +25,7 @@
     <PackageProjectUrl>https://github.com/microsoft/wdkmetadata</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>images/windows.png</PackageIcon>
-    <WinmdGeneratorVersion>0.52.65-preview</WinmdGeneratorVersion>
+    <WinmdGeneratorVersion>0.54.44-preview</WinmdGeneratorVersion>
     <LastWDKMetadataReleaseVersion>0.7.3-experimental</LastWDKMetadataReleaseVersion>
   </PropertyGroup>
 
