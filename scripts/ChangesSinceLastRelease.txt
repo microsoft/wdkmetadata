@@ -2708,3 +2708,17 @@ Windows.Wdk.Foundation.Apis.STRSAFE_IGNORE_NULLS added
 Windows.Wdk.Foundation.Apis.STRSAFE_NO_TRUNCATION added
 Windows.Wdk.Foundation.Apis.STRSAFE_NULL_ON_FAILURE added
 Windows.Wdk.Foundation.Apis.STRSAFE_ZERO_LENGTH_ON_FAILURE added
+# Fixed #16.
+Windows.Wdk.Devices.HumanInterfaceDevice.Apis.VhfAsyncOperationComplete added
+Windows.Wdk.Devices.HumanInterfaceDevice.Apis.VhfCreate added
+Windows.Wdk.Devices.HumanInterfaceDevice.Apis.VhfDelete added
+Windows.Wdk.Devices.HumanInterfaceDevice.Apis.VhfReadReportSubmit added
+Windows.Wdk.Devices.HumanInterfaceDevice.Apis.VhfStart added
+Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_ASYNC_OPERATION added
+Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_CLEANUP added
+Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_READY_FOR_NEXT_READ_REPORT added
+Windows.Wdk.Devices.HumanInterfaceDevice.HID_XFER_PACKET added
+Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_ASYNC_OPERATION added
+Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_CLEANUP added
+Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_READY_FOR_NEXT_READ_REPORT added
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG added

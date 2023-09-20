@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/shared/vhf.h
+--namespace
+Windows.Wdk.Devices.HumanInterfaceDevice
