@@ -278,7 +278,8 @@ __drv_Mode_impl(NDIS_INCLUDED)
 #else
 #  define NDIS_MIN_API 0x630
 #endif
-#define NDIS_API_VERSION_AVAILABLE(major,minor) ((((0x ## major) << 8) + (0x ## minor)) >= NDIS_MIN_API)
+#define NDIS_CONCAT(x, y) x ## y
+#define NDIS_API_VERSION_AVAILABLE(major,minor) ((((NDIS_CONCAT(0x, major)) << 8) + (NDIS_CONCAT(0x,minor))) >= NDIS_MIN_API)
 
 //
 //

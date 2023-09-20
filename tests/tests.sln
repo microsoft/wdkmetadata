@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCommon", "TestCommon\TestCommon.csproj", "{4070C217-51BF-4737-BBCF-979C815D14D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Windows.WDK.Win32Metadata.Tests", "Windows.Wdk.Tests\Microsoft.Windows.WDK.Win32Metadata.Tests.csproj", "{DEFE3DD1-44F2-461C-A87E-9BA4AADC0843}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4070C217-51BF-4737-BBCF-979C815D14D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4070C217-51BF-4737-BBCF-979C815D14D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4070C217-51BF-4737-BBCF-979C815D14D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4070C217-51BF-4737-BBCF-979C815D14D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEFE3DD1-44F2-461C-A87E-9BA4AADC0843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFE3DD1-44F2-461C-A87E-9BA4AADC0843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFE3DD1-44F2-461C-A87E-9BA4AADC0843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFE3DD1-44F2-461C-A87E-9BA4AADC0843}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01C08B48-7979-4E8E-B473-175105B0E978}
+	EndGlobalSection
+EndGlobal

@@ -317,5 +317,101 @@
     "Name": "PFLT_GENERIC_WORKITEM",
     "ValueType": "typedef struct _FLT_GENERIC_WORKITEM",
     "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_POLL_HANDLE",
+    "ValueType": "DECLARE_HANDLE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_PD_PROVIDER_HANDLE",
+    "ValueType": "DECLARE_HANDLE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_PD_COUNTER_HANDLE",
+    "ValueType": "DECLARE_HANDLE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_PD_FILTER_HANDLE",
+    "ValueType": "DECLARE_HANDLE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_WRAPPER_HANDLE",
+    "ValueType": "typedef struct _NDIS_WRAPPER_HANDLE",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_PROTOCOL_BLOCK",
+    "ValueType": "typedef struct _NDIS_PROTOCOL_BLOCK",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_OPEN_BLOCK",
+    "ValueType": "typedef struct _NDIS_OPEN_BLOCK",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_M_DRIVER_BLOCK",
+    "ValueType": "typedef struct _NDIS_M_DRIVER_BLOCK",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_MINIPORT_BLOCK",
+    "ValueType": "typedef struct _NDIS_MINIPORT_BLOCK",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "CO_CALL_PARAMETERS",
+    "ValueType": "typedef struct _CO_CALL_PARAMETERS",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "CO_MEDIA_PARAMETERS",
+    "ValueType": "typedef struct _CO_MEDIA_PARAMETERS",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_CALL_MANAGER_CHARACTERISTICS",
+    "ValueType": "typedef struct _NDIS_CALL_MANAGER_CHARACTERISTIC",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NDIS_AF_LIST",
+    "ValueType": "typedef struct _NDIS_AF_LIST",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "ETH_FILTER",
+    "ValueType": "typedef struct _X_FILTER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "TR_FILTER",
+    "ValueType": "typedef struct _X_FILTER",
+    "NativeTypedef": true
+  },
+  {
+    "Namespace": "Windows.Wdk.NetworkManagement.Ndis",
+    "Name": "NULL_FILTER",
+    "ValueType": "typedef struct _X_FILTER",
+    "NativeTypedef": true
   }
 ]
