@@ -75,3 +75,8 @@ public partial struct OBJECT_ATTRIBUTES64
     [Const]
     public ulong SecurityQualityOfService;
 }
+
+public unsafe partial class Apis
+{
+    public const uint NTSTRSAFE_UNICODE_STRING_MAX_CCH = 32767;
+}

@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/km/ntstrsafe.h
+--namespace
+Windows.Wdk.Foundation
