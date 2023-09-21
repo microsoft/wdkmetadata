@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/km/fwpmk.h
+--namespace
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform
