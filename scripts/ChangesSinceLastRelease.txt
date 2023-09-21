@@ -2722,3 +2722,134 @@ Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_ASYNC_OPERATION added
 Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_CLEANUP added
 Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_READY_FOR_NEXT_READ_REPORT added
 Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG added
+# Fixed #47.
+Windows.Wdk.Foundation.DRIVER_EXTENSION.AddDevice...Windows.Wdk.Foundation.PDRIVER_ADD_DEVICE => Windows.Wdk.Foundation.DRIVER_ADD_DEVICE*
+Windows.Wdk.Foundation.DRIVER_OBJECT.DriverInit...Windows.Wdk.Foundation.PDRIVER_INITIALIZE => Windows.Wdk.Foundation.DRIVER_INITIALIZE*
+Windows.Wdk.Foundation.DRIVER_OBJECT.DriverStartIo...Windows.Wdk.Foundation.PDRIVER_STARTIO => Windows.Wdk.Foundation.DRIVER_STARTIO*
+Windows.Wdk.Foundation.DRIVER_OBJECT.DriverUnload...Windows.Wdk.Foundation.PDRIVER_UNLOAD => Windows.Wdk.Foundation.DRIVER_UNLOAD*
+Windows.Wdk.Foundation.DRIVER_OBJECT.MajorFunction...Windows.Wdk.Foundation.PDRIVER_DISPATCH[] => Windows.Wdk.Foundation.DRIVER_DISPATCH*[]
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.AcquireFileForNtCreateSection...Windows.Wdk.Foundation.PFAST_IO_ACQUIRE_FILE => Windows.Wdk.Foundation.FAST_IO_ACQUIRE_FILE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.AcquireForCcFlush...Windows.Wdk.Foundation.PFAST_IO_ACQUIRE_FOR_CCFLUSH => Windows.Wdk.Foundation.FAST_IO_ACQUIRE_FOR_CCFLUSH*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.AcquireForModWrite...Windows.Wdk.Foundation.PFAST_IO_ACQUIRE_FOR_MOD_WRITE => Windows.Wdk.Foundation.FAST_IO_ACQUIRE_FOR_MOD_WRITE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoCheckIfPossible...Windows.Wdk.Foundation.PFAST_IO_CHECK_IF_POSSIBLE => Windows.Wdk.Foundation.FAST_IO_CHECK_IF_POSSIBLE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoDetachDevice...Windows.Wdk.Foundation.PFAST_IO_DETACH_DEVICE => Windows.Wdk.Foundation.FAST_IO_DETACH_DEVICE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoDeviceControl...Windows.Wdk.Foundation.PFAST_IO_DEVICE_CONTROL => Windows.Wdk.Foundation.FAST_IO_DEVICE_CONTROL*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoLock...Windows.Wdk.Foundation.PFAST_IO_LOCK => Windows.Wdk.Foundation.FAST_IO_LOCK*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoQueryBasicInfo...Windows.Wdk.Foundation.PFAST_IO_QUERY_BASIC_INFO => Windows.Wdk.Foundation.FAST_IO_QUERY_BASIC_INFO*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoQueryNetworkOpenInfo...Windows.Wdk.Foundation.PFAST_IO_QUERY_NETWORK_OPEN_INFO => Windows.Wdk.Foundation.FAST_IO_QUERY_NETWORK_OPEN_INFO*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoQueryOpen...Windows.Wdk.Foundation.PFAST_IO_QUERY_OPEN => Windows.Wdk.Foundation.FAST_IO_QUERY_OPEN*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoQueryStandardInfo...Windows.Wdk.Foundation.PFAST_IO_QUERY_STANDARD_INFO => Windows.Wdk.Foundation.FAST_IO_QUERY_STANDARD_INFO*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoRead...Windows.Wdk.Foundation.PFAST_IO_READ => Windows.Wdk.Foundation.FAST_IO_READ*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoReadCompressed...Windows.Wdk.Foundation.PFAST_IO_READ_COMPRESSED => Windows.Wdk.Foundation.FAST_IO_READ_COMPRESSED*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoUnlockAll...Windows.Wdk.Foundation.PFAST_IO_UNLOCK_ALL => Windows.Wdk.Foundation.FAST_IO_UNLOCK_ALL*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoUnlockAllByKey...Windows.Wdk.Foundation.PFAST_IO_UNLOCK_ALL_BY_KEY => Windows.Wdk.Foundation.FAST_IO_UNLOCK_ALL_BY_KEY*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoUnlockSingle...Windows.Wdk.Foundation.PFAST_IO_UNLOCK_SINGLE => Windows.Wdk.Foundation.FAST_IO_UNLOCK_SINGLE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoWrite...Windows.Wdk.Foundation.PFAST_IO_WRITE => Windows.Wdk.Foundation.FAST_IO_WRITE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.FastIoWriteCompressed...Windows.Wdk.Foundation.PFAST_IO_WRITE_COMPRESSED => Windows.Wdk.Foundation.FAST_IO_WRITE_COMPRESSED*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.MdlRead...Windows.Wdk.Foundation.PFAST_IO_MDL_READ => Windows.Wdk.Foundation.FAST_IO_MDL_READ*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.MdlReadComplete...Windows.Wdk.Foundation.PFAST_IO_MDL_READ_COMPLETE => Windows.Wdk.Foundation.FAST_IO_MDL_READ_COMPLETE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.MdlReadCompleteCompressed...Windows.Wdk.Foundation.PFAST_IO_MDL_READ_COMPLETE_COMPRESSED => Windows.Wdk.Foundation.FAST_IO_MDL_READ_COMPLETE_COMPRESSED*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.MdlWriteComplete...Windows.Wdk.Foundation.PFAST_IO_MDL_WRITE_COMPLETE => Windows.Wdk.Foundation.FAST_IO_MDL_WRITE_COMPLETE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.MdlWriteCompleteCompressed...Windows.Wdk.Foundation.PFAST_IO_MDL_WRITE_COMPLETE_COMPRESSED => Windows.Wdk.Foundation.FAST_IO_MDL_WRITE_COMPLETE_COMPRESSED*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.PrepareMdlWrite...Windows.Wdk.Foundation.PFAST_IO_PREPARE_MDL_WRITE => Windows.Wdk.Foundation.FAST_IO_PREPARE_MDL_WRITE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.ReleaseFileForNtCreateSection...Windows.Wdk.Foundation.PFAST_IO_RELEASE_FILE => Windows.Wdk.Foundation.FAST_IO_RELEASE_FILE*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.ReleaseForCcFlush...Windows.Wdk.Foundation.PFAST_IO_RELEASE_FOR_CCFLUSH => Windows.Wdk.Foundation.FAST_IO_RELEASE_FOR_CCFLUSH*
+Windows.Wdk.Foundation.FAST_IO_DISPATCH.ReleaseForModWrite...Windows.Wdk.Foundation.PFAST_IO_RELEASE_FOR_MOD_WRITE => Windows.Wdk.Foundation.FAST_IO_RELEASE_FOR_MOD_WRITE*
+Windows.Wdk.Foundation.IRP.CancelRoutine...Windows.Wdk.Foundation.PDRIVER_CANCEL => Windows.Wdk.Foundation.DRIVER_CANCEL*
+Windows.Wdk.Foundation.PDRIVER_ADD_DEVICE removed
+Windows.Wdk.Foundation.PDRIVER_CANCEL removed
+Windows.Wdk.Foundation.PDRIVER_DISPATCH removed
+Windows.Wdk.Foundation.PDRIVER_INITIALIZE removed
+Windows.Wdk.Foundation.PDRIVER_STARTIO removed
+Windows.Wdk.Foundation.PDRIVER_UNLOAD removed
+Windows.Wdk.Foundation.PFAST_IO_ACQUIRE_FILE removed
+Windows.Wdk.Foundation.PFAST_IO_ACQUIRE_FOR_CCFLUSH removed
+Windows.Wdk.Foundation.PFAST_IO_ACQUIRE_FOR_MOD_WRITE removed
+Windows.Wdk.Foundation.PFAST_IO_CHECK_IF_POSSIBLE removed
+Windows.Wdk.Foundation.PFAST_IO_DETACH_DEVICE removed
+Windows.Wdk.Foundation.PFAST_IO_DEVICE_CONTROL removed
+Windows.Wdk.Foundation.PFAST_IO_LOCK removed
+Windows.Wdk.Foundation.PFAST_IO_MDL_READ removed
+Windows.Wdk.Foundation.PFAST_IO_MDL_READ_COMPLETE removed
+Windows.Wdk.Foundation.PFAST_IO_MDL_READ_COMPLETE_COMPRESSED removed
+Windows.Wdk.Foundation.PFAST_IO_MDL_WRITE_COMPLETE removed
+Windows.Wdk.Foundation.PFAST_IO_MDL_WRITE_COMPLETE_COMPRESSED removed
+Windows.Wdk.Foundation.PFAST_IO_PREPARE_MDL_WRITE removed
+Windows.Wdk.Foundation.PFAST_IO_QUERY_BASIC_INFO removed
+Windows.Wdk.Foundation.PFAST_IO_QUERY_NETWORK_OPEN_INFO removed
+Windows.Wdk.Foundation.PFAST_IO_QUERY_OPEN removed
+Windows.Wdk.Foundation.PFAST_IO_QUERY_STANDARD_INFO removed
+Windows.Wdk.Foundation.PFAST_IO_READ removed
+Windows.Wdk.Foundation.PFAST_IO_READ_COMPRESSED removed
+Windows.Wdk.Foundation.PFAST_IO_RELEASE_FILE removed
+Windows.Wdk.Foundation.PFAST_IO_RELEASE_FOR_CCFLUSH removed
+Windows.Wdk.Foundation.PFAST_IO_RELEASE_FOR_MOD_WRITE removed
+Windows.Wdk.Foundation.PFAST_IO_UNLOCK_ALL removed
+Windows.Wdk.Foundation.PFAST_IO_UNLOCK_ALL_BY_KEY removed
+Windows.Wdk.Foundation.PFAST_IO_UNLOCK_SINGLE removed
+Windows.Wdk.Foundation.PFAST_IO_WRITE removed
+Windows.Wdk.Foundation.PFAST_IO_WRITE_COMPRESSED removed
+Windows.Wdk.Storage.FileSystem.Apis.IoRegisterFsRegistrationChange : DriverNotificationRoutine...PDRIVER_FS_NOTIFICATION => DRIVER_FS_NOTIFICATION*
+Windows.Wdk.Storage.FileSystem.Apis.IoRegisterFsRegistrationChangeMountAware : DriverNotificationRoutine...PDRIVER_FS_NOTIFICATION => DRIVER_FS_NOTIFICATION*
+Windows.Wdk.Storage.FileSystem.Apis.IoUnregisterFsRegistrationChange : DriverNotificationRoutine...PDRIVER_FS_NOTIFICATION => DRIVER_FS_NOTIFICATION*
+Windows.Wdk.Storage.FileSystem.DRIVER_FS_NOTIFICATION => Windows.Wdk.Foundation.DRIVER_FS_NOTIFICATION
+Windows.Wdk.Storage.FileSystem.PDRIVER_FS_NOTIFICATION removed
+Windows.Wdk.System.SystemServices.Apis.HalAllocateAdapterChannel : ExecutionRoutine...PDRIVER_CONTROL => DRIVER_CONTROL*
+Windows.Wdk.System.SystemServices.Apis.IoAllocateAdapterChannel : ExecutionRoutine...PDRIVER_CONTROL => DRIVER_CONTROL*
+Windows.Wdk.System.SystemServices.Apis.IoAllocateController : ExecutionRoutine...PDRIVER_CONTROL => DRIVER_CONTROL*
+Windows.Wdk.System.SystemServices.Apis.IoRegisterBootDriverReinitialization : DriverReinitializationRoutine...PDRIVER_REINITIALIZE => DRIVER_REINITIALIZE*
+Windows.Wdk.System.SystemServices.Apis.IoRegisterDriverReinitialization : DriverReinitializationRoutine...PDRIVER_REINITIALIZE => DRIVER_REINITIALIZE*
+Windows.Wdk.System.SystemServices.Apis.IoRegisterPlugPlayNotification : CallbackRoutine...PDRIVER_NOTIFICATION_CALLBACK_ROUTINE => DRIVER_NOTIFICATION_CALLBACK_ROUTINE*
+Windows.Wdk.System.SystemServices.Apis.IoStartPacket : CancelFunction...PDRIVER_CANCEL => DRIVER_CANCEL*
+Windows.Wdk.System.SystemServices.DRIVER_ADD_DEVICE => Windows.Wdk.Foundation.DRIVER_ADD_DEVICE
+Windows.Wdk.System.SystemServices.DRIVER_CANCEL => Windows.Wdk.Foundation.DRIVER_CANCEL
+Windows.Wdk.System.SystemServices.DRIVER_CONTROL => Windows.Wdk.Foundation.DRIVER_CONTROL
+Windows.Wdk.System.SystemServices.DRIVER_DISPATCH => Windows.Wdk.Foundation.DRIVER_DISPATCH
+Windows.Wdk.System.SystemServices.DRIVER_DISPATCH_PAGED => Windows.Wdk.Foundation.DRIVER_DISPATCH_PAGED
+Windows.Wdk.System.SystemServices.DRIVER_DISPATCH_RAISED removed
+Windows.Wdk.System.SystemServices.DRIVER_INITIALIZE => Windows.Wdk.Foundation.DRIVER_INITIALIZE
+Windows.Wdk.System.SystemServices.DRIVER_NOTIFICATION_CALLBACK_ROUTINE => Windows.Wdk.Foundation.DRIVER_NOTIFICATION_CALLBACK_ROUTINE
+Windows.Wdk.System.SystemServices.DRIVER_REINITIALIZE => Windows.Wdk.Foundation.DRIVER_REINITIALIZE
+Windows.Wdk.System.SystemServices.DRIVER_STARTIO => Windows.Wdk.Foundation.DRIVER_STARTIO
+Windows.Wdk.System.SystemServices.DRIVER_UNLOAD => Windows.Wdk.Foundation.DRIVER_UNLOAD
+Windows.Wdk.System.SystemServices.FAST_IO_ACQUIRE_FILE => Windows.Wdk.Foundation.FAST_IO_ACQUIRE_FILE
+Windows.Wdk.System.SystemServices.FAST_IO_ACQUIRE_FOR_CCFLUSH => Windows.Wdk.Foundation.FAST_IO_ACQUIRE_FOR_CCFLUSH
+Windows.Wdk.System.SystemServices.FAST_IO_ACQUIRE_FOR_MOD_WRITE => Windows.Wdk.Foundation.FAST_IO_ACQUIRE_FOR_MOD_WRITE
+Windows.Wdk.System.SystemServices.FAST_IO_CHECK_IF_POSSIBLE => Windows.Wdk.Foundation.FAST_IO_CHECK_IF_POSSIBLE
+Windows.Wdk.System.SystemServices.FAST_IO_DETACH_DEVICE => Windows.Wdk.Foundation.FAST_IO_DETACH_DEVICE
+Windows.Wdk.System.SystemServices.FAST_IO_DEVICE_CONTROL => Windows.Wdk.Foundation.FAST_IO_DEVICE_CONTROL
+Windows.Wdk.System.SystemServices.FAST_IO_LOCK => Windows.Wdk.Foundation.FAST_IO_LOCK
+Windows.Wdk.System.SystemServices.FAST_IO_MDL_READ => Windows.Wdk.Foundation.FAST_IO_MDL_READ
+Windows.Wdk.System.SystemServices.FAST_IO_MDL_READ_COMPLETE => Windows.Wdk.Foundation.FAST_IO_MDL_READ_COMPLETE
+Windows.Wdk.System.SystemServices.FAST_IO_MDL_READ_COMPLETE_COMPRESSED => Windows.Wdk.Foundation.FAST_IO_MDL_READ_COMPLETE_COMPRESSED
+Windows.Wdk.System.SystemServices.FAST_IO_MDL_WRITE_COMPLETE => Windows.Wdk.Foundation.FAST_IO_MDL_WRITE_COMPLETE
+Windows.Wdk.System.SystemServices.FAST_IO_MDL_WRITE_COMPLETE_COMPRESSED => Windows.Wdk.Foundation.FAST_IO_MDL_WRITE_COMPLETE_COMPRESSED
+Windows.Wdk.System.SystemServices.FAST_IO_PREPARE_MDL_WRITE => Windows.Wdk.Foundation.FAST_IO_PREPARE_MDL_WRITE
+Windows.Wdk.System.SystemServices.FAST_IO_QUERY_BASIC_INFO => Windows.Wdk.Foundation.FAST_IO_QUERY_BASIC_INFO
+Windows.Wdk.System.SystemServices.FAST_IO_QUERY_NETWORK_OPEN_INFO => Windows.Wdk.Foundation.FAST_IO_QUERY_NETWORK_OPEN_INFO
+Windows.Wdk.System.SystemServices.FAST_IO_QUERY_OPEN => Windows.Wdk.Foundation.FAST_IO_QUERY_OPEN
+Windows.Wdk.System.SystemServices.FAST_IO_QUERY_STANDARD_INFO => Windows.Wdk.Foundation.FAST_IO_QUERY_STANDARD_INFO
+Windows.Wdk.System.SystemServices.FAST_IO_READ => Windows.Wdk.Foundation.FAST_IO_READ
+Windows.Wdk.System.SystemServices.FAST_IO_READ_COMPRESSED => Windows.Wdk.Foundation.FAST_IO_READ_COMPRESSED
+Windows.Wdk.System.SystemServices.FAST_IO_RELEASE_FILE => Windows.Wdk.Foundation.FAST_IO_RELEASE_FILE
+Windows.Wdk.System.SystemServices.FAST_IO_RELEASE_FOR_CCFLUSH => Windows.Wdk.Foundation.FAST_IO_RELEASE_FOR_CCFLUSH
+Windows.Wdk.System.SystemServices.FAST_IO_RELEASE_FOR_MOD_WRITE => Windows.Wdk.Foundation.FAST_IO_RELEASE_FOR_MOD_WRITE
+Windows.Wdk.System.SystemServices.FAST_IO_UNLOCK_ALL => Windows.Wdk.Foundation.FAST_IO_UNLOCK_ALL
+Windows.Wdk.System.SystemServices.FAST_IO_UNLOCK_ALL_BY_KEY => Windows.Wdk.Foundation.FAST_IO_UNLOCK_ALL_BY_KEY
+Windows.Wdk.System.SystemServices.FAST_IO_UNLOCK_SINGLE => Windows.Wdk.Foundation.FAST_IO_UNLOCK_SINGLE
+Windows.Wdk.System.SystemServices.FAST_IO_WRITE => Windows.Wdk.Foundation.FAST_IO_WRITE
+Windows.Wdk.System.SystemServices.FAST_IO_WRITE_COMPRESSED => Windows.Wdk.Foundation.FAST_IO_WRITE_COMPRESSED
+Windows.Wdk.System.SystemServices.MCA_DRIVER_INFO.ExceptionCallback...Windows.Wdk.System.SystemServices.PDRIVER_MCA_EXCEPTION_CALLBACK => System.IntPtr
+Windows.Wdk.System.SystemServices.PALLOCATE_ADAPTER_CHANNEL_EX.Invoke : ExecutionRoutine...PDRIVER_CONTROL => DRIVER_CONTROL*
+Windows.Wdk.System.SystemServices.PALLOCATE_ADAPTER_CHANNEL.Invoke : ExecutionRoutine...PDRIVER_CONTROL => DRIVER_CONTROL*
+Windows.Wdk.System.SystemServices.PBUILD_SCATTER_GATHER_LIST_EX.Invoke : ExecutionRoutine...PDRIVER_LIST_CONTROL => DRIVER_LIST_CONTROL*
+Windows.Wdk.System.SystemServices.PBUILD_SCATTER_GATHER_LIST.Invoke : ExecutionRoutine...PDRIVER_LIST_CONTROL => DRIVER_LIST_CONTROL*
+Windows.Wdk.System.SystemServices.PDRIVER_CONTROL removed
+Windows.Wdk.System.SystemServices.PDRIVER_DISPATCH_PAGED removed
+Windows.Wdk.System.SystemServices.PDRIVER_LIST_CONTROL removed
+Windows.Wdk.System.SystemServices.PDRIVER_MCA_EXCEPTION_CALLBACK removed
+Windows.Wdk.System.SystemServices.PDRIVER_NOTIFICATION_CALLBACK_ROUTINE removed
+Windows.Wdk.System.SystemServices.PDRIVER_REINITIALIZE removed
+Windows.Wdk.System.SystemServices.PGET_SCATTER_GATHER_LIST_EX.Invoke : ExecutionRoutine...PDRIVER_LIST_CONTROL => DRIVER_LIST_CONTROL*
+Windows.Wdk.System.SystemServices.PGET_SCATTER_GATHER_LIST.Invoke : ExecutionRoutine...PDRIVER_LIST_CONTROL => DRIVER_LIST_CONTROL*
+Windows.Wdk.System.SystemServices.WAIT_CONTEXT_BLOCK.DeviceRoutine...Windows.Wdk.System.SystemServices.PDRIVER_CONTROL => Windows.Wdk.Foundation.DRIVER_CONTROL*
