@@ -2853,3 +2853,6 @@ Windows.Wdk.System.SystemServices.PDRIVER_REINITIALIZE removed
 Windows.Wdk.System.SystemServices.PGET_SCATTER_GATHER_LIST_EX.Invoke : ExecutionRoutine...PDRIVER_LIST_CONTROL => DRIVER_LIST_CONTROL*
 Windows.Wdk.System.SystemServices.PGET_SCATTER_GATHER_LIST.Invoke : ExecutionRoutine...PDRIVER_LIST_CONTROL => DRIVER_LIST_CONTROL*
 Windows.Wdk.System.SystemServices.WAIT_CONTEXT_BLOCK.DeviceRoutine...Windows.Wdk.System.SystemServices.PDRIVER_CONTROL => Windows.Wdk.Foundation.DRIVER_CONTROL*
+# Fixed #44.
+Windows.Wdk.Storage.FileSystem.Apis.RtlConvertSidToUnicodeString removed
+Windows.Wdk.System.SystemServices.Apis.RtlCrc64 removed

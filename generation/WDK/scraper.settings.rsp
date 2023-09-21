@@ -2,6 +2,8 @@
 --with-type
 _D3DDDIFORMAT=uint
 --exclude
+RtlConvertSidToUnicodeString
+RtlCrc64
 DRIVER_DISPATCH_RAISED
 PDRIVER_ADD_DEVICE
 PDRIVER_CANCEL
