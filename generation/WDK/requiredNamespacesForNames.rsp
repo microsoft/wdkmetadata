@@ -73,6 +73,7 @@ FILE_ALIGNMENT_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_BASIC_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_FS_SECTOR_SIZE_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_FULL_EA_INFORMATION=Windows.Wdk.Storage.FileSystem
+FILE_INFORMATION_CLASS=Windows.Wdk.Storage.FileSystem
 FILE_NAME_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_NETWORK_OPEN_INFORMATION=Windows.Wdk.Storage.FileSystem
 FILE_OBJECT=Windows.Wdk.Foundation
