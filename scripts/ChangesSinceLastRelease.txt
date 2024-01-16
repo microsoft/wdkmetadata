@@ -1,0 +1,2 @@
+# Fixed #57.
+Windows.Wdk.Storage.FileSystem.Apis.LsaFreeReturnBuffer removed

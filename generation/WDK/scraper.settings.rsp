@@ -682,6 +682,7 @@ InitSecurityInterfaceW
 IRangeException
 IResourceManager
 LATENCY_TIME
+LsaFreeReturnBuffer
 LsaLogonUser
 LsaRegisterLogonProcess
 MAKE_SIGNATURE_FN
