@@ -30,3 +30,5 @@ ORStart::return=WIN32_ERROR
 NtCreateFile::DesiredAccess=FILE_ACCESS_RIGHTS
 NtCreateFile::FileAttributes=FILE_FLAGS_AND_ATTRIBUTES
 NtCreateFile::ShareAccess=FILE_SHARE_MODE
+KeBugCheck::BugCheckCode=BUGCHECK_ERROR
+KeBugCheckEx::BugCheckCode=BUGCHECK_ERROR
