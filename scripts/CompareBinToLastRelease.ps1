@@ -16,7 +16,7 @@ if (!$SkipInstallTools.IsPresent)
 
 $winmdPath = Get-OutputWinmdFileName -arch "crossarch"
 $previousReleaseWinmd = Get-WDKMetadataLastReleaseWinmdPath
-$metadataToolsBin = "$(Get-BuildToolsNugetPropsProperty("PkgMicrosoft_Windows_WinmdGenerator"))\tools\net6.0"
+$metadataToolsBin = "$(Get-BuildToolsNugetPropsProperty("PkgMicrosoft_Windows_WinmdGenerator"))\tools\net8.0"
 $winmdUtilsPathBin = Join-Path $metadataToolsBin "WinmdUtils.dll"
 $changesSinceLastRelease = Get-ChangesSinceLastReleaseFile
 
