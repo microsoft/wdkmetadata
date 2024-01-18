@@ -26,7 +26,7 @@ namespace TestCommon
 
             var winmdGeneratorPath = from e in xDocument.Descendants("{http://schemas.microsoft.com/developer/msbuild/2003}PkgMicrosoft_Windows_WinmdGenerator") select e.Value;
 
-            return Path.Combine(winmdGeneratorPath.First(), @"tools/net6.0/winmdutils.dll");
+            return Path.Combine(winmdGeneratorPath.First(), @"tools/net8.0/winmdutils.dll");
         }
 
         public static string WDKWinmdPath => Path.GetFullPath(Path.Combine(BinPath, @"../../Windows.Wdk.winmd"));
