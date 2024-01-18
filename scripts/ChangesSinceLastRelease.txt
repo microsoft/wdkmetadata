@@ -1,0 +1,5 @@
+# Fixed #57.
+Windows.Wdk.Storage.FileSystem.Apis.LsaFreeReturnBuffer removed
+# Fixed #53.
+Windows.Wdk.System.SystemServices.Apis.KeBugCheck : BugCheckCode...UInt32 => BUGCHECK_ERROR
+Windows.Wdk.System.SystemServices.Apis.KeBugCheckEx : BugCheckCode...UInt32 => BUGCHECK_ERROR
