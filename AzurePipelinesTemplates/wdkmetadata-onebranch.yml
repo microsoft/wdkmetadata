@@ -76,7 +76,7 @@ stages:
     pool:
       type: windows
     steps:
-    - template: win32metadata-checkout.yml
+    - template: wdkmetadata-checkout.yml
 
     - task: CmdLine@2
       displayName: Set up VS environment
