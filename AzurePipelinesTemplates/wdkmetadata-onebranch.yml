@@ -4,7 +4,7 @@ parameters:
   default: "PullRequest"
 - name: "RepoDirectory"
   type: string
-  default: "win32metadata"
+  default: "wdkmetadata"
 - name: BuildConfiguration
   type: string
   default: Release
@@ -32,7 +32,7 @@ stages:
     pool:
       type: windows
     steps:
-    - template: win32metadata-checkout.yml
+    - template: wdkmetadata-checkout.yml
       parameters:
         RepoDirectory: ${{ parameters.RepoDirectory }}
 
@@ -104,21 +104,21 @@ stages:
       displayName: Download x64 generated assets
       inputs:
         artifact: 'generated_x64'
-        path: '$(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\generation\WinSDK\obj'
+        path: '$(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\generation\WDK\obj'
 
     - task: DownloadPipelineArtifact@2
       displayName: Download x86 generated assets
       inputs:
         artifact: 'generated_x86'
-        path: '$(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\generation\WinSDK\obj'
+        path: '$(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\generation\WDK\obj'
 
     - task: DownloadPipelineArtifact@2
       displayName: Download arm64 generated assets
       inputs:
         artifact: 'generated_arm64'
-        path: '$(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\generation\WinSDK\obj'
+        path: '$(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\generation\WDK\obj'
 
-    - script: dir /s $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\generation\WinSDK\obj
+    - script: dir /s $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\generation\WDK\obj
       displayName: Print generated files directory ($(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\)
 
     - task: PowerShell@2
@@ -218,13 +218,6 @@ stages:
       displayName: Do packages
       inputs:
         filePath: $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\scripts\DoPackages.ps1
-        arguments: -SkipInstallTools
-        pwsh: true
-
-    - task: PowerShell@2
-      displayName: Do samples
-      inputs:
-        filePath: $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\scripts\DoSamples.ps1
         arguments: -SkipInstallTools
         pwsh: true
 
