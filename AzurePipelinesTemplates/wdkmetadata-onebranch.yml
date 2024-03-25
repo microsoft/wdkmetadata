@@ -26,7 +26,7 @@ stages:
     displayName: "Scrape headers"
     timeoutInMinutes: 60
     variables:
-      ob_outputDirectory: '${{parameters.RepoDirectory}}\generation\WinSDK\obj'
+      ob_outputDirectory: '${{parameters.RepoDirectory}}\generation\WDK\obj'
       ob_artifactBaseName: 'generated'
       ob_artifactSuffix: '_$(arch)'
       ob_sdl_binskim_break: true # https://aka.ms/obpipelines/sdl
