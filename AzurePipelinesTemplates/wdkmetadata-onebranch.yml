@@ -148,7 +148,14 @@ stages:
       inputs:
         command: sign
         signing_profile: external_distribution
-        files_to_sign: 'ClangSharpSourceToWinmd.dll,ConstantsScraper.dll,CsvHelper.dll,ICSharpCode.Decompiler.dll,MetadataTasks.dll,MetadataUtils.dll,WinmdUtils.dll'
+        files_to_sign: |
+          **/ClangSharpSourceToWinmd.dll;
+          **/ConstantsScraper.dll;
+          **/CsvHelper.dll;
+          **/ICSharpCode.Decompiler.dll;
+          **/MetadataTasks.dll;
+          **/MetadataUtils.dll;
+          **/WinmdUtils.dll;
         search_root: $(Build.SourcesDirectory)\bin\$(BuildConfiguration)\net8.0
 
     # - task: EsrpCodeSigning@1
@@ -249,6 +256,14 @@ stages:
         filePath: $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\scripts\DoTests.ps1
         pwsh: true
 
+    - task: onebranch.pipeline.signing@1
+      displayName: '🔒 Onebranch Signing for nuget packages'
+      condition: eq(${{ parameters.OfficialBuild }}, 'true')
+      inputs:
+        command: sign
+        signing_profile: external_distribution
+        files_to_sign: '**/*.nupkg'
+        search_root: $(OutputPackagesDir)
     # - task: EsrpCodeSigning@1
     #   displayName: 'Sign nuget packages'
     #   inputs:
