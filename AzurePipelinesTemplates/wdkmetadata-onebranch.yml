@@ -86,13 +86,6 @@ stages:
         script: |
           & "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
 
-    - task: PowerShell@2
-      displayName: VS environment test
-      inputs:
-        targetType: 'inline'
-        script: |
-          & msbuild
-
     - task: UseDotNet@2
       displayName: ⚙ Install .NET SDK
       inputs:
@@ -227,14 +220,12 @@ stages:
       displayName: Do packages
       inputs:
         filePath: $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\scripts\DoPackages.ps1
-        arguments: -SkipInstallTools
         pwsh: true
 
     - task: PowerShell@2
       displayName: Do tests
       inputs:
         filePath: $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\scripts\DoTests.ps1
-        arguments: -SkipInstallTools
         pwsh: true
 
     # - task: EsrpCodeSigning@1
