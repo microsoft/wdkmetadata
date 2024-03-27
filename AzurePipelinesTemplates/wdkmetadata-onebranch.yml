@@ -140,7 +140,7 @@ stages:
         command: sign
         signing_profile: external_distribution
         files_to_sign: 'Windows.Win32.winmd'
-        search_root: $(Build.SourcesDirectory)\bin
+        search_root: $(Build.SourcesDirectory)\${{ parameters.RepoDirectory }}\bin
 
     - task: onebranch.pipeline.signing@1
       displayName: '🔒 Onebranch Signing for net8.0 binaries in Generator SDK package'
@@ -156,7 +156,7 @@ stages:
           **/MetadataTasks.dll;
           **/MetadataUtils.dll;
           **/WinmdUtils.dll;
-        search_root: $(Build.SourcesDirectory)\bin\$(BuildConfiguration)\net8.0
+        search_root: $(Build.SourcesDirectory)\${{ parameters.RepoDirectory }}\bin\$(BuildConfiguration)\net8.0
 
     # - task: EsrpCodeSigning@1
     #   displayName: 'Authenticode Sign Binaries in Metadata package'
