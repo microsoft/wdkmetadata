@@ -257,6 +257,20 @@ stages:
     #     MaxRetryAttempts: '2'
     #   condition: and(succeeded(), eq(variables['SignFiles'], 'true'), ne(variables['Build.Reason'], 'PullRequest'))
 
+    # Copy build logs to artifact staging directory
+    - task: CopyFiles@2
+      displayName: 📢 Copy build logs to pipeline artifact staging directory 
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/${{parameters.RepoDirectory}}/bin/logs'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+    # Copy nuget package to artifact staging directory
+    - task: CopyFiles@2
+      displayName: Copy NuGet packages to pipeline artifact staging directory
+      inputs:
+        SourceFolder: '$(OutputPackagesDir)'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
     # - publish: bin/logs
     #   artifact: build_logs
     #   displayName: 📢 Publish build logs
