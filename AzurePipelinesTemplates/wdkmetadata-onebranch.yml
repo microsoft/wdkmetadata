@@ -135,7 +135,6 @@ stages:
       condition: eq(${{ parameters.OfficialBuild }}, 'true')
       inputs:
         command: 'sign'
-        cp_code: 'CP-230012'
         signing_profile: external_distribution
         files_to_sign: 'Windows.Wdk.winmd'
         search_root: $(Build.SourcesDirectory)\${{ parameters.RepoDirectory }}\bin
@@ -157,7 +156,6 @@ stages:
       condition: eq(${{ parameters.OfficialBuild }}, 'true')
       inputs:
         command: sign
-        cp_code: 'CP-401405'
         signing_profile: external_distribution
         files_to_sign: '**/*.nupkg'
         search_root: $(OutputPackagesDir)
