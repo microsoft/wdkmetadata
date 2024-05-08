@@ -48,3 +48,5 @@ Windows.Wdk.System.SystemServices.Apis.EtwWrite : RegHandle...UInt64 => REGHANDL
 Windows.Wdk.System.SystemServices.Apis.EtwWriteEx : RegHandle...UInt64 => REGHANDLE
 Windows.Wdk.System.SystemServices.Apis.EtwWriteString : RegHandle...UInt64 => REGHANDLE
 Windows.Wdk.System.SystemServices.Apis.EtwWriteTransfer : RegHandle...UInt64 => REGHANDLE
+# Fixed #63.
+Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadNameInformation added
