@@ -109,3 +109,9 @@ Windows.Win32.System.Rpc.MIDL_STUB_DESC.apfnExprEval
 Windows.Win32.System.Rpc.MIDL_STUB_DESC.apfnNdrRundownRoutines
 Windows.Win32.System.Rpc.MIDL_STUB_DESC.NotifyRoutineTable
 Windows.Win32.System.Rpc.NDR_CS_ROUTINES.pTagGettingRoutines
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfReadyForNextReadReport
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfAsyncOperationGetFeature
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfAsyncOperationSetFeature
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfAsyncOperationWriteReport
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfAsyncOperationGetInputReport
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfCleanup

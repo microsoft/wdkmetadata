@@ -50,3 +50,13 @@ Windows.Wdk.System.SystemServices.Apis.EtwWriteString : RegHandle...UInt64 => RE
 Windows.Wdk.System.SystemServices.Apis.EtwWriteTransfer : RegHandle...UInt64 => REGHANDLE
 # Fixed #63.
 Windows.Wdk.System.Threading.THREADINFOCLASS.ThreadNameInformation added
+# Fixed #66.
+Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_ASYNC_OPERATION removed
+Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_CLEANUP removed
+Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_READY_FOR_NEXT_READ_REPORT removed
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfAsyncOperationGetFeature...Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_ASYNC_OPERATION => Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_ASYNC_OPERATION*
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfAsyncOperationGetInputReport...Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_ASYNC_OPERATION => Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_ASYNC_OPERATION*
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfAsyncOperationSetFeature...Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_ASYNC_OPERATION => Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_ASYNC_OPERATION*
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfAsyncOperationWriteReport...Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_ASYNC_OPERATION => Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_ASYNC_OPERATION*
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfCleanup...Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_CLEANUP => Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_CLEANUP*
+Windows.Wdk.Devices.HumanInterfaceDevice.VHF_CONFIG.EvtVhfReadyForNextReadReport...Windows.Wdk.Devices.HumanInterfaceDevice.PEVT_VHF_READY_FOR_NEXT_READ_REPORT => Windows.Wdk.Devices.HumanInterfaceDevice.EVT_VHF_READY_FOR_NEXT_READ_REPORT*
