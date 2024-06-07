@@ -33,3 +33,4 @@ NtCreateFile::FileAttributes=FILE_FLAGS_AND_ATTRIBUTES
 NtCreateFile::ShareAccess=FILE_SHARE_MODE
 KeBugCheck::BugCheckCode=BUGCHECK_ERROR
 KeBugCheckEx::BugCheckCode=BUGCHECK_ERROR
+CM_POWER_DATA::PD_Capabilities=DEVICE_POWER_CAPABILITIES
