@@ -55,3 +55,152 @@ Windows.Wdk.System.SystemServices.PBUILD_SCATTER_GATHER_LIST.Invoke : ExecutionR
 Windows.Wdk.System.SystemServices.PGET_SCATTER_GATHER_LIST_EX.Invoke : ExecutionRoutine...DRIVER_LIST_CONTROL* => DRIVER_LIST_CONTROL
 Windows.Wdk.System.SystemServices.PGET_SCATTER_GATHER_LIST.Invoke : ExecutionRoutine...DRIVER_LIST_CONTROL* => DRIVER_LIST_CONTROL
 Windows.Wdk.System.SystemServices.WAIT_CONTEXT_BLOCK.DeviceRoutine...Windows.Wdk.Foundation.DRIVER_CONTROL* => Windows.Wdk.Foundation.DRIVER_CONTROL
+# Fixed #68.
+Windows.Wdk.Storage.FileSystem.Apis.NtAllocateVirtualMemoryEx added
+Windows.Wdk.Storage.FileSystem.Apis.NtCreateDirectoryObject added
+Windows.Wdk.Storage.FileSystem.Apis.NtCreateEvent added
+Windows.Wdk.Storage.FileSystem.Apis.NtDeleteFile added
+Windows.Wdk.Storage.FileSystem.Apis.NtDuplicateObject added
+Windows.Wdk.Storage.FileSystem.Apis.NtFlushBuffersFile added
+Windows.Wdk.Storage.FileSystem.Apis.NtFlushVirtualMemory added
+Windows.Wdk.Storage.FileSystem.Apis.NtNotifyChangeKey added
+Windows.Wdk.Storage.FileSystem.Apis.NtOpenDirectoryObject added
+Windows.Wdk.Storage.FileSystem.Apis.NtOpenSymbolicLinkObject added
+Windows.Wdk.Storage.FileSystem.Apis.NtQueryEaFile added
+Windows.Wdk.Storage.FileSystem.Apis.NtQueryFullAttributesFile added
+Windows.Wdk.Storage.FileSystem.Apis.NtQuerySymbolicLinkObject added
+Windows.Wdk.Storage.FileSystem.Apis.NtSetEaFile added
+Windows.Wdk.Storage.FileSystem.Apis.NtSetEvent added
+Windows.Wdk.Storage.FileSystem.Apis.ZwWaitForSingleObject => Windows.Wdk.System.Threading.Apis.ZwWaitForSingleObject
+Windows.Wdk.System.Memory.Apis.NtMapViewOfSection added
+Windows.Wdk.System.Memory.Apis.NtOpenSection added
+Windows.Wdk.System.Memory.Apis.NtUnmapViewOfSection added
+Windows.Wdk.System.Memory.SECTION_INHERIT added
+Windows.Wdk.System.Memory.SECTION_INHERIT.ViewShare added
+Windows.Wdk.System.Memory.SECTION_INHERIT.ViewUnmap added
+Windows.Wdk.System.Registry.Apis.NtCommitRegistryTransaction added
+Windows.Wdk.System.Registry.Apis.NtCreateKey added
+Windows.Wdk.System.Registry.Apis.NtCreateKeyTransacted added
+Windows.Wdk.System.Registry.Apis.NtCreateRegistryTransaction added
+Windows.Wdk.System.Registry.Apis.NtDeleteKey added
+Windows.Wdk.System.Registry.Apis.NtDeleteValueKey added
+Windows.Wdk.System.Registry.Apis.NtEnumerateKey added
+Windows.Wdk.System.Registry.Apis.NtEnumerateValueKey added
+Windows.Wdk.System.Registry.Apis.NtFlushKey added
+Windows.Wdk.System.Registry.Apis.NtOpenKey added
+Windows.Wdk.System.Registry.Apis.NtOpenKeyEx added
+Windows.Wdk.System.Registry.Apis.NtOpenKeyTransacted added
+Windows.Wdk.System.Registry.Apis.NtOpenKeyTransactedEx added
+Windows.Wdk.System.Registry.Apis.NtQueryKey added
+Windows.Wdk.System.Registry.Apis.NtQueryValueKey added
+Windows.Wdk.System.Registry.Apis.NtRestoreKey added
+Windows.Wdk.System.Registry.Apis.NtSaveKey added
+Windows.Wdk.System.Registry.Apis.NtSaveKeyEx added
+Windows.Wdk.System.Registry.Apis.NtSetValueKey added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyBasicInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyCachedInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyFlagsInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyFullInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyHandleTagsInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyLayerInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyNameInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyNodeInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyTrustInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.KeyVirtualizationInformation added
+Windows.Wdk.System.Registry.KEY_INFORMATION_CLASS.MaxKeyInfoClass added
+Windows.Wdk.System.Registry.KEY_VALUE_INFORMATION_CLASS added
+Windows.Wdk.System.Registry.KEY_VALUE_INFORMATION_CLASS.KeyValueBasicInformation added
+Windows.Wdk.System.Registry.KEY_VALUE_INFORMATION_CLASS.KeyValueFullInformation added
+Windows.Wdk.System.Registry.KEY_VALUE_INFORMATION_CLASS.KeyValueFullInformationAlign64 added
+Windows.Wdk.System.Registry.KEY_VALUE_INFORMATION_CLASS.KeyValueLayerInformation added
+Windows.Wdk.System.Registry.KEY_VALUE_INFORMATION_CLASS.KeyValuePartialInformation added
+Windows.Wdk.System.Registry.KEY_VALUE_INFORMATION_CLASS.KeyValuePartialInformationAlign64 added
+Windows.Wdk.System.Registry.KEY_VALUE_INFORMATION_CLASS.MaxKeyValueInfoClass added
+Windows.Wdk.System.Registry.REG_ENUMERATE_KEY_INFORMATION added
+Windows.Wdk.System.Registry.REG_ENUMERATE_VALUE_KEY_INFORMATION added
+Windows.Wdk.System.Registry.REG_QUERY_KEY_INFORMATION added
+Windows.Wdk.System.Registry.REG_QUERY_VALUE_KEY_INFORMATION added
+Windows.Wdk.System.SystemServices.Apis.NtAllocateLocallyUniqueId added
+Windows.Wdk.System.SystemServices.Apis.NtDisplayString added
+Windows.Wdk.System.SystemServices.Apis.NtLoadDriver added
+Windows.Wdk.System.SystemServices.Apis.NtMakeTemporaryObject added
+Windows.Wdk.System.SystemServices.Apis.NtOpenProcess => Windows.Wdk.System.Threading.Apis.NtOpenProcess
+Windows.Wdk.System.SystemServices.Apis.NtOpenRegistryTransaction => Windows.Wdk.System.Registry.Apis.NtOpenRegistryTransaction
+Windows.Wdk.System.SystemServices.Apis.NtRollbackRegistryTransaction => Windows.Wdk.System.Registry.Apis.NtRollbackRegistryTransaction
+Windows.Wdk.System.SystemServices.Apis.NtUnloadDriver added
+Windows.Wdk.System.SystemServices.Apis.ZwCancelTimer => Windows.Wdk.System.Threading.Apis.ZwCancelTimer
+Windows.Wdk.System.SystemServices.Apis.ZwCommitRegistryTransaction => Windows.Wdk.System.Registry.Apis.ZwCommitRegistryTransaction
+Windows.Wdk.System.SystemServices.Apis.ZwCreateDirectoryObject => Windows.Wdk.Storage.FileSystem.Apis.ZwCreateDirectoryObject
+Windows.Wdk.System.SystemServices.Apis.ZwCreateKey => Windows.Wdk.System.Registry.Apis.ZwCreateKey
+Windows.Wdk.System.SystemServices.Apis.ZwCreateKeyTransacted => Windows.Wdk.System.Registry.Apis.ZwCreateKeyTransacted
+Windows.Wdk.System.SystemServices.Apis.ZwCreateRegistryTransaction => Windows.Wdk.System.Registry.Apis.ZwCreateRegistryTransaction
+Windows.Wdk.System.SystemServices.Apis.ZwCreateTimer => Windows.Wdk.System.Threading.Apis.ZwCreateTimer
+Windows.Wdk.System.SystemServices.Apis.ZwDeleteKey => Windows.Wdk.System.Registry.Apis.ZwDeleteKey
+Windows.Wdk.System.SystemServices.Apis.ZwDeleteValueKey => Windows.Wdk.System.Registry.Apis.ZwDeleteValueKey
+Windows.Wdk.System.SystemServices.Apis.ZwEnumerateKey => Windows.Wdk.System.Registry.Apis.ZwEnumerateKey
+Windows.Wdk.System.SystemServices.Apis.ZwEnumerateValueKey => Windows.Wdk.System.Registry.Apis.ZwEnumerateValueKey
+Windows.Wdk.System.SystemServices.Apis.ZwFlushKey => Windows.Wdk.System.Registry.Apis.ZwFlushKey
+Windows.Wdk.System.SystemServices.Apis.ZwMapViewOfSection => Windows.Wdk.System.Memory.Apis.ZwMapViewOfSection
+Windows.Wdk.System.SystemServices.Apis.ZwOpenEvent => Windows.Wdk.System.Threading.Apis.ZwOpenEvent
+Windows.Wdk.System.SystemServices.Apis.ZwOpenKey => Windows.Wdk.System.Registry.Apis.ZwOpenKey
+Windows.Wdk.System.SystemServices.Apis.ZwOpenKeyEx => Windows.Wdk.System.Registry.Apis.ZwOpenKeyEx
+Windows.Wdk.System.SystemServices.Apis.ZwOpenKeyTransacted => Windows.Wdk.System.Registry.Apis.ZwOpenKeyTransacted
+Windows.Wdk.System.SystemServices.Apis.ZwOpenKeyTransactedEx => Windows.Wdk.System.Registry.Apis.ZwOpenKeyTransactedEx
+Windows.Wdk.System.SystemServices.Apis.ZwOpenProcess => Windows.Wdk.System.Threading.Apis.ZwOpenProcess
+Windows.Wdk.System.SystemServices.Apis.ZwOpenSection => Windows.Wdk.System.Memory.Apis.ZwOpenSection
+Windows.Wdk.System.SystemServices.Apis.ZwOpenTimer => Windows.Wdk.System.Threading.Apis.ZwOpenTimer
+Windows.Wdk.System.SystemServices.Apis.ZwQueryKey => Windows.Wdk.System.Registry.Apis.ZwQueryKey
+Windows.Wdk.System.SystemServices.Apis.ZwQueryValueKey => Windows.Wdk.System.Registry.Apis.ZwQueryValueKey
+Windows.Wdk.System.SystemServices.Apis.ZwRenameKey => Windows.Wdk.System.Registry.Apis.ZwRenameKey
+Windows.Wdk.System.SystemServices.Apis.ZwRestoreKey => Windows.Wdk.System.Registry.Apis.ZwRestoreKey
+Windows.Wdk.System.SystemServices.Apis.ZwSaveKey => Windows.Wdk.System.Registry.Apis.ZwSaveKey
+Windows.Wdk.System.SystemServices.Apis.ZwSaveKeyEx => Windows.Wdk.System.Registry.Apis.ZwSaveKeyEx
+Windows.Wdk.System.SystemServices.Apis.ZwSetTimer => Windows.Wdk.System.Threading.Apis.ZwSetTimer
+Windows.Wdk.System.SystemServices.Apis.ZwSetTimerEx => Windows.Wdk.System.Threading.Apis.ZwSetTimerEx
+Windows.Wdk.System.SystemServices.Apis.ZwSetValueKey => Windows.Wdk.System.Registry.Apis.ZwSetValueKey
+Windows.Wdk.System.SystemServices.Apis.ZwTerminateProcess => Windows.Wdk.System.Threading.Apis.ZwTerminateProcess
+Windows.Wdk.System.SystemServices.Apis.ZwUnmapViewOfSection => Windows.Wdk.System.Memory.Apis.ZwUnmapViewOfSection
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyBasicInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyCachedInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyFlagsInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyFullInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyHandleTagsInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyLayerInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyNameInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyNodeInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyTrustInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.KeyVirtualizationInformation removed
+Windows.Wdk.System.SystemServices.KEY_INFORMATION_CLASS.MaxKeyInfoClass removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_INFORMATION_CLASS.KeyValueBasicInformation removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_INFORMATION_CLASS.KeyValueFullInformation removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_INFORMATION_CLASS.KeyValueFullInformationAlign64 removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_INFORMATION_CLASS.KeyValueLayerInformation removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_INFORMATION_CLASS.KeyValuePartialInformation removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_INFORMATION_CLASS.KeyValuePartialInformationAlign64 removed
+Windows.Wdk.System.SystemServices.KEY_VALUE_INFORMATION_CLASS.MaxKeyValueInfoClass removed
+Windows.Wdk.System.SystemServices.REG_ENUMERATE_KEY_INFORMATION removed
+Windows.Wdk.System.SystemServices.REG_ENUMERATE_VALUE_KEY_INFORMATION removed
+Windows.Wdk.System.SystemServices.REG_QUERY_KEY_INFORMATION removed
+Windows.Wdk.System.SystemServices.REG_QUERY_VALUE_KEY_INFORMATION removed
+Windows.Wdk.System.SystemServices.SECTION_INHERIT removed
+Windows.Wdk.System.SystemServices.SECTION_INHERIT.ViewShare removed
+Windows.Wdk.System.SystemServices.SECTION_INHERIT.ViewUnmap removed
+Windows.Wdk.System.SystemServices.TIMER_SET_INFORMATION_CLASS removed
+Windows.Wdk.System.SystemServices.TIMER_SET_INFORMATION_CLASS.MaxTimerInfoClass removed
+Windows.Wdk.System.SystemServices.TIMER_SET_INFORMATION_CLASS.TimerSetCoalescableTimer removed
+Windows.Wdk.System.Threading.Apis.NtCancelTimer added
+Windows.Wdk.System.Threading.Apis.NtCreateTimer added
+Windows.Wdk.System.Threading.Apis.NtOpenEvent added
+Windows.Wdk.System.Threading.Apis.NtOpenTimer added
+Windows.Wdk.System.Threading.Apis.NtSetTimer added
+Windows.Wdk.System.Threading.Apis.NtSetTimerEx added
+Windows.Wdk.System.Threading.Apis.NtTerminateProcess added
+Windows.Wdk.System.Threading.TIMER_SET_INFORMATION_CLASS added
+Windows.Wdk.System.Threading.TIMER_SET_INFORMATION_CLASS.MaxTimerInfoClass added
+Windows.Wdk.System.Threading.TIMER_SET_INFORMATION_CLASS.TimerSetCoalescableTimer added
+# Fixed #69.
+Windows.Wdk.Storage.FileSystem.Apis.NtQueryDirectoryObject added
+Windows.Wdk.Storage.FileSystem.Apis.ZwQueryDirectoryObject added
