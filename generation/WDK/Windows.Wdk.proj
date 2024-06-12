@@ -35,7 +35,7 @@
     <ShowEmitWinmdOutputDetails>true</ShowEmitWinmdOutputDetails>
 
     <!-- To regenerate this list; remove the property and the build will indicate what names can safely go here as a build optimization -->
-    <ExcludeFromCrossarch>Direct3D;FileSystem;FileSystem.Minifilters;Foundation;HID;NDIS;OfflineRegistry;SystemServices;WFP</ExcludeFromCrossarch>
+    <ExcludeFromCrossarch>Bluetooth;Direct3D;FileSystem;FileSystem.Minifilters;Foundation;HID;NDIS;OfflineRegistry;SystemServices;WFP</ExcludeFromCrossarch>
 
     <UseWinSDKAssets>true</UseWinSDKAssets>
   </PropertyGroup>

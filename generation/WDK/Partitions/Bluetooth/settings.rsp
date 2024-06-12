@@ -1,0 +1,4 @@
+--traverse
+<IncludeRoot>/km/bthguid.h
+--namespace
+Windows.Wdk.Devices.Bluetooth

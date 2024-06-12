@@ -204,3 +204,22 @@ Windows.Wdk.System.Threading.TIMER_SET_INFORMATION_CLASS.TimerSetCoalescableTime
 # Fixed #69.
 Windows.Wdk.Storage.FileSystem.Apis.NtQueryDirectoryObject added
 Windows.Wdk.Storage.FileSystem.Apis.ZwQueryDirectoryObject added
+# Added Bluetooth GUIDs for #56.
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_ClassOfDevice added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_ClassOfDevice_Deprecated added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_DeviceAddress added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_DeviceFlags added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_DeviceManufacturer added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_DeviceModelNumber added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_DevicePID added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_DeviceProductVersion added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_DeviceVID added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_DeviceVIDSource added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_LastConnectedTime added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_LastConnectedTime_Deprecated added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_LastSeenTime added
+Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_ServiceGUID added
+Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTH_DEVICE_INTERFACE added
+Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_PROFILE_DRIVER_INTERFACE added
+Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_SDP_NODE_INTERFACE added
+Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_SDP_PARSE_INTERFACE added
