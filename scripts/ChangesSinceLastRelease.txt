@@ -223,3 +223,28 @@ Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTH_DEVICE_INTERFACE added
 Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_PROFILE_DRIVER_INTERFACE added
 Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_SDP_NODE_INTERFACE added
 Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_SDP_PARSE_INTERFACE added
+# Updated the baseline with latest win32metadata.
+Windows.Wdk.Foundation.POHANDLE.Value...System.IntPtr => System.Void*
+Windows.Wdk.NetworkManagement.Ndis.NDIS_PD_COUNTER_HANDLE.Value...System.IntPtr => System.Void*
+Windows.Wdk.NetworkManagement.Ndis.NDIS_PD_FILTER_HANDLE.Value...System.IntPtr => System.Void*
+Windows.Wdk.NetworkManagement.Ndis.NDIS_PD_PROVIDER_HANDLE.Value...System.IntPtr => System.Void*
+Windows.Wdk.NetworkManagement.Ndis.NDIS_POLL_HANDLE.Value...System.IntPtr => System.Void*
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmBfeStateUnsubscribeChanges0 : changeHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmCalloutDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmEngineClose0 : engineHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmFilterDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmLayerDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmNetEventDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmProviderContextDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmProviderDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmSessionDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.FwpmSubLayerDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.IkeextSaDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.IPsecDospStateDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.IPsecSaContextDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.NetworkManagement.WindowsFilteringPlatform.Apis.IPsecSaDestroyEnumHandle0 : enumHandle : [In] => [In,Out]
+Windows.Wdk.Storage.FileSystem.ALLOCATE_VIRTUAL_MEMORY_EX_CALLBACK.Invoke : CallbackContext : [In] => [In,Out]
+Windows.Wdk.Storage.FileSystem.FREE_VIRTUAL_MEMORY_EX_CALLBACK.Invoke : CallbackContext : [In] => [In,Out]
+Windows.Wdk.Storage.FileSystem.QUERY_VIRTUAL_MEMORY_CALLBACK.Invoke : CallbackContext : [In] => [In,Out]
+Windows.Wdk.System.OfflineRegistry.ORHKEY.Value...System.IntPtr => System.Void*
+Windows.Wdk.System.SystemServices.CM_POWER_DATA.PD_Capabilities...System.UInt32 => Windows.Win32.System.Power.DEVICE_POWER_CAPABILITIES
