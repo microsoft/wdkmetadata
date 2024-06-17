@@ -223,6 +223,39 @@ Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTH_DEVICE_INTERFACE added
 Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_PROFILE_DRIVER_INTERFACE added
 Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_SDP_NODE_INTERFACE added
 Windows.Wdk.Devices.Bluetooth.Apis.GUID_BTHDDI_SDP_PARSE_INTERFACE added
+# Added missing Zw APIs.
+Windows.Wdk.Storage.FileSystem.Apis.ZwAccessCheckAndAuditAlarm added
+Windows.Wdk.Storage.FileSystem.Apis.ZwAccessCheckByTypeAndAuditAlarm added
+Windows.Wdk.Storage.FileSystem.Apis.ZwAccessCheckByTypeResultListAndAuditAlarm added
+Windows.Wdk.Storage.FileSystem.Apis.ZwAccessCheckByTypeResultListAndAuditAlarmByHandle added
+Windows.Wdk.Storage.FileSystem.Apis.ZwAdjustGroupsToken added
+Windows.Wdk.Storage.FileSystem.Apis.ZwAdjustPrivilegesToken added
+Windows.Wdk.Storage.FileSystem.Apis.ZwCancelIoFileEx added
+Windows.Wdk.Storage.FileSystem.Apis.ZwCloseObjectAuditAlarm added
+Windows.Wdk.Storage.FileSystem.Apis.ZwCreateSectionEx added
+Windows.Wdk.Storage.FileSystem.Apis.ZwDeleteObjectAuditAlarm added
+Windows.Wdk.Storage.FileSystem.Apis.ZwFilterToken added
+Windows.Wdk.Storage.FileSystem.Apis.ZwImpersonateAnonymousToken added
+Windows.Wdk.Storage.FileSystem.Apis.ZwOpenObjectAuditAlarm added
+Windows.Wdk.Storage.FileSystem.Apis.ZwOpenProcessToken added
+Windows.Wdk.Storage.FileSystem.Apis.ZwOpenThreadToken added
+Windows.Wdk.Storage.FileSystem.Apis.ZwPrivilegeCheck added
+Windows.Wdk.Storage.FileSystem.Apis.ZwPrivilegedServiceAuditAlarm added
+Windows.Wdk.Storage.FileSystem.Apis.ZwPrivilegeObjectAuditAlarm added
+Windows.Wdk.System.Registry.Apis.ZwNotifyChangeMultipleKeys added
+Windows.Wdk.System.Registry.Apis.ZwOpenRegistryTransaction added
+Windows.Wdk.System.Registry.Apis.ZwQueryMultipleValueKey added
+Windows.Wdk.System.Registry.Apis.ZwRollbackRegistryTransaction added
+Windows.Wdk.System.SystemInformation.Apis.ZwQuerySystemInformation added
+Windows.Wdk.System.SystemInformation.Apis.ZwQuerySystemTime added
+Windows.Wdk.System.SystemInformation.Apis.ZwQueryTimerResolution added
+Windows.Wdk.System.SystemServices.Apis.ZwManagePartition added
+Windows.Wdk.System.SystemServices.Apis.ZwPropagationComplete added
+Windows.Wdk.System.SystemServices.Apis.ZwPropagationFailed added
+Windows.Wdk.System.SystemServices.Apis.ZwRegisterProtocolAddressInformation added
+Windows.Wdk.System.SystemServices.Apis.ZwRenameTransactionManager added
+Windows.Wdk.System.Threading.Apis.ZwQueryInformationProcess added
+Windows.Wdk.System.Threading.Apis.ZwQueryInformationThread added
 # Updated the baseline with latest win32metadata.
 Windows.Wdk.Foundation.POHANDLE.Value...System.IntPtr => System.Void*
 Windows.Wdk.NetworkManagement.Ndis.NDIS_PD_COUNTER_HANDLE.Value...System.IntPtr => System.Void*
