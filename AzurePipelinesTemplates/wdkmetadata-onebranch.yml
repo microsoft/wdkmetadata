@@ -4,7 +4,7 @@ parameters:
   default: "PullRequest"
 - name: "RepoDirectory"
   type: string
-  default: "wdkmetadata"
+  default: "s" # Shortened repo directory name to keep paths under 260 characters. OneBranch issue where longpath setting doesn't get pushed down to submodules.
 - name: OfficialBuild
   type: boolean
   default: false
@@ -43,15 +43,38 @@ stages:
         packageType: sdk
         useGlobalJson: true
 
-    # TODO - this no longer sets an Azure Devops pipeline build number, OneBranch has a different way of doing that
     - task: PowerShell@2
       displayName: Set build version
       condition: eq(variables.arch, 'x64') # Only needed for x64
       inputs:
         targetType: inline
+        workingDirectory: ${{parameters.RepoDirectory}}
         script: |
-          .\${{parameters.RepoDirectory}}\\scripts\Install-DotNetTool.ps1 -Name nbgv
-          nbgv cloud 
+          .\scripts\Install-DotNetTool.ps1 -Name nbgv
+          nbgv cloud --common-vars
+
+    # Generate the Azure Devops pipeline build number, since nbgv cannot do it for OneBranch pipelines
+    - task: PowerShell@2
+      displayName: Get pipeline run name
+      condition: eq(variables.arch, 'x64')
+      inputs:
+        targetType: inline
+        workingDirectory: ${{parameters.RepoDirectory}}
+        script: |
+          $jsonString = nbgv get-version -f json
+          $nbgvData = $jsonString | ConvertFrom-Json
+          $commitId = $nbgvData.GitCommitId
+          $commitMessage = git log --format=%B -n 1 $commitId
+          Write-Host "Setting pipeline build number to '$(GitBuildVersionSimple) • $commitMessage'"
+          Write-Host "##vso[task.setvariable variable=CommitMessage;]$commitMessage"
+          Write-Host "##vso[task.setvariable variable=CommitId;]$commitId"
+
+    # Set the pipeline build number
+    - task: onebranch.pipeline.version@1
+      condition: eq(variables.arch, 'x64')
+      inputs:
+        system: 'Custom'
+        customVersion: '$(GitBuildVersionSimple) • $(CommitMessage)'
 
     - task: PowerShell@2
       displayName: GenerateMetadataSource.ps1
@@ -60,6 +83,17 @@ stages:
         arguments: '-arch $(arch) $(generateMetadataArgs)'
         errorActionPreference: 'continue'
         pwsh: true
+
+    # Save commit hash for use by the release pipeline    
+    - task: PowerShell@2
+      displayName: Save Source Commit
+      condition: eq(variables.arch, 'x64')
+      inputs:
+        targetType: inline
+        workingDirectory: ${{parameters.RepoDirectory}}
+        script: |
+          Write-Host "Saving Source Commit ID for github release pipeline"
+          "$(CommitId)" | Out-File $(Build.SourcesDirectory)\$(ob_outputDirectory)\SourceCommit.txt
 
 - stage: build_winmd
   displayName: "Build WinMD"
@@ -78,6 +112,8 @@ stages:
       type: windows
     steps:
     - template: wdkmetadata-checkout.yml
+      parameters:
+        RepoDirectory: ${{ parameters.RepoDirectory }}
 
     - task: PowerShell@2
       displayName: Set up VS environment
@@ -144,12 +180,14 @@ stages:
       inputs:
         filePath: $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\scripts\DoPackages.ps1
         pwsh: true
+        arguments: -SkipInstallTools
 
     - task: PowerShell@2
       displayName: Do tests
       inputs:
         filePath: $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\scripts\DoTests.ps1
         pwsh: true
+        arguments: -SkipInstallTools
 
     - task: onebranch.pipeline.signing@1
       displayName: '🔒 Onebranch Signing for nuget packages'
@@ -173,17 +211,6 @@ stages:
       inputs:
         SourceFolder: '$(OutputPackagesDir)'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-    # - publish: bin/logs
-    #   artifact: build_logs
-    #   displayName: 📢 Publish build logs
-    #   condition: always()
-
-    # - task: PublishPipelineArtifact@1
-    #   displayName: 'Publish NuGet packages to pipeline artifacts'
-    #   inputs:
-    #     targetPath: '$(OutputPackagesDir)'
-    #     artifact: NuGetPackages
 
     #   # There's a problem on microsoft.visualstudio.com that requires the guid instead of NuGetCommand@2
     #   # Don't publish if we're using pre-generated source
