@@ -1,0 +1,11 @@
+parameters:
+- name: "RepoDirectory"
+  type: string
+  default: "wdkmetadata"
+
+steps:
+- checkout: wdkmetadata
+  path: s/${{ parameters.RepoDirectory }}
+  lfs: false
+  displayName: Checkout wdkmetadata from github
+  submodules: recursive
