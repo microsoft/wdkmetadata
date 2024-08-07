@@ -21,8 +21,10 @@ stages:
           generateMetadataArgs: '-scrapeConstants'
         x64:
           arch: 'x64'
+          generateMetadataArgs: ''
         arm64:
           arch: 'arm64'
+          generateMetadataArgs: ''
     displayName: "Scrape headers"
     timeoutInMinutes: 60
     variables:
@@ -64,9 +66,6 @@ stages:
           $jsonString = nbgv get-version -f json
           $nbgvData = $jsonString | ConvertFrom-Json
           $commitId = $nbgvData.GitCommitId
-          $commitMessage = git log --format=%B -n 1 $commitId
-          Write-Host "Setting pipeline build number to '$(GitBuildVersionSimple) • $commitMessage'"
-          Write-Host "##vso[task.setvariable variable=CommitMessage;]$commitMessage"
           Write-Host "##vso[task.setvariable variable=CommitId;]$commitId"
 
     # Set the pipeline build number
@@ -74,7 +73,7 @@ stages:
       condition: eq(variables.arch, 'x64')
       inputs:
         system: 'Custom'
-        customVersion: '$(GitBuildVersionSimple) • $(CommitMessage)'
+        customVersion: '$(GitBuildVersionSimple)'
 
     - task: PowerShell@2
       displayName: GenerateMetadataSource.ps1
