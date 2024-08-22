@@ -2,10 +2,16 @@ parameters:
 - name: "RepoDirectory"
   type: string
   default: "wdkmetadata"
+- name: "Submodules"
+  type: boolean
+  default: false
 
 steps:
 - checkout: wdkmetadata
   path: s/${{ parameters.RepoDirectory }}
   lfs: false
   displayName: Checkout wdkmetadata from github
-  submodules: recursive
+  ${{ if parameters.Submodules }}:
+    submodules: recursive
+  ${{ if not(parameters.Submodules) }}:
+    submodules: false
