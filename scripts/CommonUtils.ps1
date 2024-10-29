@@ -64,14 +64,14 @@ function Install-BuildTools
 {
     Param([switch]$Clean)
 
-    & "$PSScriptRoot\Install-DotNetTool" -Name nbgv
+    & "$PSScriptRoot\Install-DotNetTool" -Name nbgv -NuGetConfigFile "$rootDir\nuget.Config"
 
     if ($Clean.IsPresent)
     {
         & dotnet clean "$rootDir\buildtools"
     }
 
-    & dotnet build "$rootDir\buildtools" -c Release "-bl:$PSScriptRoot\..\bin\logs\buildtools.binlog"
+    & dotnet build "$rootDir\buildtools" -c Release "-bl:$PSScriptRoot\..\bin\logs\buildtools.binlog" --verbosity detailed
     ThrowOnNativeProcessError
 
     Install-VsDevShell
