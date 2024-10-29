@@ -23,5 +23,5 @@ else
     $target = "ScrapeHeaders"
 }
 
-dotnet build "$wdkProjectRoot" -c Release -p:ScanArch=$arch -t:$target "-bl:$PSScriptRoot\..\bin\logs\GenerateMetadataSources.binlog" --verbosity detailed
+dotnet build "$wdkProjectRoot" -c Release -p:ScanArch=$arch -t:$target "-bl:$PSScriptRoot\..\bin\logs\GenerateMetadataSources.binlog"
 ThrowOnNativeProcessError
