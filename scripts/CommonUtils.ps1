@@ -71,7 +71,7 @@ function Install-BuildTools
         & dotnet clean "$rootDir\buildtools"
     }
 
-    & dotnet build "$rootDir\buildtools" -c Release "-bl:$PSScriptRoot\..\bin\logs\buildtools.binlog" --verbosity detailed
+    & dotnet build "$rootDir\buildtools" -c Release "-bl:$PSScriptRoot\..\bin\logs\buildtools.binlog"
     ThrowOnNativeProcessError
 
     Install-VsDevShell

@@ -1,7 +1,11 @@
 Param ([string] $Name, [string] $Version = '', [string] $NuGetConfigFile)
 
-if (-not $NuGetConfigFile -or -not (Test-Path -Path $NuGetConfigFile -PathType Leaf)) {
-    throw "NuGetConfigFile is either null or not a valid file path."
+if (-not $NuGetConfigFile) {
+    throw "NuGetConfigFile is null must be a valid file path to NuGet.config file."
+}
+
+if (-not (Test-Path -Path $NuGetConfigFile -PathType Leaf) {
+	throw "NuGetConfigFile file wasn't found at supplied path valid path to NuGet.config file."
 }
 
 if ($Version -ne '')
