@@ -4,7 +4,7 @@ if (-not $NuGetConfigFile) {
     throw "NuGetConfigFile is null must be a valid file path to NuGet.config file."
 }
 
-if (-not (Test-Path -Path $NuGetConfigFile -PathType Leaf) {
+if (-not (Test-Path -Path $NuGetConfigFile -PathType Leaf)) {
 	throw "NuGetConfigFile file wasn't found at supplied path valid path to NuGet.config file."
 }
 
