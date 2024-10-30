@@ -33,7 +33,7 @@ jobs:
     inputs:
       targetType: inline
       script: |
-        .\scripts\Install-DotNetTool.ps1 -Name nbgv
+        .\scripts\Install-DotNetTool.ps1 -Name nbgv -NuGetConfigFile '$(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\nuget.config'
         nbgv cloud
 
   - task: PowerShell@2
