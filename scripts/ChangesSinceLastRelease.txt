@@ -1,0 +1,3 @@
+# Add RtlIsDosDeviceName_U and RtlDosPathNameToNtPathName_U_WithStatus #72
+Windows.Wdk.Storage.FileSystem.Apis.RtlDosPathNameToNtPathName_U_WithStatus added
+Windows.Wdk.Storage.FileSystem.Apis.RtlIsDosDeviceName_U added

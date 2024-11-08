@@ -29,6 +29,9 @@ Copy-Item "$wdkIncludeDir\shared" "$recompiledIdlHeadersDir" -Recurse
 Copy-Item "$wdkIncludeDir\winrt" "$recompiledIdlHeadersDir" -Recurse
 Copy-Item "$wdkIncludeDir\ucrt" "$recompiledIdlHeadersDir" -Recurse
 
+Write-Host "Copying additional headers from $wdkProjectRoot\AdditionalHeaders to $recompiledIdlHeadersDir\um..."
+Copy-Item "$wdkProjectRoot\AdditionalHeaders\*" "$recompiledIdlHeadersDir\um" -Recurse
+
 Write-Host "Converting MIDL attributes to SAL annotations..."
 $idlFilesToRecompile = [System.Collections.ArrayList]@()
 $idlFilesToExclude = "cellularapi_oem", "certbcli", "dxgicommon", "dxgitype", "microsoft.diagnostics.appanalysis", "PortableDeviceConnectImports", "wincrypt" | ForEach-Object { "$_.idl" }

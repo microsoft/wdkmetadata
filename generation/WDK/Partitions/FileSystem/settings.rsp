@@ -56,5 +56,6 @@ ZwDeviceIoControlFile
 --traverse
 <IncludeRoot>/km/ntifs.h
 <IncludeRoot>/km/ntnls.h
+<IncludeRoot>/um/rtldosname.h
 --namespace
 Windows.Wdk.Storage.FileSystem
