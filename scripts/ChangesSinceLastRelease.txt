@@ -25,3 +25,7 @@ Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_LastConnectedTime...Windows
 Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_LastSeenTime...Windows.Win32.Devices.Properties.DEVPROPKEY => Windows.Win32.Foundation.DEVPROPKEY
 Windows.Wdk.Devices.Bluetooth.Apis.DEVPKEY_Bluetooth_ServiceGUID...Windows.Win32.Devices.Properties.DEVPROPKEY => Windows.Win32.Foundation.DEVPROPKEY
 Windows.Wdk.System.SystemServices.Apis.EtwRegister : RegHandle...UInt64* => REGHANDLE*
+# OBJ_INHERIT and related attributes are int whereas OBJECT_ATTRIBUTES.Attributes is uint #73
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES.Attributes...System.UInt32 => Windows.Win32.Foundation.OBJECT_ATTRIBUTE_FLAGS
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES32.Attributes...System.UInt32 => Windows.Win32.Foundation.OBJECT_ATTRIBUTE_FLAGS
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES64.Attributes...System.UInt32 => Windows.Win32.Foundation.OBJECT_ATTRIBUTE_FLAGS

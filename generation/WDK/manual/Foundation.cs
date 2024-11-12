@@ -20,7 +20,7 @@ public unsafe partial struct OBJECT_ATTRIBUTES
     public UNICODE_STRING* ObjectName;
 
     [NativeTypeName("ULONG")]
-    public uint Attributes;
+    public OBJECT_ATTRIBUTE_FLAGS Attributes;
 
     [NativeTypeName("PVOID")]
     [Const]
@@ -43,7 +43,7 @@ public partial struct OBJECT_ATTRIBUTES32
     public uint ObjectName;
 
     [NativeTypeName("ULONG")]
-    public uint Attributes;
+    public OBJECT_ATTRIBUTE_FLAGS Attributes;
 
     [NativeTypeName("ULONG")]
     [Const]
@@ -66,7 +66,7 @@ public partial struct OBJECT_ATTRIBUTES64
     public ulong ObjectName;
 
     [NativeTypeName("ULONG")]
-    public uint Attributes;
+    public OBJECT_ATTRIBUTE_FLAGS Attributes;
 
     [NativeTypeName("ULONG64")]
     [Const]
