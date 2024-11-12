@@ -1,3 +1,10 @@
 # Add RtlIsDosDeviceName_U and RtlDosPathNameToNtPathName_U_WithStatus #72
 Windows.Wdk.Storage.FileSystem.Apis.RtlDosPathNameToNtPathName_U_WithStatus added
 Windows.Wdk.Storage.FileSystem.Apis.RtlIsDosDeviceName_U added
+# OBJECT_ATTRIBUTES has missing field types #82
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES.SecurityDescriptor...System.Void* => Windows.Win32.Security.SECURITY_DESCRIPTOR
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES.SecurityQualityOfService...System.Void* => Windows.Win32.Security.SECURITY_QUALITY_OF_SERVICE
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES32.SecurityDescriptor...System.UInt32 => Windows.Win32.Security.SECURITY_DESCRIPTOR
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES32.SecurityQualityOfService...System.UInt32 => Windows.Win32.Security.SECURITY_QUALITY_OF_SERVICE
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES64.SecurityDescriptor...System.UInt64 => Windows.Win32.Security.SECURITY_DESCRIPTOR
+Windows.Wdk.Foundation.OBJECT_ATTRIBUTES64.SecurityQualityOfService...System.UInt64 => Windows.Win32.Security.SECURITY_QUALITY_OF_SERVICE

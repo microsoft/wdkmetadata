@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 using Windows.Win32.Foundation;
 using Windows.Win32.Foundation.Metadata;
+using Windows.Win32.Security;
 
 namespace Windows.Wdk.Foundation;
 
@@ -23,11 +24,11 @@ public unsafe partial struct OBJECT_ATTRIBUTES
 
     [NativeTypeName("PVOID")]
     [Const]
-    public void* SecurityDescriptor;
+    public SECURITY_DESCRIPTOR SecurityDescriptor;
 
     [NativeTypeName("PVOID")]
     [Const]
-    public void* SecurityQualityOfService;
+    public SECURITY_QUALITY_OF_SERVICE SecurityQualityOfService;
 }
 
 public partial struct OBJECT_ATTRIBUTES32
@@ -46,11 +47,11 @@ public partial struct OBJECT_ATTRIBUTES32
 
     [NativeTypeName("ULONG")]
     [Const]
-    public uint SecurityDescriptor;
+    public SECURITY_DESCRIPTOR SecurityDescriptor;
 
     [NativeTypeName("ULONG")]
     [Const]
-    public uint SecurityQualityOfService;
+    public SECURITY_QUALITY_OF_SERVICE SecurityQualityOfService;
 }
 
 public partial struct OBJECT_ATTRIBUTES64
@@ -69,11 +70,11 @@ public partial struct OBJECT_ATTRIBUTES64
 
     [NativeTypeName("ULONG64")]
     [Const]
-    public ulong SecurityDescriptor;
+    public SECURITY_DESCRIPTOR SecurityDescriptor;
 
     [NativeTypeName("ULONG64")]
     [Const]
-    public ulong SecurityQualityOfService;
+    public SECURITY_QUALITY_OF_SERVICE SecurityQualityOfService;
 }
 
 public unsafe partial class Apis
