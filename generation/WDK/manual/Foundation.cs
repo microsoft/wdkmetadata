@@ -24,11 +24,11 @@ public unsafe partial struct OBJECT_ATTRIBUTES
 
     [NativeTypeName("PVOID")]
     [Const]
-    public SECURITY_DESCRIPTOR SecurityDescriptor;
+    public unsafe SECURITY_DESCRIPTOR* SecurityDescriptor;
 
     [NativeTypeName("PVOID")]
     [Const]
-    public SECURITY_QUALITY_OF_SERVICE SecurityQualityOfService;
+    public unsafe SECURITY_QUALITY_OF_SERVICE* SecurityQualityOfService;
 }
 
 public partial struct OBJECT_ATTRIBUTES32
@@ -47,11 +47,11 @@ public partial struct OBJECT_ATTRIBUTES32
 
     [NativeTypeName("ULONG")]
     [Const]
-    public SECURITY_DESCRIPTOR SecurityDescriptor;
+    public unsafe SECURITY_DESCRIPTOR* SecurityDescriptor;
 
     [NativeTypeName("ULONG")]
     [Const]
-    public SECURITY_QUALITY_OF_SERVICE SecurityQualityOfService;
+    public unsafe SECURITY_QUALITY_OF_SERVICE* SecurityQualityOfService;
 }
 
 public partial struct OBJECT_ATTRIBUTES64
@@ -70,11 +70,11 @@ public partial struct OBJECT_ATTRIBUTES64
 
     [NativeTypeName("ULONG64")]
     [Const]
-    public SECURITY_DESCRIPTOR SecurityDescriptor;
+    public unsafe SECURITY_DESCRIPTOR* SecurityDescriptor;
 
     [NativeTypeName("ULONG64")]
     [Const]
-    public SECURITY_QUALITY_OF_SERVICE SecurityQualityOfService;
+    public unsafe SECURITY_QUALITY_OF_SERVICE* SecurityQualityOfService;
 }
 
 public unsafe partial class Apis
