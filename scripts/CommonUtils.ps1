@@ -68,10 +68,10 @@ function Install-BuildTools
 
     if ($Clean.IsPresent)
     {
-        & dotnet clean "$rootDir\buildtools"
+        & dotnet clean "$rootDir\buildtools" -v diag
     }
 
-    & dotnet build "$rootDir\buildtools" -c Release "-bl:$PSScriptRoot\..\bin\logs\buildtools.binlog"
+    & dotnet build "$rootDir\buildtools" -c Release "-bl:$PSScriptRoot\..\bin\logs\buildtools.binlog" -v diag
     ThrowOnNativeProcessError
 
     Install-VsDevShell
