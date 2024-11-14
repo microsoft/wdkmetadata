@@ -50,5 +50,5 @@ else
     $configuration = "Release"
 }
 
-dotnet build "$wdkProjectRoot" -c $configuration -t:EmitWinmd -p:WinmdVersion=$assemblyVersion -p:OutputWinmd=$outputWinmdFileName -p:SkipScraping=$skipScraping "-bl:$PSScriptRoot\..\bin\logs\BuildMetadataBin.binlog"
+dotnet build "$wdkProjectRoot" -c $configuration -t:EmitWinmd -p:WinmdVersion=$assemblyVersion -p:OutputWinmd=$outputWinmdFileName -p:SkipScraping=$skipScraping "-bl:$PSScriptRoot\..\bin\logs\BuildMetadataBin.binlog" -v diag
 ThrowOnNativeProcessError

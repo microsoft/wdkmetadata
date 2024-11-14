@@ -14,7 +14,7 @@ if (!$SkipInstallTools.IsPresent)
 Write-Host "*** Running tests on .winmd" -ForegroundColor Blue
 
 $wdkTestsDir = "$rootDir\tests\Windows.Wdk.Tests"
-dotnet test $wdkTestsDir -c:Release
+dotnet test $wdkTestsDir -c:Release -v diag
 ThrowOnNativeProcessError
 
 Write-Host "`n`e[32mTesting .winmd succeeded`e[0m"

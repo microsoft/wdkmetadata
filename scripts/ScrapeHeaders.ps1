@@ -31,6 +31,6 @@ if ($Partition)
     $params += "-p:PartitionFilter=$Partition"
 }
 
-& dotnet $params
+& dotnet $params -v diag
 
 ThrowOnNativeProcessError
