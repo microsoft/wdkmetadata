@@ -71,7 +71,11 @@ function Install-BuildTools
         & dotnet clean "$rootDir\buildtools" -v diag
     }
 
-    & dotnet build "$rootDir\buildtools" -c Release "-bl:$PSScriptRoot\..\bin\logs\buildtools.binlog" -v diag
+    # Explicitly restore the buildtools project using the nuget.config file
+    & dotnet restore "$rootDir\buildtools" --configfile "$rootDir\nuget.Config" -v diag
+
+    # Build the buildtools project and skip restoring the dependencies
+    & dotnet build "$rootDir\buildtools" -c Release "-bl:$PSScriptRoot\..\bin\logs\buildtools.binlog" --no-restore -v diag
     ThrowOnNativeProcessError
 
     Install-VsDevShell
