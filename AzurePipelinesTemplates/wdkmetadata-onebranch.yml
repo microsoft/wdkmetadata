@@ -94,20 +94,12 @@ stages:
           Write-Host "Saving Source Commit ID for github release pipeline"
           "$(CommitId)" | Out-File $(Build.SourcesDirectory)\$(ob_outputDirectory)\SourceCommit.txt
     
-    # Copy build logs from GenerateMetadataSource to artifact staging directory
+    # Copy build logs from GenerateMetadataSource to artifact location that will automatically get picked up
     - task: CopyFiles@2
-      displayName: 📢 Copy build logs to pipeline artifact staging directory 
+      displayName: 📢 Copy build logs to pipeline artifact directory 
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/${{parameters.RepoDirectory}}/bin/logs'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-    # Publish build logs as artifacts
-    - task: PublishBuildArtifacts@1
-      displayName: 📢 Publish build logs
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'build_logs'
-        publishLocation: 'Container'
+        TargetFolder: '$(Build.SourcesDirectory)/$(ob_outputDirectory)/logs'
 
 - stage: build_winmd
   displayName: "Build WinMD"
@@ -212,20 +204,12 @@ stages:
         files_to_sign: '**/*.nupkg'
         search_root: $(OutputPackagesDir)
 
-    # Copy build logs from Build WinMD to artifact staging directory
+    # Copy build logs from Build WinMD to artifact location that will automatically get picked up
     - task: CopyFiles@2
-      displayName: 📢 Copy build logs to pipeline artifact staging directory 
+      displayName: 📢 Copy build logs to pipeline artifact location 
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/${{parameters.RepoDirectory}}/bin/logs'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-    # Publish build logs as artifacts
-    - task: PublishBuildArtifacts@1
-      displayName: 📢 Publish build logs
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'build_logs'
-        publishLocation: 'Container'
+        TargetFolder: '$(ob_outputDirectory)/logs'
 
     # Copy nuget package to artifact staging directory
     - task: CopyFiles@2
