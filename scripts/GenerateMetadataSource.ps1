@@ -23,8 +23,15 @@ else
     $target = "ScrapeHeaders"
 }
 
+$rootDir = [System.IO.Path]::GetFullPath("$PSScriptRoot\..")
+
+# Explicitly restore the WDK project to avoid issues restore happening during build
+& dotnet restore "$wdkProjectRoot" --configfile "$rootDir\nuget.Config" -v diag
+
+# Create a unique log file for the build
 $timestamp = Get-Date -Format "yyyyMMddHHmmss"
 $logFile = "$PSScriptRoot\..\bin\logs\GenerateMetadataSources_$timestamp.binlog"
 
-& dotnet build "$wdkProjectRoot" -c Release -p:ScanArch=$arch -t:$target "-bl:$logFile" -v diag
+# Build the WDK project
+& dotnet build "$wdkProjectRoot" -c Release -p:ScanArch=$arch -t:$target --no-restore "-bl:$logFile" -v diag
 ThrowOnNativeProcessError
