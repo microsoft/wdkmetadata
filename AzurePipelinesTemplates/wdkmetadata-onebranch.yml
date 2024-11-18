@@ -101,6 +101,14 @@ stages:
         SourceFolder: '$(Build.SourcesDirectory)/${{parameters.RepoDirectory}}/bin/logs'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+    # Publish build logs as artifacts
+    - task: PublishBuildArtifacts@1
+      displayName: 📢 Publish build logs
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'build_logs'
+        publishLocation: 'Container'
+
 - stage: build_winmd
   displayName: "Build WinMD"
   dependsOn: 'scrape'
@@ -204,12 +212,20 @@ stages:
         files_to_sign: '**/*.nupkg'
         search_root: $(OutputPackagesDir)
 
-    # Copy build logs to artifact staging directory
+    # Copy build logs from Build WinMD to artifact staging directory
     - task: CopyFiles@2
       displayName: 📢 Copy build logs to pipeline artifact staging directory 
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/${{parameters.RepoDirectory}}/bin/logs'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+    # Publish build logs as artifacts
+    - task: PublishBuildArtifacts@1
+      displayName: 📢 Publish build logs
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'build_logs'
+        publishLocation: 'Container'
 
     # Copy nuget package to artifact staging directory
     - task: CopyFiles@2
