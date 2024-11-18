@@ -118,7 +118,7 @@ function Get-NugetPropsProperty
 {
     Param ([string] $name, [string]$projectName)
 
-    Write-Output "Getting NuGet Props for property $name from $projectName"
+    Write-Host "Getting NuGet Props for property $name from $projectName"
 
     $projNameOnly = Split-Path -Path $projectName -LeafBase
 
