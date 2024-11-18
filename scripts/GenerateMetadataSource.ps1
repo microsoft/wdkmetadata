@@ -23,5 +23,8 @@ else
     $target = "ScrapeHeaders"
 }
 
-& dotnet build "$wdkProjectRoot" -c Release -p:ScanArch=$arch -t:$target "-bl:$PSScriptRoot\..\bin\logs\GenerateMetadataSources.binlog" -v diag
+$timestamp = Get-Date -Format "yyyyMMddHHmmss"
+$logFile = "$PSScriptRoot\..\bin\logs\GenerateMetadataSources_$timestamp.binlog"
+
+& dotnet build "$wdkProjectRoot" -c Release -p:ScanArch=$arch -t:$target "-bl:$logFile" -v diag
 ThrowOnNativeProcessError
