@@ -30,7 +30,7 @@ if ($UpdateDifferencesWithComment)
 
 Write-Verbose "Calling: dotnet $utilsArgs"
 
-& dotnet $winmdUtilsPathBin $utilsArgs -v diag
+& dotnet $winmdUtilsPathBin $utilsArgs
 if ($LastExitCode -lt 0)
 {
     if (!$SuppressSuggestionToCallScript.IsPresent)

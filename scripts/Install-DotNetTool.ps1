@@ -13,7 +13,7 @@ if ($Version -ne '')
     $installed = & dotnet tool list -g | select-string -Pattern "$Name\s+$Version"
     if ($null -eq $installed)
     {
-        & dotnet tool update --global $Name --version $Version --configfile $NuGetConfigFile -v diag
+        & dotnet tool update --global $Name --version $Version --configfile $NuGetConfigFile
     }
 }
 else
@@ -21,6 +21,6 @@ else
     $installed = & dotnet tool list -g | select-string -Pattern "$Name"
     if ($null -eq $installed)
     {
-        & dotnet tool update --global $Name --configfile $NuGetConfigFile -v diag
+        & dotnet tool update --global $Name --configfile $NuGetConfigFile
     }
 }
