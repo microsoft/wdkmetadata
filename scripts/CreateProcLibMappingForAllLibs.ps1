@@ -29,5 +29,5 @@ if (!(Test-Path -path $kmLibDirectory))
 $libArg = "$umLibDirectory\onecoreuap.lib $umLibDirectory\kernel32.lib $umLibDirectory\d3d10.lib"
 
 $metadataToolsBin = "$(Get-BuildToolsNugetPropsProperty("PkgMicrosoft_Windows_WinmdGenerator"))\tools\net6.0"
-dotnet $metadataToolsBin\WinmdUtils.dll createLibRsp --lib $umLibDirectory\onecoreuap.lib $umLibDirectory\kernel32.lib $umLibDirectory\d3d10.lib --libDir $kmLibDirectory --libDir $umLibDirectory --exclude ServiceMain DllMain GetDeviceID --inputRsp $inputFileName --outputRsp $outputFileName -v diag
+dotnet $metadataToolsBin\WinmdUtils.dll createLibRsp --lib $umLibDirectory\onecoreuap.lib $umLibDirectory\kernel32.lib $umLibDirectory\d3d10.lib --libDir $kmLibDirectory --libDir $umLibDirectory --exclude ServiceMain DllMain GetDeviceID --inputRsp $inputFileName --outputRsp $outputFileName
 ThrowOnNativeProcessError

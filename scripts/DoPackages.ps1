@@ -12,5 +12,5 @@ if (!$skipInstallTools)
 
 Write-Host "*** Packing packages..." -ForegroundColor Blue
 
-dotnet pack "$PSScriptRoot\..\sources\packages.proj" -c Release -v diag
+dotnet pack "$PSScriptRoot\..\sources\packages.proj" -c Release
 ThrowOnNativeProcessError
