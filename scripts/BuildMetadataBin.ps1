@@ -50,5 +50,13 @@ else
     $configuration = "Release"
 }
 
-dotnet build "$wdkProjectRoot" -c $configuration -t:EmitWinmd -p:WinmdVersion=$assemblyVersion -p:OutputWinmd=$outputWinmdFileName -p:SkipScraping=$skipScraping "-bl:$PSScriptRoot\..\bin\logs\BuildMetadataBin.binlog"
+$rootDir = [System.IO.Path]::GetFullPath("$PSScriptRoot\..")
+
+# Explicitly restore the WDK project to avoid issues restore happening during build
+& dotnet restore "$wdkProjectRoot" --configfile "$rootDir\nuget.Config"
+
+$timestamp = Get-Date -Format "yyyyMMddHHmmss"
+$logFile = "$PSScriptRoot\..\bin\logs\BuildMetadataBin_$timestamp.binlog"
+
+& dotnet build "$wdkProjectRoot" -c $configuration -t:EmitWinmd -p:WinmdVersion=$assemblyVersion -p:OutputWinmd=$outputWinmdFileName -p:SkipScraping=$skipScraping "-bl:$logFile" --no-restore
 ThrowOnNativeProcessError
