@@ -107,8 +107,8 @@ stages:
   jobs:
   - job: build_winmd
     displayName: Build, test, sign, package winmd
-    workspace:
-      clean: all
+    # NOTE: no 'workspace: clean' here -- OneBranch manages the workspace itself and
+    # its Job Validation step rejects the 'workspace' job property.
     variables:
       OutputPackagesDir: $(Build.SourcesDirectory)\${{parameters.RepoDirectory}}\bin\Packages\Release\NuGet
       ob_outputDirectory: '$(Build.ArtifactStagingDirectory)'
