@@ -1,0 +1,2 @@
+# Add NtCreateNamedPipeFile
+Windows.Wdk.Storage.FileSystem.Apis.NtCreateNamedPipeFile added

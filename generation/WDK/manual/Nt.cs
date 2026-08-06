@@ -22,7 +22,11 @@ namespace Windows.Wdk.Storage.FileSystem
         [DllImport("ntdll.dll", CallingConvention = CallingConvention.StdCall, ExactSpelling = true)]
         [return:NativeTypeName("NTSTATUS")]
         public static extern int NtCancelIoFileEx([NativeTypeName("HANDLE")][In]IntPtr FileHandle, [NativeTypeName("PIO_STATUS_BLOCK")][In,Optional]IO_STATUS_BLOCK* IoRequestToCancel, [NativeTypeName("PIO_STATUS_BLOCK")][Out]IO_STATUS_BLOCK* IoStatusBlock);
-        
+
+        [DllImport("ntdll.dll", CallingConvention = CallingConvention.StdCall, ExactSpelling = true)]
+        [return: NativeTypeName("NTSTATUS")]
+        public static extern int NtCreateNamedPipeFile([NativeTypeName("PHANDLE")][Out] IntPtr* FileHandle, [NativeTypeName("ULONG")][In] ulong DesiredAccess, [NativeTypeName("POBJECT_ATTRIBUTES")][CppAttributeList("Name=SAL_name; p1=\"_In_\"; p2=\"\"; p3=\"2\"^Name=SAL_begin^Name=SAL_pre^Name=SAL_notref^Name=SAL_null; p1=__no^Name=SAL_pre^Name=SAL_valid^Name=SAL_pre^Name=SAL_notref^Name=SAL_deref^Name=SAL_notref^Name=SAL_access; p1=0x1^Name=SAL_end")] OBJECT_ATTRIBUTES* ObjectAttributes, [NativeTypeName("PIO_STATUS_BLOCK")][Out] IO_STATUS_BLOCK* IoStatusBlock, [NativeTypeName("ULONG")][In] ulong ShareAccess, [NativeTypeName("ULONG")][In] ulong CreateDisposition, [NativeTypeName("ULONG")][In] ulong CreateOptions, [NativeTypeName("ULONG")][In] ulong NamedPipeType, [NativeTypeName("ULONG")][In] ulong ReadMode, [NativeTypeName("ULONG")][In] ulong CompletionMode, [NativeTypeName("ULONG")][In] ulong MaximumInstances, [NativeTypeName("ULONG")][In] ulong InboundQuota, [NativeTypeName("ULONG")][In] ulong OutboundQuota, [NativeTypeName("PLARGE_INTEGER")][In, Optional] long* DefaultTimeout);
+
         [DllImport("ntdll.dll", CallingConvention = CallingConvention.StdCall, ExactSpelling = true)]
         [return:NativeTypeName("NTSTATUS")]
         public static extern int ZwCancelIoFileEx([NativeTypeName("HANDLE")][In]IntPtr FileHandle, [NativeTypeName("PIO_STATUS_BLOCK")][In,Optional]IO_STATUS_BLOCK* IoRequestToCancel, [NativeTypeName("PIO_STATUS_BLOCK")][Out]IO_STATUS_BLOCK* IoStatusBlock);
